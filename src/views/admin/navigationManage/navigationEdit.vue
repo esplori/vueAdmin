@@ -9,7 +9,7 @@
       </el-form-item>
       <el-form-item label="分类：">
         <el-select v-model="form.cate">
-          <el-option v-for="(item,index) in cateList" :key=index :label="item.name" :value="item.id"></el-option>
+          <el-option v-for="(item,index) in cateList" :key=index :label="item.label" :value="item.value"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item>
@@ -28,9 +28,14 @@ export default {
         id: '',
         title: '',
         content: '',
-        cate: ''
+        cate: '',
+        cateName: ''
       },
-      cateList: []
+      cateList: [
+        {label: '开发工具',value: 1},
+        {label: '网络资讯',value: 2},
+        {label: '资源分享',value: 3},
+      ]
     }
   },
   components: {
@@ -44,7 +49,7 @@ export default {
     if (id) {
       this.getDetail(id)
     }
-    this.getCate()
+    // this.getCate()
   },
   methods: {
     async getCate () {
@@ -64,6 +69,9 @@ export default {
       }
     },
     async editPage () {
+      this.form.cateName = this.cateList.filter(item =>{
+        return item.value === this.form.cate
+      })[0].label
       let res = await editPageApi({...this.form})
       if (res) {
         this.$message.success('修改成功')
@@ -71,6 +79,9 @@ export default {
       }
     },
     async postPage () {
+      this.form.cateName = this.cateList.filter(item =>{
+        return item.value === this.form.cate
+      })[0].label
       let res = await postPageApi({...this.form})
       if (res) {
         this.$message.success('添加成功')
