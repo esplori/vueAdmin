@@ -20,14 +20,14 @@
 </template>
 
 <script>
-import {logoutApi} from "../views/API/common.js"
+import { logoutApi } from "../views/API/common.js";
 export default {
   data() {
     return {};
   },
   computed: {
     userInfo() {
-      let userinfo = localStorage.getItem("userInfo");
+      const userinfo = localStorage.getItem("userInfo");
       if (userinfo) {
         return JSON.parse(userinfo);
       } else {
@@ -50,7 +50,7 @@ export default {
       this.$router.push({ path: "/login" });
     },
     async logout() {
-      let res = await logoutApi({});
+      const res = await logoutApi({});
       if (res) {
         localStorage.clear();
         sessionStorage.clear();

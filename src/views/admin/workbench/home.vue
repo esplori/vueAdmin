@@ -30,7 +30,7 @@ export default {
       await getUserInfoApi({});
     },
     async getCountViews() {
-      let res = await getCountViewsApi({});
+      const res = await getCountViewsApi({});
       if (res) {
         this.views = res.allViews;
         this.pages = res.allpages;
