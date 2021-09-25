@@ -1,0 +1,236 @@
+<template>
+  <div class="post">
+    <el-form label-width="80px" :model="form">
+      <el-form-item label="标题：">
+        <el-input v-model="form.title"></el-input>
+      </el-form-item>
+      <el-form-item label="内容：">
+        <div>
+          <div style="min-height:200px;" id="wangeditor"></div>
+        </div>
+      </el-form-item>
+      <el-form-item label="分类：">
+        <el-select v-model="form.cate" popper-class="select-zindex">
+          <el-option
+            v-for="(item, index) in cateList"
+            :key="index"
+            :label="item.name"
+            :value="item.id"
+          ></el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="浏览量：">
+        <el-input v-model.number="form.views" type="number" disabled style="width:20%"></el-input>
+      </el-form-item>
+      <el-form-item label="关键字：">
+        <el-input v-model="form.keywords" style="width:20%"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button @click="submit" type="primary">提交</el-button>
+      </el-form-item>
+    </el-form>
+  </div>
+</template>
+<script>
+import Wangeditor from "wangeditor"
+import {
+  postPageApi,
+  editPageApi,
+  getDetailByIdApi,
+  getCateApi,
+} from "@/views/API/admin.js";
+export default {
+  data() {
+    return {
+      form: {
+        id: "",
+        title: "",
+        content: "",
+        cate: 3,
+        views: 0,
+        keywords: '',
+        createBy: ''
+      },
+      cateList: [],
+      editorOption: {
+        placeholder: '编辑文章内容'
+      },
+      editor: null
+      // tinymce-vue 富文本编辑器
+      // init: {
+      //   automatic_uploads: true,
+      //   images_upload_handler: function (blobInfo, success, failure) {
+      //     var xhr, formData;
+      //     xhr = new XMLHttpRequest();
+      //     xhr.withCredentials = false;
+      //     xhr.open("POST", "/bootService/account/upload");
+      //     xhr.onload = function () {
+      //       var json;
+      //       if (xhr.status !== 200) {
+      //         failure("HTTP Error: " + xhr.status);
+      //         return;
+      //       }
+      //       json = JSON.parse(xhr.responseText);
+      //       if (!json || typeof json.location !== "string") {
+      //         failure("Invalid JSON: " + xhr.responseText);
+      //         return;
+      //       }
+      //       success(json.location);
+      //     };
+      //     formData = new FormData();
+      //     formData.append("file", blobInfo.blob(), blobInfo.filename());
+      //     xhr.send(formData);
+      //   },
+      //   height: 400,
+      //   menubar: true,
+      //   plugins: [
+      //     "advlist autolink lists link image charmap print preview anchor",
+      //     "searchreplace visualblocks code fullscreen",
+      //     "insertdatetime media table paste code help wordcount",
+      //   ],
+      //   toolbar:
+      //     "undo redo | formatselect | bold italic backcolor | \
+      //   alignleft aligncenter alignright alignjustify | \
+      //   bullist numlist outdent indent | removeformat | help",
+      // },
+    };
+  },
+  components: {},
+  mounted() {
+    let userinfo = localStorage.getItem('userInfo')
+    if (userinfo) {
+      userinfo = JSON.parse(userinfo)
+    } else{
+      userinfo = {}
+    }
+    this.editor = new Wangeditor("#wangeditor")
+    // 配置 server 接口地址
+    this.editor.config.uploadImgServer = '/bootService/account/upload'
+    this.editor.config.uploadFileName = 'file'
+    this.editor.config.uploadImgHeaders = {
+      Authorization: userinfo.token
+    }
+    this.editor.config.uploadImgTimeout = 100 * 1000
+    this.editor.config.uploadImgHooks = {
+      // 上传图片之前
+      before: function(xhr) {
+          console.log(xhr)
+
+          // // 可阻止图片上传
+          // return {
+          //     prevent: true,
+          //     msg: '需要提示给用户的错误信息'
+          // }
+      },
+      // 图片上传并返回了结果，图片插入已成功
+      success: function(xhr) {
+          console.log('success', xhr)
+      },
+      // 图片上传并返回了结果，但图片插入时出错了
+      fail: function(xhr, editor, resData) {
+          console.log('fail', resData)
+      },
+      // 上传图片出错，一般为 http 请求的错误
+      error: function(xhr, editor, resData) {
+          console.log('error', xhr, resData)
+      },
+      // 上传图片超时
+      timeout: function(xhr) {
+          console.log('timeout')
+      },
+      // 图片上传并返回了结果，想要自己把图片插入到编辑器中
+      // 例如服务器端返回的不是 { errno: 0, data: [...] } 这种格式，可使用 customInsert
+      customInsert: function(insertImgFn, result) {
+          // result 即服务端返回的接口
+          console.log('customInsert', result)
+          // console.log('result.data[0]', result.data[0])
+          // insertImgFn 可把图片插入到编辑器，传入图片 src ，执行函数即可
+          insertImgFn(result.data[0].url)
+      }
+    }
+    this.editor.create()
+  },
+  computed: {
+    userInfo() {
+      let userinfo = localStorage.getItem("userInfo");
+      if (userinfo) {
+        return JSON.parse(userinfo);
+      } else {
+        return null;
+      }
+    },
+  },
+  created() {
+    let id = this.$route.query.id;
+    if (id) {
+      this.getDetail(id);
+    }
+    this.getCate();
+  },
+  methods: {
+    async getCate() {
+      let res = await getCateApi({});
+      if (res) {
+        this.cateList = res.result || [];
+      }
+    },
+    submit() {
+      this.form.content = this.editor.txt.html()
+      if (this.form.id) {
+        this.editPage();
+      } else {
+        this.postPage();
+      }
+    },
+    async editPage() {
+      let res = await editPageApi({
+        ...this.form
+      });
+      if (res) {
+        this.$message.success("修改成功");
+        this.$router.push({ path: "/admin/pageList" });
+      }
+    },
+    async postPage() {
+      let res = await postPageApi({
+        ...this.form,
+        createBy: this.userInfo && this.userInfo.username
+      });
+      if (res) {
+        this.$message.success("添加成功");
+        this.$router.push({ path: "/admin/pageList" });
+      }
+    },
+    async getDetail(id) {
+      let res = await getDetailByIdApi({ id: id });
+      if (res) {
+        this.$set(this, 'form', res.result)
+        this.editor.txt.html(this.form.content)
+      }
+    },
+    download() {
+      this.ajaxPostLoadFile("/pages/download", "11");
+    },
+    ajaxPostLoadFile (url, val) {
+      var form = document.createElement("form");
+      form.setAttribute("style", "display:none");
+      form.setAttribute("target", "");
+      form.setAttribute("method", "post");
+      form.setAttribute("action", url);
+      var tempInput = document.createElement("input");
+      tempInput.setAttribute("type", "hidden");
+      tempInput.setAttribute("name", "testName");
+      tempInput.setAttribute("value", val);
+      form.append(tempInput);
+      document.body.appendChild(form);
+      form.submit();
+    },
+  },
+};
+</script>
+
+<style scoped lang="less">
+.post {
+  width: 100%;
+}
+</style>

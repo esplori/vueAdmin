@@ -1,0 +1,19 @@
+html,body{
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  margin: 0;
+  padding: 0;
+}
+/* 以后pre标签里面的内容自动换行 */
+pre{
+  white-space:pre-wrap;
+  white-space:-moz-pre-wrap;
+  white-space:-pre-wrap;
+  white-space:-o-pre-wrap;
+  word-wrap:break-word;
+  }
+  /* 编辑页面:富文本编辑器跟分类下拉框的z-index有冲突，需要用下拉框的z-index覆盖富文本的z-index */
+.select-zindex{
+  z-index:30000!important;
+}
