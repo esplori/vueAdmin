@@ -8,7 +8,7 @@
 
 使用到的插件： axios + less + wangeditor
 
-同另外两个项目springbootAdmin(https://gitee.com/wilkwo/springbootAdmin)、vue-admin(https://gitee.com/wilkwo/vue-admin) 一起组成了一个博客系统
+同另外两个项目springbootAdmin(https://gitee.com/wilkwo/springbootAdmin)、nuxt-web(https://gitee.com/wilkwo/nuxt-web.git) 一起组成了一个博客系统
 
 ## 演示地址
 
