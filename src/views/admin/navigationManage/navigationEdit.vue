@@ -51,7 +51,7 @@ export default {
   mounted() {},
   computed: {},
   created() {
-    let id = this.$route.query.id;
+    const id = this.$route.query.id;
     if (id) {
       this.getDetail(id);
     }
@@ -59,7 +59,7 @@ export default {
   },
   methods: {
     async getCate() {
-      let res = await getCateApi({});
+      const res = await getCateApi({});
       if (res) {
         this.cateList = res.result || [];
         if (this.cateList.length) {
@@ -78,7 +78,7 @@ export default {
       this.form.cateName = this.cateList.filter((item) => {
         return item.value === this.form.cate;
       })[0].label;
-      let res = await editPageApi({ ...this.form });
+      const res = await editPageApi({ ...this.form });
       if (res) {
         this.$message.success("修改成功");
         this.$router.push({ path: "/admin/navigationList" });
@@ -88,14 +88,14 @@ export default {
       this.form.cateName = this.cateList.filter((item) => {
         return item.value === this.form.cate;
       })[0].label;
-      let res = await postPageApi({ ...this.form });
+      const res = await postPageApi({ ...this.form });
       if (res) {
         this.$message.success("添加成功");
         this.$router.push({ path: "/admin/navigationList" });
       }
     },
     async getDetail(id) {
-      let res = await getDetailApi({ id: id });
+      const res = await getDetailApi({ id: id });
       if (res) {
         this.form = res.result;
       }
