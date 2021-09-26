@@ -18,44 +18,14 @@
             text-color="#fff"
             active-text-color="#ffd04b"
           >
-            <span v-for="(item, index) in menuList" :key="index">
-              <el-menu-item
-                :index="item.path"
-                :key="index"
-                v-if="
-                  !item.children &&
-                  userInfo &&
-                  userInfo.role.indexOf(item.role) !== -1
-                "
-              >
-                <template slot="title">
-                  <i :class="item.icon"></i>
-                  <span slot="title">{{ item.name }}</span>
-                </template>
-              </el-menu-item>
-              <el-submenu
-                v-if="
-                  item.children &&
-                  userInfo &&
-                  userInfo &&
-                  userInfo.role.indexOf(item.role) !== -1
-                "
-                :index="item.path"
-              >
-                <template slot="title">
-                  <i :class="item.icon"></i>
-                  <span slot="title">{{ item.name }}</span>
-                </template>
-                <el-menu-item
-                  v-if="userInfo && userInfo.role.indexOf(it.role) !== -1"
-                  :index="it.path"
-                  v-for="(it, idx) in item.children"
-                  :key="idx"
-                >
-                  <span slot="title">{{ it.name }}</span>
-                </el-menu-item>
-              </el-submenu>
-            </span>
+            <el-menu-item :index="item.path" v-for="(item,index) in menuList" :key="index" v-if="!item.children">
+              <template slot="title"> <i :class="item.icon"></i>{{item.name}}</template>
+            </el-menu-item>
+            <el-submenu :index="item.path" v-else>
+             
+              <template slot="title"> <i :class="item.icon"></i>{{item.name}}</template>
+              <el-menu-item :index="it.path" v-for="(it,ix) in item.children" :key="ix">{{it.name}}</el-menu-item>
+            </el-submenu>
           </el-menu>
         </div>
         <div class="swith-button">
@@ -264,21 +234,17 @@ export default {
     .container {
       height: 100%;
       background: #001529;
-      display: flex;
-      justify-content: space-between;
-      flex-direction: column;
-      align-items: center;
-      overflow-y: auto;
       .logo {
         padding: 20px 0;
         font-size: 16px;
         color: #fff;
         height: 30px;
         line-height: 30px;
+        text-align: center;
       }
       .swith-button {
         text-align: left;
-        padding: 20px;
+        padding: 5px;
       }
       .el-menu-vertical-demo {
         border: none;
