@@ -32,9 +32,9 @@ export default {
         cateName: ''
       },
       cateList: [
-        {label: '开发工具',value: 1},
-        {label: '网络资讯',value: 2},
-        {label: '资源分享',value: 3},
+        {label: '开发工具',value: "1"},
+        {label: '网络资讯',value: "2"},
+        {label: '资源分享',value: "3"},
       ]
     }
   },
