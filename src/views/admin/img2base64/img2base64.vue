@@ -1,20 +1,22 @@
 <template>
   <div id="img2base64">
-    <h2>方案一：网络图片生成base64</h2>
+    <h2 style="padding: 20px 0">方案一：网络图片生成base64</h2>
     <div><el-input v-model="url"></el-input></div>
     <div style="padding: 20px 0">
       <el-button @click="generated" type="primary">生成base64</el-button>
     </div>
     <div id="pic"></div>
     <el-input type="textarea" v-model="base64Url1" :rows="8"></el-input>
-    <h2>方案二：本地上传图片生成base64</h2>
-    <input type="file" id="imagefile" />
-    <input
-      style="paddding: 20px 0"
-      type="button"
-      value="读取图像"
-      @click="readAsDataURL"
-    />
+    <h2 style="padding: 20px 0">方案二：本地上传图片生成base64</h2>
+    <div style="padding: 20px 0">
+      <input type="file" id="imagefile" />
+      <input
+        style="paddding: 20px 0"
+        type="button"
+        value="读取图像"
+        @click="readAsDataURL"
+      />
+    </div>
     <div id="localPic"></div>
     <el-input type="textarea" v-model="base64Url2" :rows="8"></el-input>
   </div>
@@ -28,7 +30,7 @@ export default {
         "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3922290090,3177876335&fm=26&gp=0.jpg?v=" +
         Math.random(),
       base64Url1: "",
-      base64Url2: ''
+      base64Url2: "",
     };
   },
   created() {},
@@ -59,7 +61,7 @@ export default {
       };
     },
     readAsDataURL() {
-      let _this = this
+      let _this = this;
       if (typeof FileReader == "undifined") {
         //判断浏览器是否支持filereader
         result.innerHTML = "<p>抱歉，你的浏览器不支持 FileReader</p>";
@@ -77,7 +79,7 @@ export default {
         var result = document.getElementById("localPic");
         result.innerHTML =
           '<img style="width:400px" src="' + this.result + '" alt=""/>';
-          _this.base64Url2 = this.result;
+        _this.base64Url2 = this.result;
       };
     },
   },
