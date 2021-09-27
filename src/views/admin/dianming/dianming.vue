@@ -1,17 +1,17 @@
 <template>
   <div class="dianming">
     <div>
-      总人数：<span>{{ students.length }}</span> 人，抽取：
-      <input type="text" v-model="size" /> 位
+      总人数：<span>{{ students.length }}</span> 人，共抽取：
+      <el-input v-model="size" style="width:75px"></el-input> 位
     </div>
-    <div>
-      <button
+    <div style="padding:20px 0">
+      <el-button
         type="button"
-        style="height: 50px; font-size: 20px; margin-top: 10px"
+        style="width:250px"
         @click="onBtnClick()"
       >
         {{ btnText }}
-      </button>
+      </el-button>
     </div>
     <div>
       <ul
@@ -67,6 +67,48 @@ export default {
         "子依",
         "点点",
         "贤贤",
+        "青鸢",
+        "苹芃",
+        "小妮",
+        "子依",
+        "点点",
+        "贤贤",
+        "青鸢",
+        "苹芃",
+        "小妮",
+        "子依",
+        "点点",
+        "贤贤",
+        "青鸢",
+        "苹芃",
+        "小妮",
+        "子依",
+        "点点",
+        "贤贤",
+        "青鸢",
+        "苹芃",
+        "小妮",
+        "子依",
+        "点点",
+        "贤贤",
+        "青鸢",
+        "苹芃",
+        "小妮",
+        "子依",
+        "点点",
+        "贤贤",
+        "青鸢",
+        "苹芃",
+        "小妮",
+        "子依",
+        "点点",
+        "贤贤",
+        "青鸢",
+        "苹芃",
+        "小妮",
+        "子依",
+        "点点",
+        "贤贤",
       ],
       studentIndexs: [],
       size: 1,
@@ -80,7 +122,7 @@ export default {
   },
   computed: {
     btnText() {
-      return this.intervalId ? "确定选择" : `点击随机抽取 ${this.size} 位`;
+      return this.intervalId ? "停止" : `开始`;
     },
   },
   methods: {
@@ -106,10 +148,12 @@ export default {
 <style scoped lang="less">
 .dianming {
   background: #000;
+  padding: 20px;
   display: flex;
   flex-flow: column;
   align-items: center;
   color: #fff;
+  height: 700px;
   li {
     margin: 10px;
     padding: 10px;
