@@ -36,7 +36,7 @@
         <h1>恭喜您</h1>
         <p>
           <img
-            src="//repo.bfw.wiki/bfwrepo/images/huodong/choujiang/j2.png"
+            src="../../../assets/images/choujiang/j2.png"
             alt=""
           />
         </p>
@@ -51,42 +51,39 @@
 export default {
   data() {
     return {
-      originJsonData:
-        '{"code":0,"msg":"查询成功","data":{"username":"test","password":"","role":"ROLE_author","nickname":"i am a test user","userdesc":"developer","avatar":"icom","token":null}}',
-      jsonData: {},
       isStart: 1,
       score: 10, //消耗积分
       list: [
         {
-          img: "//repo.bfw.wiki/bfwrepo/images/huodong/choujiang/j1.png",
+          img: "/static/choujiang/j1.png",
           title: "谢谢参与",
         },
         {
-          img: "//repo.bfw.wiki/bfwrepo/images/huodong/choujiang/j2.png",
+          img: "/static/choujiang/j2.png",
           title: "美女一个",
         },
         {
-          img: "//repo.bfw.wiki/bfwrepo/images/huodong/choujiang/j1.png",
+          img: "/static/choujiang/j1.png",
           title: "宝马一辆",
         },
         {
-          img: "//repo.bfw.wiki/bfwrepo/images/huodong/choujiang/j2.png",
+          img: "/static/choujiang/j2.png",
           title: "单车一辆",
         },
         {
-          img: "//repo.bfw.wiki/bfwrepo/images/huodong/choujiang/j1.png",
+          img: "/static/choujiang/j1.png",
           title: "鸡蛋一蓝",
         },
         {
-          img: "//repo.bfw.wiki/bfwrepo/images/huodong/choujiang/j2.png",
+          img: "/static/choujiang/j2.png",
           title: "500红包",
         },
         {
-          img: "//repo.bfw.wiki/bfwrepo/images/huodong/choujiang/j1.png",
+          img: "/static/choujiang/j1.png",
           title: "靓号一个",
         },
         {
-          img: "//repo.bfw.wiki/bfwrepo/images/huodong/choujiang/j2.png",
+          img: "/static/choujiang/j2.png",
           title: "鲜花一蓝",
         },
       ], //奖品1-9
@@ -103,9 +100,6 @@ export default {
   },
   mounted() {},
   methods: {
-    handler() {
-      this.jsonData = JSON.parse(this.originJsonData);
-    },
     startLottery() {
       if (!this.click) {
         return;
@@ -203,10 +197,10 @@ li {
 }
 @keyframes changeBg {
   0% {
-    background-image: url(//repo.bfw.wiki/bfwrepo/images/huodong/choujiang/k1.png);
+    background-image: url(../../../assets/images/choujiang/k1.png);
   }
   100% {
-    background-image: url(//repo.bfw.wiki/bfwrepo/images/huodong/choujiang/k2.png);
+    background-image: url(../../../assets/images/choujiang/k2.png);
   }
 }
 .lottery .lottery-item {
@@ -251,7 +245,7 @@ li {
   position: relative;
   text-align: center;
   overflow: hidden;
-  background: url(//repo.bfw.wiki/bfwrepo/images/huodong/choujiang/bg2.png)
+  background: url(../../../assets/images/choujiang/bg2.png)
     no-repeat center;
   background-size: 100% 100%;
 }
@@ -270,7 +264,7 @@ li {
   font-size: 14px;
 }
 .lottery .lottery-item ul li.on .box {
-  background: url(//repo.bfw.wiki/bfwrepo/images/huodong/choujiang/bg1.png)
+  background: url(../../../assets/images/choujiang/bg1.png)
     no-repeat center;
   background-size: 100% 100%;
 }
@@ -291,7 +285,7 @@ li {
   cursor: pointer;
   text-align: center;
   overflow: hidden;
-  background: url(//repo.bfw.wiki/bfwrepo/images/huodong/choujiang/bg1.png)
+  background: url(../../../assets/images/choujiang/bg1.png)
     no-repeat center;
   background-size: 100% 100%;
 }
@@ -306,7 +300,7 @@ li {
   opacity: 0.7;
 }
 .lottery .lottery-item .lottery-start .box.gray {
-  background: url(//repo.bfw.wiki/bfwrepo/images/huodong/choujiang/bg3.png)
+  background: url(../../../assets/images/choujiang/bg3.png)
     no-repeat center;
   background-size: 100% 100%;
 }
