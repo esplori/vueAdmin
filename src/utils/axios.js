@@ -111,14 +111,14 @@ function handleData(res, resolve, reject) {
 function handleAuthenticated(res) {
   switch (res.response.status) {
     case 401:
+      localStorage.clear()
       location.href = '/#/login'
       Message.error("用户信息已失效，请重新登录")
-      localStorage.clear()
       break;
     case 403:
+      localStorage.clear()
       location.href = '/#/login'
       Message.error("暂无权限，请重新登录")
-      localStorage.clear()
       break
     case 500:
       Message.error("500错误")
