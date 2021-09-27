@@ -40,7 +40,7 @@ axios.interceptors.request.use(function (config) {
   let userinfo = localStorage.getItem('userInfo')
   if (userinfo) {
     userinfo = JSON.parse(userinfo)
-    config.headers.common['Authorization'] = userinfo.token
+    config.headers.common["Authorization"] = userinfo.token
   }
   // 在发送请求之前做些什么
   return config
@@ -125,6 +125,5 @@ function handleAuthenticated(res) {
       break
     case 400:
       Message.error("400错误")
-
   }
 }

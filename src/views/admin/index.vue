@@ -22,7 +22,6 @@
               <template slot="title"> <i :class="item.icon"></i>{{item.name}}</template>
             </el-menu-item>
             <el-submenu :index="item.path" v-else>
-             
               <template slot="title"> <i :class="item.icon"></i>{{item.name}}</template>
               <el-menu-item :index="it.path" v-for="(it,ix) in item.children" :key="ix">{{it.name}}</el-menu-item>
             </el-submenu>
