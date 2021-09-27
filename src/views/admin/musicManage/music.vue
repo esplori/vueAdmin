@@ -20,7 +20,7 @@
         <div class="progress">
           <div>{{ currentSrc }}</div>
           <div class="progress-bar">
-            <div style="display: inline-block; width: 80%">
+            <div style="display: inline-block; width: 92%">
               <el-progress
                 :percentage="percent"
                 status="success"
@@ -166,7 +166,7 @@ export default {
         }
       }
       .progress {
-        width: 60%;
+        width: 100%;
         display: flex;
         padding: 8px;
         justify-content: space-between;
