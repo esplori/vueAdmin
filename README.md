@@ -8,6 +8,13 @@
 
 使用到的插件： axios + less + wangeditor
 
+## 主要功能
+
+1、新增、编辑、删除文章
+2、整合小工具（音乐分享，json格式化，抽奖，在线点名，图片转base64）
+
+## 关联项目
+
 同另外两个项目springbootAdmin(https://gitee.com/wilkwo/springbootAdmin)、nuxt-web(https://gitee.com/wilkwo/nuxt-web.git) 一起组成了一个博客系统
 
 ## 演示地址
