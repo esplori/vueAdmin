@@ -52,7 +52,7 @@ export default {
   data() {
     return {
       isStart: 1,
-      score: 10, //消耗积分
+      score: 10, // 消耗积分
       list: [
         {
           img: "/static/choujiang/j1.png",
@@ -86,7 +86,7 @@ export default {
           img: "/static/choujiang/j2.png",
           title: "鲜花一蓝",
         },
-      ], //奖品1-9
+      ], // 奖品1-9
       index: -1, // 当前转动到哪个位置，起点位置
       count: 8, // 总共有多少个位置
       timer: 0, // 每次转动定时器
@@ -95,7 +95,7 @@ export default {
       cycle: 50, // 转动基本次数：即至少需要转动多少次再进入抽奖环节
       prize: -1, // 中奖位置
       click: true,
-      showToast: false, //显示中奖弹窗
+      showToast: false, // 显示中奖弹窗
     };
   },
   mounted() {},
@@ -126,7 +126,7 @@ export default {
           this.speed -= 10; // 加快转动速度
         } else if (this.times === this.cycle) {
           const index = parseInt(Math.random() * 10, 0) || 0; // 随机获得一个中奖位置
-          this.prize = index; //中奖位置,可由后台返回
+          this.prize = index; // 中奖位置,可由后台返回
           if (this.prize > 7) {
             this.prize = 7;
           }

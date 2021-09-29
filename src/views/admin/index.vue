@@ -5,7 +5,7 @@
       <div class="container">
         <div>
           <div class="logo">
-            <span v-if="!isCollapse">DSIAB</span>
+            <!-- <span v-if="!isCollapse">DSIAB</span> -->
           </div>
           <el-menu
             default-active="/admin/home"
@@ -27,7 +27,7 @@
             </el-submenu>
           </el-menu>
         </div>
-        <div class="swith-button">
+        <!-- <div class="swith-button">
           <i
             class="el-icon-s-unfold"
             v-if="isCollapse"
@@ -40,7 +40,7 @@
             style="color: #fff; font-size: 24px"
             @click="swith"
           ></i>
-        </div>
+        </div> -->
       </div>
       <div class="right-content">
         <adminHeader></adminHeader>

@@ -49,9 +49,9 @@ export default {
     generated() {
       var img = document.createElement("img");
       img.src = this.url;
-      //此处自己替换本地图片的地址
+      // 此处自己替换本地图片的地址
       img.crossOrigin = "anonymous";
-      let _this = this;
+      const _this = this;
       img.onload = function () {
         var data = _this.getBase64Image(img);
         var img1 = document.createElement("img");
@@ -61,15 +61,15 @@ export default {
       };
     },
     readAsDataURL() {
-      let _this = this;
-      if (typeof FileReader == "undifined") {
-        //判断浏览器是否支持filereader
-        result.innerHTML = "<p>抱歉，你的浏览器不支持 FileReader</p>";
+      const _this = this;
+      if (typeof FileReader === "undefined") {
+        // 判断浏览器是否支持filereader
+        document.body.innerHTML = "<p>抱歉，你的浏览器不支持 FileReader</p>";
         return false;
       }
       var file = document.getElementById("imagefile").files[0];
       if (!/image\/\w+/.test(file.type)) {
-        //判断获取的是否为图片文件
+        // 判断获取的是否为图片文件
         alert("请确保文件为图像文件");
         return false;
       }
