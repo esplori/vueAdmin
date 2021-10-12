@@ -157,7 +157,7 @@ export default {
   },
   computed: {
     userInfo() {
-      let userinfo = localStorage.getItem("userInfo");
+      const userinfo = localStorage.getItem("userInfo");
       if (userinfo) {
         return JSON.parse(userinfo);
       } else {
@@ -166,7 +166,7 @@ export default {
     },
   },
   created() {
-    let id = this.$route.query.id;
+    const id = this.$route.query.id;
     if (id) {
       this.getDetail(id);
     }
@@ -174,7 +174,7 @@ export default {
   },
   methods: {
     async getCate() {
-      let res = await getCateApi({});
+      const res = await getCateApi({});
       if (res) {
         this.cateList = res.result || [];
       }
@@ -188,7 +188,7 @@ export default {
       }
     },
     async editPage() {
-      let res = await editPageApi({
+      const res = await editPageApi({
         ...this.form,
       });
       if (res) {
@@ -197,7 +197,7 @@ export default {
       }
     },
     async postPage() {
-      let res = await postPageApi({
+      const res = await postPageApi({
         ...this.form,
         createBy: this.userInfo && this.userInfo.username,
       });
@@ -207,7 +207,7 @@ export default {
       }
     },
     async getDetail(id) {
-      let res = await getDetailByIdApi({ id: id });
+      const res = await getDetailByIdApi({ id: id });
       if (res) {
         this.$set(this, "form", res.result);
         this.editor.txt.html(this.form.content);

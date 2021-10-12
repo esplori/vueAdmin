@@ -103,18 +103,18 @@ export default {
       this.dialogVisible = true;
     },
     async getList(type) {
-      let res = await getSourceListApi({});
+      const res = await getSourceListApi({});
       if (res) {
         this.sourceUrl = res.sourceUrl;
         this.list = res.result.filter((item) => {
-          let fig = this.typeConfig[type];
-          let fn = item.filename.split(".")[1];
+          const fig = this.typeConfig[type];
+          const fn = item.filename.split(".")[1];
           return fig.includes(fn);
         });
       }
     },
     async del(filename) {
-      let res = await delFileApi({ filename: filename });
+      const res = await delFileApi({ filename: filename });
       if (res) {
         this.$message.success("删除成功");
         this.getList();
