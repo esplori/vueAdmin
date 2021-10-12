@@ -115,6 +115,10 @@ const router = new Router({
         {
           path: 'compressJs',
           component: () => import('@/views/admin/compressJs/index')
+        },
+        {
+          path: 'qrcode',
+          component: () => import('@/views/admin/qrcode/index')
         }
       ]
     }

@@ -147,6 +147,12 @@ export default {
               role: "ROLE_author",
               icon: "el-icon-share",
             },
+            {
+              name: "二维码生成",
+              path: "/admin/qrcode",
+              role: "ROLE_author",
+              icon: "el-icon-share",
+            },
           ],
         },
         {

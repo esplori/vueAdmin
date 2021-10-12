@@ -27,43 +27,43 @@
 </template>
 
 <script>
-import {updateSiteInfoApi, getSiteInfoApi} from '@/views/API/admin.js'
+import { updateSiteInfoApi, getSiteInfoApi } from "@/views/API/admin.js";
 
 export default {
-  data () {
+  data() {
     return {
       form: {
-        siteName: '',
-        siteDesc: '',
-        siteUrl: '',
-        sourceUrl: '',
-        sourceRealUrl: '',
-        beianNo: '',
-      }
-    }
+        siteName: "",
+        siteDesc: "",
+        siteUrl: "",
+        sourceUrl: "",
+        sourceRealUrl: "",
+        beianNo: "",
+      },
+    };
   },
-  created () {
-    this.getSiteInfo()
+  created() {
+    this.getSiteInfo();
   },
   methods: {
-    async submit () {
-      let res = await updateSiteInfoApi(this.form)
+    async submit() {
+      const res = await updateSiteInfoApi(this.form);
       if (res) {
-        this.$message.success('更新成功')
+        this.$message.success("更新成功");
       }
     },
-    async getSiteInfo () {
-      let res = await getSiteInfoApi({})
+    async getSiteInfo() {
+      const res = await getSiteInfoApi({});
       if (res) {
-        this.form = res
+        this.form = res;
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped lang="less">
-  .user-info {
-    padding: 20px 0;
-  }
+.user-info {
+  padding: 20px 0;
+}
 </style>

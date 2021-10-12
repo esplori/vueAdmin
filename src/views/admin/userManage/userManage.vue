@@ -8,7 +8,12 @@
         <template slot-scope="scope">
           <el-button @click="edit(scope.row)" type="primary">编辑</el-button>
           <!-- 不允许删除管理员 -->
-          <el-button @click="del(scope.row.id)" type="danger" :disabled="scope.row.role.indexOf('admin')!== -1">删除</el-button>
+          <el-button
+            @click="del(scope.row.id)"
+            type="danger"
+            :disabled="scope.row.role.indexOf('admin') !== -1"
+            >删除</el-button
+          >
         </template>
       </el-table-column>
     </el-table>
@@ -45,7 +50,7 @@
           <el-form-item label="用户名">
             <el-input v-model="form.username"></el-input>
           </el-form-item>
-           <el-form-item label="密码">
+          <el-form-item label="密码">
             <el-input v-model="form.password"></el-input>
           </el-form-item>
         </el-form>
@@ -55,12 +60,17 @@
         <el-button type="primary" @click="insert">确 定</el-button>
       </span>
     </el-dialog>
-
   </div>
 </template>
 
 <script>
-import { getUserListApi, getRoleListApi, updateRoleApi, insertUserApi,deleUserApi } from "../../API/admin";
+import {
+  getUserListApi,
+  getRoleListApi,
+  updateRoleApi,
+  insertUserApi,
+  deleUserApi,
+} from "../../API/admin";
 export default {
   data() {
     return {
@@ -71,16 +81,16 @@ export default {
       },
       editObj: {
         dialogVisible: false,
-        currUsername: ''
+        currUsername: "",
       },
       insertObj: {
-         dialogVisible: false,
+        dialogVisible: false,
       },
       multipleSelection: [],
       form: {
-        username: '',
-        password: ''
-      }
+        username: "",
+        password: "",
+      },
     };
   },
   created() {
@@ -88,19 +98,19 @@ export default {
   },
   methods: {
     async insert() {
-      let res = await insertUserApi({
-        ...this.form
-      })
+      const res = await insertUserApi({
+        ...this.form,
+      });
       if (res) {
-        this.insertObj.dialogVisible = false
-        this.getUserList()
+        this.insertObj.dialogVisible = false;
+        this.getUserList();
       }
     },
-    insertUser(){
-      this.insertObj.dialogVisible = true
+    insertUser() {
+      this.insertObj.dialogVisible = true;
     },
     async getUserList() {
-      let res = await getUserListApi({ page: this.params.page });
+      const res = await getUserListApi({ page: this.params.page });
       if (res) {
         this.data = res.result;
       }
@@ -111,16 +121,16 @@ export default {
       this.getRoleList(row);
     },
     del(id) {
-      this.delUser(id)
+      this.delUser(id);
     },
     async delUser(id) {
-      let res = await deleUserApi({id})
+      const res = await deleUserApi({ id });
       if (res) {
-        this.getUserList()
+        this.getUserList();
       }
     },
     async getRoleList(row) {
-      let res = await getRoleListApi({});
+      const res = await getRoleListApi({});
       if (res) {
         this.Roledata = res.result;
         this.Roledata.forEach((item, index) => {
@@ -140,13 +150,13 @@ export default {
       this.dialogVisible = false;
     },
     async updateRole() {
-      let res = await updateRoleApi({
+      const res = await updateRoleApi({
         roleList: this.multipleSelection,
         username: this.editObj.currUsername,
       });
       if (res) {
-        this.editObj.dialogVisible = false
-        this.getUserList()
+        this.editObj.dialogVisible = false;
+        this.getUserList();
       }
     },
     handleSelectionChange(val) {

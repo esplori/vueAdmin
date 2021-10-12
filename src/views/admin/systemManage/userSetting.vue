@@ -18,40 +18,40 @@
 </template>
 
 <script>
-import {updateUserInfoApi, getUserInfoApi} from '@/views/API/admin.js'
+import { updateUserInfoApi, getUserInfoApi } from "@/views/API/admin.js";
 
 export default {
-  data () {
+  data() {
     return {
       form: {
-        nickname: '',
-        userdesc: '',
-        avatar: ''
-      }
-    }
+        nickname: "",
+        userdesc: "",
+        avatar: "",
+      },
+    };
   },
-  created () {
-    this.getUserInfo()
+  created() {
+    this.getUserInfo();
   },
   methods: {
-    async submit () {
-      let res = await updateUserInfoApi(this.form)
+    async submit() {
+      const res = await updateUserInfoApi(this.form);
       if (res) {
-        this.$message.success('更新成功')
+        this.$message.success("更新成功");
       }
     },
-    async getUserInfo () {
-      let res = await getUserInfoApi({})
+    async getUserInfo() {
+      const res = await getUserInfoApi({});
       if (res) {
-        this.form = res
+        this.form = res;
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped lang="less">
-  .user-info {
-    padding: 20px 0;
-  }
+.user-info {
+  padding: 20px 0;
+}
 </style>
