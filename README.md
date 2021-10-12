@@ -15,7 +15,9 @@
 
 ## 关联项目
 
-同另外两个项目springbootAdmin(https://gitee.com/wilkwo/springbootAdmin)、nuxt-web(https://gitee.com/wilkwo/nuxt-web.git) 一起组成了一个博客系统
+同另外两个项目springbootAdmin(https://gitee.com/wilkwo/springbootAdmin)、
+ 
+nuxt-web(https://gitee.com/wilkwo/nuxt-web.git) 一起组成了一个博客系统
 
 ## 演示地址
 
