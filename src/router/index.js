@@ -111,6 +111,10 @@ const router = new Router({
         {
           path: 'img2base64',
           component: () => import('@/views/admin/img2base64/img2base64')
+        },
+        {
+          path: 'compressJs',
+          component: () => import('@/views/admin/compressJs/index')
         }
       ]
     }

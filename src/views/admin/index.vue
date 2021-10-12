@@ -141,6 +141,12 @@ export default {
               role: "ROLE_author",
               icon: "el-icon-share",
             },
+            {
+              name: "js压缩",
+              path: "/admin/compressJs",
+              role: "ROLE_author",
+              icon: "el-icon-share",
+            },
           ],
         },
         {
