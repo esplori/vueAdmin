@@ -71,27 +71,27 @@ export default {
       }
     },
     async getCate() {
-      let res = await getCateApi({});
+      const res = await getCateApi({});
       if (res) {
         this.cateList = res.result;
       }
     },
     async getListByCate() {
-      let res = await getListByCateApi(this.params);
+      const res = await getListByCateApi(this.params);
       if (res) {
         this.list = res.result;
         this.total = res.total;
       }
     },
     async getAllList() {
-      let res = await getListApi(this.params);
+      const res = await getListApi(this.params);
       if (res) {
         this.list = res.result;
         this.total = res.total;
       }
     },
     async del(id) {
-      let res = await delApi({ id: id });
+      const res = await delApi({ id: id });
       if (res) {
         this.$message.success("删除成功");
         this.getList();
