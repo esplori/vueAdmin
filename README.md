@@ -35,7 +35,7 @@ http://admin.dsiab.com
 
 ### 演示截图
 
-<img src="https://gitee.com/wilkwo/vue-admin/raw/master/src/assets/images/screenshot.jpg" style="width:400px">
+<img src="./src/assets/images/screenshot.jpg" alt="赞赏" width="400px" />
 
 
 ### 运行项目
