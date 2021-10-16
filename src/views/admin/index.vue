@@ -18,12 +18,26 @@
             text-color="#fff"
             active-text-color="#ffd04b"
           >
-            <el-menu-item :index="item.path" v-for="(item,index) in menuList" :key="index" v-if="!item.children">
-              <template slot="title"> <i :class="item.icon"></i>{{item.name}}</template>
+            <el-menu-item
+              :index="item.path"
+              v-for="(item, index) in menuList"
+              :key="index"
+              v-if="!item.children"
+            >
+              <template slot="title">
+                <i :class="item.icon"></i>{{ item.name }}</template
+              >
             </el-menu-item>
             <el-submenu :index="item.path" v-else>
-              <template slot="title"> <i :class="item.icon"></i>{{item.name}}</template>
-              <el-menu-item :index="it.path" v-for="(it,ix) in item.children" :key="ix">{{it.name}}</el-menu-item>
+              <template slot="title">
+                <i :class="item.icon"></i>{{ item.name }}</template
+              >
+              <el-menu-item
+                :index="it.path"
+                v-for="(it, ix) in item.children"
+                :key="ix"
+                >{{ it.name }}</el-menu-item
+              >
             </el-submenu>
           </el-menu>
         </div>
@@ -218,7 +232,44 @@ export default {
   components: {
     adminHeader: () => import("./components/admin-header"),
   },
+  mounted() {
+    this.initWebStat();
+    window.addEventListener("click", (item) => {
+      this.getWegStats();
+    });
+  },
   methods: {
+    getWegStats() {
+      console.log(window.hunter.getDirectData());
+      window.hunter.track('/bootService/stats/getStats.gif', {
+        ...window.hunter.getDirectData()
+      })
+    },
+    initWebStat() {
+      var hunter = new Hunter({
+        baseUrl: "/bootService", // 基础接口地址url
+        url: "/stats/getStats.gif", // 请求上报api的接口地址
+        routeMode: "history", // 填写单页面应用中使用的路由模式。
+        autoUpload: true, // 是否自动请求接口，在setUserId之后会以baseUrl+url形式在页面切换时自动请求上报PV/UV的接口
+        prop: {
+          // 请求参数映射，参数名默认如下，可以自定义修改参数名。
+          uv: "uv",
+          pv: "pv",
+          id: "id",
+          mVisits: "mVisits",
+          domain: "domain",
+          title: "title",
+          referrer: "referrer",
+          screen: "screen",
+          lang: "lang",
+          userAgent: "userAgent",
+          os: "os",
+          browse: "browse",
+          device: "device",
+        },
+      });
+      window.hunter = hunter;
+    },
     swith() {
       this.isCollapse = !this.isCollapse;
     },

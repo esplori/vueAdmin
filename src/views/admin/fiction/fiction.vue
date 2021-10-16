@@ -24,7 +24,6 @@ export default {
       let self=this//onload this指向为window中转一下
       this.loading=true;
       xhr.onload = function () {
-        debugger
         if (this.status == 200) {
           self.loading=false;
           console.log(this.response)
