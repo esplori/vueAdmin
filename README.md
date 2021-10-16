@@ -57,3 +57,10 @@ npm run build
 # 生成应用并查看报告
 npm run build --report
 ```
+
+
+### 感谢赞赏
+
+您的支持是持续更新的动力！
+
+<img src="./assets/images/zanshan.jpeg" alt="赞赏" width="400px" />
