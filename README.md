@@ -43,12 +43,12 @@ http://admin.dsiab.com
 ``` bash
 
 #下载代码
-git clone https://gitee.com/wilkwo/vue-admin.git
+git clone https://gitee.com/wilkwo/vueAdmin.git
 
 # 安装依赖
 npm install
 
-# 启动应用 localhost:8080
+# 启动应用 localhost:8081
 npm run dev
 
 # 生成应用
