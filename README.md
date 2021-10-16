@@ -63,4 +63,4 @@ npm run build --report
 
 您的支持是持续更新的动力！
 
-<img src="./assets/images/zanshan.jpeg" alt="赞赏" width="400px" />
+<img src="./src/assets/images/zanshan.jpeg" alt="赞赏" width="400px" />
