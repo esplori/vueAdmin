@@ -69,17 +69,26 @@
         <el-row>
           <el-col :span="8">
             <div>
-              <div id="deviceType" style="width: 600px; height: 400px"></div>
+              <div
+                id="deviceType"
+                style="max-width: 600px; height: 400px"
+              ></div>
             </div>
           </el-col>
           <el-col :span="8">
             <div>
-              <div id="browserType" style="width: 600px; height: 400px"></div>
+              <div
+                id="browserType"
+                style="max-width: 600px; height: 400px"
+              ></div>
             </div>
           </el-col>
           <el-col :span="8">
             <div>
-              <div id="deiveRatio" style="width: 600px; height: 400px"></div>
+              <div
+                id="deiveRatio"
+                style="max-width: 600px; height: 400px"
+              ></div>
             </div>
           </el-col>
         </el-row>
@@ -100,17 +109,21 @@ export default {
       dateRange: [],
       deviceRatio: [],
       deviceType: [],
-      browserType: []
+      browserType: [],
     };
   },
   created() {
     this.getUserInfo();
     this.getWebStatistics();
   },
-  mounted() {},
+  mounted() {
+    window.addEventListener("resize", () => {
+      this.initCharts()
+    });
+  },
   methods: {
     initDeviceType() {
-      let _this = this
+      let _this = this;
       let myChart = echarts.init(document.getElementById("deviceType"));
       myChart.setOption({
         title: {
@@ -129,9 +142,10 @@ export default {
           },
         ],
       });
+      myChart.resize()
     },
     initBrowserType() {
-      let _this = this
+      let _this = this;
       let myChart = echarts.init(document.getElementById("browserType"));
       myChart.setOption({
         title: {
@@ -146,13 +160,14 @@ export default {
           {
             name: "浏览器型号",
             type: "bar",
-            data: [5, 30, 36, 10, 10,34,45, 67,69,98],
+            data: [5, 30, 36, 10, 10, 34, 45, 67, 69, 98],
           },
         ],
       });
+      myChart.resize()
     },
     initDeiveRatio() {
-      let _this = this
+      let _this = this;
       let myChart = echarts.init(document.getElementById("deiveRatio"));
       myChart.setOption({
         title: {
@@ -167,10 +182,11 @@ export default {
           {
             name: "设备分辨率",
             type: "bar",
-            data: [5, 20, 36, 10, 10,34,45,56,67,78],
+            data: [5, 20, 36, 10, 10, 34, 45, 56, 67, 78],
           },
         ],
       });
+      myChart.resize()
     },
     async getUserInfo() {
       await getUserInfoApi({});
@@ -185,15 +201,18 @@ export default {
         });
         this.deviceType = res.deviceType.map((item) => {
           return item.os;
-        });;
+        });
         this.browserType = res.browserType.map((item) => {
           return item.browse;
-        });;
-        this.initDeviceType();
-        this.initBrowserType();
-        this.initDeiveRatio();
+        });
+        this.initCharts()
       }
     },
+    initCharts() {
+      this.initDeviceType();
+      this.initBrowserType();
+      this.initDeiveRatio();
+    }
   },
 };
 </script>
