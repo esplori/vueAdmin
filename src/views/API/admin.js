@@ -96,11 +96,6 @@ export async function getFundApi (data) {
   const options = {}
   return get(url, data, options)
 }
-export async function getCountViewsApi (data) {
-  const Url = `${contextPath}/pages/getCountViews`
-  const options = {}
-  return get(Url, data, options)
-}
 export async function getUserListApi (data) {
   const Url = `${contextPath}/admin/getUserList/${data.page}`
   const options = {}
