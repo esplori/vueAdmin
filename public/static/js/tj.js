@@ -352,7 +352,8 @@
       userAgent: navigator.userAgent,
       os: getOS() || browser.getPlatform(),
       browse: browser.getBrowse(),
-      device: browser.getPlatform()
+      device: browser.getPlatform(),
+      hrefs: window.location.href
     },
     /**
      * 获取配置
