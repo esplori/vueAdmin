@@ -285,6 +285,10 @@ export default {
       let userInfo = localStorage.getItem("userInfo");
       if (userInfo) {
         userInfo = JSON.parse(userInfo);
+      } else {
+        userInfo: {
+          role: ''
+        }
       }
       console.log("userInfo", userInfo);
       return userInfo;
