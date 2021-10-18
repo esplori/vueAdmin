@@ -2,6 +2,7 @@
 <template>
   <div class="admin-home">
     <div class="left-menu">
+      <div class="logo">DSIAB</div>
       <el-menu
         style="height: 100%; overflow-y: auto"
         default-active="/admin/home"
@@ -101,9 +102,19 @@
           </el-menu-item>
         </el-submenu>
 
-        <div style="text-align:center;padding-top:60px">
-          <i class="el-icon-s-fold" style="color: #909399; font-size: 18px" v-show="!isCollapse" @click="isCollapse=!isCollapse"></i>
-          <i class="el-icon-s-unfold" style="color: #909399; font-size: 18px" v-show="isCollapse" @click="isCollapse=!isCollapse"></i>
+        <div class="switch-icon">
+          <i
+            class="el-icon-s-fold"
+            style="color: #909399; font-size: 18px"
+            v-show="!isCollapse"
+            @click="isCollapse = !isCollapse"
+          ></i>
+          <i
+            class="el-icon-s-unfold"
+            style="color: #909399; font-size: 18px"
+            v-show="isCollapse"
+            @click="isCollapse = !isCollapse"
+          ></i>
         </div>
       </el-menu>
     </div>
@@ -337,6 +348,20 @@ export default {
 .admin-home {
   height: 100%;
   display: flex;
+  .left-menu {
+    .logo {
+      background: #001529;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 24px;
+    }
+    .switch-icon {
+      text-align: center;
+      padding-top: 40px;
+      padding-bottom: 20px;
+    }
+  }
   .right-content {
     width: 100%;
     padding: 20px;
