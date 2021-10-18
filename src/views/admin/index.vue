@@ -2,7 +2,7 @@
 <template>
   <div class="admin-home">
     <div class="left-menu">
-      <div class="logo">DSIAB</div>
+      <!-- <div class="logo">DSIAB</div> -->
       <el-menu
         style="height: 100%; overflow-y: auto"
         default-active="/admin/home"
@@ -19,7 +19,7 @@
           <i class="el-icon-s-home"></i>
           <span slot="title">首页</span>
         </el-menu-item>
-        <el-menu-item index="/admin/navigationList">
+        <el-menu-item index="/admin/navigationList" v-if="userInfo.role.indexOf('ROLE_admin')!== -1">
           <i class="el-icon-s-promotion"></i>
           <span slot="title">导航管理</span>
         </el-menu-item>
@@ -34,7 +34,7 @@
           <el-menu-item index="/admin/post">
             <span slot="title">新增文章</span>
           </el-menu-item>
-          <el-menu-item index="/admin/cate">
+          <el-menu-item index="/admin/cate" v-if="userInfo.role.indexOf('ROLE_admin')!== -1">
             <span slot="title">分类管理</span>
           </el-menu-item>
         </el-submenu>
@@ -73,7 +73,7 @@
           </el-menu-item>
         </el-submenu>
 
-        <el-submenu index="3">
+        <el-submenu index="3" v-if="userInfo.role.indexOf('ROLE_admin')!== -1">
           <template slot="title">
             <i class="el-icon-user"></i>
             <span slot="title">用户管理</span>
@@ -91,13 +91,13 @@
             <i class="el-icon-setting"></i>
             <span slot="title">系统设置</span>
           </template>
-          <el-menu-item index="/admin/systemSetting">
+          <el-menu-item index="/admin/systemSetting" v-if="userInfo.role.indexOf('ROLE_admin')!== -1">
             <span slot="title">站点设置</span>
           </el-menu-item>
           <el-menu-item index="/admin/userSetting">
             <span slot="title">个人设置</span>
           </el-menu-item>
-          <el-menu-item index="/admin/sourceList">
+          <el-menu-item index="/admin/sourceList" v-if="userInfo.role.indexOf('ROLE_admin')!== -1">
             <span slot="title">资源管理</span>
           </el-menu-item>
         </el-submenu>
@@ -294,7 +294,7 @@ export default {
     adminHeader: () => import("./components/admin-header"),
   },
   mounted() {
-    this.initWebStat();
+    // this.initWebStat();
     window.addEventListener("click", (item) => {
       // this.getWegStats();
     });
@@ -349,13 +349,6 @@ export default {
   height: 100%;
   display: flex;
   .left-menu {
-    .logo {
-      background: #001529;
-      color: #fff;
-      text-align: center;
-      padding: 20px 0;
-      font-size: 24px;
-    }
     .switch-icon {
       text-align: center;
       padding-top: 40px;
