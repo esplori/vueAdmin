@@ -1,113 +1,113 @@
 <!--后台管理首页-->
 <template>
   <div class="admin-home">
-   <div class="left-menu">
+    <div class="left-menu">
       <el-menu
-      style="height:100%;overflow-y:auto"
-      default-active="/admin/home"
-      class="el-menu-vertical-demo"
-      @open="handleOpen"
-      @close="handleClose"
-      :collapse="isCollapse"
-      router
-      background-color="#001529"
-      text-color="#fff"
-      active-text-color="#ffd04b"
-    >
-      <el-menu-item index="/admin/home">
-        <i class="el-icon-s-home"></i>
-        <span slot="title">首页</span>
-      </el-menu-item>
-      <el-menu-item index="/admin/navigationList">
-        <i class="el-icon-s-promotion"></i>
-        <span slot="title">导航管理</span>
-      </el-menu-item>
-      <el-submenu index="1">
-        <template slot="title">
-          <i class="el-icon-s-order"></i>
-          <span slot="title">文章管理</span>
-        </template>
-        <el-menu-item index="/admin/pageList">
-          <span slot="title">文章列表</span>
+        style="height: 100%; overflow-y: auto"
+        default-active="/admin/home"
+        class="el-menu-vertical-demo"
+        @open="handleOpen"
+        @close="handleClose"
+        :collapse="isCollapse"
+        router
+        background-color="#001529"
+        text-color="#fff"
+        active-text-color="#ffd04b"
+      >
+        <el-menu-item index="/admin/home">
+          <i class="el-icon-s-home"></i>
+          <span slot="title">首页</span>
         </el-menu-item>
-        <el-menu-item index="/admin/post">
-          <span slot="title">新增文章</span>
+        <el-menu-item index="/admin/navigationList">
+          <i class="el-icon-s-promotion"></i>
+          <span slot="title">导航管理</span>
         </el-menu-item>
-        <el-menu-item index="/admin/cate">
-          <span slot="title">分类管理</span>
-        </el-menu-item>
-      </el-submenu>
+        <el-submenu index="1">
+          <template slot="title">
+            <i class="el-icon-s-order"></i>
+            <span slot="title">文章管理</span>
+          </template>
+          <el-menu-item index="/admin/pageList">
+            <span slot="title">文章列表</span>
+          </el-menu-item>
+          <el-menu-item index="/admin/post">
+            <span slot="title">新增文章</span>
+          </el-menu-item>
+          <el-menu-item index="/admin/cate">
+            <span slot="title">分类管理</span>
+          </el-menu-item>
+        </el-submenu>
 
-      <el-submenu index="2">
-        <template slot="title">
-          <i class="el-icon-crop"></i>
-          <span slot="title">小工具</span>
-        </template>
-        <el-menu-item index="/admin/music">
-          <span slot="title">音乐分享</span>
-        </el-menu-item>
-        <el-menu-item index="/admin/fiction">
-          <span slot="title">小说阅读</span>
-        </el-menu-item>
-        <el-menu-item index="/admin/jsonviewer">
-          <span slot="title">json格式化</span>
-        </el-menu-item>
-        <el-menu-item index="/admin/choujiang">
-          <span slot="title">抽奖</span>
-        </el-menu-item>
-        <el-menu-item index="/admin/mail">
-          <span slot="title">发送邮件</span>
-        </el-menu-item>
-        <el-menu-item index="/admin/dianming">
-          <span slot="title">点名</span>
-        </el-menu-item>
-        <el-menu-item index="/admin/img2base64">
-          <span slot="title">图片转成base64</span>
-        </el-menu-item>
-        <el-menu-item index="/admin/compressJs">
-          <span slot="title">js压缩</span>
-        </el-menu-item>
-        <el-menu-item index="/admin/qrcode">
-          <span slot="title">二维码生成</span>
-        </el-menu-item>
-      </el-submenu>
+        <el-submenu index="2">
+          <template slot="title">
+            <i class="el-icon-crop"></i>
+            <span slot="title">小工具</span>
+          </template>
+          <el-menu-item index="/admin/music">
+            <span slot="title">音乐分享</span>
+          </el-menu-item>
+          <el-menu-item index="/admin/fiction">
+            <span slot="title">小说阅读</span>
+          </el-menu-item>
+          <el-menu-item index="/admin/jsonviewer">
+            <span slot="title">json格式化</span>
+          </el-menu-item>
+          <el-menu-item index="/admin/choujiang">
+            <span slot="title">抽奖</span>
+          </el-menu-item>
+          <el-menu-item index="/admin/mail">
+            <span slot="title">发送邮件</span>
+          </el-menu-item>
+          <el-menu-item index="/admin/dianming">
+            <span slot="title">点名</span>
+          </el-menu-item>
+          <el-menu-item index="/admin/img2base64">
+            <span slot="title">图片转成base64</span>
+          </el-menu-item>
+          <el-menu-item index="/admin/compressJs">
+            <span slot="title">js压缩</span>
+          </el-menu-item>
+          <el-menu-item index="/admin/qrcode">
+            <span slot="title">二维码生成</span>
+          </el-menu-item>
+        </el-submenu>
 
-      <el-submenu index="3">
-        <template slot="title">
-          <i class="el-icon-user"></i>
-          <span slot="title">用户管理</span>
-        </template>
-        <el-menu-item index="/admin/userManage">
-          <span slot="title">用户管理</span>
-        </el-menu-item>
-        <el-menu-item index="/admin/roleManage">
-          <span slot="title">角色管理</span>
-        </el-menu-item>
-      </el-submenu>
+        <el-submenu index="3">
+          <template slot="title">
+            <i class="el-icon-user"></i>
+            <span slot="title">用户管理</span>
+          </template>
+          <el-menu-item index="/admin/userManage">
+            <span slot="title">用户管理</span>
+          </el-menu-item>
+          <el-menu-item index="/admin/roleManage">
+            <span slot="title">角色管理</span>
+          </el-menu-item>
+        </el-submenu>
 
-      <el-submenu index="4">
-        <template slot="title">
-          <i class="el-icon-setting"></i>
-          <span slot="title">系统设置</span>
-        </template>
-        <el-menu-item index="/admin/systemSetting">
-          <span slot="title">站点设置</span>
-        </el-menu-item>
-        <el-menu-item index="/admin/userSetting">
-          <span slot="title">个人设置</span>
-        </el-menu-item>
-        <el-menu-item index="/admin/sourceList">
-          <span slot="title">资源管理</span>
-        </el-menu-item>
-      </el-submenu>
+        <el-submenu index="4">
+          <template slot="title">
+            <i class="el-icon-setting"></i>
+            <span slot="title">系统设置</span>
+          </template>
+          <el-menu-item index="/admin/systemSetting">
+            <span slot="title">站点设置</span>
+          </el-menu-item>
+          <el-menu-item index="/admin/userSetting">
+            <span slot="title">个人设置</span>
+          </el-menu-item>
+          <el-menu-item index="/admin/sourceList">
+            <span slot="title">资源管理</span>
+          </el-menu-item>
+        </el-submenu>
 
-    </el-menu>
-   </div>
+        <div style="text-align:center;padding-top:60px">
+          <i class="el-icon-s-fold" style="color: #909399; font-size: 18px" v-show="!isCollapse" @click="isCollapse=!isCollapse"></i>
+          <i class="el-icon-s-unfold" style="color: #909399; font-size: 18px" v-show="isCollapse" @click="isCollapse=!isCollapse"></i>
+        </div>
+      </el-menu>
+    </div>
     <div class="right-content">
-      <el-radio-group v-model="isCollapse" style="margin-bottom: 20px">
-        <el-radio-button :label="false">展开</el-radio-button>
-        <el-radio-button :label="true">收起</el-radio-button>
-      </el-radio-group>
       <adminHeader></adminHeader>
       <router-view></router-view>
     </div>
