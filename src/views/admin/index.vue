@@ -286,7 +286,7 @@ export default {
       if (userInfo) {
         userInfo = JSON.parse(userInfo);
       } else {
-        userInfo: {
+        userInfo =  {
           role: ''
         }
       }
