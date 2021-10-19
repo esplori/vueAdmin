@@ -286,7 +286,7 @@ export default {
       if (userInfo) {
         userInfo = JSON.parse(userInfo);
       } else {
-        userInfo =  {
+        userInfo = {
           role: ''
         }
       }
@@ -305,7 +305,6 @@ export default {
   },
   methods: {
     getWegStats() {
-      console.log(window.hunter.getDirectData());
       window.hunter.track("/bootService/stats/getStats.gif", {
         ...window.hunter.getDirectData(),
       });

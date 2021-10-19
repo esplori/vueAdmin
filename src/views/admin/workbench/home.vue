@@ -118,7 +118,7 @@ export default {
   },
   mounted() {
     window.addEventListener("resize", () => {
-      this.initCharts()
+      this.initCharts();
     });
   },
   methods: {
@@ -132,6 +132,11 @@ export default {
         tooltip: {},
         xAxis: {
           data: _this.deviceType,
+          axisLabel: {
+            interval: 0,
+            rotate: 45, //倾斜度 -90 至 90 默认为0
+            margin: 8,
+          },
         },
         yAxis: {},
         series: [
@@ -142,7 +147,7 @@ export default {
           },
         ],
       });
-      myChart.resize()
+      myChart.resize();
     },
     initBrowserType() {
       let _this = this;
@@ -154,6 +159,16 @@ export default {
         tooltip: {},
         xAxis: {
           data: _this.browserType,
+          axisLabel: {
+            interval: 0,
+            rotate: 45, //倾斜度 -90 至 90 默认为0
+            margin: 8,
+            formatter: function (value) {
+              //x轴的文字改为竖版显示
+              var str = value.slice(0,9);
+              return str;
+            },
+          },
         },
         yAxis: {},
         series: [
@@ -164,7 +179,7 @@ export default {
           },
         ],
       });
-      myChart.resize()
+      myChart.resize();
     },
     initDeiveRatio() {
       let _this = this;
@@ -176,6 +191,11 @@ export default {
         tooltip: {},
         xAxis: {
           data: _this.deviceRatio,
+          axisLabel: {
+            interval: 0,
+            rotate: 45, //倾斜度 -90 至 90 默认为0
+            margin: 8,
+          },
         },
         yAxis: {},
         series: [
@@ -186,7 +206,7 @@ export default {
           },
         ],
       });
-      myChart.resize()
+      myChart.resize();
     },
     async getUserInfo() {
       await getUserInfoApi({});
@@ -205,14 +225,14 @@ export default {
         this.browserType = res.browserType.map((item) => {
           return item.browse;
         });
-        this.initCharts()
+        this.initCharts();
       }
     },
     initCharts() {
       this.initDeviceType();
       this.initBrowserType();
       this.initDeiveRatio();
-    }
+    },
   },
 };
 </script>
