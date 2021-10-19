@@ -107,9 +107,12 @@ export default {
       views: 0,
       pages: 0,
       dateRange: [],
-      deviceRatio: [],
-      deviceType: [],
-      browserType: [],
+      deviceRatioX: [],
+      deviceRatioY: [],
+      deviceTypeX: [],
+      deviceTypeY: [],
+      browserTypeX: [],
+      browserTypeY: [],
     };
   },
   created() {
@@ -131,10 +134,10 @@ export default {
         },
         tooltip: {},
         xAxis: {
-          data: _this.deviceType,
+          data: _this.deviceTypeX,
           axisLabel: {
             interval: 0,
-            rotate: 45, //倾斜度 -90 至 90 默认为0
+            rotate: 45, // 倾斜度 -90 至 90 默认为0
             margin: 8,
           },
         },
@@ -143,7 +146,7 @@ export default {
           {
             name: "设备型号",
             type: "bar",
-            data: [5, 20, 36, 10, 10],
+            data: _this.deviceTypeY,
           },
         ],
       });
@@ -158,14 +161,13 @@ export default {
         },
         tooltip: {},
         xAxis: {
-          data: _this.browserType,
+          data: _this.browserTypeX,
           axisLabel: {
             interval: 0,
-            rotate: 45, //倾斜度 -90 至 90 默认为0
+            rotate: 45, // 倾斜度 -90 至 90 默认为0
             margin: 8,
             formatter: function (value) {
-              //x轴的文字改为竖版显示
-              var str = value.slice(0,9);
+              var str = value.slice(0, 9);
               return str;
             },
           },
@@ -175,7 +177,7 @@ export default {
           {
             name: "浏览器型号",
             type: "bar",
-            data: [5, 30, 36, 10, 10, 34, 45, 67, 69, 98],
+            data: _this.browserTypeY,
           },
         ],
       });
@@ -190,10 +192,10 @@ export default {
         },
         tooltip: {},
         xAxis: {
-          data: _this.deviceRatio,
+          data: _this.deviceRatioX,
           axisLabel: {
             interval: 0,
-            rotate: 45, //倾斜度 -90 至 90 默认为0
+            rotate: 45, // 倾斜度 -90 至 90 默认为0
             margin: 8,
           },
         },
@@ -202,7 +204,7 @@ export default {
           {
             name: "设备分辨率",
             type: "bar",
-            data: [5, 20, 36, 10, 10, 34, 45, 56, 67, 78],
+            data: _this.deviceRatioY,
           },
         ],
       });
@@ -216,14 +218,23 @@ export default {
       if (res) {
         this.views = res.allViews;
         this.pages = res.allpages;
-        this.deviceRatio = res.deviceRatio.map((item) => {
+        this.deviceRatioX = res.deviceRatio.map((item) => {
           return item.screen;
         });
-        this.deviceType = res.deviceType.map((item) => {
+        this.deviceRatioY = res.deviceRatio.map((item) => {
+          return item.num;
+        });
+        this.deviceTypeX = res.deviceType.map((item) => {
           return item.os;
         });
-        this.browserType = res.browserType.map((item) => {
+        this.deviceTypeY = res.deviceType.map((item) => {
+          return item.num;
+        });
+        this.browserTypeX = res.browserType.map((item) => {
           return item.browse;
+        });
+        this.browserTypeY = res.browserType.map((item) => {
+          return item.num;
         });
         this.initCharts();
       }

@@ -18,6 +18,7 @@ module.exports = {
     'space-before-function-paren': 0,
     'comma-dangle': 0,
     'quotes': 0,
-    'no-undef': 1
+    'no-undef': 1,
+    'prefer-const': 0
   }
 }
