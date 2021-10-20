@@ -18,7 +18,7 @@
         <el-col :span="6">
           <el-card shadow="always">
             <div class="item-title">总访问量</div>
-            <div class="item-amount">
+            <div class="item-amount" ref='countupviews'>
               {{ views }}
             </div>
             <div class="item-compare">
@@ -30,7 +30,7 @@
         <el-col :span="6">
           <el-card shadow="always">
             <div class="item-title">文章总数</div>
-            <div class="item-amount">
+            <div class="item-amount" ref='countuppages'>
               {{ pages }}
             </div>
             <div class="item-compare">
@@ -42,7 +42,7 @@
         <el-col :span="6">
           <el-card shadow="always">
             <div class="item-title">今日浏览量</div>
-            <div class="item-amount">
+            <div class="item-amount" ref='countupdayViews'>
               {{ dayViews }}
             </div>
             <div class="item-compare">
@@ -54,7 +54,7 @@
         <el-col :span="6">
           <el-card shadow="always">
             <div class="item-title">今日访问IP数</div>
-            <div class="item-amount">
+            <div class="item-amount" ref='countupdayIp'>
               {{ dayIp }}
             </div>
             <div class="item-compare">
@@ -100,6 +100,7 @@
 <script>
 import { getUserInfoApi } from "@/views/API/admin.js";
 import { getWebStatisticsApi } from "@/views/API/stats.js";
+import { CountUp } from 'countup.js'
 import * as echarts from "echarts";
 export default {
   data() {
@@ -115,6 +116,9 @@ export default {
       deviceTypeY: [],
       browserTypeX: [],
       browserTypeY: [],
+      options: {
+        startVal: 0
+      },
     };
   },
   created() {
@@ -127,6 +131,35 @@ export default {
     });
   },
   methods: {
+    initCountUp () {
+      let cp = new CountUp(this.$refs.countupviews, this.views, this.options)
+      if (!cp.error) {
+        cp.start()
+      } else {
+        console.error(cp.error)
+      }
+      
+      let cp2 = new CountUp(this.$refs.countuppages, this.pages, this.options)
+      if (!cp2.error) {
+        cp2.start()
+      } else {
+        console.error(cp2.error)
+      }
+      
+      let cp3 = new CountUp(this.$refs.countupdayViews, this.dayViews, this.options)
+      if (!cp3.error) {
+        cp3.start()
+      } else {
+        console.error(cp3.error)
+      }
+      
+      let cp4 = new CountUp(this.$refs.countupdayIp, this.dayIp, this.options)
+      if (!cp4.error) {
+        cp4.start()
+      } else {
+        console.error(cp4.error)
+      }
+    },
     generateNum() {
       return parseFloat(Math.random() * 10).toFixed(2)
     },
@@ -244,6 +277,7 @@ export default {
           return item.num;
         });
         this.initCharts();
+        this.initCountUp()
       }
     },
     initCharts() {
