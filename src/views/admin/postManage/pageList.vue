@@ -11,11 +11,16 @@
       ></el-option>
     </el-select>
     <el-table :data="list">
-      <!-- <el-table-column
-        type="selection"
-        width="55">
-      </el-table-column> -->
-      <el-table-column prop="title" label="标题"> </el-table-column>
+      <el-table-column label="标题">
+        <template slot-scope="scope">
+          <a
+            style="color: #333"
+            :href="'https://www.dsiab.com/post/' + scope.row.id"
+            target="_blank"
+            >{{ scope.row.title }}</a
+          >
+        </template>
+      </el-table-column>
       <el-table-column fixed="right" width="180" label="操作">
         <template slot-scope="scope">
           <el-button @click="edit(scope.row.id)" type="primary">编辑</el-button>

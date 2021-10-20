@@ -181,6 +181,14 @@ export default {
     },
     submit() {
       this.form.content = this.editor.txt.html();
+      if (!this.form.title) {
+        this.$message.warning("请输入标题")
+        return false
+      }
+      if (!this.form.content) {
+        this.$message.warning("请输入内容")
+        return false
+      }
       if (this.form.id) {
         this.editPage();
       } else {
