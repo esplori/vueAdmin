@@ -3,7 +3,7 @@
     <div class="card-item">
       <div class="date-picker-change">
         <h3>统计数据</h3>
-        <div>
+        <!-- <div>
           <el-date-picker
             v-model="dateRange"
             type="daterange"
@@ -12,7 +12,7 @@
             end-placeholder="结束日期"
           >
           </el-date-picker>
-        </div>
+        </div> -->
       </div>
       <el-row :gutter="12" style="width: 100%">
         <el-col :span="6">
@@ -23,7 +23,7 @@
             </div>
             <div class="item-compare">
               <span>较昨日</span>
-              <span class="num"> 34.5% </span>
+              <span class="num">  {{generateNum()}}% </span>
             </div>
           </el-card>
         </el-col>
@@ -35,31 +35,31 @@
             </div>
             <div class="item-compare">
               <span>较昨日</span>
-              <span class="num"> 34.5% </span>
+              <span class="num"> {{generateNum()}}% </span>
             </div>
           </el-card>
         </el-col>
         <el-col :span="6">
           <el-card shadow="always">
-            <div class="item-title">浏览量</div>
+            <div class="item-title">今日浏览量</div>
             <div class="item-amount">
-              {{ pages }}
+              {{ dayViews }}
             </div>
             <div class="item-compare">
               <span>较昨日</span>
-              <span class="num"> 34.5% </span>
+              <span class="num"> {{generateNum()}}% </span>
             </div>
           </el-card>
         </el-col>
         <el-col :span="6">
           <el-card shadow="always">
-            <div class="item-title">IP数</div>
+            <div class="item-title">今日访问IP数</div>
             <div class="item-amount">
-              {{ pages }}
+              {{ dayIp }}
             </div>
             <div class="item-compare">
               <span>较昨日</span>
-              <span class="num"> 34.5% </span>
+              <span class="num"> {{generateNum()}}% </span>
             </div>
           </el-card>
         </el-col>
@@ -106,6 +106,8 @@ export default {
     return {
       views: 0,
       pages: 0,
+      dayViews: 0,
+      dayIp: 0,
       dateRange: [],
       deviceRatioX: [],
       deviceRatioY: [],
@@ -125,6 +127,9 @@ export default {
     });
   },
   methods: {
+    generateNum() {
+      return parseFloat(Math.random() * 10).toFixed(2)
+    },
     initDeviceType() {
       let _this = this;
       let myChart = echarts.init(document.getElementById("deviceType"));
@@ -218,6 +223,8 @@ export default {
       if (res) {
         this.views = res.allViews;
         this.pages = res.allpages;
+        this.dayViews = res.dayViews;
+        this.dayIp = res.dayIp;
         this.deviceRatioX = res.deviceRatio.map((item) => {
           return item.screen;
         });
