@@ -19,7 +19,10 @@
           <i class="el-icon-s-home"></i>
           <span slot="title">首页</span>
         </el-menu-item>
-        <el-menu-item index="/admin/navigationList" v-if="userInfo.role.indexOf('ROLE_admin')!== -1">
+        <el-menu-item
+          index="/admin/navigationList"
+          v-if="userInfo.role.indexOf('ROLE_admin') !== -1"
+        >
           <i class="el-icon-s-promotion"></i>
           <span slot="title">导航管理</span>
         </el-menu-item>
@@ -34,7 +37,10 @@
           <el-menu-item index="/admin/post">
             <span slot="title">新增文章</span>
           </el-menu-item>
-          <el-menu-item index="/admin/cate" v-if="userInfo.role.indexOf('ROLE_admin')!== -1">
+          <el-menu-item
+            index="/admin/cate"
+            v-if="userInfo.role.indexOf('ROLE_admin') !== -1"
+          >
             <span slot="title">分类管理</span>
           </el-menu-item>
         </el-submenu>
@@ -73,7 +79,7 @@
           </el-menu-item>
         </el-submenu>
 
-        <el-submenu index="3" v-if="userInfo.role.indexOf('ROLE_admin')!== -1">
+        <el-submenu index="3" v-if="userInfo.role.indexOf('ROLE_admin') !== -1">
           <template slot="title">
             <i class="el-icon-user"></i>
             <span slot="title">用户管理</span>
@@ -91,13 +97,19 @@
             <i class="el-icon-setting"></i>
             <span slot="title">系统设置</span>
           </template>
-          <el-menu-item index="/admin/systemSetting" v-if="userInfo.role.indexOf('ROLE_admin')!== -1">
+          <el-menu-item
+            index="/admin/systemSetting"
+            v-if="userInfo.role.indexOf('ROLE_admin') !== -1"
+          >
             <span slot="title">站点设置</span>
           </el-menu-item>
           <el-menu-item index="/admin/userSetting">
             <span slot="title">个人设置</span>
           </el-menu-item>
-          <el-menu-item index="/admin/sourceList" v-if="userInfo.role.indexOf('ROLE_admin')!== -1">
+          <el-menu-item
+            index="/admin/sourceList"
+            v-if="userInfo.role.indexOf('ROLE_admin') !== -1"
+          >
             <span slot="title">资源管理</span>
           </el-menu-item>
         </el-submenu>
@@ -126,6 +138,7 @@
 </template>
 
 <script>
+import FingerprintJS from "@fingerprintjs/fingerprintjs";
 export default {
   data() {
     return {
@@ -287,10 +300,9 @@ export default {
         userInfo = JSON.parse(userInfo);
       } else {
         userInfo = {
-          role: ''
-        }
+          role: "",
+        };
       }
-      console.log("userInfo", userInfo);
       return userInfo;
     },
   },
@@ -298,41 +310,45 @@ export default {
     adminHeader: () => import("./components/admin-header"),
   },
   mounted() {
-    this.initWebStat();
+    this.initFingerprint();
     window.addEventListener("click", (item) => {
-      this.getWegStats();
+      // this.getWegStats();
     });
   },
   methods: {
     getWegStats() {
-      window.hunter.track("/bootService/stats/getStats.gif", {
-        ...window.hunter.getDirectData(),
+      console.log(window.webStats.getDirectData());
+      window.webStats.track("/bootService/stats/getStats.gif", {
+        ...window.webStats.getDirectData(),
+        ...{ visitorId: window.visitorId },
       });
     },
     initWebStat() {
-      var hunter = new WebStats({
+      let webStats = new WebStats({
         baseUrl: "/bootService", // 基础接口地址url
         url: "/stats/getStats.gif", // 请求上报api的接口地址
         routeMode: "history", // 填写单页面应用中使用的路由模式。
         autoUpload: true, // 是否自动请求接口，在setUserId之后会以baseUrl+url形式在页面切换时自动请求上报PV/UV的接口
-        prop: {
-          // 请求参数映射，参数名默认如下，可以自定义修改参数名。
-          uv: "uv",
-          pv: "pv",
-          id: "id",
-          mVisits: "mVisits",
-          domain: "domain",
-          title: "title",
-          referrer: "referrer",
-          screen: "screen",
-          lang: "lang",
-          userAgent: "userAgent",
-          os: "os",
-          browse: "browse",
-          device: "device",
-        },
       });
-      window.hunter = hunter;
+      window.webStats = webStats;
+      this.getWegStats();
+    },
+    initFingerprint() {
+      // Initialize an agent at application startup.
+      const fpPromise = FingerprintJS.load();
+      (async () => {
+        // Get the visitor identifier when you need it.
+        const fp = await fpPromise;
+        const result = await fp.get();
+
+        // This is the visitor identifier:
+        const visitorId = result.visitorId;
+        console.log(visitorId);
+        window.visitorId = visitorId;
+        setTimeout(() => {
+          this.initWebStat();
+        }, 200);
+      })();
     },
     swith() {
       this.isCollapse = !this.isCollapse;
