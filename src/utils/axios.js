@@ -114,12 +114,12 @@ function handleAuthenticated(res) {
     case 401:
       localStorage.clear()
       location.href = '/#/login'
-      Message.error("用户信息已失效，请重新登录")
+      Message.error("401用户信息已失效，请重新登录")
       break;
     case 403:
       localStorage.clear()
       location.href = '/#/login'
-      Message.error("暂无权限，请重新登录")
+      Message.error("403用户信息已失效，请重新登录")
       break
     case 500:
       Message.error("500错误")

@@ -23,17 +23,17 @@ export async function getDetailByIdApi (data) {
 }
 export async function postPageApi (data) {
   const url = `${contextPath}/admin/insertItem`
-  const options = {}
+  const options = {showLoading: true }
   return post(url, data, options)
 }
 export async function delApi (data) {
   const Url = `${contextPath}/admin/deleteItem`
-  const options = {}
+  const options = {showLoading: true }
   return post(Url, data, options)
 }
 export async function editPageApi (data) {
   const url = `${contextPath}/admin/updateItem`
-  const options = {}
+  const options = {showLoading: true }
   return post(url, data, options)
 }
 export async function getCateApi (data) {
@@ -43,17 +43,17 @@ export async function getCateApi (data) {
 }
 export async function updateCateApi (data) {
   const url = `${contextPath}/admin/updateCate`
-  const options = {}
+  const options = {showLoading: true }
   return post(url, data, options)
 }
 export async function delCateApi (data) {
   const Url = `${contextPath}/admin/delCate`
-  const options = {}
+  const options = {showLoading: true }
   return post(Url, data, options)
 }
 export async function insertCateApi (data) {
   const url = `${contextPath}/admin/insertCate`
-  const options = {}
+  const options = {showLoading: true }
   return post(url, data, options)
 }
 export async function getImageListApi (data) {
@@ -63,12 +63,12 @@ export async function getImageListApi (data) {
 }
 export async function delFileApi (data) {
   const url = `${contextPath}/admin/delFile`
-  const options = {}
+  const options = {showLoading: true }
   return post(url, data, options)
 }
 export async function updateUserInfoApi (data) {
   const url = `${contextPath}/account/updateUserInfo`
-  const options = {}
+  const options = {showLoading: true }
   return post(url, data, options)
 }
 export async function getUserInfoApi (data) {
@@ -108,17 +108,17 @@ export async function getRoleListApi (data) {
 }
 export async function updateRoleApi (data) {
   const Url = `${contextPath}/admin/updateRole`
-  const options = {}
+  const options = {showLoading: true }
   return post(Url, data, options)
 }
 export async function insertUserApi (data) {
   const Url = `${contextPath}/admin/insertRole`
-  const options = {}
+  const options = {showLoading: true }
   return post(Url, data, options)
 }
 export async function deleUserApi (data) {
   const Url = `${contextPath}/admin/deleUser`
-  const options = {}
+  const options = {showLoading: true }
   return post(Url, data, options)
 }
 export async function getSiteInfoApi (data) {
@@ -128,12 +128,12 @@ export async function getSiteInfoApi (data) {
 }
 export async function updateSiteInfoApi (data) {
   const url = `${contextPath}/account/updateSiteInfo`
-  const options = {}
+  const options = {showLoading: true }
   return post(url, data, options)
 }
 export async function sendMailApi (data) {
   const url = `${contextPath}/admin/mail`
-  const options = {}
+  const options = {showLoading: true }
   return post(url, data, options)
 }
 
