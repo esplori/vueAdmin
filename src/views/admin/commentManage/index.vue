@@ -40,7 +40,6 @@ export default {
       let res = await getCommentApi();
       if (res) {
         this.list = res.result;
-        // this.total = res.total;
       }
     },
     async del(id) {
