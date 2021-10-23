@@ -136,4 +136,14 @@ export async function sendMailApi (data) {
   const options = {showLoading: true }
   return post(url, data, options)
 }
+export async function getCommentApi (data) {
+  const url = `${contextPath}/pages/getAllComment`
+  const options = {}
+  return get(url, data, options)
+}
+export async function delCommentApi (data) {
+  const url = `${contextPath}/admin/delComment`
+  const options = {showLoading: true }
+  return post(url, data, options)
+}
 

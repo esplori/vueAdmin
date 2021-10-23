@@ -119,6 +119,10 @@ const router = new Router({
         {
           path: 'qrcode',
           component: () => import('@/views/admin/qrcode/index')
+        },
+        {
+          path: 'comments',
+          component: () => import('@/views/admin/commentManage/index')
         }
       ]
     }

@@ -38,6 +38,12 @@
             <span slot="title">新增文章</span>
           </el-menu-item>
           <el-menu-item
+            index="/admin/comments"
+            v-if="userInfo.role.indexOf('ROLE_admin') !== -1"
+          >
+            <span slot="title">评论管理</span>
+          </el-menu-item>
+          <el-menu-item
             index="/admin/cate"
             v-if="userInfo.role.indexOf('ROLE_admin') !== -1"
           >
@@ -62,7 +68,10 @@
           <el-menu-item index="/admin/choujiang">
             <span slot="title">抽奖</span>
           </el-menu-item>
-          <el-menu-item index="/admin/mail">
+          <el-menu-item
+            index="/admin/mail"
+            v-if="userInfo.role.indexOf('ROLE_admin') !== -1"
+          >
             <span slot="title">发送邮件</span>
           </el-menu-item>
           <el-menu-item index="/admin/dianming">
