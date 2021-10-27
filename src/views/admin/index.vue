@@ -2,7 +2,6 @@
 <template>
   <div class="admin-home">
     <div class="left-menu">
-      <!-- <div class="logo">DSIAB</div> -->
       <el-menu
         style="height: 100%; overflow-y: auto"
         default-active="/admin/home"
@@ -15,6 +14,7 @@
         text-color="#fff"
         active-text-color="#ffd04b"
       >
+      <div class="logo">DSIAB</div>
         <el-menu-item index="/admin/home">
           <i class="el-icon-s-home"></i>
           <span slot="title">首页</span>
@@ -377,9 +377,19 @@ export default {
   height: 100%;
   display: flex;
   .left-menu {
+    background: #001529;
+    color: #fff;
+    .logo{
+      font-size: 20px;
+      text-align: center;
+      padding: 15px 0;
+    }
     .switch-icon {
+      position: absolute;
       text-align: center;
       padding-top: 40px;
+      bottom: 20px;
+      left: 20px;
       padding-bottom: 20px;
     }
   }
