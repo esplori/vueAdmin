@@ -64,7 +64,9 @@
           </el-card>
         </el-col>
       </el-row>
-      <!-- <div class="user-data">用户访问量</div> -->
+      <div class="dayViews">
+        <div id="dayViews" style="width: 100%; height: 400px"></div>
+      </div>
       <div class="type-data">
         <el-row>
           <el-col :span="8">
@@ -119,6 +121,7 @@ export default {
       options: {
         startVal: 0,
       },
+      everyDayViews: [],
     };
   },
   created() {
@@ -252,6 +255,48 @@ export default {
       });
       myChart.resize();
     },
+    initDayViews() {
+      let _this = this;
+      let myChart = echarts.init(document.getElementById("dayViews"));
+      myChart.setOption({
+        title: {
+          text: "最近30天访问量",
+        },
+        tooltip: {},
+        xAxis: {
+          data: _this.everyDayViews.map((item) => {
+            return item.createDate;
+          }),
+          axisLabel: {
+            interval: 0,
+            rotate: 45, // 倾斜度 -90 至 90 默认为0
+            margin: 8,
+            formatter: function (value) {
+              var str = value.slice(0, 9);
+              return str;
+            },
+          },
+        },
+        yAxis: {},
+        series: [
+          {
+            name: "每天ip访问量",
+            type: "bar",
+            data: _this.everyDayViews.map((item) => {
+              return item.dayIp;
+            }),
+          },
+          {
+            name: "每天访问量",
+            type: "bar",
+            data: _this.everyDayViews.map((item) => {
+              return item.dayViews;
+            }),
+          },
+        ],
+      });
+      myChart.resize();
+    },
     async getUserInfo() {
       await getUserInfoApi({});
     },
@@ -280,6 +325,7 @@ export default {
         this.browserTypeY = res.browserType.map((item) => {
           return item.num;
         });
+        this.everyDayViews = res.everyDayViews;
         this.initCharts();
         this.initCountUp();
       }
@@ -288,6 +334,7 @@ export default {
       this.initDeviceType();
       this.initBrowserType();
       this.initDeiveRatio();
+      this.initDayViews();
     },
   },
 };
@@ -322,6 +369,9 @@ export default {
     .type-data {
       padding: 20px 0;
     }
+  }
+  .dayViews {
+    padding: 20px;
   }
 }
 </style>

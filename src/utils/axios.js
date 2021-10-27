@@ -40,7 +40,7 @@ axios.interceptors.request.use(function (config) {
   let userinfo = localStorage.getItem('userInfo')
   if (userinfo) {
     userinfo = JSON.parse(userinfo)
-    config.headers.common["Authorization"] = userinfo.token
+    config.headers.common.Authorization = userinfo.token
   }
   // 在发送请求之前做些什么
   return config
@@ -76,7 +76,7 @@ export function get(url, params, options) {
     axios({
       method: 'get',
       // url: url, // 在使用别名方法时， url、method、data 这些属性都不必在配置中指定。
-      url: url  + "?t=" + new Date().getTime(), // 在使用别名方法时， url、method、data 这些属性都不必在配置中指定。
+      url: url + "?t=" + new Date().getTime(), // 在使用别名方法时， url、method、data 这些属性都不必在配置中指定。
       params: params // params是要与请求一起发送的URL参数
     }).then(res => {
       handleData(res, resolve, reject)
