@@ -268,7 +268,7 @@ export default {
             return item.createDate;
           }),
           axisLabel: {
-            interval: 0,
+            interval: 5,
             rotate: 45, // 倾斜度 -90 至 90 默认为0
             margin: 8,
             formatter: function (value) {
@@ -285,6 +285,9 @@ export default {
             data: _this.everyDayViews.map((item) => {
               return item.dayIp;
             }),
+            itemStyle: {
+              color: "#6496f9",
+            },
           },
           {
             name: "每天访问量",
@@ -292,6 +295,9 @@ export default {
             data: _this.everyDayViews.map((item) => {
               return item.dayViews;
             }),
+            itemStyle: {
+              color: "#7667f9",
+            },
           },
         ],
       });
