@@ -385,11 +385,8 @@ export default {
       padding: 15px 0;
     }
     .switch-icon {
-      position: absolute;
       text-align: center;
       padding-top: 40px;
-      bottom: 20px;
-      left: 20px;
       padding-bottom: 20px;
     }
   }

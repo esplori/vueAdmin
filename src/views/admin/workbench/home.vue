@@ -268,7 +268,7 @@ export default {
             return item.createDate;
           }),
           axisLabel: {
-            interval: 5,
+            interval: 1,
             rotate: 45, // 倾斜度 -90 至 90 默认为0
             margin: 8,
             formatter: function (value) {
