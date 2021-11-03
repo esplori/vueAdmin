@@ -268,11 +268,11 @@ export default {
             return item.createDate;
           }),
           axisLabel: {
-            interval: 1,
+            interval: 0,
             rotate: 45, // 倾斜度 -90 至 90 默认为0
             margin: 8,
             formatter: function (value) {
-              var str = value.slice(0, 9);
+              var str = value.slice(0, 10);
               return str;
             },
           },
