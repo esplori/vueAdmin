@@ -1,7 +1,7 @@
 <template>
   <div class="page-list">
     <span>按分类筛选：</span>
-    <el-select v-model="params.cate" @change="getList">
+    <el-select v-model="params.cate" @change="typeChange">
       <el-option label="全部" :value="null"></el-option>
       <el-option
         v-for="(item, index) in cateList"
@@ -68,6 +68,10 @@ export default {
     this.getCate();
   },
   methods: {
+    typeChange() {
+      this.params.page = 1;
+      this.getList();
+    },
     getList() {
       if (this.params.cate !== null) {
         this.getListByCate();

@@ -26,12 +26,12 @@ export default {
       xhr.onload = function () {
         if (this.status == 200) {
           self.loading = false;
-          console.log(this.response);
+          // console.log(this.response);
           const reader = new FileReader();
           reader.onload = function () {
             self.txtPre = reader.result; //获取的数据data
             self.dialogvisibleview = true;
-            console.log("reader.result", reader.result);
+            // console.log("reader.result", reader.result);
           };
           reader.readAsText(this.response);
         } else {

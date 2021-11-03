@@ -326,7 +326,7 @@ export default {
   },
   methods: {
     getWegStats() {
-      console.log(window.webStats.getDirectData());
+      // console.log(window.webStats.getDirectData());
       window.webStats.track("/bootService/stats/getStats.gif", {
         ...window.webStats.getDirectData(),
         ...{ visitorId: window.visitorId },
@@ -352,7 +352,7 @@ export default {
 
         // This is the visitor identifier:
         const visitorId = result.visitorId;
-        console.log(visitorId);
+        // console.log(visitorId);
         window.visitorId = visitorId;
         setTimeout(() => {
           this.initWebStat();
