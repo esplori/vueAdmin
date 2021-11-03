@@ -27,8 +27,7 @@
         <el-input
           v-model="item.url"
           style="width: 400px; margin-right: 10px"
-        ></el-input
-        >
+        ></el-input>
         <el-button @click="add" v-show="index === list.length - 1"
           >新增</el-button
         >
@@ -92,8 +91,8 @@ export default {
       this.list.push({ url: "" });
     },
     del(index) {
-      this.list.splice(index,1)
-    }
+      this.list.splice(index, 1);
+    },
   },
 };
 </script>
