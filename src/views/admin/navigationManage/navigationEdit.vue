@@ -12,8 +12,8 @@
           <el-option
             v-for="(item, index) in cateList"
             :key="index"
-            :label="item.label"
-            :value="item.value"
+            :label="item.name"
+            :value="item.id"
           ></el-option>
         </el-select>
       </el-form-item>
@@ -28,8 +28,8 @@ import {
   postPageApi,
   editPageApi,
   getDetailApi,
-  getCateApi,
 } from "@/views/API/navigation.js";
+import { getNavCateApi } from "@/views/API/admin.js";
 export default {
   data() {
     return {
@@ -41,10 +41,10 @@ export default {
         cateName: "",
       },
       cateList: [
-        { label: "开发工具", value: "1" },
-        { label: "网络资讯", value: "2" },
-        { label: "资源分享", value: "3" },
-        { label: "友情链接", value: "4" },
+        { name: "开发工具", id: "1" },
+        { name: "网络资讯", id: "2" },
+        { name: "资源分享", id: "3" },
+        { name: "友情链接", id: "4" },
       ],
     };
   },
@@ -56,16 +56,16 @@ export default {
     if (id) {
       this.getDetail(id);
     }
-    // this.getCate()
+    this.getNavCateList();
   },
   methods: {
-    async getCate() {
-      const res = await getCateApi({});
+    async getNavCateList() {
+      let res = await getNavCateApi(this.params);
       if (res) {
-        this.cateList = res.result || [];
-        if (this.cateList.length) {
-          this.form.cate = this.cateList[0].id;
-        }
+        this.cateList = res.result.map((item) => {
+          item.id = String(item.id);
+          return item;
+        });
       }
     },
     submit() {
@@ -77,8 +77,8 @@ export default {
     },
     async editPage() {
       this.form.cateName = this.cateList.filter((item) => {
-        return item.value === this.form.cate;
-      })[0].label;
+        return item.id === this.form.cate;
+      })[0].name;
       const res = await editPageApi({ ...this.form });
       if (res) {
         this.$message.success("修改成功");
@@ -87,8 +87,8 @@ export default {
     },
     async postPage() {
       this.form.cateName = this.cateList.filter((item) => {
-        return item.value === this.form.cate;
-      })[0].label;
+        return item.id === this.form.cate;
+      })[0].name;
       const res = await postPageApi({ ...this.form });
       if (res) {
         this.$message.success("添加成功");

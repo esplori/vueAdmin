@@ -41,7 +41,7 @@
         </el-col>
         <el-col :span="6">
           <el-card shadow="always">
-            <div class="item-title">今日浏览量</div>
+            <div class="item-title">今日浏览量(PV)</div>
             <div class="item-amount" ref="countupdayViews">
               {{ dayViews }}
             </div>
@@ -53,7 +53,7 @@
         </el-col>
         <el-col :span="6">
           <el-card shadow="always">
-            <div class="item-title">今日访问IP数</div>
+            <div class="item-title">今日访问IP数(UV)</div>
             <div class="item-amount" ref="countupdayIp">
               {{ dayIp }}
             </div>
@@ -263,6 +263,7 @@ export default {
           text: "最近30天访问量",
         },
         tooltip: {},
+        legend: {},
         xAxis: {
           data: _this.everyDayViews.map((item) => {
             return item.createDate;
@@ -280,7 +281,7 @@ export default {
         yAxis: {},
         series: [
           {
-            name: "每天ip访问量",
+            name: "今日访问IP数(UV)",
             type: "bar",
             data: _this.everyDayViews.map((item) => {
               return item.dayIp;
@@ -290,7 +291,7 @@ export default {
             },
           },
           {
-            name: "每天访问量",
+            name: "今日浏览量(PV)",
             type: "bar",
             data: _this.everyDayViews.map((item) => {
               return item.dayViews;

@@ -14,18 +14,24 @@
         text-color="#fff"
         active-text-color="#ffd04b"
       >
-      <div class="logo">DSIAB</div>
+        <div class="logo">DSIAB</div>
         <el-menu-item index="/admin/home">
           <i class="el-icon-s-home"></i>
           <span slot="title">首页</span>
         </el-menu-item>
-        <el-menu-item
-          index="/admin/navigationList"
-          v-if="userInfo.role.indexOf('ROLE_admin') !== -1"
-        >
-          <i class="el-icon-s-promotion"></i>
-          <span slot="title">导航管理</span>
-        </el-menu-item>
+
+        <el-submenu index="5" v-if="userInfo.role.indexOf('ROLE_admin') !== -1">
+          <template slot="title">
+            <i class="el-icon-crop"></i>
+            <span slot="title">导航管理</span>
+          </template>
+          <el-menu-item index="/admin/navigationList">
+            <span slot="title">导航列表</span>
+          </el-menu-item>
+          <el-menu-item index="/admin/navigationCate">
+            <span slot="title">分类管理</span>
+          </el-menu-item>
+        </el-submenu>
         <el-submenu index="1">
           <template slot="title">
             <i class="el-icon-s-order"></i>
@@ -379,7 +385,7 @@ export default {
   .left-menu {
     background: #001529;
     color: #fff;
-    .logo{
+    .logo {
       font-size: 20px;
       text-align: center;
       padding: 15px 0;
@@ -393,6 +399,7 @@ export default {
   .right-content {
     width: 100%;
     padding: 20px;
+    margin-bottom: 20px;
     overflow-y: auto;
   }
   .el-menu-vertical-demo:not(.el-menu--collapse) {

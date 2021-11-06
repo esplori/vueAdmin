@@ -21,6 +21,11 @@
           >
         </template>
       </el-table-column>
+       <el-table-column label="分类" width="180px">
+        <template slot-scope="scope">
+          {{scope.row.cateName}}
+        </template>
+      </el-table-column>
       <el-table-column fixed="right" width="180" label="操作">
         <template slot-scope="scope">
           <el-button @click="edit(scope.row.id)" type="primary">编辑</el-button>

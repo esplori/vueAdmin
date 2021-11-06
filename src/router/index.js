@@ -61,6 +61,10 @@ const router = new Router({
           component: () => import('@/views/admin/navigationManage/navigationList')
         },
         {
+          path: 'navigationCate',
+          component: () => import('@/views/admin/navigationManage/navigationCate')
+        },
+        {
           path: 'navigationEdit',
           component: () => import('@/views/admin/navigationManage/navigationEdit')
         },
