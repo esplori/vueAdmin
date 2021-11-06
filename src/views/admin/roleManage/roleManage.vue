@@ -1,14 +1,8 @@
 <template>
   <div class="role-manage">
     <el-table :data="data">
-      <el-table-column
-        prop="roleName"
-        label="角色名称">
-      </el-table-column>
-      <el-table-column
-      fixed="right"
-      width="180"
-        label="操作">
+      <el-table-column prop="roleName" label="角色名称"> </el-table-column>
+      <el-table-column fixed="right" width="180" label="操作">
         <template slot-scope="scope">
           <el-button @click="edit(scope.row.id)" type="primary">编辑</el-button>
           <!-- <el-button @click="del(scope.row.id)" type="danger">删除</el-button> -->
@@ -19,25 +13,25 @@
 </template>
 
 <script>
-import {getRoleListApi} from '../../API/admin'
+import { getRoleListApi } from "../../API/admin";
 export default {
   data() {
     return {
-      data: []
+      data: [],
     };
   },
   created() {
-    this.getUserList()
+    this.getUserList();
   },
   methods: {
     async getUserList() {
-      let res = await getRoleListApi({})
+      let res = await getRoleListApi({});
       if (res) {
-        this.data = res.result
+        this.data = res.result;
       }
     },
-    edit(){},
-    del(){},
+    edit() {},
+    del() {},
   },
 };
 </script>

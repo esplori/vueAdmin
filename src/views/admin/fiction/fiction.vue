@@ -17,19 +17,19 @@ export default {
   methods: {
     urlToBlob() {
       let file_url = "/static/test.txt";
-      //可以是具体.txt也可以是接口返回的blob，或者web转换
+      // 可以是具体.txt也可以是接口返回的blob，或者web转换
       let xhr = new XMLHttpRequest();
       xhr.open("get", file_url, true);
       xhr.responseType = "blob";
-      let self = this; //onload this指向为window中转一下
+      let self = this; // onload this指向为window中转一下
       this.loading = true;
       xhr.onload = function () {
-        if (this.status == 200) {
+        if (this.status === 200) {
           self.loading = false;
           // console.log(this.response);
           const reader = new FileReader();
           reader.onload = function () {
-            self.txtPre = reader.result; //获取的数据data
+            self.txtPre = reader.result; // 获取的数据data
             self.dialogvisibleview = true;
             // console.log("reader.result", reader.result);
           };

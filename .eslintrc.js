@@ -19,6 +19,7 @@ module.exports = {
     'comma-dangle': 0,
     'quotes': 0,
     'no-undef': 1,
-    'prefer-const': 0
+    'prefer-const': 0,
+    'camelcase': 0
   }
 }

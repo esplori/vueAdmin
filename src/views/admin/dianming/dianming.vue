@@ -2,14 +2,10 @@
   <div class="dianming">
     <div>
       总人数：<span>{{ students.length }}</span> 人，共抽取：
-      <el-input v-model="size" style="width:75px"></el-input> 位
+      <el-input v-model="size" style="width: 75px"></el-input> 位
     </div>
-    <div style="padding:20px 0">
-      <el-button
-        type="button"
-        style="width:250px"
-        @click="onBtnClick()"
-      >
+    <div style="padding: 20px 0">
+      <el-button type="button" style="width: 250px" @click="onBtnClick()">
         {{ btnText }}
       </el-button>
     </div>
@@ -131,9 +127,8 @@ export default {
       if (this.intervalId) {
         clearInterval(this.intervalId);
         this.intervalId = null;
-      }
-      // 未开启，需要开启
-      else {
+      } else {
+        // 未开启，需要开启
         this.intervalId = setInterval(() => {
           this.selectedStudentIndexs = this.studentIndexs
             .sort(() => 0.5 - Math.random())

@@ -59,9 +59,9 @@
           <el-menu-item index="/admin/music">
             <span slot="title">音乐分享</span>
           </el-menu-item>
-          <el-menu-item index="/admin/fiction">
+          <!-- <el-menu-item index="/admin/fiction">
             <span slot="title">小说阅读</span>
-          </el-menu-item>
+          </el-menu-item> -->
           <el-menu-item index="/admin/jsonviewer">
             <span slot="title">json格式化</span>
           </el-menu-item>
@@ -80,9 +80,9 @@
           <el-menu-item index="/admin/img2base64">
             <span slot="title">图片转成base64</span>
           </el-menu-item>
-          <el-menu-item index="/admin/compressJs">
+          <!-- <el-menu-item index="/admin/compressJs">
             <span slot="title">js压缩</span>
-          </el-menu-item>
+          </el-menu-item> -->
           <el-menu-item index="/admin/qrcode">
             <span slot="title">二维码生成</span>
           </el-menu-item>

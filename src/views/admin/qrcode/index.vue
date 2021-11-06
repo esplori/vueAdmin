@@ -11,9 +11,13 @@
         <el-input v-model="form.size"></el-input>
       </el-form-item>
     </el-form>
-   <div style="text-align:center">
-      <vue-qr :logoSrc="form.imageUrl" :text="form.text" :size="form.size"></vue-qr>
-   </div>
+    <div style="text-align: center">
+      <vue-qr
+        :logoSrc="form.imageUrl"
+        :text="form.text"
+        :size="form.size"
+      ></vue-qr>
+    </div>
   </div>
 </template>
 
@@ -21,21 +25,19 @@
 export default {
   data() {
     return {
-      form:{
+      form: {
         imageUrl: require("../../../assets/images/music/cover.jpeg"),
         text: "https://www.dsiab.com",
-        size: 200
-      }
+        size: 200,
+      },
     };
   },
   components: {
-    vueQr: () => import("vue-qr")
+    vueQr: () => import("vue-qr"),
   },
   created() {},
   methods: {
-    generate() {
-       
-    }
+    generate() {},
   },
 };
 </script>
