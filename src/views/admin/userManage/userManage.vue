@@ -9,7 +9,7 @@
           <el-button @click="edit(scope.row)" type="primary">编辑</el-button>
           <!-- 不允许删除管理员 -->
           <el-button
-            @click="del(scope.row.id)"
+            @click="del(scope.row.id, scope.row.username)"
             type="danger"
             :disabled="scope.row.role.indexOf('admin') !== -1"
             >删除</el-button
@@ -120,11 +120,11 @@ export default {
       this.editObj.currUsername = row.username;
       this.getRoleList(row);
     },
-    del(id) {
-      this.delUser(id);
+    del(id, username) {
+      this.delUser(id, username);
     },
-    async delUser(id) {
-      const res = await deleUserApi({ id });
+    async delUser(id, username) {
+      const res = await deleUserApi({ id, username });
       if (res) {
         this.getUserList();
       }
