@@ -22,8 +22,8 @@
               {{ views }}
             </div>
             <div class="item-compare">
-              <span>较昨日</span>
-              <span class="num"> {{ generateNum() }}% </span>
+              <span>较昨日<i class="el-icon-top-right" style="color:red" v-show="allViewsMom > 0"></i><i class="el-icon-bottom-right" style="color:green" v-show="allViewsMom < 0"></i></span>
+              <span class="num"> {{ Math.abs(allViewsMom * 100) }}% </span>
             </div>
           </el-card>
         </el-col>
@@ -34,8 +34,8 @@
               {{ pages }}
             </div>
             <div class="item-compare">
-              <span>较昨日</span>
-              <span class="num"> {{ generateNum() }}% </span>
+              <span>较昨日<i class="el-icon-top-right" style="color:red" v-show="allpagesMom > 0"></i><i class="el-icon-bottom-right" style="color:green" v-show="allpagesMom < 0"></i></span>
+              <span class="num"> {{ Math.abs(allpagesMom * 100) }}% </span>
             </div>
           </el-card>
         </el-col>
@@ -46,8 +46,8 @@
               {{ dayViews }}
             </div>
             <div class="item-compare">
-              <span>较昨日</span>
-              <span class="num"> {{ generateNum() }}% </span>
+              <span>较昨日<i class="el-icon-top-right" style="color:red" v-show="dayViewsMom > 0"></i><i class="el-icon-bottom-right" style="color:green" v-show="dayViewsMom < 0"></i></span>
+              <span class="num"> {{ Math.abs(dayViewsMom * 100) }}% </span>
             </div>
           </el-card>
         </el-col>
@@ -58,8 +58,8 @@
               {{ dayIp }}
             </div>
             <div class="item-compare">
-              <span>较昨日</span>
-              <span class="num"> {{ generateNum() }}% </span>
+              <span>较昨日<i class="el-icon-top-right" style="color:red" v-show="dayIpMom > 0"></i><i class="el-icon-bottom-right" style="color:green" v-show="dayIpMom < 0"></i></span>
+              <span class="num"> {{ Math.abs(dayIpMom * 100) }}% </span>
             </div>
           </el-card>
         </el-col>
@@ -122,6 +122,10 @@ export default {
         startVal: 0,
       },
       everyDayViews: [],
+      allViewsMom: '',
+      allpagesMom: '',
+      dayViewsMom: '',
+      dayIpMom: ''
     };
   },
   created() {
@@ -314,6 +318,10 @@ export default {
         this.pages = res.allpages;
         this.dayViews = res.dayViews;
         this.dayIp = res.dayIp;
+        this.allViewsMom = parseFloat(res.allViewsMom).toFixed(2)
+        this.allpagesMom = parseFloat(res.allpagesMom).toFixed(2)
+        this.dayViewsMom = parseFloat(res.dayViewsMom).toFixed(2)
+        this.dayIpMom = parseFloat(res.dayIpMom).toFixed(2)
         this.deviceRatioX = res.deviceRatio.map((item) => {
           return item.screen;
         });
