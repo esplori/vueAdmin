@@ -1,6 +1,6 @@
 <template>
   <div class="user-info">
-    <el-form :model="form" label-width="80px" label-position="left">
+    <el-form :model="form" label-width="130px" label-position="left">
       <el-form-item label="站点名称:">
         <el-input v-model="form.siteName" type="textarea"></el-input>
       </el-form-item>
@@ -15,6 +15,9 @@
       </el-form-item>
       <el-form-item label="文件上传实际路径:">
         <el-input v-model="form.sourceRealUrl" type="textarea"> </el-input>
+      </el-form-item>
+      <el-form-item label="文件备份实际路径:">
+        <el-input v-model="form.bakRealUrl" type="textarea"> </el-input>
       </el-form-item>
       <el-form-item label="备案号:">
         <el-input v-model="form.beianNo" type="textarea"> </el-input>
@@ -55,6 +58,7 @@ export default {
         sourceUrl: "",
         sourceRealUrl: "",
         beianNo: "",
+        bakRealUrl: ''
       },
       list: [{}],
     };

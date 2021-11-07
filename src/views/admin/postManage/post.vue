@@ -117,7 +117,7 @@ export default {
         insertImgFn(result.data[0].url);
       },
     };
-    //插入代码语言配置
+    // 插入代码语言配置
     this.editor.config.languageType = [
       // "Bash",
       // "C",
