@@ -21,3 +21,9 @@ pre{
 .el-loading-mask{
   z-index: 30000!important;;
 }
+#app pre code{
+  border-radius: 5px;
+  padding: 10px;
+  color: rgb(231, 227, 227);
+  background-color: #2d2d2d!important;
+}

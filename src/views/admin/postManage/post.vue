@@ -38,6 +38,8 @@
 </template>
 <script>
 import Wangeditor from "wangeditor";
+import hljs from "highlight.js";
+import "highlight.js/styles/monokai-sublime.css";
 import {
   postPageApi,
   editPageApi,
@@ -61,43 +63,6 @@ export default {
         placeholder: "编辑文章内容",
       },
       editor: null,
-      // tinymce-vue 富文本编辑器
-      // init: {
-      //   automatic_uploads: true,
-      //   images_upload_handler: function (blobInfo, success, failure) {
-      //     var xhr, formData;
-      //     xhr = new XMLHttpRequest();
-      //     xhr.withCredentials = false;
-      //     xhr.open("POST", "/bootService/account/upload");
-      //     xhr.onload = function () {
-      //       var json;
-      //       if (xhr.status !== 200) {
-      //         failure("HTTP Error: " + xhr.status);
-      //         return;
-      //       }
-      //       json = JSON.parse(xhr.responseText);
-      //       if (!json || typeof json.location !== "string") {
-      //         failure("Invalid JSON: " + xhr.responseText);
-      //         return;
-      //       }
-      //       success(json.location);
-      //     };
-      //     formData = new FormData();
-      //     formData.append("file", blobInfo.blob(), blobInfo.filename());
-      //     xhr.send(formData);
-      //   },
-      //   height: 400,
-      //   menubar: true,
-      //   plugins: [
-      //     "advlist autolink lists link image charmap print preview anchor",
-      //     "searchreplace visualblocks code fullscreen",
-      //     "insertdatetime media table paste code help wordcount",
-      //   ],
-      //   toolbar:
-      //     "undo redo | formatselect | bold italic backcolor | \
-      //   alignleft aligncenter alignright alignjustify | \
-      //   bullist numlist outdent indent | removeformat | help",
-      // },
     };
   },
   components: {},
@@ -120,7 +85,6 @@ export default {
       // 上传图片之前
       before: function (xhr) {
         // console.log(xhr);
-
         // // 可阻止图片上传
         // return {
         //     prevent: true,
@@ -153,6 +117,32 @@ export default {
         insertImgFn(result.data[0].url);
       },
     };
+    //插入代码语言配置
+    this.editor.config.languageType = [
+      // "Bash",
+      // "C",
+      // "C#",
+      // "C++",
+      "JavaScript",
+      "CSS",
+      "Java",
+      "JSON",
+      "TypeScript",
+      "Plain text",
+      "Html",
+      // "XML",
+      "SQL",
+      // "Go",
+      // "Kotlin",
+      // "Lua",
+      "Markdown",
+      "PHP",
+      "Python",
+      "Shell Session",
+      // "Ruby",
+    ];
+    // 挂载highlight插件
+    this.editor.highlight = hljs;
     this.editor.create();
   },
   computed: {
@@ -182,12 +172,12 @@ export default {
     submit() {
       this.form.content = this.editor.txt.html();
       if (!this.form.title) {
-        this.$message.warning("请输入标题")
-        return false
+        this.$message.warning("请输入标题");
+        return false;
       }
       if (!this.form.content) {
-        this.$message.warning("请输入内容")
-        return false
+        this.$message.warning("请输入内容");
+        return false;
       }
       if (this.form.id) {
         this.editPage();
