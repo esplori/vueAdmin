@@ -13,17 +13,17 @@ export async function getDetailApi (data) {
 }
 export async function postPageApi (data) {
   const url = `${contextPath}/nav/addItem`
-  const options = {}
+  const options = {showLoading: true}
   return post(url, data, options)
 }
 export async function delApi (data) {
   const Url = `${contextPath}/nav/deleteItem`
-  const options = {}
+  const options = {showLoading: true}
   return post(Url, data, options)
 }
 export async function editPageApi (data) {
   const url = `${contextPath}/nav/updateItem`
-  const options = {}
+  const options = {showLoading: true}
   return post(url, data, options)
 }
 export async function getCateApi (data) {
@@ -33,17 +33,17 @@ export async function getCateApi (data) {
 }
 export async function updateCateApi (data) {
   const url = `${contextPath}/pages/updateCate`
-  const options = {}
+  const options = {showLoading: true}
   return post(url, data, options)
 }
 export async function delCateApi (data) {
   const Url = `${contextPath}/pages/delCate`
-  const options = {}
+  const options = {showLoading: true}
   return post(Url, data, options)
 }
 export async function insertCateApi (data) {
   const url = `${contextPath}/pages/insertCate`
-  const options = {}
+  const options = {showLoading: true}
   return post(url, data, options)
 }
 export async function getImageListApi (data) {
@@ -58,7 +58,7 @@ export async function delFileApi (data) {
 }
 export async function updateUserInfoApi (data) {
   const url = `${contextPath}/account/updateUserInfo`
-  const options = {}
+  const options = {showLoading: true}
   return post(url, data, options)
 }
 export async function getUserInfoApi (data) {

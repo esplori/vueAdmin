@@ -4,6 +4,9 @@
       <el-form-item label="标题：">
         <el-input v-model="form.title"></el-input>
       </el-form-item>
+      <el-form-item label="地址：">
+        <el-input v-model="form.url" :rows="10"></el-input>
+      </el-form-item>
       <el-form-item label="内容：">
         <el-input type="textarea" v-model="form.content" :rows="10"></el-input>
       </el-form-item>
@@ -38,7 +41,7 @@ export default {
         title: "",
         content: "",
         cate: "",
-        cateName: "",
+        url: "",
       },
       cateList: [
         { name: "开发工具", id: "1" },
@@ -76,9 +79,6 @@ export default {
       }
     },
     async editPage() {
-      this.form.cateName = this.cateList.filter((item) => {
-        return item.id === this.form.cate;
-      })[0].name;
       const res = await editPageApi({ ...this.form });
       if (res) {
         this.$message.success("修改成功");
@@ -86,9 +86,6 @@ export default {
       }
     },
     async postPage() {
-      this.form.cateName = this.cateList.filter((item) => {
-        return item.id === this.form.cate;
-      })[0].name;
       const res = await postPageApi({ ...this.form });
       if (res) {
         this.$message.success("添加成功");
