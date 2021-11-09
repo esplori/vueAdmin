@@ -318,10 +318,10 @@ export default {
         this.pages = res.allpages;
         this.dayViews = res.dayViews;
         this.dayIp = res.dayIp;
-        this.allViewsMom = parseFloat(res.allViewsMom).toFixed(2)* 100
-        this.allpagesMom = parseFloat(res.allpagesMom).toFixed(2)* 100
-        this.dayViewsMom = parseFloat(res.dayViewsMom).toFixed(2) * 100
-        this.dayIpMom = parseFloat(res.dayIpMom).toFixed(2) * 100
+        this.allViewsMom = parseFloat(res.allViewsMom).toFixed(4)* 100
+        this.allpagesMom = parseFloat(res.allpagesMom).toFixed(4)* 100
+        this.dayViewsMom = parseFloat(res.dayViewsMom).toFixed(4) * 100
+        this.dayIpMom = parseFloat(res.dayIpMom).toFixed(4) * 100
         this.deviceRatioX = res.deviceRatio.map((item) => {
           return item.screen;
         });
