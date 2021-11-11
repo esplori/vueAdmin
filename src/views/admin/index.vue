@@ -322,7 +322,7 @@ export default {
     },
   },
   components: {
-    adminHeader: () => import("./components/admin-header"),
+    adminHeader: () => import("@/components/admin-header"),
   },
   mounted() {
     this.initFingerprint();
