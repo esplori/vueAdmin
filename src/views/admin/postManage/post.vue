@@ -10,7 +10,7 @@
         </div>
       </el-form-item>
       <el-form-item label="分类：">
-        <el-select v-model="form.cate" popper-class="select-zindex">
+        <el-select v-model="form.cate" popper-class="select-zindex" class="optionsWidth">
           <el-option
             v-for="(item, index) in cateList"
             :key="index"
@@ -19,16 +19,15 @@
           ></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="浏览量：">
+      <el-form-item label="浏览量：" >
         <el-input
-          v-model.number="form.views"
-          type="number"
+          v-model="form.views"
           disabled
-          style="width: 20%"
+          class="optionsWidth"
         ></el-input>
       </el-form-item>
       <el-form-item label="关键字：">
-        <el-input v-model="form.keywords" style="width: 20%"></el-input>
+        <el-input v-model="form.keywords" class="optionsWidth" placeholder="多个关键字用英文逗号分隔，例如：开发,web"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button @click="submit" type="primary">提交</el-button>
@@ -235,5 +234,8 @@ export default {
 <style scoped lang="less">
 .post {
   width: 100%;
+  .optionsWidth{
+    width: 350px;
+  }
 }
 </style>
