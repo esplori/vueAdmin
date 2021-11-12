@@ -21,9 +21,19 @@
           >
         </template>
       </el-table-column>
-       <el-table-column label="分类" width="180px">
+      <el-table-column label="分类" width="120px">
         <template slot-scope="scope">
-          {{scope.row.cateName}}
+          {{ scope.row.cateName }}
+        </template>
+      </el-table-column>
+      <el-table-column label="阅读" width="120px">
+        <template slot-scope="scope">
+          {{ scope.row.views }}
+        </template>
+      </el-table-column>
+      <el-table-column label="创建时间" width="120px">
+        <template slot-scope="scope">
+          {{ scope.row.createDate }}
         </template>
       </el-table-column>
       <el-table-column fixed="right" width="180" label="操作">

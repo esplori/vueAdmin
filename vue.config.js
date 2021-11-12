@@ -36,7 +36,7 @@ module.exports = {
 
     sourceMap: false
 
-    
+
   },
 
   devServer: {
@@ -49,13 +49,12 @@ module.exports = {
 
     proxy: {
 
-    '/bootService': {
+      '/bootService': {
+        // target: 'http://admin.dsiab.com/',
+        target: 'http://localhost:8091/',
+        changeOrigin: true
 
-      target: 'http://admin.dsiab.com/',
-      // target: 'http://localhost:8091/',
-      changeOrigin: true
-
-    }
+      }
 
     }
 
