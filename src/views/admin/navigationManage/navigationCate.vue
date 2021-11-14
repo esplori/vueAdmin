@@ -4,11 +4,7 @@
     <el-table :data="list" style="width: 100%">
       <el-table-column label="标题">
         <template slot-scope="scope">
-          <el-input
-            v-model="scope.row.name"
-            :disabled="!scope.row.disabled"
-            @blur="handleBlur(scope.row)"
-          ></el-input>
+          {{ scope.row.name }}
         </template>
       </el-table-column>
       <el-table-column label="操作" width="180">
@@ -18,6 +14,16 @@
         </template>
       </el-table-column>
     </el-table>
+
+    <el-dialog :title="title" :visible.sync="dialogVisible" width="30%" @close="handleClose">
+      <div>
+        <el-input v-model="row.name" placeholder="请输入名称"></el-input>
+      </div>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="submit(row)">确 定</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -33,6 +39,12 @@ export default {
   data() {
     return {
       list: [],
+      dialogVisible: false,
+      title: "新增",
+      row: {
+        id: "",
+        name: "",
+      },
     };
   },
   created() {
@@ -40,10 +52,8 @@ export default {
   },
   methods: {
     insertCate() {
-      this.list.push({
-        name: "",
-        disabled: true,
-      });
+      this.dialogVisible = true
+      this.title = "新增"
     },
     async getList() {
       let res = await getNavCateApi(this.params);
@@ -63,13 +73,19 @@ export default {
      * 编辑
      */
     edit(row) {
-      this.$set(row, "disabled", !row.disabled);
+      this.title = "编辑"
+      this.dialogVisible = true;
+      this.row = row;
     },
-    async handleBlur(row) {
+    async submit(row) {
+      if (!row.name) {
+        this.$message.warning("请输入名称")
+        return
+      }
       if (row.id) {
         let res = await updateNavCateApi(row);
         if (res) {
-          this.$set(row, "disabled", !row.disabled);
+          this.getList();
         }
       } else {
         let res = await insertNavCateApi(row);
@@ -77,6 +93,7 @@ export default {
           this.getList();
         }
       }
+      this.dialogVisible = false;
     },
     handleSizeChange(val) {
       this.params.pageSize = val;
@@ -86,6 +103,12 @@ export default {
       this.params.page = val;
       this.getList();
     },
+    handleClose() {
+      this.row = {
+        id: "",
+        name: "",
+      }
+    }
   },
 };
 </script>
