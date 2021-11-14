@@ -57,6 +57,7 @@
         drag
         action="/bootService/account/upload"
         multiple
+        :headers="headers"
       >
         <i class="el-icon-upload"></i>
         <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
@@ -94,6 +95,16 @@ export default {
   },
   created() {
     this.getList(this.activeName);
+  },
+  computed: {
+    headers() {
+      let userinfo = localStorage.getItem("userInfo");
+      if (userinfo) {
+        userinfo = JSON.parse(userinfo);
+        return { Authorization: userinfo.token };
+      }
+      return { Authorization: "" };
+    },
   },
   methods: {
     handleClick(val) {
