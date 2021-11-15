@@ -32,8 +32,8 @@
               <img
                 :src="sourceUrl + scope.row.filename"
                 alt=""
-                width="100px"
-                height="80px"
+                width="200px"
+                height="180px"
               />
             </div>
             <div v-else>
