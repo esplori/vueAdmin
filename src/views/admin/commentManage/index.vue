@@ -11,6 +11,11 @@
           {{scope.row.content}}
         </template>
       </el-table-column>
+       <el-table-column label="时间">
+        <template slot-scope="scope">
+          {{scope.row.createDate}}
+        </template>
+      </el-table-column>
       <el-table-column label="操作" width="180">
         <template slot-scope="scope">
           <el-button @click="del(scope.row.id)" type="danger">删除</el-button>
