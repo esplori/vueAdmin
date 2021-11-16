@@ -23,7 +23,7 @@
             </div>
             <div class="item-compare">
               <span>较昨日<i class="el-icon-top-right" style="color:red" v-show="allViewsMom > 0"></i><i class="el-icon-bottom-right" style="color:green" v-show="allViewsMom < 0"></i></span>
-              <span class="num"> {{ Math.abs(allViewsMom) }}% </span>
+              <span class="num"> {{ Math.abs(allViewsMom) }} </span>
             </div>
           </el-card>
         </el-col>
@@ -35,7 +35,7 @@
             </div>
             <div class="item-compare">
               <span>较昨日<i class="el-icon-top-right" style="color:red" v-show="allpagesMom > 0"></i><i class="el-icon-bottom-right" style="color:green" v-show="allpagesMom < 0"></i></span>
-              <span class="num"> {{ Math.abs(allpagesMom) }}% </span>
+              <span class="num"> {{ Math.abs(allpagesMom) }} </span>
             </div>
           </el-card>
         </el-col>
@@ -47,7 +47,7 @@
             </div>
             <div class="item-compare">
               <span>较昨日<i class="el-icon-top-right" style="color:red" v-show="dayViewsMom > 0"></i><i class="el-icon-bottom-right" style="color:green" v-show="dayViewsMom < 0"></i></span>
-              <span class="num"> {{ parseFloat(Math.abs(dayViewsMom)).toFixed(2) }}% </span>
+              <span class="num"> {{ parseFloat(Math.abs(dayViewsMom)) }} </span>
             </div>
           </el-card>
         </el-col>
@@ -59,7 +59,7 @@
             </div>
             <div class="item-compare">
               <span>较昨日<i class="el-icon-top-right" style="color:red" v-show="dayIpMom > 0"></i><i class="el-icon-bottom-right" style="color:green" v-show="dayIpMom < 0"></i></span>
-              <span class="num"> {{ parseFloat(Math.abs(dayIpMom)).toFixed(2) }}% </span>
+              <span class="num"> {{ parseFloat(Math.abs(dayIpMom)) }} </span>
             </div>
           </el-card>
         </el-col>
@@ -318,10 +318,10 @@ export default {
         this.pages = res.allpages;
         this.dayViews = res.dayViews;
         this.dayIp = res.dayIp;
-        this.allViewsMom = parseFloat(res.allViewsMom).toFixed(4)* 100
-        this.allpagesMom = parseFloat(res.allpagesMom).toFixed(4)* 100
-        this.dayViewsMom = parseFloat(res.dayViewsMom).toFixed(4) * 100
-        this.dayIpMom = parseFloat(res.dayIpMom).toFixed(4) * 100
+        this.allViewsMom = parseFloat(res.allViewsMom)
+        this.allpagesMom = parseFloat(res.allpagesMom)
+        this.dayViewsMom = parseFloat(res.dayViewsMom)
+        this.dayIpMom = parseFloat(res.dayIpMom)
         this.deviceRatioX = res.deviceRatio.map((item) => {
           return item.screen;
         });
