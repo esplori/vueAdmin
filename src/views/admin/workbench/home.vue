@@ -196,6 +196,15 @@ export default {
             name: "设备型号",
             type: "bar",
             data: _this.deviceTypeY,
+            itemStyle: {
+              color: "#6496f9",
+              normal:{
+                label:{
+                  show:true,
+                  position:  'top'
+                }
+              }
+            },
           },
         ],
       });
@@ -227,6 +236,15 @@ export default {
             name: "浏览器型号",
             type: "bar",
             data: _this.browserTypeY,
+            itemStyle: {
+              color: "#6496f9",
+              normal:{
+                label:{
+                  show:true,
+                  position:  'top'
+                }
+              }
+            },
           },
         ],
       });
@@ -254,6 +272,15 @@ export default {
             name: "设备分辨率",
             type: "bar",
             data: _this.deviceRatioY,
+            itemStyle: {
+              color: "#6496f9",
+              normal:{
+                label:{
+                  show:true,
+                  position:  'top'
+                }
+              }
+            },
           },
         ],
       });
@@ -292,6 +319,12 @@ export default {
             }),
             itemStyle: {
               color: "#6496f9",
+              normal:{
+                label:{
+                  show:true,
+                  position:  'top'
+                }
+              }
             },
           },
           {
@@ -302,6 +335,12 @@ export default {
             }),
             itemStyle: {
               color: "#7667f9",
+              normal:{
+                label:{
+                  show:true,
+                  position:  'top'
+                }
+              }
             },
           },
         ],
