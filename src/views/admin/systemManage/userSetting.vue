@@ -10,6 +10,9 @@
       <el-form-item label="头像:">
         <el-input v-model="form.avatar"> </el-input>
       </el-form-item>
+       <el-form-item label="邮箱:">
+        <el-input v-model="form.email"> </el-input>
+      </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="submit">更新</el-button>
       </el-form-item>
@@ -27,6 +30,7 @@ export default {
         nickname: "",
         userdesc: "",
         avatar: "",
+        email: ''
       },
     };
   },
