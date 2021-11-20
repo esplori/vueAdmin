@@ -28,5 +28,6 @@ export default {
   color: #71777c;
   display: flex;
   justify-content: flex-end;
+  border-bottom: 1px solid #ddd;
 }
 </style>

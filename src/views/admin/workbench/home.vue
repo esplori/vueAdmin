@@ -22,7 +22,18 @@
               {{ views }}
             </div>
             <div class="item-compare">
-              <span>较昨日<i class="el-icon-top-right" style="color:red" v-show="allViewsMom > 0"></i><i class="el-icon-bottom-right" style="color:green" v-show="allViewsMom < 0"></i></span>
+              <span
+                >较昨日<i
+                  class="el-icon-top-right"
+                  style="color: red"
+                  v-show="allViewsMom > 0"
+                ></i
+                ><i
+                  class="el-icon-bottom-right"
+                  style="color: green"
+                  v-show="allViewsMom < 0"
+                ></i
+              ></span>
               <span class="num"> {{ Math.abs(allViewsMom) }} </span>
             </div>
           </el-card>
@@ -34,7 +45,18 @@
               {{ pages }}
             </div>
             <div class="item-compare">
-              <span>较昨日<i class="el-icon-top-right" style="color:red" v-show="allpagesMom > 0"></i><i class="el-icon-bottom-right" style="color:green" v-show="allpagesMom < 0"></i></span>
+              <span
+                >较昨日<i
+                  class="el-icon-top-right"
+                  style="color: red"
+                  v-show="allpagesMom > 0"
+                ></i
+                ><i
+                  class="el-icon-bottom-right"
+                  style="color: green"
+                  v-show="allpagesMom < 0"
+                ></i
+              ></span>
               <span class="num"> {{ Math.abs(allpagesMom) }} </span>
             </div>
           </el-card>
@@ -46,7 +68,18 @@
               {{ dayViews }}
             </div>
             <div class="item-compare">
-              <span>较昨日<i class="el-icon-top-right" style="color:red" v-show="dayViewsMom > 0"></i><i class="el-icon-bottom-right" style="color:green" v-show="dayViewsMom < 0"></i></span>
+              <span
+                >较昨日<i
+                  class="el-icon-top-right"
+                  style="color: red"
+                  v-show="dayViewsMom > 0"
+                ></i
+                ><i
+                  class="el-icon-bottom-right"
+                  style="color: green"
+                  v-show="dayViewsMom < 0"
+                ></i
+              ></span>
               <span class="num"> {{ parseFloat(Math.abs(dayViewsMom)) }} </span>
             </div>
           </el-card>
@@ -58,7 +91,18 @@
               {{ dayIp }}
             </div>
             <div class="item-compare">
-              <span>较昨日<i class="el-icon-top-right" style="color:red" v-show="dayIpMom > 0"></i><i class="el-icon-bottom-right" style="color:green" v-show="dayIpMom < 0"></i></span>
+              <span
+                >较昨日<i
+                  class="el-icon-top-right"
+                  style="color: red"
+                  v-show="dayIpMom > 0"
+                ></i
+                ><i
+                  class="el-icon-bottom-right"
+                  style="color: green"
+                  v-show="dayIpMom < 0"
+                ></i
+              ></span>
               <span class="num"> {{ parseFloat(Math.abs(dayIpMom)) }} </span>
             </div>
           </el-card>
@@ -122,10 +166,10 @@ export default {
         startVal: 0,
       },
       everyDayViews: [],
-      allViewsMom: '',
-      allpagesMom: '',
-      dayViewsMom: '',
-      dayIpMom: ''
+      allViewsMom: "",
+      allpagesMom: "",
+      dayViewsMom: "",
+      dayIpMom: "",
     };
   },
   created() {
@@ -198,12 +242,12 @@ export default {
             data: _this.deviceTypeY,
             itemStyle: {
               color: "#6496f9",
-              normal:{
-                label:{
-                  show:true,
-                  position:  'top'
-                }
-              }
+              normal: {
+                label: {
+                  show: true,
+                  position: "top",
+                },
+              },
             },
           },
         ],
@@ -238,12 +282,12 @@ export default {
             data: _this.browserTypeY,
             itemStyle: {
               color: "#6496f9",
-              normal:{
-                label:{
-                  show:true,
-                  position:  'top'
-                }
-              }
+              normal: {
+                label: {
+                  show: true,
+                  position: "top",
+                },
+              },
             },
           },
         ],
@@ -274,12 +318,12 @@ export default {
             data: _this.deviceRatioY,
             itemStyle: {
               color: "#6496f9",
-              normal:{
-                label:{
-                  show:true,
-                  position:  'top'
-                }
-              }
+              normal: {
+                label: {
+                  show: true,
+                  position: "top",
+                },
+              },
             },
           },
         ],
@@ -319,12 +363,12 @@ export default {
             }),
             itemStyle: {
               color: "#6496f9",
-              normal:{
-                label:{
-                  show:true,
-                  position:  'top'
-                }
-              }
+              normal: {
+                label: {
+                  show: true,
+                  position: "top",
+                },
+              },
             },
           },
           {
@@ -333,14 +377,15 @@ export default {
             data: _this.everyDayViews.map((item) => {
               return item.dayViews;
             }),
+
             itemStyle: {
               color: "#7667f9",
-              normal:{
-                label:{
-                  show:true,
-                  position:  'top'
-                }
-              }
+              normal: {
+                label: {
+                  show: true,
+                  position: "top",
+                },
+              },
             },
           },
         ],
@@ -357,10 +402,10 @@ export default {
         this.pages = res.allpages;
         this.dayViews = res.dayViews;
         this.dayIp = res.dayIp;
-        this.allViewsMom = parseFloat(res.allViewsMom)
-        this.allpagesMom = parseFloat(res.allpagesMom)
-        this.dayViewsMom = parseFloat(res.dayViewsMom)
-        this.dayIpMom = parseFloat(res.dayIpMom)
+        this.allViewsMom = parseFloat(res.allViewsMom);
+        this.allpagesMom = parseFloat(res.allpagesMom);
+        this.dayViewsMom = parseFloat(res.dayViewsMom);
+        this.dayIpMom = parseFloat(res.dayIpMom);
         this.deviceRatioX = res.deviceRatio.map((item) => {
           return item.screen;
         });
