@@ -107,6 +107,16 @@
           </el-menu-item>
         </el-submenu>
 
+        <el-submenu index="6">
+          <template slot="title">
+            <i class="el-icon-user"></i>
+            <span slot="title">个人设置</span>
+          </template>
+          <el-menu-item index="/admin/userSetting">
+            <span slot="title">个人资料</span>
+          </el-menu-item>
+        </el-submenu>
+
         <el-submenu index="4">
           <template slot="title">
             <i class="el-icon-setting"></i>
@@ -117,9 +127,6 @@
             v-if="userInfo.role.indexOf('ROLE_admin') !== -1"
           >
             <span slot="title">站点设置</span>
-          </el-menu-item>
-          <el-menu-item index="/admin/userSetting">
-            <span slot="title">个人设置</span>
           </el-menu-item>
           <el-menu-item
             index="/admin/sourceList"
@@ -157,154 +164,7 @@ import FingerprintJS from "@fingerprintjs/fingerprintjs";
 export default {
   data() {
     return {
-      menuList: [
-        {
-          name: "首页",
-          path: "/admin/home",
-          role: "ROLE_author",
-          icon: "el-icon-s-home",
-        },
-        {
-          name: "文章管理",
-          icon: "el-icon-s-order",
-          path: "",
-          role: "ROLE_author",
-          children: [
-            {
-              name: "文章列表",
-              path: "/admin/pageList",
-              role: "ROLE_author",
-              icon: "el-icon-edit-outline",
-            },
-            {
-              name: "新增文章",
-              path: "/admin/post",
-              role: "ROLE_author",
-              icon: "el-icon-edit-outline",
-            },
-            {
-              name: "分类管理",
-              path: "/admin/cate",
-              role: "ROLE_admin",
-              icon: "el-icon-menu",
-            },
-          ],
-        },
-        {
-          name: "导航管理",
-          path: "/admin/navigationList",
-          role: "ROLE_admin",
-          icon: "el-icon-s-promotion",
-        },
-        {
-          name: "小工具",
-          path: "/admin/tools",
-          role: "ROLE_author",
-          icon: "el-icon-crop",
-          children: [
-            {
-              name: "音乐分享",
-              path: "/admin/music",
-              role: "ROLE_author",
-              icon: "el-icon-share",
-            },
-            {
-              name: "小说阅读",
-              path: "/admin/fiction",
-              role: "ROLE_author",
-              icon: "el-icon-share",
-            },
-            {
-              name: "json格式化",
-              path: "/admin/jsonviewer",
-              role: "ROLE_author",
-              icon: "el-icon-share",
-            },
-            {
-              name: "抽奖",
-              path: "/admin/choujiang",
-              role: "ROLE_author",
-              icon: "el-icon-share",
-            },
-            {
-              name: "发送邮件",
-              path: "/admin/mail",
-              role: "ROLE_admin",
-              icon: "el-icon-share",
-            },
-            {
-              name: "点名",
-              path: "/admin/dianming",
-              role: "ROLE_author",
-              icon: "el-icon-share",
-            },
-            {
-              name: "图片转成base64",
-              path: "/admin/img2base64",
-              role: "ROLE_author",
-              icon: "el-icon-share",
-            },
-            {
-              name: "js压缩",
-              path: "/admin/compressJs",
-              role: "ROLE_admin",
-              icon: "el-icon-share",
-            },
-            {
-              name: "二维码生成",
-              path: "/admin/qrcode",
-              role: "ROLE_author",
-              icon: "el-icon-share",
-            },
-          ],
-        },
-        {
-          name: "用户管理",
-          path: "/admin/userManage",
-          role: "ROLE_admin",
-          icon: "el-icon-user",
-          children: [
-            {
-              name: "用户管理",
-              path: "/admin/userManage",
-              role: "ROLE_admin",
-              icon: "el-icon-user",
-            },
-            {
-              name: "角色管理",
-              path: "/admin/roleManage",
-              role: "ROLE_admin",
-              icon: "el-icon-postcard",
-            },
-          ],
-        },
-        {
-          name: "系统设置",
-          path: "/admin/systemSetting",
-          role: "ROLE_author",
-          icon: "el-icon-setting",
-          children: [
-            {
-              name: "站点设置",
-              path: "/admin/systemSetting",
-              role: "ROLE_admin",
-              icon: "el-icon-setting",
-            },
-            {
-              name: "个人设置",
-              path: "/admin/userSetting",
-              role: "ROLE_author",
-              icon: "el-icon-setting",
-            },
-            {
-              name: "资源管理",
-              path: "/admin/sourceList",
-              role: "ROLE_admin",
-              icon: "el-icon-picture-outline",
-            },
-          ],
-        },
-      ],
+      menuList: [],
       isCollapse: false,
     };
   },
