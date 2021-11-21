@@ -2,7 +2,7 @@
   <div class="post">
     <el-form label-width="80px" :model="form">
       <el-form-item label="标题：">
-        <el-input v-model="form.title"></el-input>
+        <el-input v-model="form.title" placeholder="请输入标题"></el-input>
       </el-form-item>
       <el-form-item label="内容：">
         <div>

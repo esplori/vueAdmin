@@ -117,21 +117,15 @@
           </el-menu-item>
         </el-submenu>
 
-        <el-submenu index="4">
+        <el-submenu index="4" v-if="userInfo.role.indexOf('ROLE_admin') !== -1">
           <template slot="title">
             <i class="el-icon-setting"></i>
             <span slot="title">系统设置</span>
           </template>
-          <el-menu-item
-            index="/admin/systemSetting"
-            v-if="userInfo.role.indexOf('ROLE_admin') !== -1"
-          >
+          <el-menu-item index="/admin/systemSetting">
             <span slot="title">站点设置</span>
           </el-menu-item>
-          <el-menu-item
-            index="/admin/sourceList"
-            v-if="userInfo.role.indexOf('ROLE_admin') !== -1"
-          >
+          <el-menu-item index="/admin/sourceList">
             <span slot="title">资源管理</span>
           </el-menu-item>
         </el-submenu>
