@@ -337,7 +337,21 @@ export default {
         title: {
           text: "最近30天访问量",
         },
-        tooltip: {},
+        tooltip: {
+          trigger: "axis",
+          // show: true,
+          // backgroundColor: "rgba(0,0,0,0.75)",
+          // borderColor: "rgba(0,0,0,0.75)",
+          // textStyle: {
+          //   color: "#ffffff",
+          // },
+          axisPointer: {
+            type: "shadow",
+            shadowStyle: {
+              color: "rgba(0,0,0,0.08)",
+            },
+          },
+        },
         legend: {},
         xAxis: {
           data: _this.everyDayViews.map((item) => {
@@ -365,7 +379,7 @@ export default {
               color: "#6496f9",
               normal: {
                 label: {
-                  show: true,
+                  show: false,
                   position: "top",
                 },
               },
@@ -382,7 +396,7 @@ export default {
               color: "#7667f9",
               normal: {
                 label: {
-                  show: true,
+                  show: false,
                   position: "top",
                 },
               },
