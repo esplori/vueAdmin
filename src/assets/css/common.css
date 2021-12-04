@@ -14,9 +14,9 @@ pre{
   word-wrap:break-word;
   }
   /* 编辑页面:富文本编辑器跟分类下拉框的z-index有冲突，需要用下拉框的z-index覆盖富文本的z-index */
-/* .select-zindex{
+.select-zindex{
   z-index:30000!important;
-} */
+}
 /* 富文本编辑器跟loading的z-index有冲突 */
 .el-loading-mask{
   z-index: 30000!important;;
