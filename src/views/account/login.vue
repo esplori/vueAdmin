@@ -58,6 +58,8 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  background: url("../../assets/images/bg.jpg") no-repeat;
+  background-size: cover;
 
   .login-container {
     border-radius: 5px;

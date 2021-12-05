@@ -22,6 +22,9 @@
       <el-form-item label="备案号:">
         <el-input v-model="form.beianNo" type="textarea"> </el-input>
       </el-form-item>
+      <el-form-item label="站长邮箱:">
+        <el-input v-model="form.siteEmail" type="textarea"> </el-input>
+      </el-form-item>
       <el-form-item label="轮播管理">
         <el-table :data="tableData" style="width: 100%">
           <el-table-column label="轮播图片地址" width="180">
@@ -72,6 +75,7 @@ export default {
         sourceRealUrl: "",
         beianNo: "",
         bakRealUrl: "",
+        siteEmail: ''
       },
       tableData: [{ imgUrl: "", desc: "", url: "" }],
     };
