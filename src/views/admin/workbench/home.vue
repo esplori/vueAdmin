@@ -412,33 +412,33 @@ export default {
     async getWebStatistics() {
       const res = await getWebStatisticsApi({});
       if (res) {
-        this.views = res.allViews;
-        this.pages = res.allpages;
-        this.dayViews = res.dayViews;
-        this.dayIp = res.dayIp;
-        this.allViewsMom = parseFloat(res.allViewsMom);
-        this.allpagesMom = parseFloat(res.allpagesMom);
-        this.dayViewsMom = parseFloat(res.dayViewsMom);
-        this.dayIpMom = parseFloat(res.dayIpMom);
-        this.deviceRatioX = res.deviceRatio.map((item) => {
+        this.views = res.data.allViews;
+        this.pages = res.data.allpages;
+        this.dayViews = res.data.dayViews;
+        this.dayIp = res.data.dayIp;
+        this.allViewsMom = parseFloat(res.data.allViewsMom);
+        this.allpagesMom = parseFloat(res.data.allpagesMom);
+        this.dayViewsMom = parseFloat(res.data.dayViewsMom);
+        this.dayIpMom = parseFloat(res.data.dayIpMom);
+        this.deviceRatioX = res.data.deviceRatio.map((item) => {
           return item.screen;
         });
-        this.deviceRatioY = res.deviceRatio.map((item) => {
+        this.deviceRatioY = res.data.deviceRatio.map((item) => {
           return item.num;
         });
-        this.deviceTypeX = res.deviceType.map((item) => {
+        this.deviceTypeX = res.data.deviceType.map((item) => {
           return item.os;
         });
-        this.deviceTypeY = res.deviceType.map((item) => {
+        this.deviceTypeY = res.data.deviceType.map((item) => {
           return item.num;
         });
-        this.browserTypeX = res.browserType.map((item) => {
+        this.browserTypeX = res.data.browserType.map((item) => {
           return item.browse;
         });
-        this.browserTypeY = res.browserType.map((item) => {
+        this.browserTypeY = res.data.browserType.map((item) => {
           return item.num;
         });
-        this.everyDayViews = res.everyDayViews;
+        this.everyDayViews = res.data.everyDayViews;
         this.initCharts();
         this.initCountUp();
       }
