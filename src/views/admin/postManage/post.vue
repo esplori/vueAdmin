@@ -205,18 +205,18 @@ export default {
         ...this.form,
         createBy: this.userInfo && this.userInfo.username,
       });
-          // arr.map(it =>{
-          //   debugger
-          //   this.pt({
-          //     title: it.title + '-' + it.author ,
-          //     content: it.paragraphs.length?it.paragraphs.join("<br>"):it.title,
-          //     cate: 137,
-          //     views: 0,
-          //     keywords: it.title + ',' + it.author,
-          //     createBy: this.userInfo && this.userInfo.username,
-          //   });
-          // })
-          
+      // arr.map(it =>{
+      //   debugger
+      //   this.pt({
+      //     title: it.title + '-' + it.author ,
+      //     content: it.paragraphs.length?it.paragraphs.join("<br>"):it.title,
+      //     cate: 137,
+      //     views: 0,
+      //     keywords: it.title + ',' + it.author,
+      //     createBy: this.userInfo && this.userInfo.username,
+      //   });
+      // })
+
       if (res) {
         this.$message.success("添加成功");
         this.$router.push({ path: "/admin/pageList" });

@@ -3,17 +3,17 @@
     <el-table :data="list" style="width: 100%">
       <el-table-column label="标题">
         <template slot-scope="scope">
-          {{scope.row.username}}
+          {{ scope.row.username }}
         </template>
       </el-table-column>
       <el-table-column label="标题">
         <template slot-scope="scope">
-          {{scope.row.content}}
+          {{ scope.row.content }}
         </template>
       </el-table-column>
-       <el-table-column label="时间">
+      <el-table-column label="时间">
         <template slot-scope="scope">
-          {{scope.row.createDate}}
+          {{ scope.row.createDate }}
         </template>
       </el-table-column>
       <el-table-column label="操作" width="180">
@@ -28,7 +28,9 @@
 <script>
 import {
   getCommentApi,
-  delCommentApi
+  delCommentApi,
+  updateCateApi,
+  insertCateApi,
 } from "@/views/API/admin.js";
 
 export default {
