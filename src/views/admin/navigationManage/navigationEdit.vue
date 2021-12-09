@@ -65,7 +65,7 @@ export default {
     async getNavCateList() {
       let res = await getNavCateApi(this.params);
       if (res) {
-        this.cateList = res.result.map((item) => {
+        this.cateList = res.data.result.map((item) => {
           item.id = String(item.id);
           return item;
         });
@@ -95,7 +95,7 @@ export default {
     async getDetail(id) {
       const res = await getDetailApi({ id: id });
       if (res) {
-        this.form = res.result;
+        this.form = res.data.result;
       }
     },
   },

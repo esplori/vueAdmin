@@ -86,7 +86,7 @@ export default {
     async getList () {
       let res = await getTbkShopListApi(this.params)
       if (res) {
-        this.list = res.result
+        this.list = res.data.result
       }
     },
     start() {

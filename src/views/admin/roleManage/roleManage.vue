@@ -28,7 +28,7 @@ export default {
     async getUserList() {
       let res = await getRoleListApi({});
       if (res) {
-        this.data = res.result;
+        this.data = res.data.result;
       }
     },
     edit() {},

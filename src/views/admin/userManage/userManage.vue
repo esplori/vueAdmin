@@ -112,7 +112,7 @@ export default {
     async getUserList() {
       const res = await getUserListApi({ page: this.params.page });
       if (res) {
-        this.data = res.result;
+        this.data = res.data.result;
       }
     },
     edit(row) {
@@ -132,7 +132,7 @@ export default {
     async getRoleList(row) {
       const res = await getRoleListApi({});
       if (res) {
-        this.Roledata = res.result;
+        this.Roledata = res.data.result;
         this.Roledata.forEach((item, index) => {
           if (row.role.indexOf(item.roleId) !== -1) {
             this.$nextTick(() => {

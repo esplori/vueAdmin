@@ -47,7 +47,7 @@ export default {
     async getUserInfo() {
       const res = await getUserInfoApi({});
       if (res) {
-        this.form = res;
+        this.form = res.data;
       }
     },
   },

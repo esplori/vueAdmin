@@ -85,8 +85,8 @@ export default {
     async getList () {
       let res = await getTbkListApi(this.params)
       if (res) {
-        this.list = res.result
-        this.total = res.total
+        this.list = res.data.result
+        this.total = res.data.total
       }
     },
     async del (id) {

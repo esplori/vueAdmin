@@ -98,8 +98,8 @@ export default {
     async getSiteInfo() {
       const res = await getSiteInfoApi({});
       if (res) {
-        this.form = res;
-        this.tableData = JSON.parse(res.carouselUrl);
+        this.form = res.data;
+        this.tableData = JSON.parse(res.data.carouselUrl);
       }
     },
     add() {

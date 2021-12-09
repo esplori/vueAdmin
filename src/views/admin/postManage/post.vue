@@ -1,5 +1,6 @@
 <template>
   <div class="post">
+    <!-- <el-button @click="postPage">start</el-button> -->
     <el-form label-width="80px" :model="form">
       <el-form-item label="标题：">
         <el-input v-model="form.title" placeholder="请输入标题"></el-input>
@@ -10,7 +11,11 @@
         </div>
       </el-form-item>
       <el-form-item label="分类：">
-        <el-select v-model="form.cate" popper-class="select-zindex" class="optionsWidth">
+        <el-select
+          v-model="form.cate"
+          popper-class="select-zindex"
+          class="optionsWidth"
+        >
           <el-option
             v-for="(item, index) in cateList"
             :key="index"
@@ -19,15 +24,15 @@
           ></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="浏览量：" >
-        <el-input
-          v-model="form.views"
-          disabled
-          class="optionsWidth"
-        ></el-input>
+      <el-form-item label="浏览量：">
+        <el-input v-model="form.views" disabled class="optionsWidth"></el-input>
       </el-form-item>
       <el-form-item label="关键字：">
-        <el-input v-model="form.keywords" class="optionsWidth" placeholder="多个关键字用英文逗号分隔，例如：开发,web"></el-input>
+        <el-input
+          v-model="form.keywords"
+          class="optionsWidth"
+          placeholder="多个关键字用英文逗号分隔，例如：开发,web"
+        ></el-input>
       </el-form-item>
       <el-form-item>
         <el-button @click="submit" type="primary">提交</el-button>
@@ -45,6 +50,7 @@ import {
   getDetailByIdApi,
   getCateApi,
 } from "@/views/API/admin.js";
+// import axios from "axios";
 export default {
   data() {
     return {
@@ -165,7 +171,7 @@ export default {
     async getCate() {
       const res = await getCateApi({});
       if (res) {
-        this.cateList = res.result || [];
+        this.cateList = res.data.result || [];
       }
     },
     submit() {
@@ -194,19 +200,38 @@ export default {
       }
     },
     async postPage() {
+      // const res = await axios.get("/static/json/poet.song.4000.json");
       const res = await postPageApi({
         ...this.form,
         createBy: this.userInfo && this.userInfo.username,
       });
+          // arr.map(it =>{
+          //   debugger
+          //   this.pt({
+          //     title: it.title + '-' + it.author ,
+          //     content: it.paragraphs.length?it.paragraphs.join("<br>"):it.title,
+          //     cate: 137,
+          //     views: 0,
+          //     keywords: it.title + ',' + it.author,
+          //     createBy: this.userInfo && this.userInfo.username,
+          //   });
+          // })
+          
       if (res) {
         this.$message.success("添加成功");
         this.$router.push({ path: "/admin/pageList" });
       }
     },
+    // async pt(data) {
+    //   const res = await postPageApi({
+    //     ...data,
+    //     createBy: this.userInfo && this.userInfo.username,
+    //   });
+    // },
     async getDetail(id) {
       const res = await getDetailByIdApi({ id: id });
       if (res) {
-        this.$set(this, "form", res.result);
+        this.$set(this, "form", res.data.result);
         this.editor.txt.html(this.form.content);
       }
     },
@@ -234,7 +259,7 @@ export default {
 <style scoped lang="less">
 .post {
   width: 100%;
-  .optionsWidth{
+  .optionsWidth {
     width: 350px;
   }
 }

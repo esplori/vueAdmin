@@ -44,7 +44,7 @@ export default {
     async getList() {
       let res = await getCommentApi();
       if (res) {
-        this.list = res.result;
+        this.list = res.data.result;
       }
     },
     async del(id) {

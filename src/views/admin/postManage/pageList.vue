@@ -97,21 +97,21 @@ export default {
     async getCate() {
       const res = await getCateApi({});
       if (res) {
-        this.cateList = res.result;
+        this.cateList = res.data.result;
       }
     },
     async getListByCate() {
       const res = await getListByCateApi(this.params);
       if (res) {
-        this.list = res.result;
-        this.total = res.total;
+        this.list = res.data.result;
+        this.total = res.data.total;
       }
     },
     async getAllList() {
       const res = await getListApi(this.params);
       if (res) {
-        this.list = res.result;
-        this.total = res.total;
+        this.list = res.data.result;
+        this.total = res.data.total;
       }
     },
     async del(id) {

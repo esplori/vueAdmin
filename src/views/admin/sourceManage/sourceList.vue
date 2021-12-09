@@ -116,8 +116,8 @@ export default {
     async getList(type) {
       const res = await getSourceListApi({});
       if (res) {
-        this.sourceUrl = res.sourceUrl;
-        this.list = res.result.filter((item) => {
+        this.sourceUrl = res.data.sourceUrl;
+        this.list = res.data.result.filter((item) => {
           const fig = this.typeConfig[type];
           const fn = item.filename.split(".")[1];
           return fig.includes(fn);
