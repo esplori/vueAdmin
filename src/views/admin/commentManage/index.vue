@@ -1,7 +1,7 @@
 <template>
   <div class="comments-list">
     <el-table :data="list" style="width: 100%">
-      <el-table-column label="标题">
+      <el-table-column label="用户">
         <template slot-scope="scope">
           {{ scope.row.username }}
         </template>

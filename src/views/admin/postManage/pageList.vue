@@ -26,12 +26,17 @@
           {{ scope.row.cateName }}
         </template>
       </el-table-column>
+       <el-table-column label="作者" width="120px">
+        <template slot-scope="scope">
+          {{ scope.row.createBy }}
+        </template>
+      </el-table-column>
       <el-table-column label="阅读" width="120px">
         <template slot-scope="scope">
           {{ scope.row.views }}
         </template>
       </el-table-column>
-      <el-table-column label="创建时间" width="120px">
+      <el-table-column label="创建时间" width="180px">
         <template slot-scope="scope">
           {{ scope.row.createDate }}
         </template>
