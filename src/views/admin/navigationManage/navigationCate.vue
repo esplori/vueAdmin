@@ -58,7 +58,7 @@ export default {
     async getList() {
       let res = await getNavCateApi(this.params);
       if (res) {
-        this.list = res.data.result;
+        this.list = res.data;
         this.total = res.data.total;
       }
     },
