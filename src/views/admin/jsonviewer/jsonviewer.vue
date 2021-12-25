@@ -1,11 +1,10 @@
 <template>
   <div class="jsonviewer">
-    <el-input type="textarea" :rows="10" v-model="originJsonData"></el-input>
-    <div style="padding: 20px 0">
-      <el-button type="primary" @click="handler">转换</el-button>
+    <div class="json-input">
+      <el-input type="textarea" :rows="25" v-model="originJsonData"></el-input>
     </div>
-
     <json-viewer
+    class="json-output"
       :value="jsonData"
       copyable
       boxed
@@ -26,18 +25,33 @@ export default {
     };
   },
   mounted() {
+    this.handler()
+
   },
   methods: {
     handler() {
       this.jsonData = JSON.parse(this.originJsonData)
     }
   },
+  watch:{
+    'originJsonData'(newVal,oldVal){
+      this.handler()
+    }
+  }
 };
 </script>
 
 <style scoped lang="less">
 .jsonviewer {
   width: 100%;
-  height: calc(100% - 60px);
+  display: flex;
+  .json-input{
+    flex: 1;
+    margin-right: 10px;
+  }
+  .json-output{
+    flex: 2;
+    min-height: 537px;
+  }
 }
 </style>

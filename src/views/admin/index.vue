@@ -22,7 +22,7 @@
 
         <el-submenu index="5" v-if="userInfo.role.indexOf('ROLE_admin') !== -1">
           <template slot="title">
-            <i class="el-icon-crop"></i>
+            <i class="el-icon-s-promotion"></i>
             <span slot="title">导航管理</span>
           </template>
           <el-menu-item index="/admin/navigationList">
@@ -96,7 +96,7 @@
 
         <el-submenu index="3" v-if="userInfo.role.indexOf('ROLE_admin') !== -1">
           <template slot="title">
-            <i class="el-icon-user"></i>
+            <i class="el-icon-s-custom"></i>
             <span slot="title">用户管理</span>
           </template>
           <el-menu-item index="/admin/userManage">
