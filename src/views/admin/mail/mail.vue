@@ -4,7 +4,7 @@
       <el-form-item label="收件人：">
         <el-input v-model="form.mailTo"></el-input>
       </el-form-item>
-      <el-form-item label="收件人：">
+      <el-form-item label="内容：">
         <el-input type="textarea" :rows="8" v-model="form.content"></el-input>
       </el-form-item>
       <el-form-item>

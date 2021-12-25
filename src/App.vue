@@ -9,7 +9,6 @@ export default {
   name: 'App',
   // 子组件
   components: {
-    commonFooter: () => import('./components/footer')
   }
 }
 </script>

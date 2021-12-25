@@ -4,7 +4,7 @@
       <el-input type="textarea" :rows="25" v-model="originJsonData"></el-input>
     </div>
     <json-viewer
-    class="json-output"
+      class="json-output"
       :value="jsonData"
       copyable
       boxed
@@ -20,24 +20,24 @@
 export default {
   data() {
     return {
-      originJsonData: '{"code":0,"msg":"查询成功","data":{"username":"test","password":"","role":"ROLE_author","nickname":"i am a test user","userdesc":"developer","avatar":"icom","token":null}}',
-      jsonData: {}
+      originJsonData:
+        '{"code":0,"msg":"查询成功","data":{"username":"test","password":"","role":"ROLE_author","nickname":"i am a test user","userdesc":"developer","avatar":"icom","token":null}}',
+      jsonData: {},
     };
   },
   mounted() {
-    this.handler()
-
+    this.handler();
   },
   methods: {
     handler() {
-      this.jsonData = JSON.parse(this.originJsonData)
-    }
+      this.jsonData = JSON.parse(this.originJsonData);
+    },
   },
-  watch:{
-    'originJsonData'(newVal,oldVal){
-      this.handler()
-    }
-  }
+  watch: {
+    originJsonData(newVal, oldVal) {
+      this.handler();
+    },
+  },
 };
 </script>
 
@@ -45,11 +45,11 @@ export default {
 .jsonviewer {
   width: 100%;
   display: flex;
-  .json-input{
+  .json-input {
     flex: 1;
     margin-right: 10px;
   }
-  .json-output{
+  .json-output {
     flex: 2;
     min-height: 537px;
   }

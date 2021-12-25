@@ -149,6 +149,7 @@
     <div class="right-content">
       <adminHeader></adminHeader>
       <router-view></router-view>
+      <commonFooter></commonFooter>
     </div>
   </div>
 </template>
@@ -177,6 +178,7 @@ export default {
   },
   components: {
     adminHeader: () => import("@/components/admin-header"),
+    commonFooter: () => import('@/components/footer')
   },
   mounted() {
     this.initFingerprint();
