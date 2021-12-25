@@ -20,10 +20,11 @@
         <div class="progress">
           <div>{{ currentSrc }}</div>
           <div class="progress-bar">
-            <div style="display: inline-block; width: 92%">
+            <div style="display: inline-block; width: 95%">
               <el-progress
                 :percentage="percent"
                 status="success"
+                :stroke-width="2"
                 :show-text="false"
               ></el-progress>
             </div>
@@ -41,7 +42,7 @@
           </div>
         </div>
       </div>
-      <div class="fileList">
+      <!-- <div class="fileList">
         <el-table
           :data="list"
           style="width: 100%"
@@ -51,7 +52,7 @@
           <el-table-column type="index" width="50"> </el-table-column>
           <el-table-column prop="name"> </el-table-column>
         </el-table>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -133,40 +134,47 @@ export default {
 
 <style scoped lang="less">
 .wi-music {
+  z-index: 100;
   width: 100%;
-  height: 100%;
+  // height: 100%;
   .music-box {
+    
     // display: flex;
     // justify-content: center;
     // align-items: center;
-    width: 400px;
-    margin: auto;
-    margin-top: 200px;
-    border: 1px solid #f5f5f5;
-    border-radius: 5px;
+    // width: 400px;
+    // margin: auto;
+    // margin-top: 200px;
+    // border: 1px solid #f5f5f5;
+    // border-radius: 5px;
     .music {
       overflow: hidden;
-      width: 400px;
+      // width: 400px;
       height: 80px;
-      background: #fff;
+      // background: rgba(black, black, black, 1);
+      background: #000;
+      opacity: 0.6;
       display: flex;
       justify-content: flex-start;
-      border-bottom: 1px solid #f5f5f5;
+      color: #fff;
+      // border-bottom: 1px solid #f5f5f5;
       .cover {
         position: relative;
+        display: flex;
         i {
           display: inline-block;
           width: 20px;
           height: 20px;
-          font-size: 20px;
+          font-size: 40px;
           position: absolute;
-          bottom: 5px;
-          right: 5px;
+          bottom: 40px;
+          right: 40px;
           color: #fff;
         }
       }
       .progress {
         width: 100%;
+        height: 2px;
         display: flex;
         padding: 8px;
         justify-content: space-between;

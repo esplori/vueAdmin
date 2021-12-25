@@ -62,9 +62,9 @@
             <i class="el-icon-crop"></i>
             <span slot="title">小工具</span>
           </template>
-          <el-menu-item index="/admin/music">
+          <!-- <el-menu-item index="/admin/music">
             <span slot="title">音乐分享</span>
-          </el-menu-item>
+          </el-menu-item> -->
           <!-- <el-menu-item index="/admin/fiction">
             <span slot="title">小说阅读</span>
           </el-menu-item> -->
@@ -151,6 +151,7 @@
       <router-view></router-view>
       <commonFooter></commonFooter>
     </div>
+    <music class="global-music"></music>
   </div>
 </template>
 
@@ -178,7 +179,8 @@ export default {
   },
   components: {
     adminHeader: () => import("@/components/admin-header"),
-    commonFooter: () => import('@/components/footer')
+    commonFooter: () => import('@/components/footer'),
+    music: () => import('@/views/admin/musicManage/music.vue')
   },
   mounted() {
     this.initFingerprint();
@@ -238,6 +240,7 @@ export default {
 .admin-home {
   height: 100%;
   display: flex;
+  position: relative;
   .left-menu {
     background: #001529;
     color: #fff;
@@ -261,6 +264,14 @@ export default {
   .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 220px;
     min-height: 400px;
+  }
+  .global-music{
+    width: 100%;
+    position: absolute;
+    bottom: 0 ;
+    // background:rgba(#000,0.8);
+    // height: 80px;
+    color: #fff;
   }
 }
 </style>
