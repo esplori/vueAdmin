@@ -126,7 +126,7 @@ const router = new Router({
         },
         {
           path: 'comments',
-          component: () => import('@/views/admin/commentManage/index')
+          component: () => import('@/views/admin/postManage/commentList')
         }
       ]
     }
