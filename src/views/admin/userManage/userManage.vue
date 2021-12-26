@@ -1,6 +1,6 @@
 <template>
   <div class="user-manage">
-    <el-button @click="insertUser" type="primary">新增用户</el-button>
+    <el-button @click="insertUser" type="text ">新增用户</el-button>
     <el-table :data="data">
       <el-table-column prop="username" label="用户名"> </el-table-column>
       <el-table-column prop="role" label="角色Id"> </el-table-column>

@@ -31,6 +31,9 @@
           <el-menu-item index="/admin/navigationCate">
             <span slot="title">分类管理</span>
           </el-menu-item>
+          <el-menu-item index="/admin/navigationEdit">
+            <span slot="title">新增导航</span>
+          </el-menu-item>
         </el-submenu>
         <el-submenu index="1">
           <template slot="title">

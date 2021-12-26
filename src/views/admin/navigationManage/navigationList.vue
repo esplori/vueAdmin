@@ -1,7 +1,6 @@
 <template>
   <div class="page-list">
     <div class="handle">
-      <el-button type="primary" @click="insertPage">新增网站</el-button>
       <!-- <el-button type="primary" @click="multipleDel">批量删除</el-button> -->
     </div>
     <el-table :data="list" style="width: 100%">
@@ -46,11 +45,6 @@ export default {
     this.getList();
   },
   methods: {
-    insertPage() {
-      this.$router.push({
-        path: "navigationEdit",
-      });
-    },
     async getList() {
       let res = await getListApi(this.params);
       if (res) {
