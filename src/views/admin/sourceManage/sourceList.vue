@@ -44,7 +44,7 @@
       </el-table-column>
       <el-table-column fixed="right" width="120" label="操作">
         <template slot-scope="scope">
-          <el-button @click="del(scope.row.filename)" type="danger"
+          <el-button @click="del(scope.row.filename)" type="text"
             >删除</el-button
           >
         </template>

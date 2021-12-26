@@ -6,11 +6,11 @@
       <el-table-column prop="role" label="角色Id"> </el-table-column>
       <el-table-column fixed="right" width="180" label="操作">
         <template slot-scope="scope">
-          <el-button @click="edit(scope.row)" type="primary">编辑</el-button>
+          <el-button @click="edit(scope.row)" type="text">编辑</el-button>
           <!-- 不允许删除管理员 -->
           <el-button
             @click="del(scope.row.id, scope.row.username)"
-            type="danger"
+            type="text"
             :disabled="scope.row.role.indexOf('admin') !== -1"
             >删除</el-button
           >
