@@ -138,7 +138,6 @@ export default {
   width: 100%;
   // height: 100%;
   .music-box {
-    
     // display: flex;
     // justify-content: center;
     // align-items: center;

@@ -46,7 +46,7 @@ const router = new Router({
         },
         {
           path: 'cate',
-          component: () => import('@/views/admin/cateManage/cateList')
+          component: () => import('@/views/admin/postManage/cateList')
         },
         {
           path: 'systemSetting',
