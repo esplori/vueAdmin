@@ -90,7 +90,7 @@ const router = new Router({
         },
         {
           path: 'roleManage',
-          component: () => import('@/views/admin/roleManage/roleManage')
+          component: () => import('@/views/admin/userManage/roleManage')
         },
         {
           path: 'fiction',
