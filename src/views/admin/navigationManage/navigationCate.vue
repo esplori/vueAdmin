@@ -10,7 +10,7 @@
       <el-table-column label="操作" width="180">
         <template slot-scope="scope">
           <el-button @click="edit(scope.row)" type="text">编辑</el-button>
-          <el-button @click="del(scope.row.id)" type="text">删除</el-button>
+          <el-button @click="del(scope.row.id)" type="text" class="cus-button-danger">删除</el-button>
         </template>
       </el-table-column>
     </el-table>

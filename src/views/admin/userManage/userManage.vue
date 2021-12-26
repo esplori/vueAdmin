@@ -11,6 +11,7 @@
           <el-button
             @click="del(scope.row.id, scope.row.username)"
             type="text"
+            class="cus-button-danger"
             :disabled="scope.row.role.indexOf('admin') !== -1"
             >删除</el-button
           >
