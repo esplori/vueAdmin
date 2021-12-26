@@ -70,7 +70,7 @@ const router = new Router({
         },
         {
           path: 'sourceList',
-          component: () => import('@/views/admin/sourceManage/sourceList')
+          component: () => import('@/views/admin/setting/sourceList')
         },
         {
           path: 'caiji',
