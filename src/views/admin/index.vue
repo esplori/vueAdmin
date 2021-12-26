@@ -68,28 +68,28 @@
           <!-- <el-menu-item index="/admin/fiction">
             <span slot="title">小说阅读</span>
           </el-menu-item> -->
-          <el-menu-item index="/admin/jsonviewer">
+          <el-menu-item index="/admin/tools/jsonviewer">
             <span slot="title">json格式化</span>
           </el-menu-item>
-          <el-menu-item index="/admin/choujiang">
+          <el-menu-item index="/admin/tools/choujiang">
             <span slot="title">抽奖</span>
           </el-menu-item>
           <el-menu-item
-            index="/admin/mail"
+            index="/admin/tools/mail"
             v-if="userInfo.role.indexOf('ROLE_admin') !== -1"
           >
             <span slot="title">发送邮件</span>
           </el-menu-item>
-          <el-menu-item index="/admin/dianming">
+          <el-menu-item index="/admin/tools/dianming">
             <span slot="title">点名</span>
           </el-menu-item>
-          <el-menu-item index="/admin/img2base64">
+          <el-menu-item index="/admin/tools/img2base64">
             <span slot="title">图片转成base64</span>
           </el-menu-item>
           <!-- <el-menu-item index="/admin/compressJs">
             <span slot="title">js压缩</span>
           </el-menu-item> -->
-          <el-menu-item index="/admin/qrcode">
+          <el-menu-item index="/admin/tools/qrcode">
             <span slot="title">二维码生成</span>
           </el-menu-item>
         </el-submenu>
