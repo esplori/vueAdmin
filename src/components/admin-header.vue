@@ -1,6 +1,8 @@
 <template>
   <div class="admin-header">
-    <div class="tips">tips</div>
+    <div class="tips">
+     <i class="el-icon-bell"></i>  <span class="welcomeMsg">{{welcomeMsg}}</span>
+    </div>
     <div class="user-info">
       <div>
         <a href="https://www.dsiab.com" target="_blank">查看站点</a>
@@ -14,7 +16,9 @@
 export default {
   name: "admin-header",
   data() {
-    return {};
+    return {
+      welcomeMsg: ' 欢迎来到javascript技术分享网站,有问题可以发送邮件'
+    };
   },
   components: {
     userInfo: () => import("@/components/userInfo.vue"),
@@ -24,7 +28,7 @@ export default {
 
 <style scoped lang="less">
 .admin-header {
-  padding: 10px;
+  padding: 20px 0;
   margin-bottom: 10px;
   background: #fff;
   color: #71777c;
@@ -35,6 +39,12 @@ export default {
   .user-info {
     display: flex;
     justify-content: flex-end;
+  }
+  .tips{
+    .welcomeMsg{
+      margin-left: 10px;
+      font-size: 16px;
+    }
   }
 }
 </style>

@@ -245,9 +245,10 @@ export default {
     background: #001529;
     color: #fff;
     .logo {
-      font-size: 20px;
+      font-size: 18px;
       text-align: center;
       padding: 15px 0;
+      color: #000;
     }
     .switch-icon {
       text-align: center;
@@ -257,7 +258,7 @@ export default {
   }
   .right-content {
     width: 100%;
-    padding: 20px;
+    padding: 0 20px 20px 20px;
     margin-bottom: 20px;
     overflow-y: auto;
   }

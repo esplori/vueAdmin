@@ -19,7 +19,7 @@
           <i class="el-icon-video-play" v-if="playIcon" @click="startClick"></i>
         </div>
         <div class="progress">
-          <div>{{ currentSrc }}</div>
+          <div>歌曲：{{ currentSrc }}</div>
           <div class="progress-bar">
             <div style="display: inline-block; width: 95%">
               <el-progress
@@ -175,6 +175,7 @@ export default {
           bottom: 40px;
           right: 40px;
           color: #fff;
+          cursor: pointer;
         }
       }
       .progress {
