@@ -1,5 +1,6 @@
 <template>
-  <div class="wi-music">
+  <div class="wi-music" v-if="isClose == 'open' ">
+    <i class="el-icon-close close" @click="close"></i>
     <div class="music-box">
       <audio :src="src" controls ref="audio" style="display: none"></audio>
       <div ref="music" class="music">
@@ -80,6 +81,7 @@ export default {
       playIcon: true,
       volume: 0.2,
       interval: null,
+      isClose: sessionStorage.getItem("isClose") || 'open'
     };
   },
   mounted() {
@@ -90,6 +92,10 @@ export default {
     clearInterval(this.interval);
   },
   methods: {
+    close() {
+      this.isClose = 'close'
+      sessionStorage.setItem("isClose", "close")
+    },
     startClick() {
       const _this = this;
       this.$refs.audio.play();
@@ -193,6 +199,15 @@ export default {
       width: 100%;
       background: #fff;
     }
+  }
+  .close{
+    cursor: pointer;
+    color: #fff;
+    z-index: 200;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 24px;
   }
 }
 </style>

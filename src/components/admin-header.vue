@@ -1,9 +1,12 @@
 <template>
   <div class="admin-header">
-    <div>
-      <a href="https://www.dsiab.com" target="_blank">查看站点</a>
+    <div class="tips">tips</div>
+    <div class="user-info">
+      <div>
+        <a href="https://www.dsiab.com" target="_blank">查看站点</a>
+      </div>
+      <userInfo></userInfo>
     </div>
-    <userInfo></userInfo>
   </div>
 </template>
 
@@ -11,8 +14,7 @@
 export default {
   name: "admin-header",
   data() {
-    return {
-    };
+    return {};
   },
   components: {
     userInfo: () => import("@/components/userInfo.vue"),
@@ -27,7 +29,12 @@ export default {
   background: #fff;
   color: #71777c;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid #ddd;
+  .user-info {
+    display: flex;
+    justify-content: flex-end;
+  }
 }
 </style>
