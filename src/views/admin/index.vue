@@ -10,9 +10,9 @@
         @close="handleClose"
         :collapse="isCollapse"
         router
-        background-color="#001529"
-        text-color="#fff"
-        active-text-color="#ffd04b"
+        background-color="#fff"
+        text-color="#000"
+        active-text-color="#333"
       >
         <div class="logo">DSIAB</div>
         <el-menu-item index="/admin/home">
