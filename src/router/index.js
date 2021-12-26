@@ -50,11 +50,11 @@ const router = new Router({
         },
         {
           path: 'systemSetting',
-          component: () => import('@/views/admin/systemManage/systemSetting')
+          component: () => import('@/views/admin/setting/systemSetting')
         },
         {
           path: 'userSetting',
-          component: () => import('@/views/admin/systemManage/userSetting')
+          component: () => import('@/views/admin/setting/userSetting')
         },
         {
           path: 'navigationList',
