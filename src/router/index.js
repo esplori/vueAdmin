@@ -98,39 +98,39 @@ const router = new Router({
           children: [
             {
               path: 'qrcode',
-              component: () => import('@/views/admin/qrcode/index')
+              component: () => import('@/views/admin/tools/qrcode/index')
             },
             {
               path: 'dianming',
-              component: () => import('@/views/admin/dianming/dianming')
+              component: () => import('@/views/admin/tools/dianming/dianming')
             },
             {
               path: 'img2base64',
-              component: () => import('@/views/admin/img2base64/img2base64')
+              component: () => import('@/views/admin/tools/img2base64/img2base64')
             },
             {
               path: 'compressJs',
-              component: () => import('@/views/admin/compressJs/index')
+              component: () => import('@/views/admin/tools/compressJs/index')
             },
             {
               path: 'fiction',
-              component: () => import('@/views/admin/fiction/fiction')
+              component: () => import('@/views/admin/tools/fiction/fiction')
             },
             {
               path: 'jsonviewer',
-              component: () => import('@/views/admin/jsonviewer/jsonviewer')
+              component: () => import('@/views/admin/tools/jsonviewer/jsonviewer')
             },
             {
               path: 'choujiang',
-              component: () => import('@/views/admin/choujiang/choujiang')
+              component: () => import('@/views/admin/tools/choujiang/choujiang')
             },
             {
               path: 'music',
-              component: () => import('@/views/admin/musicManage/music')
+              component: () => import('@/views/admin/tools/musicManage/music')
             },
             {
               path: 'mail',
-              component: () => import('@/views/admin/mail/mail')
+              component: () => import('@/views/admin/tools/mail/index')
             },
           ]
         },

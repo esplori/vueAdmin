@@ -7,7 +7,7 @@
           <img
             width="80px"
             height="80px"
-            src="../../../assets/images/music/cover.jpeg"
+            src="@/assets/images/music/cover.jpeg"
             alt=""
           />
           <i

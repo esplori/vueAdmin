@@ -26,7 +26,7 @@ export default {
   data() {
     return {
       form: {
-        imageUrl: require("../../../assets/images/music/cover.jpeg"),
+        imageUrl: require("@/assets/images/music/cover.jpeg"),
         text: "https://www.dsiab.com",
         size: 200,
       },

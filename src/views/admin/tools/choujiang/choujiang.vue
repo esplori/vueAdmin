@@ -36,7 +36,7 @@
         <h1>恭喜您</h1>
         <p>
           <img
-            src="../../../assets/images/choujiang/j2.png"
+            src="@/assets/images/choujiang/j2.png"
             alt=""
           />
         </p>
@@ -197,10 +197,10 @@ li {
 }
 @keyframes changeBg {
   0% {
-    background-image: url(../../../assets/images/choujiang/k1.png);
+    background-image: url(../../../../assets/images/choujiang/k1.png);
   }
   100% {
-    background-image: url(../../../assets/images/choujiang/k2.png);
+    background-image: url(../../../../assets/images/choujiang/k2.png);
   }
 }
 .lottery .lottery-item {
@@ -245,7 +245,7 @@ li {
   position: relative;
   text-align: center;
   overflow: hidden;
-  background: url(../../../assets/images/choujiang/bg2.png)
+  background: url(../../../../assets/images/choujiang/bg2.png)
     no-repeat center;
   background-size: 100% 100%;
 }
@@ -264,7 +264,7 @@ li {
   font-size: 14px;
 }
 .lottery .lottery-item ul li.on .box {
-  background: url(../../../assets/images/choujiang/bg1.png)
+  background: url(../../../../assets/images/choujiang/bg1.png)
     no-repeat center;
   background-size: 100% 100%;
 }
@@ -285,7 +285,7 @@ li {
   cursor: pointer;
   text-align: center;
   overflow: hidden;
-  background: url(../../../assets/images/choujiang/bg1.png)
+  background: url(../../../../assets/images/choujiang/bg1.png)
     no-repeat center;
   background-size: 100% 100%;
 }
@@ -300,7 +300,7 @@ li {
   opacity: 0.7;
 }
 .lottery .lottery-item .lottery-start .box.gray {
-  background: url(../../../assets/images/choujiang/bg3.png)
+  background: url(../../../../assets/images/choujiang/bg3.png)
     no-repeat center;
   background-size: 100% 100%;
 }

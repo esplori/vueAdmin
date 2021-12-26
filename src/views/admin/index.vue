@@ -62,7 +62,7 @@
             <i class="el-icon-crop"></i>
             <span slot="title">小工具</span>
           </template>
-          <!-- <el-menu-item index="/admin/music">
+          <!-- <el-menu-item index="/admin/tools/music">
             <span slot="title">音乐分享</span>
           </el-menu-item> -->
           <!-- <el-menu-item index="/admin/fiction">
@@ -180,7 +180,7 @@ export default {
   components: {
     adminHeader: () => import("@/components/admin-header"),
     commonFooter: () => import('@/components/footer'),
-    music: () => import('@/views/admin/musicManage/music.vue')
+    music: () => import('@/views/admin/tools/musicManage/music.vue')
   },
   mounted() {
     this.initFingerprint();
