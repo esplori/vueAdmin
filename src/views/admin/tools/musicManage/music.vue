@@ -19,7 +19,7 @@
           <i class="el-icon-video-play" v-if="playIcon" @click="startClick"></i>
         </div>
         <div class="progress">
-          <div>歌曲：{{ currentSrc }}</div>
+          <div class="name">歌曲：{{ currentSrc }}</div>
           <div class="progress-bar">
             <div style="display: inline-block; width: 95%">
               <el-progress
@@ -155,7 +155,7 @@ export default {
     .music {
       overflow: hidden;
       // width: 400px;
-      height: 80px;
+      height: 50px;
       // background: rgba(black, black, black, 1);
       background: #000;
       opacity: 0.6;
@@ -170,9 +170,9 @@ export default {
           display: inline-block;
           width: 20px;
           height: 20px;
-          font-size: 40px;
+          font-size: 30px;
           position: absolute;
-          bottom: 40px;
+          bottom: 20px;
           right: 40px;
           color: #fff;
           cursor: pointer;
@@ -182,10 +182,13 @@ export default {
         width: 100%;
         height: 2px;
         display: flex;
-        padding: 8px;
+        padding: 2px 20px;
         justify-content: space-between;
         flex-direction: column;
         box-sizing: content-box;
+        .name{
+          font-size: 14px;
+        }
         .progress-bar {
           i {
             display: inline-block;
@@ -208,7 +211,7 @@ export default {
     position: absolute;
     right: 20px;
     top: 10px;
-    font-size: 24px;
+    font-size: 20px;
   }
 }
 </style>
