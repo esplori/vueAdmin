@@ -12,15 +12,15 @@ const router = new Router({
     },
     {
       path: '/login',
-      component: () => import('@/views/account/login')
+      component: () => import(/* webpackChunkName: "login" */'@/views/account/login')
     },
     {
       path: '/reg',
-      component: () => import('@/views/account/reg')
+      component: () => import(/* webpackChunkName: "reg" */'@/views/account/reg')
     },
     {
       path: '/admin',
-      component: () => import('@/views/admin/index'),
+      component: () => import(/* webpackChunkName: "admin" */'@/views/admin/index'),
       children: [
         {
           path: '',
@@ -28,15 +28,15 @@ const router = new Router({
         },
         {
           path: 'home',
-          component: () => import('@/views/admin/workbench/home')
+          component: () => import(/* webpackChunkName: "home" */'@/views/admin/workbench/home')
         },
         {
           path: 'pageList',
-          component: () => import('@/views/admin/postManage/pageList')
+          component: () => import(/* webpackChunkName: "pageList" */'@/views/admin/postManage/pageList')
         },
         {
           path: 'post',
-          component: () => import('@/views/admin/postManage/post')
+          component: () => import(/* webpackChunkName: "post" */'@/views/admin/postManage/post')
         },
         {
           path: 'edit',
@@ -44,67 +44,67 @@ const router = new Router({
         },
         {
           path: 'cate',
-          component: () => import('@/views/admin/postManage/cateList')
+          component: () => import(/* webpackChunkName: "cateList" */'@/views/admin/postManage/cateList')
         },
         {
           path: 'systemSetting',
-          component: () => import('@/views/admin/setting/systemSetting')
+          component: () => import(/* webpackChunkName: "systemSetting" */'@/views/admin/setting/systemSetting')
         },
         {
           path: 'userSetting',
-          component: () => import('@/views/admin/setting/userSetting')
+          component: () => import(/* webpackChunkName: "userSetting" */'@/views/admin/setting/userSetting')
         },
         {
           path: 'navigationList',
-          component: () => import('@/views/admin/navigationManage/navigationList')
+          component: () => import(/* webpackChunkName: "navigationList" */'@/views/admin/navigationManage/navigationList')
         },
         {
           path: 'navigationCate',
-          component: () => import('@/views/admin/navigationManage/navigationCate')
+          component: () => import(/* webpackChunkName: "navigationCate" */'@/views/admin/navigationManage/navigationCate')
         },
         {
           path: 'navigationEdit',
-          component: () => import('@/views/admin/navigationManage/navigationEdit')
+          component: () => import(/* webpackChunkName: "navigationEdit" */'@/views/admin/navigationManage/navigationEdit')
         },
         {
           path: 'sourceList',
-          component: () => import('@/views/admin/setting/sourceList')
+          component: () => import(/* webpackChunkName: "sourceList" */'@/views/admin/setting/sourceList')
         },
         {
           path: 'caiji',
-          component: () => import('@/views/admin/caiji/caiji')
+          component: () => import(/* webpackChunkName: "caiji" */'@/views/admin/caiji/caiji')
         },
         {
           path: 'caijiList',
-          component: () => import('@/views/admin/caiji/caijiList')
+          component: () => import(/* webpackChunkName: "caijiList" */'@/views/admin/caiji/caijiList')
         },
         {
           path: 'userManage',
-          component: () => import('@/views/admin/userManage/userManage')
+          component: () => import(/* webpackChunkName: "userManage" */'@/views/admin/userManage/userManage')
         },
         {
           path: 'roleManage',
-          component: () => import('@/views/admin/userManage/roleManage')
+          component: () => import(/* webpackChunkName: "roleManage" */'@/views/admin/userManage/roleManage')
         },
         {
           path: 'comments',
-          component: () => import('@/views/admin/postManage/commentList')
+          component: () => import(/* webpackChunkName: "comments" */'@/views/admin/postManage/commentList')
         },
         {
           path: 'tools',
-          component: () => import('@/views/admin/tools/index'),
+          component: () => import(/* webpackChunkName: "tools" */'@/views/admin/tools/index'),
           children: [
             {
               path: 'qrcode',
-              component: () => import('@/views/admin/tools/qrcode/index')
+              component: () => import(/* webpackChunkName: "qrcode" */'@/views/admin/tools/qrcode/index')
             },
             {
               path: 'dianming',
-              component: () => import('@/views/admin/tools/dianming/dianming')
+              component: () => import(/* webpackChunkName: "dianming" */'@/views/admin/tools/dianming/dianming')
             },
             {
               path: 'img2base64',
-              component: () => import('@/views/admin/tools/img2base64/img2base64')
+              component: () => import(/* webpackChunkName: "img2base64" */'@/views/admin/tools/img2base64/img2base64')
             },
             {
               path: 'compressJs',
@@ -120,15 +120,15 @@ const router = new Router({
             },
             {
               path: 'choujiang',
-              component: () => import('@/views/admin/tools/choujiang/choujiang')
+              component: () => import(/* webpackChunkName: "choujiang" */'@/views/admin/tools/choujiang/choujiang')
             },
             {
               path: 'music',
-              component: () => import('@/views/admin/tools/musicManage/music')
+              component: () => import(/* webpackChunkName: "music" */'@/views/admin/tools/musicManage/music')
             },
             {
               path: 'mail',
-              component: () => import('@/views/admin/tools/mail/index')
+              component: () => import(/* webpackChunkName: "mail" */'@/views/admin/tools/mail/index')
             },
           ]
         },

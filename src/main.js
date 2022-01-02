@@ -10,7 +10,7 @@ import '@/assets/css/common.css'
 import JsonViewer from 'vue-json-viewer'
 
 Vue.use(JsonViewer)
-Vue.use(ElementUI, {size: 'medium'})
+Vue.use(ElementUI, { size: 'medium' })
 Vue.config.productionTip = false
 
 new Vue({
