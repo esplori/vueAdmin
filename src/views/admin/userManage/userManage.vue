@@ -2,6 +2,7 @@
   <div class="user-manage">
     <el-button @click="insertUser" type="text ">新增用户</el-button>
     <el-table :data="data">
+      <el-table-column  type="index" label="序号" width="55px"></el-table-column>
       <el-table-column prop="username" label="用户名"> </el-table-column>
       <el-table-column prop="role" label="角色Id"> </el-table-column>
       <el-table-column fixed="right" width="180" label="操作">

@@ -1,7 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import login from '@/views/account/login'
-import admin from '@/views/admin/index'
 
 Vue.use(Router)
 
@@ -14,7 +12,7 @@ const router = new Router({
     },
     {
       path: '/login',
-      component: login
+      component: () => import('@/views/account/login')
     },
     {
       path: '/reg',
@@ -22,7 +20,7 @@ const router = new Router({
     },
     {
       path: '/admin',
-      component: admin,
+      component: () => import('@/views/admin/index'),
       children: [
         {
           path: '',

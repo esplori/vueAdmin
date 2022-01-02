@@ -11,6 +11,7 @@
       <el-tab-pane label="代码" name="code"></el-tab-pane>
     </el-tabs>
     <el-table :data="list" style="width: 100%">
+      <el-table-column  type="index" label="序号" width="55px"></el-table-column>
       <el-table-column type="selection" width="55"> </el-table-column>
       <el-table-column prop="" label="名称">
         <template slot-scope="scope">

@@ -11,7 +11,8 @@
       ></el-option>
     </el-select>
     <el-table :data="list">
-      <el-table-column label="标题">
+      <el-table-column type="index" label="序号" width="55px"></el-table-column>
+      <el-table-column label="标题" >
         <template slot-scope="scope">
           <a
             style="color: #333"
