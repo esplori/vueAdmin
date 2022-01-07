@@ -68,7 +68,6 @@
 import {
   delApi,
   getListByCateApi,
-  getListApi,
   getCateApi,
 } from "@/views/API/admin.js";
 
@@ -78,7 +77,7 @@ export default {
       list: [],
       params: {
         page: 1,
-        cate: null,
+        cate: '',
       },
       total: 0,
       cateList: [],
@@ -94,11 +93,7 @@ export default {
       this.getList();
     },
     getList() {
-      if (this.params.cate !== null) {
-        this.getListByCate();
-      } else {
-        this.getAllList();
-      }
+      this.getListByCate();
     },
     async getCate() {
       const res = await getCateApi({});
@@ -108,13 +103,6 @@ export default {
     },
     async getListByCate() {
       const res = await getListByCateApi(this.params);
-      if (res) {
-        this.list = res.data.result;
-        this.total = res.data.total;
-      }
-    },
-    async getAllList() {
-      const res = await getListApi(this.params);
       if (res) {
         this.list = res.data.result;
         this.total = res.data.total;

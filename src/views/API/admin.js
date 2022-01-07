@@ -2,9 +2,9 @@ import { get, post } from '@/utils/axios.js'
 import contextPath from '@/config/context-path.js'
 
 export async function getListByCateApi(data) {
-  const url = `${contextPath}/admin/getList/cate/${data.cate}/page/${data.page || 1}`
+  const url = `${contextPath}/admin/getList`
   const options = {}
-  return get(url, {}, options)
+  return post(url, data, options)
 }
 export async function getListApi(data) {
   const url = `${contextPath}/admin/getList/${data.page}`
