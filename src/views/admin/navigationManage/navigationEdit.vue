@@ -1,14 +1,14 @@
 <template>
   <div class="post">
     <el-form label-width="80px" :model="form">
-      <el-form-item label="标题：">
+      <el-form-item label="名称：">
         <el-input v-model="form.title"></el-input>
       </el-form-item>
       <el-form-item label="地址：">
         <el-input v-model="form.url" :rows="10"></el-input>
       </el-form-item>
-      <el-form-item label="内容：">
-        <el-input type="textarea" v-model="form.content" :rows="10"></el-input>
+      <el-form-item label="描述：">
+        <el-input type="textarea" v-model="form.content" :rows="5"></el-input>
       </el-form-item>
       <el-form-item label="分类：">
         <el-select v-model="form.cate">

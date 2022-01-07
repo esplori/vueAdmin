@@ -154,7 +154,7 @@
       <router-view></router-view>
       <commonFooter></commonFooter>
     </div>
-    <music class="global-music"></music>
+    <!-- <music class="global-music"></music> -->
   </div>
 </template>
 
@@ -266,7 +266,7 @@ export default {
     overflow-y: auto;
   }
   .el-menu-vertical-demo:not(.el-menu--collapse) {
-    width: 220px;
+    width: 180px;
     min-height: 400px;
   }
   .global-music{

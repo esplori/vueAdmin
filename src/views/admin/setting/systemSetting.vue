@@ -47,7 +47,7 @@
               <el-button @click="add" v-show="scope.$index === tableData.length - 1"
                 >新增</el-button
               >
-              <el-button @click="del($index)" v-show="scope.$index === tableData.length - 1"
+              <el-button type="danger" @click="del($index)" v-show="scope.$index === tableData.length - 1"
                 >删除</el-button
               >
             </template>
