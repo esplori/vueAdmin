@@ -444,10 +444,12 @@ export default {
       }
     },
     initCharts() {
-      this.initDeviceType();
-      this.initBrowserType();
-      this.initDeiveRatio();
-      this.initDayViews();
+      this.$nextTick(() => {
+        this.initDeviceType();
+        this.initBrowserType();
+        this.initDeiveRatio();
+        this.initDayViews();
+      });
     },
   },
 };
