@@ -55,8 +55,9 @@
         @current-change="handleCurrentChange"
         :current-page="params.page"
         :page-size="params.pageSize"
+        :page-sizes="[10, 20, 30, 50]"
         :pager-count="5"
-        layout="total, prev, pager, next, jumper"
+        layout="total, sizes, prev, pager, next, jumper"
         :total="total"
       >
       </el-pagination>
@@ -78,6 +79,7 @@ export default {
       params: {
         page: 1,
         cate: '',
+        pageSize: 10
       },
       total: 0,
       cateList: [],
