@@ -172,3 +172,9 @@ export async function generateKeywordsApi(data) {
   const options = { showLoading: true }
   return post(url, data, options)
 }
+
+export async function clearCacheApi(data) {
+  const url = `${contextPath}/admin/clearCache`
+  const options = { showLoading: true }
+  return post(url, data, options)
+}
