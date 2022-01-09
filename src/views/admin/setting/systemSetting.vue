@@ -26,7 +26,7 @@
         <el-input v-model="form.siteEmail"> </el-input>
       </el-form-item>
       <el-form-item label="重新生成关键字:">
-        <el-button type="primary" @click="generateKeywords">重新生成</el-button>
+        <el-button type="primary" @click="generateKeywords">生成</el-button>
       </el-form-item>
       <el-form-item label="清空redis缓存:">
         <el-button type="primary" @click="clearCache">清空</el-button>
