@@ -1,35 +1,36 @@
 <template>
   <div class="user-info">
-    <el-form :model="form" label-width="130px" label-position="left">
+    <el-form :model="form" label-width="130px" label-position="left" style="width:60%">
       <el-form-item label="站点名称:">
-        <el-input v-model="form.siteName" type="textarea"></el-input>
+        <el-input v-model="form.siteName"></el-input>
       </el-form-item>
       <el-form-item label="站点描述:">
-        <el-input v-model="form.siteDesc" type="textarea"></el-input>
+        <el-input v-model="form.siteDesc" type="textarea" :rows="3"></el-input>
       </el-form-item>
       <el-form-item label="站点地址:">
         <el-input v-model="form.siteUrl"> </el-input>
       </el-form-item>
       <el-form-item label="文件引用路径:">
-        <el-input v-model="form.sourceUrl" type="textarea"> </el-input>
+        <el-input v-model="form.sourceUrl"> </el-input>
       </el-form-item>
       <el-form-item label="文件上传实际路径:">
-        <el-input v-model="form.sourceRealUrl" type="textarea"> </el-input>
+        <el-input v-model="form.sourceRealUrl"> </el-input>
       </el-form-item>
       <el-form-item label="文件备份实际路径:">
-        <el-input v-model="form.bakRealUrl" type="textarea"> </el-input>
+        <el-input v-model="form.bakRealUrl"> </el-input>
       </el-form-item>
       <el-form-item label="备案号:">
         <el-input v-model="form.beianNo" type="textarea"> </el-input>
       </el-form-item>
       <el-form-item label="站长邮箱:">
-        <el-input v-model="form.siteEmail" type="textarea"> </el-input>
+        <el-input v-model="form.siteEmail"> </el-input>
       </el-form-item>
       <el-form-item label="重新生成关键字:">
-        <el-button type="primary" @click="generateKeywords">确定</el-button>
+        <el-button type="primary" @click="generateKeywords">重新生成</el-button>
       </el-form-item>
       <el-form-item label="轮播管理">
         <el-table :data="tableData" style="width: 100%">
+          <el-table-column type="index" label="序号" width="55px"></el-table-column>
           <el-table-column label="轮播图片地址" width="180">
             <template slot-scope="scope">
               <el-input v-model="scope.row.imgUrl"></el-input>
@@ -58,7 +59,7 @@
         </el-table>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submit">更新</el-button>
+        <el-button type="primary" @click="submit">保存</el-button>
       </el-form-item>
     </el-form>
   </div>
