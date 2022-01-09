@@ -130,6 +130,10 @@ const router = new Router({
               path: 'mail',
               component: () => import(/* webpackChunkName: "mail" */'@/views/admin/tools/mail/index')
             },
+            {
+              path: 'download',
+              component: () => import(/* webpackChunkName: "mail" */'@/views/admin/tools/download/index')
+            },
           ]
         },
       ]

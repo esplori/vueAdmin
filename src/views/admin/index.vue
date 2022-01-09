@@ -95,6 +95,9 @@
           <el-menu-item index="/admin/tools/qrcode">
             <span slot="title">二维码生成</span>
           </el-menu-item>
+           <el-menu-item index="/admin/tools/download">
+            <span slot="title">在线下载</span>
+          </el-menu-item>
         </el-submenu>
 
         <el-submenu index="3" v-if="userInfo.role.indexOf('ROLE_admin') !== -1">
