@@ -25,6 +25,9 @@
       <el-form-item label="站长邮箱:">
         <el-input v-model="form.siteEmail" type="textarea"> </el-input>
       </el-form-item>
+      <el-form-item label="重新生成关键字:">
+        <el-button type="primary" @click="generateKeywords">确定</el-button>
+      </el-form-item>
       <el-form-item label="轮播管理">
         <el-table :data="tableData" style="width: 100%">
           <el-table-column label="轮播图片地址" width="180">
@@ -62,7 +65,7 @@
 </template>
 
 <script>
-import { updateSiteInfoApi, getSiteInfoApi } from "@/views/API/admin.js";
+import { updateSiteInfoApi, getSiteInfoApi, generateKeywordsApi } from "@/views/API/admin.js";
 
 export default {
   data() {
@@ -84,6 +87,12 @@ export default {
     this.getSiteInfo();
   },
   methods: {
+    async generateKeywords() {
+      let res = await generateKeywordsApi({})
+      if (res) {
+        this.$message.success("重新生成成功")
+      }
+    },
     async submit() {
       const res = await updateSiteInfoApi(
         Object.assign({}, this.form, {

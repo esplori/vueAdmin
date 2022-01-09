@@ -166,3 +166,9 @@ export async function delCommentApi(data) {
   const options = { showLoading: true }
   return post(url, data, options)
 }
+
+export async function generateKeywordsApi(data) {
+  const url = `${contextPath}/admin/generateKeywords`
+  const options = { showLoading: true }
+  return post(url, data, options)
+}
