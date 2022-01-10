@@ -8,7 +8,7 @@
         <el-button type="primary" @click="download">下载</el-button>
       </el-form-item>
     </el-form>
-
+<!-- 
     <div>
       文件名： <span id="filename">{{ filename }}</span>
     </div>
@@ -20,7 +20,7 @@
     </div>
     <div>
       P2P率： <span id="p2pRatio">{{ p2pRatio }}</span>
-    </div>
+    </div> -->
   </div>
 </template>
 <script>
