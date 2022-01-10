@@ -9,7 +9,7 @@
       <el-table-column label="操作" width="180">
         <template slot-scope="scope">
           <el-button @click="edit(scope.row.id)" type="text">编辑</el-button>
-          <el-button @click="del(scope.row.id)" type="text" class="cus-button-danger">删除</el-button>
+          <el-button @click="delConfirm(scope.row.id)" type="text" class="cus-button-danger">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -52,6 +52,15 @@ export default {
         this.list = res.data.result;
         this.total = res.data.total;
       }
+    },
+    delConfirm(id) {
+      this.$confirm("此操作将删除该条数据, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      }).then(() => {
+        this.del(id)
+      });
     },
     async del(id) {
       let res = await delApi({ id: id });

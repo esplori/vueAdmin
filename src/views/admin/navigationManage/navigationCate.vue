@@ -2,7 +2,7 @@
   <div class="page-list">
     <el-button type="text" @click="insertCate">新增分类</el-button>
     <el-table :data="list" style="width: 100%">
-       <el-table-column type="index" width="55" label="序号"> </el-table-column>
+      <el-table-column type="index" width="55" label="序号"> </el-table-column>
       <el-table-column label="标题">
         <template slot-scope="scope">
           {{ scope.row.name }}
@@ -11,12 +11,22 @@
       <el-table-column label="操作" width="180">
         <template slot-scope="scope">
           <el-button @click="edit(scope.row)" type="text">编辑</el-button>
-          <el-button @click="del(scope.row.id)" type="text" class="cus-button-danger">删除</el-button>
+          <el-button
+            @click="delConfirm(scope.row.id)"
+            type="text"
+            class="cus-button-danger"
+            >删除</el-button
+          >
         </template>
       </el-table-column>
     </el-table>
 
-    <el-dialog :title="title" :visible.sync="dialogVisible" width="30%" @close="handleClose">
+    <el-dialog
+      :title="title"
+      :visible.sync="dialogVisible"
+      width="30%"
+      @close="handleClose"
+    >
       <div>
         <el-input v-model="row.name" placeholder="请输入名称"></el-input>
       </div>
@@ -53,8 +63,8 @@ export default {
   },
   methods: {
     insertCate() {
-      this.dialogVisible = true
-      this.title = "新增"
+      this.dialogVisible = true;
+      this.title = "新增";
     },
     async getList() {
       let res = await getNavCateApi(this.params);
@@ -62,6 +72,15 @@ export default {
         this.list = res.data;
         this.total = res.data.total;
       }
+    },
+    delConfirm(id) {
+      this.$confirm("此操作将删除该条数据, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      }).then(() => {
+        this.del(id)
+      });
     },
     async del(id) {
       let res = await delNavCateApi({ id: id });
@@ -74,14 +93,14 @@ export default {
      * 编辑
      */
     edit(row) {
-      this.title = "编辑"
+      this.title = "编辑";
       this.dialogVisible = true;
       this.row = row;
     },
     async submit(row) {
       if (!row.name) {
-        this.$message.warning("请输入名称")
-        return
+        this.$message.warning("请输入名称");
+        return;
       }
       if (row.id) {
         let res = await updateNavCateApi(row);
@@ -108,8 +127,8 @@ export default {
       this.row = {
         id: "",
         name: "",
-      }
-    }
+      };
+    },
   },
 };
 </script>

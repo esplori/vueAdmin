@@ -30,11 +30,12 @@
                 typeConfig.image.includes(scope.row.filename.split('.')[1])
               "
             >
+            <span style="margin-right:40px">{{ scope.row.filename }}</span>
               <img
+                loading="lazy"
                 :src="sourceUrl + scope.row.filename"
                 alt=""
-                width="200px"
-                height="180px"
+                height="40px"
               />
             </div>
             <div v-else>

@@ -10,7 +10,7 @@
           <el-button @click="edit(scope.row)" type="text">编辑</el-button>
           <!-- 不允许删除管理员 -->
           <el-button
-            @click="del(scope.row.id, scope.row.username)"
+            @click="delConfirm(scope.row.id, scope.row.username)"
             type="text"
             class="cus-button-danger"
             :disabled="scope.row.role.indexOf('admin') !== -1"
@@ -121,6 +121,15 @@ export default {
       this.editObj.dialogVisible = true;
       this.editObj.currUsername = row.username;
       this.getRoleList(row);
+    },
+    delConfirm(id) {
+      this.$confirm("此操作将删除该条数据, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      }).then(() => {
+        this.del(id)
+      });
     },
     del(id, username) {
       this.delUser(id, username);
