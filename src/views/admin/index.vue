@@ -271,6 +271,7 @@ export default {
   .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 180px;
     min-height: 400px;
+    overflow-x: hidden;
   }
   .global-music{
     width: 100%;
