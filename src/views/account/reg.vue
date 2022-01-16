@@ -1,20 +1,27 @@
 <template>
   <div class="login">
     <div class="login-container">
-      <el-form :model="form">
+      <el-form :model="form" label-width="80px" :rules="rules" ref="form">
         <h2 style="text-align: center; padding: 20px 0">用户注册</h2>
-        <el-form-item>
+        <el-form-item label="用户名:" prop="username">
           <el-input v-model="form.username" placeholder="账号"></el-input>
         </el-form-item>
-        <el-form-item>
+        <el-form-item label="密码:" prop="password">
           <el-input
             v-model="form.password"
             type="password"
             placeholder="密码"
           ></el-input>
         </el-form-item>
+        <el-form-item label="邮箱:" prop="email">
+          <el-input
+            v-model="form.email"
+            type="text"
+            placeholder="密码"
+          ></el-input>
+        </el-form-item>
         <el-form-item>
-          <el-button @click="register" type="primary">提交</el-button>
+          <el-button @click="valid" type="primary">提交</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -29,6 +36,18 @@ export default {
       form: {
         username: "",
         password: "",
+        email: "",
+      },
+      rules: {
+        username: [
+          { required: true, message: "请输入用户名", trigger: "change" },
+        ],
+        password: [
+          { required: true, message: "请输入密码", trigger: "change" },
+        ],
+        email: [
+          { required: true, message: "请输入邮箱", trigger: "change" },
+        ],
       },
     };
   },
@@ -44,6 +63,15 @@ export default {
         this.$router.push({ path: "/login" });
       }
     },
+    valid() {
+      this.$refs['form'].validate((valid) => {
+          if (valid) {
+            this.register()
+          } else {
+            return false;
+          }
+        });
+    }
   },
 };
 </script>
@@ -55,6 +83,8 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  background: url("../../assets/images/bg.jpg") no-repeat;
+  background-size: cover;
   .login-container {
     width: 300px;
     background: #fff;
