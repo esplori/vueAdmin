@@ -45,9 +45,7 @@ export default {
         password: [
           { required: true, message: "请输入密码", trigger: "change" },
         ],
-        email: [
-          { required: true, message: "请输入邮箱", trigger: "change" },
-        ],
+        email: [{ required: true, message: "请输入邮箱", trigger: "change" }],
       },
     };
   },
@@ -64,14 +62,14 @@ export default {
       }
     },
     valid() {
-      this.$refs['form'].validate((valid) => {
-          if (valid) {
-            this.register()
-          } else {
-            return false;
-          }
-        });
-    }
+      this.$refs["form"].validate((valid) => {
+        if (valid) {
+          this.register();
+        } else {
+          return false;
+        }
+      });
+    },
   },
 };
 </script>

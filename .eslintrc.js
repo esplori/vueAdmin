@@ -20,6 +20,7 @@ module.exports = {
     'quotes': 0,
     'no-undef': 1,
     'prefer-const': 0,
-    'camelcase': 0
+    'camelcase': 0,
+    'dot-notation': 0
   }
 }

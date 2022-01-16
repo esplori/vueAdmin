@@ -95,8 +95,11 @@
           <el-menu-item index="/admin/tools/qrcode">
             <span slot="title">二维码生成</span>
           </el-menu-item>
-           <el-menu-item index="/admin/tools/download">
+          <el-menu-item index="/admin/tools/download">
             <span slot="title">在线下载</span>
+          </el-menu-item>
+          <el-menu-item index="/admin/tools/cssFormat">
+            <span slot="title">css压缩-格式化</span>
           </el-menu-item>
         </el-submenu>
 
@@ -185,8 +188,8 @@ export default {
   },
   components: {
     adminHeader: () => import("@/components/admin-header"),
-    commonFooter: () => import('@/components/footer'),
-    music: () => import('@/views/admin/tools/musicManage/music.vue')
+    commonFooter: () => import("@/components/footer"),
+    music: () => import("@/views/admin/tools/musicManage/music.vue"),
   },
   mounted() {
     this.initFingerprint();
@@ -273,10 +276,10 @@ export default {
     min-height: 400px;
     overflow-x: hidden;
   }
-  .global-music{
+  .global-music {
     width: 100%;
     position: absolute;
-    bottom: 0 ;
+    bottom: 0;
     // background:rgba(#000,0.8);
     // height: 80px;
     color: #fff;

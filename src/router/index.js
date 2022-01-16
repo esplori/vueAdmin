@@ -108,15 +108,15 @@ const router = new Router({
             },
             {
               path: 'compressJs',
-              component: () => import('@/views/admin/tools/compressJs/index')
+              component: () => import(/* webpackChunkName: "compressJs" */'@/views/admin/tools/compressJs/index')
             },
             {
               path: 'fiction',
-              component: () => import('@/views/admin/tools/fiction/fiction')
+              component: () => import(/* webpackChunkName: "fiction" */'@/views/admin/tools/fiction/fiction')
             },
             {
               path: 'jsonviewer',
-              component: () => import('@/views/admin/tools/jsonviewer/jsonviewer')
+              component: () => import(/* webpackChunkName: "jsonviewer" */'@/views/admin/tools/jsonviewer/jsonviewer')
             },
             {
               path: 'choujiang',
@@ -132,7 +132,11 @@ const router = new Router({
             },
             {
               path: 'download',
-              component: () => import(/* webpackChunkName: "mail" */'@/views/admin/tools/download/index')
+              component: () => import(/* webpackChunkName: "download" */'@/views/admin/tools/download/index')
+            },
+            {
+              path: 'cssFormat',
+              component: () => import(/* webpackChunkName: "cssFormat" */'@/views/admin/tools/cssFormat/index')
             },
           ]
         },
