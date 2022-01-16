@@ -1,18 +1,20 @@
 <template>
   <div class="page-list">
-    <span>按分类筛选：</span>
-    <el-select v-model="params.cate" @change="typeChange">
-      <el-option label="全部" :value="null"></el-option>
-      <el-option
-        v-for="(item, index) in cateList"
-        :key="index"
-        :label="item.name"
-        :value="item.id"
-      ></el-option>
-    </el-select>
+    <div class="select-by-cate">
+      <span>按分类筛选：</span>
+      <el-select v-model="params.cate" @change="typeChange">
+        <el-option label="全部" :value="null"></el-option>
+        <el-option
+          v-for="(item, index) in cateList"
+          :key="index"
+          :label="item.name"
+          :value="item.id"
+        ></el-option>
+      </el-select>
+    </div>
     <el-table :data="list">
       <el-table-column type="index" label="序号" width="55px"></el-table-column>
-      <el-table-column label="标题" >
+      <el-table-column label="标题">
         <template slot-scope="scope">
           <a
             style="color: #333"
@@ -27,7 +29,7 @@
           {{ scope.row.cateName }}
         </template>
       </el-table-column>
-       <el-table-column label="作者" width="120px">
+      <el-table-column label="作者" width="120px">
         <template slot-scope="scope">
           {{ scope.row.createBy }}
         </template>
@@ -45,7 +47,12 @@
       <el-table-column fixed="right" width="180" label="操作">
         <template slot-scope="scope">
           <el-button @click="edit(scope.row.id)" type="text">编辑</el-button>
-          <el-button @click="delConfirm(scope.row.id)" type="text" class="cus-button-danger">删除</el-button>
+          <el-button
+            @click="delConfirm(scope.row.id)"
+            type="text"
+            class="cus-button-danger"
+            >删除</el-button
+          >
         </template>
       </el-table-column>
     </el-table>
@@ -66,11 +73,7 @@
 </template>
 
 <script>
-import {
-  delApi,
-  getListByCateApi,
-  getCateApi,
-} from "@/views/API/admin.js";
+import { delApi, getListByCateApi, getCateApi } from "@/views/API/admin.js";
 
 export default {
   data() {
@@ -78,8 +81,8 @@ export default {
       list: [],
       params: {
         page: 1,
-        cate: '',
-        pageSize: 10
+        cate: "",
+        pageSize: 10,
       },
       total: 0,
       cateList: [],
@@ -116,7 +119,7 @@ export default {
         cancelButtonText: "取消",
         type: "warning",
       }).then(() => {
-        this.del(id)
+        this.del(id);
       });
     },
     async del(id) {
@@ -147,6 +150,9 @@ export default {
 <style scoped lang="less">
 .page-list {
   width: 100%;
+  .select-by-cate{
+    margin-bottom: 20px;
+  }
   .content-item {
     font-size: 18px;
     text-align: left;

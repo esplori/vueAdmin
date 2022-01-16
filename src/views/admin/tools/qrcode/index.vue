@@ -8,7 +8,7 @@
         <el-input v-model="form.imageUrl"></el-input>
       </el-form-item>
       <el-form-item label="尺寸：">
-        <el-input v-model="form.size"></el-input>
+        <el-input v-model.number="form.size"></el-input>
       </el-form-item>
     </el-form>
     <div style="text-align: center">

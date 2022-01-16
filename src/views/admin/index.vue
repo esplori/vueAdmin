@@ -47,13 +47,13 @@
             <span slot="title">新增文章</span>
           </el-menu-item>
           <el-menu-item
-            index="/admin/comments"
+            index="/admin/commentList"
             v-if="userInfo.role.indexOf('ROLE_admin') !== -1"
           >
             <span slot="title">评论管理</span>
           </el-menu-item>
           <el-menu-item
-            index="/admin/cate"
+            index="/admin/cateList"
             v-if="userInfo.role.indexOf('ROLE_admin') !== -1"
           >
             <span slot="title">分类管理</span>

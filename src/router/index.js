@@ -40,10 +40,10 @@ const router = new Router({
         },
         {
           path: 'edit',
-          component: () => import('@/views/admin/postManage/post')
+          component: () => import(/* webpackChunkName: "post" */'@/views/admin/postManage/post')
         },
         {
-          path: 'cate',
+          path: 'cateList',
           component: () => import(/* webpackChunkName: "cateList" */'@/views/admin/postManage/cateList')
         },
         {
@@ -87,7 +87,7 @@ const router = new Router({
           component: () => import(/* webpackChunkName: "roleManage" */'@/views/admin/userManage/roleManage')
         },
         {
-          path: 'comments',
+          path: 'commentList',
           component: () => import(/* webpackChunkName: "comments" */'@/views/admin/postManage/commentList')
         },
         {
