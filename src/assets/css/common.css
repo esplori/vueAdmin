@@ -19,7 +19,7 @@ pre{
 }
 /* 富文本编辑器跟loading的z-index有冲突 */
 .el-loading-mask{
-  z-index: 30000!important;;
+  z-index: 30000!important;
 }
 #app pre code{
   border-radius: 5px;

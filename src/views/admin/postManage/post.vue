@@ -1,7 +1,7 @@
 <template>
   <div class="post">
     <!-- <el-button @click="postPage">start</el-button> -->
-    <el-form label-width="80px" :model="form">
+    <el-form label-width="100px" :model="form">
       <el-form-item label="标题：">
         <el-input v-model="form.title" placeholder="请输入标题"></el-input>
       </el-form-item>
@@ -9,6 +9,9 @@
         <div>
           <div style="min-height: 200px" id="wangeditor"></div>
         </div>
+      </el-form-item>
+      <el-form-item label="创建时间：">
+        <el-date-picker type="datetime"  popper-class="select-zindex" v-model="form.createDate" format="yyyy-MM-dd HH:mm:ss"></el-date-picker>
       </el-form-item>
       <el-form-item label="分类：">
         <el-select
@@ -34,6 +37,7 @@
           placeholder="多个关键字用英文逗号分隔，例如：开发,web"
         ></el-input>
       </el-form-item>
+
       <el-form-item>
         <el-button @click="submit" type="primary">提交</el-button>
       </el-form-item>
@@ -50,7 +54,7 @@ import {
   getDetailByIdApi,
   getCateApi,
 } from "@/views/API/admin.js";
-// import axios from "axios";
+import { getCurrDate } from "@/utils/common.js";
 export default {
   data() {
     return {
@@ -62,6 +66,7 @@ export default {
         views: 0,
         keywords: "",
         createBy: "",
+        createDate: getCurrDate(),
       },
       cateList: [],
       editorOption: {
@@ -193,6 +198,7 @@ export default {
     async editPage() {
       const res = await editPageApi({
         ...this.form,
+        createDate: getCurrDate(this.form.createDate)
       });
       if (res) {
         this.$message.success("修改成功");
@@ -204,6 +210,7 @@ export default {
       const res = await postPageApi({
         ...this.form,
         createBy: this.userInfo && this.userInfo.username,
+        createDate: getCurrDate(this.form.createDate)
       });
       // arr.map(it =>{
       //   debugger

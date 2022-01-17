@@ -113,15 +113,19 @@ function handleAuthenticated(res) {
   switch (res.response.status) {
     case 401:
       localStorage.clear()
-      location.href = '/#/login'
+      setTimeout(() =>{
+        location.href = '/#/login'
+        location.reload()
+      },3000)
       Message.error("用户信息已失效，请重新登录")
-      location.reload()
       break;
     case 403:
       localStorage.clear()
-      location.href = '/#/login'
+      setTimeout(() =>{
+        location.href = '/#/login'
+        location.reload()
+      },3000)
       Message.error("用户信息已失效，请重新登录")
-      location.reload()
       break
     case 500:
       Message.error("500错误")
