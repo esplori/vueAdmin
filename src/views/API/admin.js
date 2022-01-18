@@ -42,7 +42,7 @@ export async function getNavCateApi(data) {
   return get(url, data, options)
 }
 export async function getCateApi(data) {
-  const url = `${contextPath}/pages/getCate`
+  const url = `${contextPath}/admin/getCate`
   const options = {}
   return get(url, data, options)
 }
@@ -68,6 +68,11 @@ export async function insertNavCateApi(data) {
 }
 export async function delCateApi(data) {
   const Url = `${contextPath}/admin/delCate`
+  const options = { showLoading: true }
+  return post(Url, data, options)
+}
+export async function revertCateApi(data) {
+  const Url = `${contextPath}/admin/revertCate`
   const options = { showLoading: true }
   return post(Url, data, options)
 }

@@ -11,7 +11,8 @@
       <el-table-column label="操作" width="180">
         <template slot-scope="scope">
           <el-button @click="edit(scope.row)" type="text">编辑</el-button>
-          <el-button @click="delConfirm(scope.row.id)" type="text"  class="cus-button-danger">删除</el-button>
+          <el-button @click="delConfirm(scope.row.id)" type="text"  class="cus-button-danger" v-if="scope.row.valid === 1">删除</el-button>
+          <el-button @click="revertConfirm(scope.row.id)" type="text"  class="cus-button-info" v-if="scope.row.valid === 0">恢复</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -34,6 +35,7 @@ import {
   getCateApi,
   updateCateApi,
   insertCateApi,
+  revertCateApi
 } from "@/views/API/admin.js";
 
 export default {
@@ -63,6 +65,15 @@ export default {
         this.total = res.data.total;
       }
     },
+    revertConfirm(id) {
+      this.$confirm("此操作恢复该条数据?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      }).then(() => {
+        this.revert(id)
+      });
+    },
     delConfirm(id) {
       this.$confirm("此操作将删除该条数据, 是否继续?", "提示", {
         confirmButtonText: "确定",
@@ -76,6 +87,13 @@ export default {
       let res = await delCateApi({ id: id });
       if (res) {
         this.$message.success("删除成功");
+        this.getList();
+      }
+    },
+    async revert(id) {
+      let res = await revertCateApi({ id: id });
+      if (res) {
+        this.$message.success("恢复成功");
         this.getList();
       }
     },
