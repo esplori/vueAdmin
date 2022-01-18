@@ -73,7 +73,7 @@
 </template>
 
 <script>
-import { delApi, getListByCateApi, getCateApi } from "@/views/API/admin.js";
+import { delApi, getListByCateApi, getCateValidApi } from "@/views/API/admin.js";
 
 export default {
   data() {
@@ -101,7 +101,7 @@ export default {
       this.getListByCate();
     },
     async getCate() {
-      const res = await getCateApi({});
+      const res = await getCateValidApi({});
       if (res) {
         this.cateList = res.data.result;
       }

@@ -52,7 +52,7 @@ import {
   postPageApi,
   editPageApi,
   getDetailByIdApi,
-  getCateApi,
+  getCateValidApi,
 } from "@/views/API/admin.js";
 import { getCurrDate } from "@/utils/common.js";
 export default {
@@ -174,7 +174,7 @@ export default {
   },
   methods: {
     async getCate() {
-      const res = await getCateApi({});
+      const res = await getCateValidApi({});
       if (res) {
         this.cateList = res.data.result || [];
       }

@@ -46,6 +46,11 @@ export async function getCateApi(data) {
   const options = {}
   return get(url, data, options)
 }
+export async function getCateValidApi(data) {
+  const url = `${contextPath}/pages/getCate`
+  const options = {}
+  return get(url, data, options)
+}
 export async function updateCateApi(data) {
   const url = `${contextPath}/admin/updateCate`
   const options = { showLoading: true }
