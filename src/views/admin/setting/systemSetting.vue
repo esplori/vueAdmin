@@ -1,6 +1,6 @@
 <template>
   <div class="user-info">
-    <el-form :model="form" label-width="130px" label-position="left" style="width:60%">
+    <el-form :model="form" label-width="130px" label-position="left" class="setting-form">
       <el-form-item label="站点名称:">
         <el-input v-model="form.siteName"></el-input>
       </el-form-item>
@@ -31,7 +31,7 @@
       <el-form-item label="清空redis缓存:">
         <el-button type="primary" @click="clearCache">清空</el-button>
       </el-form-item>
-      <el-form-item label="轮播管理">
+      <el-form-item label="轮播管理" style="width:100%">
         <el-table :data="tableData" style="width: 100%">
           <el-table-column type="index" label="序号" width="55px"></el-table-column>
           <el-table-column label="轮播图片地址" width="180">
@@ -134,5 +134,10 @@ export default {
 <style scoped lang="less">
 .user-info {
   padding: 20px 0;
+  .setting-form{
+    &>div {
+      width: 50%;
+    }
+  }
 }
 </style>
