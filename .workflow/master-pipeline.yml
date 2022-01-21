@@ -23,7 +23,7 @@ stages:
             path:
               - ./dist
         commands:
-          - npm install node-gyp
+          - sudo npm install node-gyp
           - npm i
           - 'rm -rf ./dist '
           - npm run build
