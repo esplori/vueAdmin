@@ -24,8 +24,18 @@ stages:
               - ./dist
         commands:
           - npm install && rm -rf ./dist && npm run build
-strategy:
-  stepTimeout: 5
+  - name: stage-ac0e303b
+    displayName: 未命名
+    strategy: naturally
+    trigger: auto
+    executor: []
+    steps:
+      - step: publish@general_artifacts
+        name: publish_general_artifacts
+        displayName: 上传制品
+        dependArtifact: BUILD_ARTIFACT
+        artifactRepository: default
+        artifactName: output
 permissions:
   - role: admin
     members: []
