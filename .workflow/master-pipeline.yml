@@ -25,6 +25,8 @@ stages:
         commands:
           - npm config set registry https://registry.npmmirror.com
           - npm install && rm -rf ./dist && npm run build
+strategy:
+  stepTimeout: 5
 permissions:
   - role: admin
     members: []
