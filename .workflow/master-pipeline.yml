@@ -23,7 +23,6 @@ stages:
             path:
               - ./dist
         commands:
-          - npm i -g node-pre-gyp
           - npm install && rm -rf ./dist && npm run build
 strategy:
   stepTimeout: 5
