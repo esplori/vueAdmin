@@ -24,7 +24,7 @@ stages:
               - ./dist
         commands:
           - npm install -g cnpm --registry=https://registry.npmmirror.com
-          - 'cnpm install '
+          - 'npm install '
           - 'rm -rf ./dist '
           - npm run build
 strategy:
