@@ -23,9 +23,8 @@ stages:
             path:
               - ./dist
         commands:
-          - npm install -g cnpm --registry=https://registry.npmmirror.com
-          - cnpm install node-gyp
-          - npm
+          - npm install node-gyp
+          - npm i
           - 'rm -rf ./dist '
           - npm run build
 strategy:
