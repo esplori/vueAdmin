@@ -73,7 +73,11 @@
 </template>
 
 <script>
-import { delApi, getListByCateApi, getCateValidApi } from "@/views/API/admin.js";
+import {
+  delApi,
+  getListByCateApi,
+  getCateValidApi,
+} from "@/views/API/admin.js";
 
 export default {
   data() {
@@ -89,8 +93,13 @@ export default {
     };
   },
   created() {
-    this.getList();
     this.getCate();
+    // 恢复之前查询的参数
+    let {page,cate,pageSize} = this.$route.query
+    this.params.page = parseInt(page) || 1
+    this.params.pageSize = parseInt(pageSize) || 10
+    this.params.cate = parseInt(cate) || ''
+    this.getList();
   },
   methods: {
     typeChange() {
@@ -133,7 +142,7 @@ export default {
      * 编辑
      */
     edit(id) {
-      this.$router.push({ path: "post", query: { id: id } });
+      this.$router.push({ path: "post", query: { id: id, ...this.params } });
     },
     handleSizeChange(val) {
       this.params.pageSize = val;
@@ -150,7 +159,7 @@ export default {
 <style scoped lang="less">
 .page-list {
   width: 100%;
-  .select-by-cate{
+  .select-by-cate {
     margin-bottom: 20px;
   }
   .content-item {

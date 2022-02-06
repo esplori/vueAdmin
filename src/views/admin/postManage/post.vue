@@ -11,7 +11,12 @@
         </div>
       </el-form-item>
       <el-form-item label="创建时间：">
-        <el-date-picker type="datetime"  popper-class="select-zindex" v-model="form.createDate" format="yyyy-MM-dd HH:mm:ss"></el-date-picker>
+        <el-date-picker
+          type="datetime"
+          popper-class="select-zindex"
+          v-model="form.createDate"
+          format="yyyy-MM-dd HH:mm:ss"
+        ></el-date-picker>
       </el-form-item>
       <el-form-item label="分类：">
         <el-select
@@ -198,11 +203,16 @@ export default {
     async editPage() {
       const res = await editPageApi({
         ...this.form,
-        createDate: getCurrDate(this.form.createDate)
+        createDate: getCurrDate(this.form.createDate),
       });
       if (res) {
         this.$message.success("修改成功");
-        this.$router.push({ path: "/admin/pageList" });
+        let { page, cate, pageSize } = this.$route.query;
+        // 保存列表查询参数
+        this.$router.push({
+          path: "/admin/pageList",
+          query: { page, cate, pageSize },
+        });
       }
     },
     async postPage() {
@@ -210,7 +220,7 @@ export default {
       const res = await postPageApi({
         ...this.form,
         createBy: this.userInfo && this.userInfo.username,
-        createDate: getCurrDate(this.form.createDate)
+        createDate: getCurrDate(this.form.createDate),
       });
       // arr.map(it =>{
       //   debugger
