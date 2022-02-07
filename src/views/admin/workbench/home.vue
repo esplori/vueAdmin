@@ -109,32 +109,32 @@
         </el-col>
       </el-row>
       <div class="dayViews">
-        <div id="dayViews" style="width: 100%; height: 400px"></div>
+        <div id="dayViews" style="width: 100%; height: 300px"></div>
       </div>
       <div class="type-data">
         <el-row>
-          <el-col :span="8">
+          <el-col :span="24">
             <div>
-              <div
-                id="deviceType"
-                style="max-width: 600px; height: 400px"
-              ></div>
+              <div id="deviceType" style="max-width: 100%; height: 300px"></div>
             </div>
           </el-col>
-          <el-col :span="8">
+        </el-row>
+
+        <el-row>
+          <el-col :span="24">
             <div>
               <div
                 id="browserType"
-                style="max-width: 600px; height: 400px"
+                style="max-width: 100%; height: 300px"
               ></div>
             </div>
           </el-col>
-          <el-col :span="8">
+        </el-row>
+
+        <el-row>
+          <el-col :span="24">
             <div>
-              <div
-                id="deiveRatio"
-                style="max-width: 600px; height: 400px"
-              ></div>
+              <div id="deiveRatio" style="max-width: 100%; height: 300px"></div>
             </div>
           </el-col>
         </el-row>
@@ -240,7 +240,9 @@ export default {
             name: "设备型号",
             type: "bar",
             data: _this.deviceTypeY,
+            barWidth: 12,
             itemStyle: {
+              width: 12,
               color: "#6496f9",
               normal: {
                 label: {
@@ -280,6 +282,7 @@ export default {
             name: "浏览器型号",
             type: "bar",
             data: _this.browserTypeY,
+            barWidth: 12,
             itemStyle: {
               color: "#6496f9",
               normal: {
@@ -316,6 +319,7 @@ export default {
             name: "设备分辨率",
             type: "bar",
             data: _this.deviceRatioY,
+            barWidth: 12,
             itemStyle: {
               color: "#6496f9",
               normal: {
@@ -358,7 +362,7 @@ export default {
             return item.createDate;
           }),
           axisLabel: {
-            interval: 0,
+            interval: 1,
             rotate: 45, // 倾斜度 -90 至 90 默认为0
             margin: 8,
             formatter: function (value) {
