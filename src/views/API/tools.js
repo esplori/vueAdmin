@@ -1,4 +1,4 @@
-import {get} from '@/utils/axios.js'
+import { get } from '@/utils/axios.js'
 import contextPath from '@/config/context-path.js'
 
 export async function getCompressJsApi (data) {

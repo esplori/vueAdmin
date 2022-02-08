@@ -20,7 +20,7 @@ export default {
   data () {
     return {
       list: [
-        {url: '/uploadFile/6747983f-9661-439f-8656-44e305896989.png'}
+        { url: '/uploadFile/6747983f-9661-439f-8656-44e305896989.png' }
       ]
     }
   },

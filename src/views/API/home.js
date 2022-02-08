@@ -1,4 +1,4 @@
-import {get, post} from '@/utils/axios.js'
+import { get, post } from '@/utils/axios.js'
 import contextPath from '@/config/context-path.js'
 
 export async function getListApi (data) {

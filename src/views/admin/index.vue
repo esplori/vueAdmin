@@ -160,7 +160,7 @@
       <router-view></router-view>
       <commonFooter></commonFooter>
     </div>
-    <!-- <music class="global-music"></music> -->
+    <music class="global-music" v-if="false"></music>
   </div>
 </template>
 

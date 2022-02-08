@@ -8,7 +8,7 @@
         <el-button type="primary" @click="download">下载</el-button>
       </el-form-item>
     </el-form>
-<!-- 
+    <!--
     <div>
       文件名： <span id="filename">{{ filename }}</span>
     </div>
@@ -38,7 +38,7 @@ export default {
   methods: {
     download() {
       let _this = this;
-      //第一个参数为video标签的id或class
+      // 第一个参数为video标签的id或class
       var url = this.url;
       var token = "";
 
@@ -55,34 +55,34 @@ export default {
       loginXhr.open("POST", "https://api.webrtc.win/v1/vdn/login");
       loginXhr.send(JSON.stringify(loginData));
       loginXhr.onreadystatechange = function () {
-        if (loginXhr.readyState == 4 && loginXhr.status == 200) {
+        if (loginXhr.readyState === 4 && loginXhr.status === 200) {
           // 调用接口获取到的token
           token = JSON.parse(loginXhr.responseText).token;
           console.log(loginXhr.responseText);
           if (PearDownloader.isWebRTCSupported()) {
             var downloader = new PearDownloader(url, token, {
-              scheduler: "WebRTCFirst", //节点调度算法，默认IdleFirst，其它内置调度算法有“WebRTCFirst“和”CloudFirst”
-              auto: true, //是否全部下载,默认true
-              useDataChannel: true, //是否开启data channel,默认true
-              dataChannels: 20, //创建data channel的最大数量,默认20
-              useTorrent: false, //是否开启Browser P2P(基于Webtorrent)，默认true
+              scheduler: "WebRTCFirst", // 节点调度算法，默认IdleFirst，其它内置调度算法有“WebRTCFirst“和”CloudFirst”
+              auto: true, // 是否全部下载,默认true
+              useDataChannel: true, // 是否开启data channel,默认true
+              dataChannels: 20, // 创建data channel的最大数量,默认20
+              useTorrent: false, // 是否开启Browser P2P(基于Webtorrent)，默认true
               //        magnetURI: magnetURI,            //可手动传入magnetURI，需先将useTorrent设为true
               //        trackers:["wss://tracker.openwebtorrent.com"],    //可手动传入tracker服务器，需先将useTorrent设为true
               //        sources: [],                    //指定下载源，增加这个字段后pearplayer不会再向后台请求节点，建议下载源多于5个以保证流畅播放
-              useMonitor: false, //是否开启monitor,会稍微影响性能,默认true
-              maxLoaders: 15, //push算法中同时下载的节点数量，默认15个
+              useMonitor: false, // 是否开启monitor,会稍微影响性能,默认true
+              maxLoaders: 15, // push算法中同时下载的节点数量，默认15个
               //            sequencial: true,              //是否有序下载，默认false
-              debug: true, //是否开启debug模式，开启后可以在console中查看log，默认false
-              algorithm: "push", //下载算法，有‘push’和‘pull’两种，默认‘push’
+              debug: true, // 是否开启debug模式，开启后可以在console中查看log，默认false
+              algorithm: "push", // 下载算法，有‘push’和‘pull’两种，默认‘push’
             });
-            downloader.on("begin", _this.onBegin); //开始下载时触发
-            downloader.on("progress", _this.onProgress); //回调目前的下载进度
-            downloader.on("meanspeed", _this.onMeanSpeed); //平均下载速度
-            downloader.on("fogratio", _this.onFogRatio); //fog节点的下载比率（下载的字节数除以总的字节数）
-            downloader.on("buffersources", _this.onBufferSources); //buffer map，记录每个buffer的下载源类型，其中s: server   n: node  d: data channel  b: browser
-            downloader.on("done", _this.onDone); //结束下载时触发
-            downloader.on("traffic", _this.onTraffic); //节点流量统计,每次下载buffer都会触发该事件
-            downloader.on("sourcemap", _this.onSourceMap); //记录每个buffer的下载源类型，其中s: server   n: node  d: data channel  b: browser
+            downloader.on("begin", _this.onBegin); // 开始下载时触发
+            downloader.on("progress", _this.onProgress); // 回调目前的下载进度
+            downloader.on("meanspeed", _this.onMeanSpeed); // 平均下载速度
+            downloader.on("fogratio", _this.onFogRatio); // fog节点的下载比率（下载的字节数除以总的字节数）
+            downloader.on("buffersources", _this.onBufferSources); // buffer map，记录每个buffer的下载源类型，其中s: server   n: node  d: data channel  b: browser
+            downloader.on("done", _this.onDone); // 结束下载时触发
+            downloader.on("traffic", _this.onTraffic); // 节点流量统计,每次下载buffer都会触发该事件
+            downloader.on("sourcemap", _this.onSourceMap); // 记录每个buffer的下载源类型，其中s: server   n: node  d: data channel  b: browser
             downloader.on("metadata", _this.onMetaData);
           }
         } else {
@@ -124,7 +124,7 @@ export default {
     },
 
     onDone() {
-      //如果需要文件保存到本地，将下面代码解除注释
+      // 如果需要文件保存到本地，将下面代码解除注释
 
       downloader.file.getBlobURL(function (error, url) {
         var aTag = document.createElement("a");
@@ -135,7 +135,7 @@ export default {
       console.log("finished downloading buffer by first aid");
     },
     onBufferSources(bufferSources) {
-      //s: server   n: node  d: data channel  b: browser
+      // s: server   n: node  d: data channel  b: browser
       console.log("Current Buffer Sources:" + bufferSources);
       console.log(JSON.stringify(downloader.debugInfo));
     },

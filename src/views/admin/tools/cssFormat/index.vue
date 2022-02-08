@@ -29,7 +29,7 @@ export default {
   created() {},
   methods: {
     cssFormat() {
-      let code = this.form.oldValue
+      let code = this.form.oldValue;
       code = code.replace(/(\s){2,}/gi, "$1");
       code = code.replace(/(\S)\s*\{/gi, "$1 {");
       code = code.replace(/\*\/(.[^\}\{]*)}/gi, "*/\n$1}");
@@ -43,11 +43,11 @@ export default {
       code = code.replace(/(\S)\}/gi, "$1\n}");
       code = code.replace(/(\n){2,}/gi, "\n");
       code = code.replace(/:/gi, ":");
-      code = code.replace(/  /gi, " ");
-      this.form.newValue = code
+      code = code.replace(/ {2}/gi, " ");
+      this.form.newValue = code;
     },
     cssCompress() {
-      let code = this.form.oldValue
+      let code = this.form.oldValue;
       code = code.replace(/\r\n/gi, "");
       code = code.replace(/(\s){2,}/gi, "$1");
       code = code.replace(/\t/gi, "");
@@ -56,8 +56,8 @@ export default {
       code = code.replace(/(\S)\s*\}/gi, "$1}");
       code = code.replace(/(\S)\s*\{/gi, "$1{");
       code = code.replace(/\{\s*(\S)/gi, "{$1");
-      this.form.newValue = code
-    }
+      this.form.newValue = code;
+    },
   },
 };
 </script>

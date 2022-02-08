@@ -14,13 +14,15 @@ module.exports = {
     // 0：off,1: warning, 2: error
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'semi': 0,
+    semi: 0,
     'space-before-function-paren': 0,
     'comma-dangle': 0,
-    'quotes': 0,
+    quotes: 0,
     'no-undef': 1,
     'prefer-const': 0,
-    'camelcase': 0,
-    'dot-notation': 0
+    camelcase: 0,
+    'dot-notation': 0,
+    "no-useless-escape": 0,
+    "handle-callback-err": 0
   }
 }

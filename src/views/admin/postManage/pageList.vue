@@ -95,7 +95,7 @@ export default {
   created() {
     this.getCate();
     // 恢复之前查询的参数
-    let {page,cate,pageSize} = this.$route.query
+    let { page, cate, pageSize } = this.$route.query
     this.params.page = parseInt(page) || 1
     this.params.pageSize = parseInt(pageSize) || 10
     this.params.cate = parseInt(cate) || ''
