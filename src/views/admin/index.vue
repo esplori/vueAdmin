@@ -192,17 +192,17 @@ export default {
     music: () => import("@/views/admin/tools/musicManage/music.vue"),
   },
   mounted() {
-    this.initFingerprint();
-    window.addEventListener("click", (item) => {
+    // this.initFingerprint();
+    // window.addEventListener("click", (item) => {
       // this.getWegStats();
-    });
+    // });
   },
   methods: {
     getWegStats() {
       // console.log(window.webStats.getDirectData());
       window.webStats.track("/bootService/stats/getStats.gif", {
         ...window.webStats.getDirectData(),
-        ...{ visitorId: window.visitorId },
+        ...{ visitorId: window.visitorId || '' },
       });
     },
     initWebStat() {
