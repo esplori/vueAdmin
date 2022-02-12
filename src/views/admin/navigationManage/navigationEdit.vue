@@ -65,7 +65,7 @@ export default {
     async getNavCateList() {
       let res = await getNavCateApi(this.params);
       if (res) {
-        this.cateList = res.data.result.map((item) => {
+        this.cateList = res.data.map((item) => {
           item.id = String(item.id);
           return item;
         });
