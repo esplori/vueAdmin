@@ -13,6 +13,7 @@
       <el-form-item label="创建时间：">
         <el-date-picker
           type="datetime"
+          class="optionsWidth"
           popper-class="select-zindex"
           v-model="form.createDate"
           format="yyyy-MM-dd HH:mm:ss"
@@ -36,11 +37,28 @@
         <el-input v-model="form.views" disabled class="optionsWidth"></el-input>
       </el-form-item>
       <el-form-item label="关键字：">
+        <el-tag
+          :key="tag"
+          v-for="tag in dynamicTags"
+          closable
+          :disable-transitions="false"
+          @close="handleClose(tag)"
+        >
+          {{ tag }}
+        </el-tag>
         <el-input
-          v-model="form.keywords"
-          class="optionsWidth"
-          placeholder="多个关键字用英文逗号分隔，例如：开发,web"
-        ></el-input>
+          class="input-new-tag"
+          v-if="inputVisible"
+          v-model="inputValue"
+          ref="saveTagInput"
+          size="small"
+          @keyup.enter.native="handleInputConfirm"
+          @blur="handleInputConfirm"
+        >
+        </el-input>
+        <el-button v-else class="button-new-tag" size="small" @click="showInput"
+          >+ 新增标签</el-button
+        >
       </el-form-item>
 
       <el-form-item>
@@ -78,6 +96,9 @@ export default {
         placeholder: "编辑文章内容",
       },
       editor: null,
+      inputVisible: false,
+      inputValue: "",
+      dynamicTags: [],
     };
   },
   components: {},
@@ -126,8 +147,6 @@ export default {
       // 例如服务器端返回的不是 { errno: 0, data: [...] } 这种格式，可使用 customInsert
       customInsert: function (insertImgFn, result) {
         // result 即服务端返回的接口
-        // console.log("customInsert", result);
-        // console.log('result.data[0]', result.data[0])
         // insertImgFn 可把图片插入到编辑器，传入图片 src ，执行函数即可
         insertImgFn(result.data[0].url);
       },
@@ -166,7 +185,7 @@ export default {
       if (userinfo) {
         return JSON.parse(userinfo);
       } else {
-        return null;
+        return "";
       }
     },
   },
@@ -204,6 +223,7 @@ export default {
       const res = await editPageApi({
         ...this.form,
         createDate: getCurrDate(this.form.createDate),
+        keywords: this.dynamicTags.join(","),
       });
       if (res) {
         this.$message.success("修改成功");
@@ -216,39 +236,24 @@ export default {
       }
     },
     async postPage() {
-      // const res = await axios.get("/static/json/poet.song.4000.json");
       const res = await postPageApi({
         ...this.form,
         createBy: this.userInfo && this.userInfo.username,
         createDate: getCurrDate(this.form.createDate),
+        keywords: this.dynamicTags.join(","),
       });
-      // arr.map(it =>{
-      //   debugger
-      //   this.pt({
-      //     title: it.title + '-' + it.author ,
-      //     content: it.paragraphs.length?it.paragraphs.join("<br>"):it.title,
-      //     cate: 137,
-      //     views: 0,
-      //     keywords: it.title + ',' + it.author,
-      //     createBy: this.userInfo && this.userInfo.username,
-      //   });
-      // })
-
       if (res) {
         this.$message.success("添加成功");
         this.$router.push({ path: "/admin/pageList" });
       }
     },
-    // async pt(data) {
-    //   const res = await postPageApi({
-    //     ...data,
-    //     createBy: this.userInfo && this.userInfo.username,
-    //   });
-    // },
     async getDetail(id) {
       const res = await getDetailByIdApi({ id: id });
       if (res) {
         this.$set(this, "form", res.data.result);
+        this.dynamicTags = this.form.keywords
+          ? this.form.keywords.split(",")
+          : [];
         this.editor.txt.html(this.form.content);
       }
     },
@@ -269,6 +274,23 @@ export default {
       document.body.appendChild(form);
       form.submit();
     },
+    handleClose(tag) {
+      this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1);
+    },
+    showInput() {
+      this.inputVisible = true;
+      this.$nextTick((_) => {
+        this.$refs.saveTagInput.$refs.input.focus();
+      });
+    },
+    handleInputConfirm() {
+      let inputValue = this.inputValue;
+      if (inputValue) {
+        this.dynamicTags.push(inputValue);
+      }
+      this.inputVisible = false;
+      this.inputValue = "";
+    },
   },
 };
 </script>
@@ -278,6 +300,21 @@ export default {
   width: 100%;
   .optionsWidth {
     width: 350px;
+  }
+  .el-tag + .el-tag {
+    margin-left: 10px;
+  }
+  .button-new-tag {
+    margin-left: 10px;
+    height: 32px;
+    line-height: 30px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .input-new-tag {
+    width: 90px;
+    margin-left: 10px;
+    vertical-align: bottom;
   }
 }
 </style>
