@@ -17,7 +17,7 @@ export default {
   name: "admin-header",
   data() {
     return {
-      welcomeMsg: ' 欢迎来到javascript技术分享网站,有问题可以发送邮件'
+      welcomeMsg: ' 欢迎来到javascript技术分享网站'
     };
   },
   components: {
