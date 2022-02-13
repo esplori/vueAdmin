@@ -89,7 +89,7 @@
           <el-menu-item index="/admin/tools/img2base64">
             <span slot="title">图片转成base64</span>
           </el-menu-item>
-          <el-menu-item index="/admin/compressJs">
+          <el-menu-item index="/admin/tools/compressJs">
             <span slot="title">js压缩</span>
           </el-menu-item>
           <el-menu-item index="/admin/tools/qrcode">

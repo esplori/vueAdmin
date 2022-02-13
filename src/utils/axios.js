@@ -16,7 +16,7 @@ function endLoading() {
   loading.close()
 }
 
-axios.defaults.timeout = 150000
+axios.defaults.timeout = 600000
 axios.defaults.headers.post['Content-Type'] = 'application/json'
 
 export function showFullScreenLoading() {
