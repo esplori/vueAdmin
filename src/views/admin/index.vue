@@ -89,9 +89,9 @@
           <el-menu-item index="/admin/tools/img2base64">
             <span slot="title">图片转成base64</span>
           </el-menu-item>
-          <!-- <el-menu-item index="/admin/compressJs">
+          <el-menu-item index="/admin/compressJs">
             <span slot="title">js压缩</span>
-          </el-menu-item> -->
+          </el-menu-item>
           <el-menu-item index="/admin/tools/qrcode">
             <span slot="title">二维码生成</span>
           </el-menu-item>
