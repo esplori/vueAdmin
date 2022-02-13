@@ -1,6 +1,6 @@
 <template>
   <div class="compressJs">
-    <el-button @click="compressJs">部署网站</el-button>
+    <el-button @click="compressJs" :loading="loading">部署网站</el-button> <i class="el-icon-check success" v-show="showSuccessIcon"></i>
   </div>
 </template>
 
@@ -11,13 +11,18 @@ export default {
   data() {
     return {
       list: [],
+      loading: false,
+      showSuccessIcon: false
     };
   },
   created() {},
   methods: {
     async compressJs() {
+      this.loading = true
       let res = await getCompressJsApi({});
       if (res) {
+        this.loading = false
+        this.showSuccessIcon = true
       }
     },
   },
@@ -25,12 +30,10 @@ export default {
 </script>
 
 <style scoped lang="less">
-.page-list {
+.compressJs {
   width: 100%;
-  .content-item {
-    font-size: 18px;
-    text-align: left;
-    padding: 5px;
+  .success{
+    color: #67C23A;
   }
 }
 </style>

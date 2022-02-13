@@ -24,8 +24,8 @@ module.exports = {
     // 代理地址
     proxy: {
       '/bootService': {
-        // target: 'http://admin.dsiab.com/',
-        target: 'http://localhost:8091/',
+        target: 'http://admin.dsiab.com/',
+        // target: 'http://localhost:8091/',
         changeOrigin: true
       }
     }
