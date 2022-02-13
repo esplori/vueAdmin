@@ -89,9 +89,6 @@
           <el-menu-item index="/admin/tools/img2base64">
             <span slot="title">图片转成base64</span>
           </el-menu-item>
-          <el-menu-item index="/admin/tools/compressJs">
-            <span slot="title">js压缩</span>
-          </el-menu-item>
           <el-menu-item index="/admin/tools/qrcode">
             <span slot="title">二维码生成</span>
           </el-menu-item>
@@ -136,6 +133,9 @@
           </el-menu-item>
           <el-menu-item index="/admin/sourceList">
             <span slot="title">资源管理</span>
+          </el-menu-item>
+           <el-menu-item index="/admin/compressJs">
+            <span slot="title">编译部署</span>
           </el-menu-item>
         </el-submenu>
 

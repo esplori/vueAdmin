@@ -55,6 +55,10 @@ const router = new Router({
           component: () => import(/* webpackChunkName: "userSetting" */'@/views/admin/setting/userSetting')
         },
         {
+          path: 'compressJs',
+          component: () => import(/* webpackChunkName: "compressJs" */'@/views/admin/setting/compressJs/index')
+        },
+        {
           path: 'navigationList',
           component: () => import(/* webpackChunkName: "navigationList" */'@/views/admin/navigationManage/navigationList')
         },
@@ -105,10 +109,6 @@ const router = new Router({
             {
               path: 'img2base64',
               component: () => import(/* webpackChunkName: "img2base64" */'@/views/admin/tools/img2base64/img2base64')
-            },
-            {
-              path: 'compressJs',
-              component: () => import(/* webpackChunkName: "compressJs" */'@/views/admin/tools/compressJs/index')
             },
             {
               path: 'fiction',

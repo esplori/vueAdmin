@@ -1,6 +1,6 @@
 <template>
   <div class="compressJs">
-    <el-button @click="compressJs">压缩</el-button>
+    <el-button @click="compressJs">部署网站</el-button>
   </div>
 </template>
 
