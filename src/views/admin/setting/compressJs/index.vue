@@ -1,6 +1,7 @@
 <template>
   <div class="compressJs">
-    <el-button @click="compressJs" :loading="loading">部署网站</el-button> <i class="el-icon-check success" v-show="showSuccessIcon"></i>
+    <el-button @click="deployAdmin" :loading="Adminloading">部署后台管理</el-button> <i class="el-icon-check success" v-show="AdminSuccessIcon"></i>
+    <el-button @click="deployFront" :loading="Frontloading">部署前台应用</el-button> <i class="el-icon-check success" v-show="FrontSuccessIcon"></i>
   </div>
 </template>
 
@@ -11,18 +12,28 @@ export default {
   data() {
     return {
       list: [],
-      loading: false,
-      showSuccessIcon: false
+      Adminloading: false,
+      AdminSuccessIcon: false,
+      Frontloading: false,
+      FrontSuccessIcon: false
     };
   },
   created() {},
   methods: {
-    async compressJs() {
+    async deployAdmin() {
       this.loading = true
       let res = await getCompressJsApi({});
       if (res) {
-        this.loading = false
-        this.showSuccessIcon = true
+        this.Adminloading = false
+        this.AdminSuccessIcon = true
+      }
+    },
+    async deployFront() {
+      this.loading = true
+      let res = await getCompressJsApi({});
+      if (res) {
+        this.Frontloading = false
+        this.FrontSuccessIcon = true
       }
     },
   },

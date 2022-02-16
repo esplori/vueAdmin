@@ -68,9 +68,6 @@
           <!-- <el-menu-item index="/admin/tools/music">
             <span slot="title">音乐分享</span>
           </el-menu-item> -->
-          <!-- <el-menu-item index="/admin/fiction">
-            <span slot="title">小说阅读</span>
-          </el-menu-item> -->
           <el-menu-item index="/admin/tools/jsonviewer">
             <span slot="title">json格式化</span>
           </el-menu-item>
@@ -91,9 +88,6 @@
           </el-menu-item>
           <el-menu-item index="/admin/tools/qrcode">
             <span slot="title">二维码生成</span>
-          </el-menu-item>
-          <el-menu-item index="/admin/tools/download">
-            <span slot="title">在线下载</span>
           </el-menu-item>
           <el-menu-item index="/admin/tools/cssFormat">
             <span slot="title">css压缩-格式化</span>
@@ -134,7 +128,7 @@
           <el-menu-item index="/admin/sourceList">
             <span slot="title">资源管理</span>
           </el-menu-item>
-           <el-menu-item index="/admin/compressJs">
+          <el-menu-item index="/admin/compressJs">
             <span slot="title">编译部署</span>
           </el-menu-item>
         </el-submenu>
@@ -194,7 +188,7 @@ export default {
   mounted() {
     // this.initFingerprint();
     // window.addEventListener("click", (item) => {
-      // this.getWegStats();
+    // this.getWegStats();
     // });
   },
   methods: {
@@ -202,7 +196,7 @@ export default {
       // console.log(window.webStats.getDirectData());
       window.webStats.track("/bootService/stats/getStats.gif", {
         ...window.webStats.getDirectData(),
-        ...{ visitorId: window.visitorId || '' },
+        ...{ visitorId: window.visitorId || "" },
       });
     },
     initWebStat() {

@@ -98,10 +98,10 @@ const router = new Router({
           path: 'tools',
           component: () => import(/* webpackChunkName: "tools" */'@/views/admin/tools/index'),
           children: [
-            // {
-            //   path: 'qrcode',
-            //   component: () => import(/* webpackChunkName: "qrcode" */'@/views/admin/tools/qrcode/index')
-            // },
+            {
+              path: 'qrcode',
+              component: () => import(/* webpackChunkName: "qrcode" */'@/views/admin/tools/qrcode/index')
+            },
             {
               path: 'dianming',
               component: () => import(/* webpackChunkName: "dianming" */'@/views/admin/tools/dianming/dianming')
@@ -109,10 +109,6 @@ const router = new Router({
             {
               path: 'img2base64',
               component: () => import(/* webpackChunkName: "img2base64" */'@/views/admin/tools/img2base64/img2base64')
-            },
-            {
-              path: 'fiction',
-              component: () => import(/* webpackChunkName: "fiction" */'@/views/admin/tools/fiction/fiction')
             },
             {
               path: 'jsonviewer',
@@ -129,10 +125,6 @@ const router = new Router({
             {
               path: 'mail',
               component: () => import(/* webpackChunkName: "mail" */'@/views/admin/tools/mail/index')
-            },
-            {
-              path: 'download',
-              component: () => import(/* webpackChunkName: "download" */'@/views/admin/tools/download/index')
             },
             {
               path: 'cssFormat',
