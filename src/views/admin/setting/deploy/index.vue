@@ -1,13 +1,26 @@
 <template>
   <div class="compressJs">
-    <el-button @click="deployAdmin" :loading="Adminloading"
-      >部署后台管理</el-button
-    >
-    <i class="el-icon-check success" v-show="AdminSuccessIcon"></i>
-    <el-button @click="deployFront" :loading="Frontloading"
-      >部署前台应用</el-button
-    >
-    <i class="el-icon-check success" v-show="FrontSuccessIcon"></i>
+    <el-table :data="tableData" style="width: 100%">
+      <el-table-column prop="name" label="部署名称" width="180">
+      </el-table-column>
+      <el-table-column prop="type" label="部署文件" width="180">
+      </el-table-column>
+      <el-table-column width="180" label="操作">
+        <template slot-scope="scope">
+          <el-button
+            :type="scope.row.class"
+            @click="deployAdmin(scope.row)"
+            :loading="scope.row.loading"
+            >{{ scope.row.btnDesc }}</el-button
+          >
+        </template>
+      </el-table-column>
+      <el-table-column width="180" label="状态">
+        <template>
+          <el-button type="success" icon="el-icon-check" circle></el-button>
+        </template>
+      </el-table-column>
+    </el-table>
   </div>
 </template>
 
@@ -17,30 +30,39 @@ import { deployApi } from "@/views/API/tools.js";
 export default {
   data() {
     return {
-      list: [],
-      Adminloading: false,
-      AdminSuccessIcon: false,
-      Frontloading: false,
-      FrontSuccessIcon: false,
+      tableData: [
+        {
+          name: "部署后台管理",
+          type: "/build.sh",
+          success: true,
+          loading: false,
+          btnDesc: "启动",
+          class: "",
+        },
+        {
+          name: "部署前台应用",
+          type: "/build.nuxt.sh",
+          success: false,
+          loading: false,
+          btnDesc: "启动",
+          class: "",
+        },
+      ],
     };
   },
   created() {},
   methods: {
-    async deployAdmin() {
-      this.Adminloading = true;
-      let res = await deployApi({ type: "/build.sh" });
+    async deployAdmin(row) {
+      row.loading = true;
+      row.btnDesc = "部署中";
+      row.class = "primary";
+      let res = await deployApi({ type: row.type || "" });
       if (res) {
-        this.AdminSuccessIcon = true;
+        row.success = true;
       }
-      this.Adminloading = false;
-    },
-    async deployFront() {
-      this.Frontloading = true;
-      let res = await deployApi({ type: "/test.sh" });
-      if (res) {
-        this.FrontSuccessIcon = true;
-      }
-      this.Frontloading = false;
+      row.loading = false;
+      row.btnDesc = "重新启动";
+      row.class = "primary";
     },
   },
 };
