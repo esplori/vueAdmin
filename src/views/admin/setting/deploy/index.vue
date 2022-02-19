@@ -16,8 +16,8 @@
         </template>
       </el-table-column>
       <el-table-column width="180" label="状态">
-        <template>
-          <el-button type="success" icon="el-icon-check" circle></el-button>
+        <template slot-scope="scope">
+          <el-button v-show="scope.row.success" type="success" icon="el-icon-check" circle></el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -34,7 +34,7 @@ export default {
         {
           name: "部署后台管理",
           type: "/build.sh",
-          success: true,
+          success: false,
           loading: false,
           btnDesc: "启动",
           class: "",
