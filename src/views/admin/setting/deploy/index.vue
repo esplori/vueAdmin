@@ -36,7 +36,7 @@ export default {
     },
     async deployFront() {
       this.Frontloading = true;
-      let res = await deployApi({ type: "build.nuxt.sh" });
+      let res = await deployApi({ type: "/test.sh" });
       if (res) {
         this.FrontSuccessIcon = true;
       }
