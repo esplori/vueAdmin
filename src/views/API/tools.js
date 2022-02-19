@@ -1,8 +1,8 @@
-import { get } from '@/utils/axios.js'
+import { post } from '@/utils/axios.js'
 import contextPath from '@/config/context-path.js'
 
-export async function getCompressJsApi (data) {
-  const url = `${contextPath}/tools/getCompressJs`
+export async function deployApi (data) {
+  const url = `${contextPath}/tools/deploy`
   const options = {}
-  return get(url, {}, options)
+  return post(url, data, options)
 }

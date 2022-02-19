@@ -55,8 +55,8 @@ const router = new Router({
           component: () => import(/* webpackChunkName: "userSetting" */'@/views/admin/setting/userSetting')
         },
         {
-          path: 'compressJs',
-          component: () => import(/* webpackChunkName: "compressJs" */'@/views/admin/setting/compressJs/index')
+          path: 'deploy',
+          component: () => import(/* webpackChunkName: "compressJs" */'@/views/admin/setting/deploy/index')
         },
         {
           path: 'navigationList',

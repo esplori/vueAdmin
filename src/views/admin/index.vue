@@ -128,7 +128,7 @@
           <el-menu-item index="/admin/sourceList">
             <span slot="title">资源管理</span>
           </el-menu-item>
-          <el-menu-item index="/admin/compressJs">
+          <el-menu-item index="/admin/deploy">
             <span slot="title">编译部署</span>
           </el-menu-item>
         </el-submenu>
