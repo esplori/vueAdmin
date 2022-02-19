@@ -98,10 +98,10 @@ const router = new Router({
           path: 'tools',
           component: () => import(/* webpackChunkName: "tools" */'@/views/admin/tools/index'),
           children: [
-            {
-              path: 'qrcode',
-              component: () => import(/* webpackChunkName: "qrcode" */'@/views/admin/tools/qrcode/index')
-            },
+            // {
+            //   path: 'qrcode',
+            //   component: () => import(/* webpackChunkName: "qrcode" */'@/views/admin/tools/qrcode/index')
+            // },
             {
               path: 'dianming',
               component: () => import(/* webpackChunkName: "dianming" */'@/views/admin/tools/dianming/dianming')
