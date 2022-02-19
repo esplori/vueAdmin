@@ -11,7 +11,9 @@
             :type="scope.row.class"
             @click="deployAdmin(scope.row)"
             :loading="scope.row.loading"
-            >{{ scope.row.btnDesc }}</el-button
+            :icon="scope.row.btnDesc"
+            circle
+            ></el-button
           >
         </template>
       </el-table-column>
@@ -36,16 +38,16 @@ export default {
           type: "/build.sh",
           success: false,
           loading: false,
-          btnDesc: "启动",
-          class: "",
+          btnDesc: "el-icon-caret-right",
+          class: "primary",
         },
         {
           name: "部署前台应用",
           type: "/build.nuxt.sh",
           success: false,
           loading: false,
-          btnDesc: "启动",
-          class: "",
+          btnDesc: "el-icon-caret-right",
+          class: "primary",
         },
       ],
     };
@@ -54,14 +56,13 @@ export default {
   methods: {
     async deployAdmin(row) {
       row.loading = true;
-      row.btnDesc = "部署中";
-      row.class = "primary";
+      row.class = "info";
       let res = await deployApi({ type: row.type || "" });
       if (res) {
         row.success = true;
       }
       row.loading = false;
-      row.btnDesc = "重新启动";
+      row.btnDesc = "el-icon-caret-right";
       row.class = "primary";
     },
   },
