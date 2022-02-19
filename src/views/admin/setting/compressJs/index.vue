@@ -21,7 +21,7 @@ export default {
   created() {},
   methods: {
     async deployAdmin() {
-      this.loading = true
+      this.Adminloading = true
       let res = await getCompressJsApi({});
       if (res) {
         this.Adminloading = false
@@ -29,8 +29,8 @@ export default {
       }
     },
     async deployFront() {
-      this.loading = true
-      let res = await getCompressJsApi({});
+      this.Frontloading = true
+      let res = await getCompressJsFronApi({});
       if (res) {
         this.Frontloading = false
         this.FrontSuccessIcon = true
