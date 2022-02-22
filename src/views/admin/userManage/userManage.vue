@@ -5,6 +5,8 @@
       <el-table-column  type="index" label="序号" width="55px"></el-table-column>
       <el-table-column prop="username" label="用户名"> </el-table-column>
       <el-table-column prop="role" label="角色Id"> </el-table-column>
+      <el-table-column prop="email" label="邮箱"> </el-table-column>
+      <el-table-column prop="createDate" label="创建时间"> </el-table-column>
       <el-table-column fixed="right" width="180" label="操作">
         <template slot-scope="scope">
           <el-button @click="edit(scope.row)" type="text">编辑</el-button>
@@ -19,6 +21,19 @@
         </template>
       </el-table-column>
     </el-table>
+    <div class="pagination-box" style="text-align: center; margin-top: 20px">
+      <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page="params.page"
+        :page-size="params.pageSize"
+        :page-sizes="[10, 20, 30, 50]"
+        :pager-count="5"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="total"
+      >
+      </el-pagination>
+    </div>
     <el-dialog
       :title="editObj.currUsername + '角色修改'"
       :visible.sync="editObj.dialogVisible"
@@ -80,7 +95,9 @@ export default {
       Roledata: [],
       params: {
         page: 1,
+        pageSize: 10
       },
+      total: 0,
       editObj: {
         dialogVisible: false,
         currUsername: "",
@@ -115,6 +132,7 @@ export default {
       const res = await getUserListApi({ page: this.params.page });
       if (res) {
         this.data = res.data.result;
+        this.total = res.data.total;
       }
     },
     edit(row) {
@@ -172,6 +190,14 @@ export default {
     },
     handleSelectionChange(val) {
       this.multipleSelection = val;
+    },
+    handleSizeChange(val) {
+      this.params.pageSize = val;
+      this.getUserList();
+    },
+    handleCurrentChange(val) {
+      this.params.page = val;
+      this.getUserList();
     },
   },
 };

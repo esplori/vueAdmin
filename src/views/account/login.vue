@@ -4,10 +4,11 @@
       <el-form :model="form">
         <h2 style="text-align: center; padding: 20px 0">用户登录</h2>
         <el-form-item>
-          <el-input v-model="form.username" placeholder="账号"></el-input>
+          <el-input prefix-icon="el-icon-user" v-model="form.username" placeholder="账号"></el-input>
         </el-form-item>
         <el-form-item>
           <el-input
+          prefix-icon="el-icon-view"
             v-model="form.password"
             type="password"
             placeholder="密码"
@@ -64,7 +65,7 @@ export default {
   .login-container {
     border-radius: 5px;
     width: 300px;
-    background: #fff;
+    background: rgba(255,255,255,0.5);
     padding: 40px 80px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     .reg {

@@ -17,7 +17,7 @@
           <el-input
             v-model="form.email"
             type="text"
-            placeholder="密码"
+            placeholder="请输入邮箱"
           ></el-input>
         </el-form-item>
         <el-form-item>
@@ -45,7 +45,14 @@ export default {
         password: [
           { required: true, message: "请输入密码", trigger: "change" },
         ],
-        email: [{ required: true, message: "请输入邮箱", trigger: "change" }],
+        email: [
+          { required: true, message: "请输入邮箱", trigger: "change" },
+          {
+            type: "email",
+            message: "请输入正确的邮箱地址",
+            trigger: ["blur", "change"],
+          },
+        ],
       },
     };
   },
@@ -85,7 +92,7 @@ export default {
   background-size: cover;
   .login-container {
     width: 300px;
-    background: #fff;
+    background: rgba(255, 255, 255, 1);
     padding: 40px 80px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
