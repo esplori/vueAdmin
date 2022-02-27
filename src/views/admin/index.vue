@@ -186,28 +186,21 @@ export default {
     music: () => import("@/views/admin/tools/musicManage/music.vue"),
   },
   mounted() {
-    // this.initFingerprint();
-    // window.addEventListener("click", (item) => {
-    // this.getWegStats();
-    // });
+    this.initFingerprint();
   },
   methods: {
-    getWegStats() {
-      // console.log(window.webStats.getDirectData());
-      window.webStats.track("/bootService/stats/getStats.gif", {
-        ...window.webStats.getDirectData(),
-        ...{ visitorId: window.visitorId || "" },
-      });
-    },
-    initWebStat() {
+    initWebStat(visitorId) {
       let webStats = new WebStats({
         baseUrl: "/bootService", // 基础接口地址url
         url: "/stats/getStats.gif", // 请求上报api的接口地址
         routeMode: "history", // 填写单页面应用中使用的路由模式。
-        autoUpload: true, // 是否自动请求接口，在setUserId之后会以baseUrl+url形式在页面切换时自动请求上报PV/UV的接口
+        autoUpload: true,
+        prop: {
+          //请求参数映射，参数名默认如下，可以自定义修改参数名。
+          id: "visitorId",
+        },
       });
-      window.webStats = webStats;
-      this.getWegStats();
+      webStats.setUserId(visitorId);
     },
     initFingerprint() {
       // Initialize an agent at application startup.
@@ -222,7 +215,7 @@ export default {
         // console.log(visitorId);
         window.visitorId = visitorId;
         setTimeout(() => {
-          this.initWebStat();
+          this.initWebStat(visitorId);
         }, 200);
       })();
     },
