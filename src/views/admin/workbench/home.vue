@@ -230,8 +230,8 @@ export default {
           data: _this.deviceTypeX,
           axisLabel: {
             interval: 0,
-            rotate: 45, // 倾斜度 -90 至 90 默认为0
-            margin: 8,
+            rotate: -20, // 倾斜度 -90 至 90 默认为0
+            margin: 10,
           },
         },
         yAxis: {},
@@ -268,8 +268,8 @@ export default {
           data: _this.browserTypeX,
           axisLabel: {
             interval: 0,
-            rotate: 45, // 倾斜度 -90 至 90 默认为0
-            margin: 8,
+            rotate: -20, // 倾斜度 -90 至 90 默认为0
+            margin: 10,
             formatter: function (value) {
               var str = value.slice(0, 9);
               return str;
@@ -309,8 +309,8 @@ export default {
           data: _this.deviceRatioX,
           axisLabel: {
             interval: 0,
-            rotate: 45, // 倾斜度 -90 至 90 默认为0
-            margin: 8,
+            rotate: -20, // 倾斜度 -90 至 90 默认为0
+            margin: 10,
           },
         },
         yAxis: {},
