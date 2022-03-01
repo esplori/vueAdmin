@@ -47,6 +47,10 @@ const router = new Router({
           component: () => import(/* webpackChunkName: "cateList" */'@/views/admin/postManage/cateList')
         },
         {
+          path: 'topic',
+          component: () => import(/* webpackChunkName: "cateList" */'@/views/admin/postManage/topic')
+        },
+        {
           path: 'systemSetting',
           component: () => import(/* webpackChunkName: "systemSetting" */'@/views/admin/setting/systemSetting')
         },

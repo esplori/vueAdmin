@@ -58,6 +58,12 @@
           >
             <span slot="title">分类管理</span>
           </el-menu-item>
+          <el-menu-item
+            index="/admin/topic"
+            v-if="userInfo.role.indexOf('ROLE_admin') !== -1"
+          >
+            <span slot="title">专题管理</span>
+          </el-menu-item>
         </el-submenu>
 
         <el-submenu index="2">

@@ -65,7 +65,7 @@ export default {
   .login-container {
     border-radius: 5px;
     width: 300px;
-    background: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.7);
     padding: 40px 80px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     .reg {

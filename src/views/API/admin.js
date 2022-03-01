@@ -188,3 +188,15 @@ export async function clearCacheApi(data) {
   const options = { showLoading: true }
   return post(url, data, options)
 }
+export async function insertTopicApi(data) {
+  const url = `${contextPath}/admin/insertTopic`
+  const options = { showLoading: true }
+  return post(url, data, options)
+}
+
+export async function getTopicListApi(data) {
+  const url = `${contextPath}/admin/getTopicList`
+  const options = {}
+  return get(url, data, options)
+}
+

@@ -116,7 +116,7 @@ function handleAuthenticated(res) {
       setTimeout(() => {
         location.href = '/#/login'
         location.reload()
-      }, 2000)
+      }, 1500)
       Message.error("用户信息已失效，请重新登录")
       break;
     case 403:
@@ -124,7 +124,7 @@ function handleAuthenticated(res) {
       setTimeout(() => {
         location.href = '/#/login'
         location.reload()
-      }, 2000)
+      }, 1500)
       Message.error("用户信息已失效，请重新登录")
       break
     case 500:
