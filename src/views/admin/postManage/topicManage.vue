@@ -29,7 +29,7 @@
 
 <script>
 import {
-  delCommentApi,
+  deleteTopicDetailApi,
   getTopicDetailListApi
 } from "@/views/API/admin.js";
 
@@ -40,10 +40,11 @@ export default {
     };
   },
   created() {
-    this.getList(this.$route.query.id);
+    this.getList();
   },
   methods: {
-    async getList(id) {
+    async getList() {
+      let id = this.$route.query.id
       let res = await getTopicDetailListApi({topicId: parseInt(id)});
       if (res) {
         this.list = res.data.result;
@@ -59,7 +60,7 @@ export default {
       });
     },
     async del(id) {
-      let res = await delCommentApi({ id: id });
+      let res = await deleteTopicDetailApi({ id: id });
       if (res) {
         this.$message.success("删除成功");
         this.getList();

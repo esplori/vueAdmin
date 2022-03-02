@@ -196,6 +196,7 @@ export default {
       let res = await addPostToTopicApi(this.form)
       if (res) {
         this.$message.success("添加成功")
+        this.dialogVisible = false
       }
     }
   },

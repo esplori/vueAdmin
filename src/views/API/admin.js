@@ -212,3 +212,20 @@ export async function getTopicDetailListApi(data) {
   return post(url, data, options)
 }
 
+export async function updateTopicApi(data) {
+  const url = `${contextPath}/admin/updateTopic`
+  const options = { showLoading: true }
+  return post(url, data, options)
+}
+
+export async function deleteTopicApi(data) {
+  const Url = `${contextPath}/admin/deleteTopic`
+  const options = { showLoading: true }
+  return post(Url, data, options)
+}
+
+export async function deleteTopicDetailApi(data) {
+  const Url = `${contextPath}/admin/deleteTopicDetail`
+  const options = { showLoading: true }
+  return post(Url, data, options)
+}

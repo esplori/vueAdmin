@@ -3,17 +3,21 @@
     <el-button type="text" @click="insertCate">新增专题</el-button>
     <el-table :data="list" style="width: 100%">
       <el-table-column  type="index" label="序号" width="55px"></el-table-column>
-      <el-table-column label="标题">
+      <el-table-column label="名称">
         <template slot-scope="scope">
           {{ scope.row.name }}
+        </template>
+      </el-table-column>
+      <el-table-column label="创建时间">
+        <template slot-scope="scope">
+          {{ scope.row.createDate }}
         </template>
       </el-table-column>
       <el-table-column label="操作" width="180">
         <template slot-scope="scope">
           <el-button @click="edit(scope.row)" type="text">编辑</el-button>
           <el-button @click="manage(scope.row)" type="text">管理</el-button>
-          <el-button @click="delConfirm(scope.row.id)" type="text"  class="cus-button-danger" v-if="scope.row.valid === 1">删除</el-button>
-          <el-button @click="revertConfirm(scope.row.id)" type="text"  class="cus-button-info" v-if="scope.row.valid === 0">恢复</el-button>
+          <el-button @click="delConfirm(scope.row.id)" type="text"  class="cus-button-danger" v-if="scope.row.valid === '1'">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -32,11 +36,10 @@
 
 <script>
 import {
-  delCateApi,
+  deleteTopicApi,
   getTopicListApi,
-  updateCateApi,
+  updateTopicApi,
   insertTopicApi,
-  revertCateApi
 } from "@/views/API/admin.js";
 
 export default {
@@ -66,15 +69,6 @@ export default {
         this.total = res.data.total;
       }
     },
-    revertConfirm(id) {
-      this.$confirm("此操作恢复该条数据?", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning",
-      }).then(() => {
-        this.revert(id)
-      });
-    },
     delConfirm(id) {
       this.$confirm("此操作将删除该条数据, 是否继续?", "提示", {
         confirmButtonText: "确定",
@@ -85,16 +79,9 @@ export default {
       });
     },
     async del(id) {
-      let res = await delCateApi({ id: id });
+      let res = await deleteTopicApi({ id: id });
       if (res) {
         this.$message.success("删除成功");
-        this.getList();
-      }
-    },
-    async revert(id) {
-      let res = await revertCateApi({ id: id });
-      if (res) {
-        this.$message.success("恢复成功");
         this.getList();
       }
     },
@@ -111,7 +98,7 @@ export default {
     },
     async submit(row) {
       if (row.id) {
-        let res = await updateCateApi(row);
+        let res = await updateTopicApi(row);
         if (res) {
           this.getList();
         }
@@ -130,12 +117,6 @@ export default {
     handleCurrentChange(val) {
       this.params.page = val;
       this.getList();
-    },
-    handleClose() {
-      this.row = {
-        id: "",
-        name: "",
-      }
     }
   },
 };
