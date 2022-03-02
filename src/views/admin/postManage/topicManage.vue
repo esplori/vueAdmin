@@ -1,14 +1,16 @@
 <template>
   <div class="comments-list">
     <el-table :data="list" style="width: 100%">
-      <el-table-column label="用户">
-        <template slot-scope="scope">
-          {{ scope.row.username }}
-        </template>
+      <el-table-column type="index" label="序号">
       </el-table-column>
       <el-table-column label="标题">
         <template slot-scope="scope">
-          {{ scope.row.content }}
+          {{ scope.row.name }}
+        </template>
+      </el-table-column>
+      <el-table-column label="id">
+        <template slot-scope="scope">
+          {{ scope.row.postId }}
         </template>
       </el-table-column>
       <el-table-column label="时间">
@@ -27,8 +29,8 @@
 
 <script>
 import {
-  getCommentApi,
   delCommentApi,
+  getTopicDetailListApi
 } from "@/views/API/admin.js";
 
 export default {
@@ -38,11 +40,11 @@ export default {
     };
   },
   created() {
-    this.getList();
+    this.getList(this.$route.query.id);
   },
   methods: {
-    async getList() {
-      let res = await getCommentApi();
+    async getList(id) {
+      let res = await getTopicDetailListApi({topicId: parseInt(id)});
       if (res) {
         this.list = res.data.result;
       }

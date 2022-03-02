@@ -53,6 +53,7 @@
             class="cus-button-danger"
             >删除</el-button
           >
+          <el-button @click="addToTopic(scope.row)" type="text">添加到专题</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -69,6 +70,23 @@
       >
       </el-pagination>
     </div>
+
+     <el-dialog title="添加到专题" :visible.sync="dialogVisible" width="30%">
+      <div>
+        <el-select v-model="form.topicId">
+          <el-option
+            v-for="(item, index) in topicList"
+            :key="index"
+            :label="item.name"
+            :value="item.id"
+          ></el-option>
+        </el-select>
+      </div>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="submitTopic()">确 定</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -77,6 +95,8 @@ import {
   delApi,
   getListByCateApi,
   getCateValidApi,
+  getTopicListApi,
+  addPostToTopicApi
 } from "@/views/API/admin.js";
 
 export default {
@@ -88,8 +108,15 @@ export default {
         cate: "",
         pageSize: 10,
       },
+      form: {
+        postId: '',
+        name: '',
+        topicId: ''
+      },
       total: 0,
       cateList: [],
+      dialogVisible: false,
+      topicList: []
     };
   },
   created() {
@@ -102,6 +129,12 @@ export default {
     this.getList();
   },
   methods: {
+    async getTopicList() {
+      let res = await getTopicListApi({});
+      if (res) {
+        this.topicList = res.data.result;
+      }
+    },
     typeChange() {
       this.params.page = 1;
       this.getList();
@@ -152,6 +185,19 @@ export default {
       this.params.page = val;
       this.getList();
     },
+    // 添加到专题
+    addToTopic(row) {
+      this.getTopicList()
+      this.dialogVisible = true
+      this.form.postId = row.id
+      this.form.name = row.title
+    },
+    async submitTopic() {
+      let res = await addPostToTopicApi(this.form)
+      if (res) {
+        this.$message.success("添加成功")
+      }
+    }
   },
 };
 </script>

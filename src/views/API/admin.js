@@ -200,3 +200,15 @@ export async function getTopicListApi(data) {
   return get(url, data, options)
 }
 
+export async function addPostToTopicApi(data) {
+  const url = `${contextPath}/admin/addPostToTopic`
+  const options = { showLoading: true }
+  return post(url, data, options)
+}
+
+export async function getTopicDetailListApi(data) {
+  const url = `${contextPath}/admin/getTopicDetailList`
+  const options = {}
+  return post(url, data, options)
+}
+

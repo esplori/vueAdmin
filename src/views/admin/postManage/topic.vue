@@ -11,6 +11,7 @@
       <el-table-column label="操作" width="180">
         <template slot-scope="scope">
           <el-button @click="edit(scope.row)" type="text">编辑</el-button>
+          <el-button @click="manage(scope.row)" type="text">管理</el-button>
           <el-button @click="delConfirm(scope.row.id)" type="text"  class="cus-button-danger" v-if="scope.row.valid === 1">删除</el-button>
           <el-button @click="revertConfirm(scope.row.id)" type="text"  class="cus-button-info" v-if="scope.row.valid === 0">恢复</el-button>
         </template>
@@ -104,6 +105,9 @@ export default {
       this.title = "编辑"
       this.dialogVisible = true;
       this.row = row;
+    },
+    manage(row) {
+      this.$router.push({path: '/admin/topicManage', query: {id: row.id}})
     },
     async submit(row) {
       if (row.id) {
