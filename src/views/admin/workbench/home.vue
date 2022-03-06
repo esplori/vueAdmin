@@ -139,6 +139,15 @@
           </el-col>
         </el-row>
       </div>
+      <h3>搜索引擎</h3>
+      <el-table :data="list" style="width: 100%">
+        <el-table-column type="index" width="55" label="序号"> </el-table-column>
+        <el-table-column label="userAgent">
+          <template slot-scope="scope">
+            {{scope.row.userAgent}}
+          </template>
+        </el-table-column>
+      </el-table>
     </div>
   </div>
 </template>
@@ -170,6 +179,7 @@ export default {
       allpagesMom: "",
       dayViewsMom: "",
       dayIpMom: "",
+      list: [],
     };
   },
   created() {
@@ -424,6 +434,7 @@ export default {
         this.allpagesMom = parseFloat(res.data.allpagesMom);
         this.dayViewsMom = parseFloat(res.data.dayViewsMom);
         this.dayIpMom = parseFloat(res.data.dayIpMom);
+        this.list = res.data.botEngine
         this.deviceRatioX = res.data.deviceRatio.map((item) => {
           return item.screen;
         });
