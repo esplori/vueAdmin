@@ -189,7 +189,7 @@ export default {
     addToTopic(row) {
       this.getTopicList()
       this.dialogVisible = true
-      this.form.postId = row.id
+      this.form.postId = row.uid || row.id
       this.form.name = row.title
     },
     async submitTopic() {
