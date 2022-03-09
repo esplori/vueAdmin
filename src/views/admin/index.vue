@@ -15,148 +15,60 @@
         active-text-color="#333"
       >
         <div class="logo">DSIAB</div>
-        <el-menu-item index="/admin/home">
-          <i class="el-icon-s-home"></i>
-          <span slot="title">首页</span>
-        </el-menu-item>
-
-        <el-submenu index="5" v-if="userInfo.role.indexOf('ROLE_admin') !== -1">
-          <template slot="title">
-            <i class="el-icon-s-promotion"></i>
-            <span slot="title">导航管理</span>
-          </template>
-          <el-menu-item index="/admin/navigationList">
-            <span slot="title">导航列表</span>
-          </el-menu-item>
-          <el-menu-item index="/admin/navigationCate">
-            <span slot="title">分类管理</span>
-          </el-menu-item>
-          <el-menu-item index="/admin/navigationEdit">
-            <span slot="title">新增导航</span>
-          </el-menu-item>
-        </el-submenu>
-        <el-submenu index="1">
-          <template slot="title">
-            <i class="el-icon-s-order"></i>
-            <span slot="title">文章管理</span>
-          </template>
-          <el-menu-item index="/admin/pageList">
-            <span slot="title">文章列表</span>
-          </el-menu-item>
-          <el-menu-item index="/admin/post">
-            <span slot="title">新增文章</span>
-          </el-menu-item>
+        <div v-for="(item, index) in menuList" :key="index">
           <el-menu-item
-            index="/admin/commentList"
-            v-if="userInfo.role.indexOf('ROLE_admin') !== -1"
+            v-if="
+              !item.children &&
+              userInfo.some((role) => {
+                return item.auth.includes(role);
+              })
+            "
+            :index="item.path"
           >
-            <span slot="title">评论管理</span>
+            <i :class="item.icon"></i>
+            <span slot="title">{{ item.title }}</span>
           </el-menu-item>
-          <el-menu-item
-            index="/admin/cateList"
-            v-if="userInfo.role.indexOf('ROLE_admin') !== -1"
+          <el-submenu
+            :index="item.path"
+            v-if="
+              item.children &&
+              userInfo.some((role) => {
+                return item.auth.includes(role);
+              })
+            "
           >
-            <span slot="title">分类管理</span>
-          </el-menu-item>
-          <el-menu-item
-            index="/admin/topic"
-            v-if="userInfo.role.indexOf('ROLE_admin') !== -1"
-          >
-            <span slot="title">专题管理</span>
-          </el-menu-item>
-        </el-submenu>
-
-        <el-submenu index="2">
-          <template slot="title">
-            <i class="el-icon-crop"></i>
-            <span slot="title">小工具</span>
-          </template>
-          <!-- <el-menu-item index="/admin/tools/music">
-            <span slot="title">音乐分享</span>
-          </el-menu-item> -->
-          <el-menu-item index="/admin/tools/jsonviewer">
-            <span slot="title">json格式化</span>
-          </el-menu-item>
-          <el-menu-item index="/admin/tools/choujiang">
-            <span slot="title">抽奖</span>
-          </el-menu-item>
-          <el-menu-item
-            index="/admin/tools/mail"
-            v-if="userInfo.role.indexOf('ROLE_admin') !== -1"
-          >
-            <span slot="title">发送邮件</span>
-          </el-menu-item>
-          <el-menu-item index="/admin/tools/dianming">
-            <span slot="title">点名</span>
-          </el-menu-item>
-          <el-menu-item index="/admin/tools/img2base64">
-            <span slot="title">图片转成base64</span>
-          </el-menu-item>
-          <el-menu-item index="/admin/tools/qrcode">
-            <span slot="title">二维码生成</span>
-          </el-menu-item>
-          <el-menu-item index="/admin/tools/cssFormat">
-            <span slot="title">css压缩-格式化</span>
-          </el-menu-item>
-        </el-submenu>
-
-        <el-submenu index="3" v-if="userInfo.role.indexOf('ROLE_admin') !== -1">
-          <template slot="title">
-            <i class="el-icon-s-custom"></i>
-            <span slot="title">用户管理</span>
-          </template>
-          <el-menu-item index="/admin/userManage">
-            <span slot="title">用户管理</span>
-          </el-menu-item>
-          <el-menu-item index="/admin/roleManage">
-            <span slot="title">角色管理</span>
-          </el-menu-item>
-        </el-submenu>
-
-        <el-submenu index="6">
-          <template slot="title">
-            <i class="el-icon-user"></i>
-            <span slot="title">个人设置</span>
-          </template>
-          <el-menu-item index="/admin/userSetting">
-            <span slot="title">个人资料</span>
-          </el-menu-item>
-        </el-submenu>
-
-        <el-submenu index="4" v-if="userInfo.role.indexOf('ROLE_admin') !== -1">
-          <template slot="title">
-            <i class="el-icon-setting"></i>
-            <span slot="title">系统设置</span>
-          </template>
-          <el-menu-item index="/admin/systemSetting">
-            <span slot="title">站点设置</span>
-          </el-menu-item>
-          <el-menu-item index="/admin/sourceList">
-            <span slot="title">资源管理</span>
-          </el-menu-item>
-          <el-menu-item index="/admin/deploy">
-            <span slot="title">编译部署</span>
-          </el-menu-item>
-        </el-submenu>
-
-        <div class="switch-icon">
-          <i
-            class="el-icon-s-fold"
-            style="color: #909399; font-size: 18px"
-            v-show="!isCollapse"
-            @click="isCollapse = !isCollapse"
-          ></i>
-          <i
-            class="el-icon-s-unfold"
-            style="color: #909399; font-size: 18px"
-            v-show="isCollapse"
-            @click="isCollapse = !isCollapse"
-          ></i>
+            <template slot="title">
+              <i :class="item.icon"></i>
+              <span slot="title">{{ item.title }}</span>
+            </template>
+            <el-menu-item
+              :index="it.path"
+              v-for="(it, idx) in item.children"
+              :key="idx"
+              v-if="
+                userInfo.some((role) => {
+                  return !it.auth || (it.auth && it.auth.includes(role));
+                })
+              "
+            >
+              <span slot="title">{{ it.title }}</span>
+            </el-menu-item>
+          </el-submenu>
         </div>
       </el-menu>
     </div>
     <div class="right-content">
       <adminHeader></adminHeader>
+      <!-- <div class="tabs">
+        <el-tabs v-model="activeName" @tab-click="handleClick">
+          <el-tab-pane
+            :label="item.label"
+            :name="item.id"
+            v-for="(item, index) in tabList"
+            :key="index"
+          ></el-tab-pane>
+        </el-tabs>
+      </div> -->
       <router-view></router-view>
       <commonFooter></commonFooter>
     </div>
@@ -169,19 +81,133 @@ import FingerprintJS from "@fingerprintjs/fingerprintjs";
 export default {
   data() {
     return {
-      menuList: [],
+      menuList: [
+        {
+          title: "首页",
+          path: "/admin/home",
+          id: "",
+          icon: "el-icon-s-home",
+          auth: "ROLE_admin,ROLE_author",
+        },
+        {
+          title: "导航管理",
+          path: "/admin/navigationList",
+          id: "",
+          auth: "ROLE_admin",
+          icon: "el-icon-s-promotion",
+          children: [
+            { title: "导航列表", path: "/admin/navigationList", id: "" },
+            { title: "分类管理", path: "/admin/navigationCate", id: "" },
+            { title: "新增导航", path: "/admin/navigationEdit", id: "" },
+          ],
+        },
+        {
+          title: "文章管理",
+          path: "/admin/pageList",
+          id: "",
+          icon: "el-icon-s-order",
+          auth: "ROLE_admin,ROLE_author",
+          children: [
+            {
+              title: "文章列表",
+              path: "/admin/pageList",
+              id: "",
+              auth: "ROLE_admin,ROLE_author",
+            },
+            {
+              title: "新增文章",
+              path: "/admin/post",
+              id: "",
+              auth: "ROLE_admin,ROLE_author",
+            },
+            {
+              title: "评论管理",
+              path: "/admin/commentList",
+              id: "",
+              auth: "ROLE_admin",
+            },
+            {
+              title: "分类管理",
+              path: "/admin/cateList",
+              id: "",
+              auth: "ROLE_admin",
+            },
+            {
+              title: "专题管理",
+              path: "/admin/topic",
+              id: "",
+              auth: "ROLE_admin",
+            },
+          ],
+        },
+        {
+          title: "小工具",
+          path: "/admin/tools/jsonviewer",
+          id: "",
+          auth: "ROLE_admin,ROLE_author",
+          icon: "el-icon-crop",
+          children: [
+            { title: "json格式化", path: "/admin/tools/jsonviewer", id: "" },
+            { title: "抽奖", path: "/admin/tools/choujiang", id: "" },
+            {
+              title: "发送邮件",
+              path: "/admin/tools/mail",
+              id: "",
+              auth: "ROLE_admin",
+            },
+            { title: "点名", path: "", id: "/admin/tools/dianming" },
+            {
+              title: "图片转成base64",
+              path: "/admin/tools/img2base64",
+              id: "",
+            },
+            { title: "二维码生成", path: "/admin/tools/qrcode", id: "" },
+            { title: "css压缩-格式化", path: "/admin/tools/cssFormat", id: "" },
+          ],
+        },
+        {
+          title: "用户管理",
+          path: "/admin/userManage",
+          id: "",
+          auth: "ROLE_admin",
+          icon: "el-icon-s-custom",
+          children: [
+            { title: "用户管理", path: "/admin/userManage", id: "" },
+            { title: "角色管理", path: "/admin/roleManage", id: "" },
+          ],
+        },
+        {
+          title: "个人设置",
+          path: "/admin/userSetting",
+          id: "",
+          auth: "ROLE_admin,ROLE_author",
+          icon: "el-icon-user",
+          children: [{ title: "个人资料", path: "/admin/userSetting", id: "" }],
+        },
+        {
+          title: "系统设置",
+          path: "/admin/systemSetting",
+          id: "",
+          auth: "ROLE_admin",
+          icon: "el-icon-setting",
+          children: [
+            { title: "站点设置", path: "/admin/systemSetting", id: "" },
+            { title: "资源管理", path: "/admin/sourceList", id: "" },
+            { title: "编译部署", path: "/admin/deploy", id: "" },
+          ],
+        },
+      ],
       isCollapse: false,
+      tabList: [],
     };
   },
   computed: {
     userInfo() {
       let userInfo = localStorage.getItem("userInfo");
       if (userInfo) {
-        userInfo = JSON.parse(userInfo);
+        userInfo = JSON.parse(userInfo).role.split(",");
       } else {
-        userInfo = {
-          role: "",
-        };
+        userInfo = [];
       }
       return userInfo;
     },
@@ -228,11 +254,8 @@ export default {
     swith() {
       this.isCollapse = !this.isCollapse;
     },
-    handleOpen() {},
-    handleClose() {},
-    go(item) {
-      this.$router.push({ path: item.path });
-    },
+    handleOpen(index) {},
+    handleClose(index) {},
   },
   created() {},
 };
