@@ -16,5 +16,8 @@ export function randomStr(type) {
   } else {
     return (Math.random()*100).toString().replace(".",'')
   }
-  
+}
+export function flatArr(arr) {
+  let returnArr = arr || [];
+  return returnArr.flat()
 }

@@ -64,7 +64,7 @@ const router = new Router({
         },
         {
           path: 'deploy',
-          component: () => import(/* webpackChunkName: "compressJs" */'@/views/admin/setting/deploy/index')
+          component: () => import(/* webpackChunkName: "compressJs" */'@/views/admin/setting/deploy')
         },
         {
           path: 'navigationList',
