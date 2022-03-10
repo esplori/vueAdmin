@@ -229,3 +229,9 @@ export async function deleteTopicDetailApi(data) {
   const options = { showLoading: true }
   return post(Url, data, options)
 }
+
+export async function getPostListByCateApi(data) {
+  const url = `${contextPath}/admin/getRecycleList`
+  const options = {}
+  return post(url, data, options)
+}

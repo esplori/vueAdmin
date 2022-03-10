@@ -194,6 +194,7 @@ export default {
             { title: "站点设置", path: "/admin/systemSetting", id: "" },
             { title: "资源管理", path: "/admin/sourceList", id: "" },
             { title: "编译部署", path: "/admin/deploy", id: "" },
+            { title: "回收站", path: "/admin/recycle", id: "" },
           ],
         },
       ],

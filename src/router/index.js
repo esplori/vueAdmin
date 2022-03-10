@@ -59,6 +59,10 @@ const router = new Router({
           component: () => import(/* webpackChunkName: "systemSetting" */'@/views/admin/setting/systemSetting')
         },
         {
+          path: 'recycle',
+          component: () => import(/* webpackChunkName: "systemSetting" */'@/views/admin/setting/recyclePost')
+        },
+        {
           path: 'userSetting',
           component: () => import(/* webpackChunkName: "userSetting" */'@/views/admin/setting/userSetting')
         },
