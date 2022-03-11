@@ -12,7 +12,6 @@
         router
         background-color="#fff"
         text-color="#000"
-        active-text-color="#333"
       >
         <div class="logo">DSIAB</div>
         <div v-for="(item, index) in menuList" :key="index">
