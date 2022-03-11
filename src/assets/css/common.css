@@ -19,7 +19,18 @@ pre{
 }
 /* 富文本编辑器跟loading的z-index有冲突 */
 .el-loading-mask{
-  z-index: 30000!important;
+  /* z-index: 3000!important; */
+}
+/* message 的z-index不够，会显示在编辑器下面 */
+.el-message{
+  z-index: 400000 !important;
+}
+/* 改变编辑器默认300px的高度 */
+.w-e-text{
+  min-height: 500px!important;
+}
+.w-e-text-container{
+  min-height: 500px!important;
 }
 #app pre code{
   border-radius: 5px;

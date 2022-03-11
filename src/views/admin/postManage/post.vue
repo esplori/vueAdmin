@@ -1,13 +1,13 @@
 <template>
   <div class="post">
     <!-- <el-button @click="postPage">start</el-button> -->
-    <el-form label-width="100px" :model="form">
+    <el-form label-width="85px" :model="form">
       <el-form-item label="标题：">
         <el-input v-model="form.title" placeholder="请输入标题"></el-input>
       </el-form-item>
       <el-form-item label="内容：">
         <div>
-          <div style="min-height: 200px" id="wangeditor"></div>
+          <div style="min-height: 550px" id="wangeditor"></div>
         </div>
       </el-form-item>
       <el-form-item label="创建时间：">
@@ -305,9 +305,7 @@ export default {
     margin-left: 10px;
   }
   .button-new-tag {
-    margin-left: 10px;
     height: 32px;
-    line-height: 30px;
     padding-top: 0;
     padding-bottom: 0;
   }

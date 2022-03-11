@@ -19,6 +19,7 @@ module.exports = {
     sourceMap: false
   },
   devServer: {
+    open: true,
     // 服务端口
     port: 8081,
     // 代理地址
