@@ -235,3 +235,9 @@ export async function getPostListByCateApi(data) {
   const options = {}
   return post(url, data, options)
 }
+
+export async function deletePostApi(data) {
+  const Url = `${contextPath}/admin/deletePost`
+  const options = { showLoading: true }
+  return post(Url, data, options)
+}

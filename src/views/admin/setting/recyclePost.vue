@@ -61,7 +61,7 @@
 
 <script>
 import {
-  delApi,
+  deletePostApi,
   getPostListByCateApi,
   getCateValidApi,
 } from "@/views/API/admin.js";
@@ -119,7 +119,7 @@ export default {
       });
     },
     async del(id) {
-      const res = await delApi({ id: id });
+      const res = await deletePostApi({ id: id });
       if (res) {
         this.$message.success("删除成功");
         this.getList();
