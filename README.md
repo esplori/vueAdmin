@@ -17,10 +17,6 @@
 
 ### 关联项目
 
-同另外两个项目一起组成了一个博客系统:
-
-springbootAdmin(https://gitee.com/wilkwo/springbootAdmin)
-
 nuxt-web(https://gitee.com/wilkwo/nuxt-web.git) 
 
 
