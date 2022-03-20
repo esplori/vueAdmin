@@ -106,7 +106,7 @@ function handleData(res, resolve, reject) {
     resolve(res.data)
   } else {
     // reject(res)
-    Message.error(res.data.msg)
+    Message.error(res.data.data || res.data.msg)
   }
 }
 function handleAuthenticated(res) {
