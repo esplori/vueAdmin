@@ -1,6 +1,7 @@
 <template>
   <div class="page-list">
-    <el-table :data="list">
+    <el-table :data="list" @selection-change="handleSelectionChange">
+      <el-table-column type="selection" width="55"> </el-table-column>
       <el-table-column type="index" label="序号" width="55px"></el-table-column>
       <el-table-column label="标题">
         <template slot-scope="scope">
@@ -43,6 +44,9 @@
         </template>
       </el-table-column>
     </el-table>
+    <div class="delMul">
+      <el-button @click="delMul">批量删除</el-button>
+    </div>
     <div class="pagination-box" style="text-align: center; margin-top: 20px">
       <el-pagination
         @size-change="handleSizeChange"
@@ -77,15 +81,16 @@ export default {
       },
       total: 0,
       cateList: [],
+      multipleSelection: [],
     };
   },
   created() {
     this.getCate();
     // 恢复之前查询的参数
-    let { page, cate, pageSize } = this.$route.query
-    this.params.page = parseInt(page) || 1
-    this.params.pageSize = parseInt(pageSize) || 10
-    this.params.cate = parseInt(cate) || ''
+    let { page, cate, pageSize } = this.$route.query;
+    this.params.page = parseInt(page) || 1;
+    this.params.pageSize = parseInt(pageSize) || 10;
+    this.params.cate = parseInt(cate) || "";
     this.getList();
   },
   methods: {
@@ -115,15 +120,8 @@ export default {
         cancelButtonText: "取消",
         type: "warning",
       }).then(() => {
-        this.del(id);
+        this.delMultiple([id]);
       });
-    },
-    async del(id) {
-      const res = await deletePostApi({ id: id });
-      if (res) {
-        this.$message.success("删除成功");
-        this.getList();
-      }
     },
     handleSizeChange(val) {
       this.params.pageSize = val;
@@ -135,18 +133,39 @@ export default {
     },
     // 添加到专题
     addToTopic(row) {
-      this.getTopicList()
-      this.dialogVisible = true
-      this.form.postId = row.uid || row.id
-      this.form.name = row.title
+      this.getTopicList();
+      this.dialogVisible = true;
+      this.form.postId = row.uid || row.id;
+      this.form.name = row.title;
     },
     async submitTopic() {
-      let res = await addPostToTopicApi(this.form)
+      let res = await addPostToTopicApi(this.form);
       if (res) {
-        this.$message.success("添加成功")
-        this.dialogVisible = false
+        this.$message.success("添加成功");
+        this.dialogVisible = false;
       }
-    }
+    },
+    handleSelectionChange(val) {
+      this.multipleSelection = val;
+    },
+    delMul() {
+      this.$confirm("此操作将删除数据, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      }).then(() => {
+        this.delMultiple(this.multipleSelection.map(item =>{
+        return item.id
+      }));
+      });
+    },
+    async delMultiple(ids) {
+      const res = await deletePostApi({ ids: ids });
+      if (res) {
+        this.$message.success("删除成功");
+        this.getList();
+      }
+    },
   },
 };
 </script>
@@ -161,6 +180,9 @@ export default {
     font-size: 18px;
     text-align: left;
     padding: 5px;
+  }
+  .delMul {
+    padding: 10px 0;
   }
 }
 </style>
