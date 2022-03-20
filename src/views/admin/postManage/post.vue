@@ -16,7 +16,7 @@
           class="optionsWidth"
           popper-class="select-zindex"
           v-model="form.createDate"
-          format="yyyy-MM-dd HH:mm:ss"
+          format="yyyy/MM/dd HH:mm:ss"
         ></el-date-picker>
       </el-form-item>
       <el-form-item label="分类：">
@@ -250,6 +250,8 @@ export default {
     async getDetail(id) {
       const res = await getDetailByIdApi({ id: id });
       if (res) {
+        // 日期兼容safari
+        res.data.result.createDate = res.data.result.createDate.replace(/-/g,"/")
         this.$set(this, "form", res.data.result);
         this.dynamicTags = this.form.keywords
           ? this.form.keywords.split(",")

@@ -10,8 +10,9 @@
         @close="handleClose"
         :collapse="isCollapse"
         router
-        background-color="#fff"
-        text-color="#000"
+        background-color="#333"
+        text-color="#fff"
+        active-text-color="#fff"
       >
         <div class="logo">DSIAB</div>
         <div v-for="(item, index) in menuList" :key="index">
@@ -273,7 +274,8 @@ export default {
       font-size: 18px;
       text-align: center;
       padding: 15px 0;
-      color: #000;
+      color: #fff;
+      background: rgb(58, 58, 58);
     }
     .switch-icon {
       text-align: center;
