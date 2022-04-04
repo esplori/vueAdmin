@@ -48,7 +48,7 @@ const router = new Router({
         },
         {
           path: 'topic',
-          component: () => import(/* webpackChunkName: "cateList" */'@/views/admin/postManage/topic')
+          component: () => import(/* webpackChunkName: "topic" */'@/views/admin/postManage/topic')
         },
         {
           path: 'topicManage',
@@ -60,7 +60,7 @@ const router = new Router({
         },
         {
           path: 'recycle',
-          component: () => import(/* webpackChunkName: "systemSetting" */'@/views/admin/setting/recyclePost')
+          component: () => import(/* webpackChunkName: "recycle" */'@/views/admin/setting/recyclePost')
         },
         {
           path: 'userSetting',
@@ -68,7 +68,7 @@ const router = new Router({
         },
         {
           path: 'deploy',
-          component: () => import(/* webpackChunkName: "compressJs" */'@/views/admin/setting/deploy')
+          component: () => import(/* webpackChunkName: "deploy" */'@/views/admin/setting/deploy')
         },
         {
           path: 'navigationList',

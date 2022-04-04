@@ -185,6 +185,17 @@ export default {
           children: [{ title: "个人资料", path: "/admin/userSetting", id: "" }],
         },
         {
+          title: "采集",
+          path: "/admin/caijiList",
+          id: "",
+          auth: "ROLE_admin",
+          icon: "el-icon-sell",
+          children: [
+            { title: "采集列表", path: "/admin/caijiList", id: "" },
+            { title: "采集", path: "/admin/caiji", id: "" },
+          ],
+        },
+        {
           title: "系统设置",
           path: "/admin/systemSetting",
           id: "",

@@ -1,11 +1,17 @@
 <template>
   <div class="page-list">
     <div class="handle">
-      <el-button type="primary" @click="start">开始采集</el-button>
-      <el-form :model="form">
-        <el-form-item>
+      <el-form :model="form" label-width="80px">
+        <el-form-item label="区域Id:">
           <el-input v-model="form.setAdzoneId"></el-input>
         </el-form-item>
+         <el-form-item label="采集条数:">
+          <el-input v-model="params.pageSize"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="start">开始采集</el-button>
+        </el-form-item>
+        
       </el-form>
     </div>
     <el-table :data="list" style="width: 100%">
