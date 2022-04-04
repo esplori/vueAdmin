@@ -1,7 +1,6 @@
 <template>
   <div class="page-list">
     <div class="handle">
-      <el-button type="primary" @click="insertPage">新增文章</el-button>
       <!-- <el-button type="primary" @click="multipleDel">批量删除</el-button> -->
     </div>
     <el-table :data="list" style="width: 100%">
@@ -23,7 +22,6 @@
       </el-table-column>
       <el-table-column label="操作" width="180">
         <template slot-scope="scope">
-          <el-button @click="edit(scope.row.id)" type="primary">编辑</el-button>
           <el-button @click="del(scope.row.id)" type="danger">删除</el-button>
         </template>
       </el-table-column>
@@ -60,11 +58,6 @@ export default {
     this.getList();
   },
   methods: {
-    insertPage() {
-      this.$router.push({
-        path: "post",
-      });
-    },
     async getList() {
       let res = await getTbkListApi(this.params);
       if (res) {
@@ -78,12 +71,6 @@ export default {
         this.$message.success("删除成功");
         this.getList();
       }
-    },
-    /**
-     * 编辑
-     */
-    edit(id) {
-      this.$router.push({ path: "post", query: { id: id } });
     },
     handleSizeChange(val) {
       this.params.pageSize = val;

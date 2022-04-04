@@ -2,16 +2,15 @@
   <div class="page-list">
     <div class="handle">
       <el-form :model="form" label-width="80px">
-        <el-form-item label="区域Id:">
-          <el-input v-model="form.setAdzoneId"></el-input>
-        </el-form-item>
-         <el-form-item label="采集条数:">
+        <el-form-item label="采集条数:">
           <el-input v-model="params.pageSize"></el-input>
+        </el-form-item>
+        <el-form-item label="关键字:">
+          <el-input v-model="params.keyWords"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="start">开始采集</el-button>
         </el-form-item>
-        
       </el-form>
     </div>
     <el-table :data="list" style="width: 100%">
@@ -59,12 +58,10 @@ export default {
       list: [],
       params: {
         page: 1,
-        pageSize: 20,
+        pageSize: 5,
+        keyWords: "女装"
       },
       total: 0,
-      form: {
-        setAdzoneId: "110370750126L",
-      },
     };
   },
   created() {},
