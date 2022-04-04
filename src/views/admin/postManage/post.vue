@@ -57,7 +57,7 @@
         >
         </el-input>
         <el-button v-else class="button-new-tag" size="small" @click="showInput"
-          >+ 新增标签</el-button
+          >+ 新增</el-button
         >
       </el-form-item>
 
@@ -251,7 +251,10 @@ export default {
       const res = await getDetailByIdApi({ id: id });
       if (res) {
         // 日期兼容safari
-        res.data.result.createDate = res.data.result.createDate.replace(/-/g,"/")
+        res.data.result.createDate = res.data.result.createDate.replace(
+          /-/g,
+          "/"
+        );
         this.$set(this, "form", res.data.result);
         this.dynamicTags = this.form.keywords
           ? this.form.keywords.split(",")
@@ -303,17 +306,16 @@ export default {
   .optionsWidth {
     width: 350px;
   }
-  .el-tag + .el-tag {
-    margin-left: 10px;
+  .el-tag {
+    margin-right: 5px;
   }
   .button-new-tag {
-    height: 32px;
+    height: 28px;
     padding-top: 0;
     padding-bottom: 0;
   }
   .input-new-tag {
     width: 90px;
-    margin-left: 10px;
     vertical-align: bottom;
   }
 }
