@@ -5,9 +5,20 @@
         <el-form-item label="采集条数:">
           <el-input v-model.number="params.pageSize"></el-input>
         </el-form-item>
-        <el-form-item label="关键字:">
-          <el-input v-model="params.keyWords"></el-input>
+        <el-form-item label="分类:">
+          <el-select v-model="params.keyWords" placeholder="请选择">
+            <el-option
+              v-for="item in options"
+              :key="item.id"
+              :label="item.name"
+              :value="item.name"
+            >
+            </el-option>
+          </el-select>
         </el-form-item>
+        <!-- <el-form-item label="关键字:">
+          <el-input v-model="params.keyWords"></el-input>
+        </el-form-item> -->
         <el-form-item>
           <el-button type="primary" @click="start">开始采集</el-button>
         </el-form-item>
@@ -51,6 +62,7 @@
 
 <script>
 import { delApi, getTbkShopListApi } from "@/views/API/admin.js";
+import { getCateApi } from "@/views/API/tbk.js";
 
 export default {
   data() {
@@ -58,20 +70,33 @@ export default {
       list: [],
       params: {
         page: 1,
-        pageSize: 5,
-        keyWords: "女装"
+        pageSize: 1,
+        keyWords: "",
       },
-      total: 0
+      total: 0,
+      options: []
     };
   },
-  created() {},
+  created() {
+    this.getCate()
+  },
   methods: {
+    async getCate() {
+      let res = await getCateApi({});
+      if (res) {
+        this.options = res.data;
+      }
+    },
     insertPage() {
       this.$router.push({
         path: "post",
       });
     },
     async getList() {
+      if (!this.params.keyWords) {
+        this.$message.warning("请选择分类")
+        return
+      }
       let res = await getTbkShopListApi(this.params);
       if (res) {
         this.list = res.data.result;
