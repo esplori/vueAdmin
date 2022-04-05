@@ -1,9 +1,9 @@
 <template>
   <div class="page-list">
     <div class="handle">
-      <el-form :model="form" label-width="80px">
+      <el-form :model="params" label-width="80px">
         <el-form-item label="采集条数:">
-          <el-input v-model="params.pageSize"></el-input>
+          <el-input v-model.number="params.pageSize"></el-input>
         </el-form-item>
         <el-form-item label="关键字:">
           <el-input v-model="params.keyWords"></el-input>
@@ -61,7 +61,7 @@ export default {
         pageSize: 5,
         keyWords: "女装"
       },
-      total: 0,
+      total: 0
     };
   },
   created() {},
