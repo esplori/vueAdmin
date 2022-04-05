@@ -95,6 +95,10 @@ const router = new Router({
           component: () => import(/* webpackChunkName: "caijiList" */'@/views/admin/caiji/caijiList')
         },
         {
+          path: 'tbkType',
+          component: () => import(/* webpackChunkName: "caijiList" */'@/views/admin/caiji/tbkCate')
+        },
+        {
           path: 'userManage',
           component: () => import(/* webpackChunkName: "userManage" */'@/views/admin/userManage/userManage')
         },
