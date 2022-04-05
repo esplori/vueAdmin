@@ -3,9 +3,14 @@
     <el-button type="text" @click="insertCate">新增分类</el-button>
     <el-table :data="list" style="width: 100%">
       <el-table-column type="index" width="55" label="序号"> </el-table-column>
-      <el-table-column label="标题">
+      <el-table-column label="分类">
         <template slot-scope="scope">
           {{ scope.row.name }}
+        </template>
+      </el-table-column>
+       <el-table-column label="分类id">
+        <template slot-scope="scope">
+          {{ scope.row.id }}
         </template>
       </el-table-column>
       <el-table-column label="操作" width="180">
