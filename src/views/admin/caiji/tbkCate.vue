@@ -40,9 +40,9 @@
 
 <script>
 import {
-  delNavCateApi,
+  delCateApi,
   getCateApi,
-  updateNavCateApi,
+  updateCateApi,
   insertCateApi,
 } from "@/views/API/tbk.js";
 
@@ -87,7 +87,7 @@ export default {
       });
     },
     async del(id) {
-      let res = await delNavCateApi({ id: id });
+      let res = await delCateApi({ id: id });
       if (res) {
         this.$message.success("删除成功");
         this.getList();
@@ -107,7 +107,7 @@ export default {
         return;
       }
       if (row.id) {
-        let res = await updateNavCateApi(row);
+        let res = await updateCateApi(row);
         if (res) {
           this.getList();
         }

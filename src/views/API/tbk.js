@@ -12,3 +12,14 @@ export async function insertCateApi (data) {
   const options = { showLoading: true }
   return post(url, data, options)
 }
+
+export async function updateCateApi (data) {
+  const url = `${contextPath}/tbk/updateCate`
+  const options = { showLoading: true }
+  return post(url, data, options)
+}
+export async function delCateApi (data) {
+  const Url = `${contextPath}/tbk/delCate`
+  const options = { showLoading: true }
+  return post(Url, data, options)
+}
