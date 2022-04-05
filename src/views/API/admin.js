@@ -111,16 +111,7 @@ export async function getSourceListApi(data) {
   const options = {}
   return get(url, data, options)
 }
-export async function getTbkListApi(data) {
-  const url = `${contextPath}/tbk/getList/${data.page}`
-  const options = {}
-  return get(url, {}, options)
-}
-export async function getTbkShopListApi(data) {
-  const url = `${contextPath}/tbk/getShopList`
-  const options = {}
-  return get(url, data, options)
-}
+
 export async function getFundApi(data) {
   const url = `/fund/js/${data.code}.js?rt=1463558676006`
   const options = {}

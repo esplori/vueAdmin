@@ -6,21 +6,18 @@
           <el-input v-model.number="params.pageSize"></el-input>
         </el-form-item>
         <el-form-item label="分类:">
-          <el-select v-model="params.keyWords" placeholder="请选择">
+          <el-select v-model="params.cate" placeholder="请选择" @change="optionChange">
             <el-option
               v-for="item in options"
               :key="item.id"
               :label="item.name"
-              :value="item.name"
+              :value="item.id"
             >
             </el-option>
           </el-select>
         </el-form-item>
-        <!-- <el-form-item label="关键字:">
-          <el-input v-model="params.keyWords"></el-input>
-        </el-form-item> -->
         <el-form-item>
-          <el-button type="primary" @click="start">开始采集</el-button>
+          <el-button type="primary" @click="getList">开始采集</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -31,38 +28,17 @@
           <a :href="scope.row.url">{{ scope.row.title }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="120" prop="shop_type" label="店铺类型">
-      </el-table-column>
-      <el-table-column prop="seller_nick" label="标题"> </el-table-column>
       <el-table-column label="图片">
         <template slot-scope="scope">
           <img :src="scope.row.pict_url" alt="" width="200px" height="120px" />
         </template>
       </el-table-column>
-      <el-table-column label="操作" width="180">
-        <template slot-scope="scope">
-          <el-button @click="edit(scope.row.id)" type="primary">编辑</el-button>
-          <el-button @click="del(scope.row.id)" type="danger">删除</el-button>
-        </template>
-      </el-table-column>
     </el-table>
-    <div class="pagination-box" style="text-align: center; margin-top: 20px">
-      <el-pagination
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-        :current-page="params.page"
-        :page-size="params.pageSize"
-        layout="total, prev, pager, next"
-        :total="total"
-      >
-      </el-pagination>
-    </div>
   </div>
 </template>
 
 <script>
-import { delApi, getTbkShopListApi } from "@/views/API/admin.js";
-import { getCateApi } from "@/views/API/tbk.js";
+import { getCateApi, getTbkShopListApi,delTbkApi } from "@/views/API/tbk.js";
 
 export default {
   data() {
@@ -72,8 +48,8 @@ export default {
         page: 1,
         pageSize: 1,
         keyWords: "",
+        cate: ''
       },
-      total: 0,
       options: []
     };
   },
@@ -81,19 +57,22 @@ export default {
     this.getCate()
   },
   methods: {
+    optionChange(val) {
+      let filterArr = this.options.filter(item =>{
+        return item.id === val
+      })
+      if (filterArr.length) {
+        this.params.keyWords = filterArr[0].name
+      }
+    },
     async getCate() {
       let res = await getCateApi({});
       if (res) {
         this.options = res.data;
       }
     },
-    insertPage() {
-      this.$router.push({
-        path: "post",
-      });
-    },
     async getList() {
-      if (!this.params.keyWords) {
+      if (!this.params.cate) {
         this.$message.warning("请选择分类")
         return
       }
@@ -101,32 +80,7 @@ export default {
       if (res) {
         this.list = res.data.result;
       }
-    },
-    start() {
-      this.getList();
-    },
-    async del(id) {
-      let res = await delApi({ id: id });
-      if (res) {
-        this.$message.success("删除成功");
-        this.getList();
-      }
-    },
-    /**
-     * 编辑
-     */
-    edit(id) {
-      this.$router.push({ path: "post", query: { id: id } });
-    },
-    handleSizeChange(val) {
-      this.params.pageSize = val;
-      this.getList();
-    },
-    handleCurrentChange(val) {
-      this.params.page = val;
-      this.getList();
-    },
-    multipleDel(condition) {},
+    }
   },
 };
 </script>

@@ -10,19 +10,22 @@
           <a :href="scope.row.url">{{ scope.row.title }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="120" prop="createDate" label="更新时间">
-      </el-table-column>
-      <el-table-column width="120" prop="shop_type" label="店铺类型">
-      </el-table-column>
-      <el-table-column prop="seller_nick" label="标题"> </el-table-column>
       <el-table-column label="图片">
         <template slot-scope="scope">
-          <img :src="scope.row.pict_url" alt="" width="200px" height="120px" />
+          <img :src="scope.row.pict_url" alt="" width="120px" height="120px" />
         </template>
       </el-table-column>
-      <el-table-column label="操作" width="180">
+      <el-table-column  prop="volume" label="月销量">
+      </el-table-column>
+       <el-table-column  prop="cate" label="分类">
+      </el-table-column>
+      <el-table-column prop="reserve_price" label="原价"> </el-table-column>
+      <el-table-column prop="zk_final_price" label="折扣价"> </el-table-column>
+       <el-table-column prop="createDate" label="更新时间">
+      </el-table-column>
+      <el-table-column label="操作">
         <template slot-scope="scope">
-          <el-button @click="del(scope.row.id)" type="danger">删除</el-button>
+          <el-button @click="del(scope.row.pid)" type="danger">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -41,7 +44,7 @@
 </template>
 
 <script>
-import { delApi, getTbkListApi } from "@/views/API/admin.js";
+import { delTbkApi, getTbkListApi } from "@/views/API/tbk.js";
 
 export default {
   data() {
@@ -66,7 +69,7 @@ export default {
       }
     },
     async del(id) {
-      let res = await delApi({ id: id });
+      let res = await delTbkApi({ pid: id });
       if (res) {
         this.$message.success("删除成功");
         this.getList();
