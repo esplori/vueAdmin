@@ -139,7 +139,7 @@
           </el-col>
         </el-row>
       </div>
-      <h3>搜索引擎</h3>
+      <!-- <h3>搜索引擎</h3>
       <el-table :data="list" style="width: 100%">
         <el-table-column type="index" width="55" label="序号">
         </el-table-column>
@@ -148,7 +148,7 @@
             {{ scope.row.userAgent }}
           </template>
         </el-table-column>
-      </el-table>
+      </el-table> -->
     </div>
   </div>
 </template>
