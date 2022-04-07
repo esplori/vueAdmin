@@ -2,6 +2,9 @@
   <div class="page-list">
     <div class="handle">
       <el-form :model="params" label-width="80px">
+        <el-form-item label="采集页码:">
+          <el-input v-model.number="params.pageNo"></el-input>
+        </el-form-item>
         <el-form-item label="采集条数:">
           <el-input v-model.number="params.pageSize"></el-input>
         </el-form-item>
@@ -45,8 +48,8 @@ export default {
     return {
       list: [],
       params: {
-        page: 1,
-        pageSize: 1,
+        pageNo: 1,
+        pageSize: 20,
         keyWords: "",
         cate: ''
       },

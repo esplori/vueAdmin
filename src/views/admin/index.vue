@@ -191,9 +191,10 @@ export default {
           auth: "ROLE_admin",
           icon: "el-icon-sell",
           children: [
-            { title: "分类", path: "/admin/tbkType", id: "" },
-            { title: "采集列表", path: "/admin/caijiList", id: "" },
             { title: "采集", path: "/admin/caiji", id: "" },
+            { title: "采集列表", path: "/admin/caijiList", id: "" },
+            { title: "分类", path: "/admin/tbkType", id: "" },
+            
           ],
         },
         {
