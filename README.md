@@ -40,7 +40,8 @@ http://admin.dsiab.com
 ``` bash
 
 #下载代码
-git clone https://gitee.com/wilkwo/vueAdmin.git
+gitee: git clone https://gitee.com/wilkwo/vueAdmin.git
+github: git clone https://github.com/esplori/vueAdmin.git
 
 # 安装依赖
 npm install
