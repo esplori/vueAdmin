@@ -1,5 +1,3 @@
-* Created by QUDONGDONG901 2019/3/24
-*/
 <template>
   <div class="footer">
     <!-- <span v-html="copyRight"></span>copyRight {{currentDate}} <a href="http://beian.miit.gov.cn/"> 粤ICP备20013202号</a> -->

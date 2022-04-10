@@ -1,5 +1,3 @@
-* Created by QUDONGDONG901 2019/3/24
-*/
 <template>
   <div class='carousel-container'>
       <el-carousel :interval="5000" arrow="always" :height="355">

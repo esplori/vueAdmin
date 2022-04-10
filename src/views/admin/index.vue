@@ -1,4 +1,3 @@
-<!--后台管理首页-->
 <template>
   <div class="admin-home">
     <div class="left-menu">
