@@ -1,13 +1,20 @@
+<div><a href="https://github.com/esplori/vueAdmin/blob/master/README.md">中文</a>  |  <a href="https://github.com/esplori/vueAdmin/blob/master/README.en.md">english</a></div>
+
+
+<h1 align="center" style=" font-weight: bold;">vueAdmin</h1>
+<h5 align="center">基于nuxtjs开发的博客系统</h5>
+
+
 
 ### 项目介绍
 
-一个vue做的简单内容管理系统，可以用来做一个简单的博客，实现了博客的基本功能。
+- 基于vue、element-ui实现的的博客后台管理系统
 
-主要技术: vuejs2.0 + element-ui
+- 主要技术: vuejs2.0 + element-ui
 
-使用到的插件： axios + less + wangeditor
+- 使用到的插件： axios + less + wangeditor
 
-拉取代码后可直接看到效果，默认连接是官网的后台管理接口，使用test账号就能进入。
+- 拉取代码后可直接看到效果，默认连接是官网的后台管理接口，使用测试账号就能进入。
 
 ### 主要功能
 - 首页看板：访问数据统计
@@ -29,11 +36,9 @@ github: nuxt-web (https://github.com/esplori/vueAdmin.git)
 
 ### 演示地址
 
-http://admin.dsiab.com
+- 地址：http://admin.dsiab.com
 
-测试账号： test
-
-测试密码: test
+- 测试账号、密码： test/test
 
 
 ### 演示截图
@@ -47,6 +52,9 @@ http://admin.dsiab.com
 
 #下载代码
 gitee: git clone https://gitee.com/wilkwo/vueAdmin.git
+
+或者
+
 github: git clone https://github.com/esplori/vueAdmin.git
 
 # 安装依赖
@@ -65,6 +73,6 @@ npm run build --report
 
 ### 感谢赞赏
 
-您的支持是持续更新的动力！
+创作不易，你的赞赏和认可是持续更新的动力！
 
 <img src="./src/assets/images/zanshan.jpeg" alt="赞赏" width="400px" />
