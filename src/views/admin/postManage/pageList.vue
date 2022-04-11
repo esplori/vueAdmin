@@ -12,7 +12,7 @@
         ></el-option>
       </el-select>
     </div>
-    <el-table :data="list">
+    <el-table :data="list" @sort-change="sortCchange">
       <el-table-column type="index" label="序号" width="55px"></el-table-column>
       <el-table-column label="标题">
         <template slot-scope="scope">
@@ -34,12 +34,12 @@
           {{ scope.row.createBy }}
         </template>
       </el-table-column>
-      <el-table-column label="阅读" width="120px">
+      <el-table-column label="阅读" width="120px" sortable="custom" prop="views">
         <template slot-scope="scope">
           {{ scope.row.views }}
         </template>
       </el-table-column>
-      <el-table-column label="创建时间" width="180px">
+      <el-table-column label="创建时间" width="180px" sortable="custom" prop="createDate">
         <template slot-scope="scope">
           {{ scope.row.createDate }}
         </template>
@@ -107,6 +107,8 @@ export default {
         page: 1,
         cate: "",
         pageSize: 10,
+        order: 'desc',
+        orderBy: 'createDate'
       },
       form: {
         postId: '',
@@ -129,6 +131,13 @@ export default {
     this.getList();
   },
   methods: {
+    sortCchange({ column, prop, order }) {
+      this.params.page = 1;
+      // 需要转换成sql对应的排序字段
+      this.params.order = order ==='ascending'?"asc":"desc"
+      this.params.orderBy = prop
+      this.getList();
+    },
     async getTopicList() {
       let res = await getTopicListApi({});
       if (res) {
