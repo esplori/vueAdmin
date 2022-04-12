@@ -4,14 +4,14 @@
       <el-button type="primary" @click="addFile">新增文件</el-button>
     </div>
     <el-tabs v-model="activeName" @tab-click="handleClick">
+      <el-tab-pane label="所有" name="all"></el-tab-pane>
       <el-tab-pane label="图片" name="image"></el-tab-pane>
       <el-tab-pane label="视频" name="media"></el-tab-pane>
       <el-tab-pane label="音乐" name="music"></el-tab-pane>
       <el-tab-pane label="文档" name="file"></el-tab-pane>
-      <el-tab-pane label="代码" name="code"></el-tab-pane>
     </el-tabs>
     <el-table :data="list" style="width: 100%">
-      <el-table-column  type="index" label="序号" width="55px"></el-table-column>
+      <el-table-column type="index" label="序号" width="55px"></el-table-column>
       <el-table-column type="selection" width="55"> </el-table-column>
       <el-table-column prop="" label="名称">
         <template slot-scope="scope">
@@ -30,7 +30,7 @@
                 typeConfig.image.includes(scope.row.filename.split('.')[1])
               "
             >
-            <span style="margin-right:40px">{{ scope.row.filename }}</span>
+              <span style="margin-right: 40px">{{ scope.row.filename }}</span>
               <img
                 loading="lazy"
                 :src="sourceUrl + scope.row.filename"
@@ -44,6 +44,11 @@
           </div>
         </template>
       </el-table-column>
+       <el-table-column prop="" label="名称">
+        <template slot-scope="scope">
+          <a target="_blank" :href="sourceUrl + scope.row.filename">{{sourceUrl + scope.row.filename}}</a>
+        </template>
+       </el-table-column>
       <el-table-column fixed="right" width="120" label="操作">
         <template slot-scope="scope">
           <el-button @click="del(scope.row.filename)" type="text"
@@ -85,13 +90,13 @@ export default {
     return {
       list: [],
       dialogVisible: false,
-      activeName: "image",
+      activeName: "",
       sourceUrl: "",
       typeConfig: {
         image: ["jpg", "png", "gif", "jpeg"],
         media: ["mp4"],
         music: ["mp3"],
-        file: ["docx", "doc", "xslx", "txt"],
+        file: ["docx", "doc", "xslx", "txt", "zip"],
       },
     };
   },
@@ -121,8 +126,11 @@ export default {
         this.sourceUrl = res.data.sourceUrl;
         this.list = res.data.result.filter((item) => {
           const fig = this.typeConfig[type];
-          const fn = item.filename.split(".")[1];
-          return fig.includes(fn);
+          if (type && fig) {
+            const fn = item.filename.split(".")[1];
+            return fig.includes(fn);
+          }
+          return item;
         });
       }
     },
@@ -130,7 +138,7 @@ export default {
       const res = await delFileApi({ filename: filename });
       if (res) {
         this.$message.success("删除成功");
-        this.getList();
+        this.getList(this.activeName);
       }
     },
   },
