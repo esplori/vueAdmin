@@ -241,8 +241,13 @@ export default {
           data: _this.deviceTypeX,
           axisLabel: {
             interval: 0,
-            rotate: -20, // 倾斜度 -90 至 90 默认为0
+            rotate: -40, // 倾斜度 -90 至 90 默认为0
             margin: 10,
+            formatter: (val)=>{
+              let aa = val.slice(0,13) + "\n"
+              aa += val.slice(12)
+              return aa
+            }
           },
         },
         yAxis: {},
