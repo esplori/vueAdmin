@@ -154,7 +154,7 @@ export default {
               id: "",
               auth: "ROLE_admin",
             },
-            { title: "点名", path: "", id: "/admin/tools/dianming" },
+            { title: "点名", path: "", id: "",path: "/admin/tools/dianming" },
             {
               title: "图片转成base64",
               path: "/admin/tools/img2base64",
