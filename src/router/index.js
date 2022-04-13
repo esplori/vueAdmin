@@ -107,6 +107,10 @@ const router = new Router({
           component: () => import(/* webpackChunkName: "roleManage" */'@/views/admin/userManage/roleManage')
         },
         {
+          path: 'menuManage',
+          component: () => import(/* webpackChunkName: "roleManage" */'@/views/admin/userManage/menuManage')
+        },
+        {
           path: 'commentList',
           component: () => import(/* webpackChunkName: "comments" */'@/views/admin/postManage/commentList')
         },

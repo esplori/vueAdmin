@@ -165,7 +165,7 @@ export default {
           ],
         },
         {
-          title: "用户管理",
+          title: "权限管理",
           path: "/admin/userManage",
           id: "",
           auth: "ROLE_admin",
@@ -173,6 +173,7 @@ export default {
           children: [
             { title: "用户管理", path: "/admin/userManage", id: "" },
             { title: "角色管理", path: "/admin/roleManage", id: "" },
+            { title: "菜单管理", path: "/admin/menuManage", id: "" },
           ],
         },
         {
