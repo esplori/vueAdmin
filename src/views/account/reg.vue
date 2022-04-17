@@ -41,9 +41,11 @@ export default {
       rules: {
         username: [
           { required: true, message: "请输入用户名", trigger: "change" },
+          { min: 4, max: 20, message: '长度在 4 到 20 个字符', trigger: 'blur' }
         ],
         password: [
           { required: true, message: "请输入密码", trigger: "change" },
+          { min: 4, max: 20, message: '长度在 4 到 20 个字符', trigger: 'blur' }
         ],
         email: [
           { required: true, message: "请输入邮箱", trigger: "change" },
