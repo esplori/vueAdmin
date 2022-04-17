@@ -173,7 +173,7 @@ export default {
           children: [
             { title: "用户管理", path: "/admin/userManage", id: "" },
             { title: "角色管理", path: "/admin/roleManage", id: "" },
-            { title: "菜单管理", path: "/admin/menuManage", id: "" },
+            // { title: "菜单管理", path: "/admin/menuManage", id: "" },
           ],
         },
         {
