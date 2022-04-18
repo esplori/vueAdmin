@@ -21,7 +21,7 @@ export default {
       if (res) {
         this.successMsg = "激活成功，即将跳转到登录页面"
         setTimeout(() =>{
-          // this.$router.push({ path: "/login" });
+          this.$router.push({ path: "/login" });
         },3000)
       }
     },
