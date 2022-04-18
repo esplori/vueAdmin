@@ -19,6 +19,10 @@ const router = new Router({
       component: () => import(/* webpackChunkName: "reg" */'@/views/account/reg')
     },
     {
+      path: '/regActive',
+      component: () => import(/* webpackChunkName: "reg" */'@/views/account/regActive')
+    },
+    {
       path: '/admin',
       component: () => import(/* webpackChunkName: "admin" */'@/views/admin/index'),
       children: [
