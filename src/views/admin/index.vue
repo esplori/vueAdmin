@@ -148,13 +148,7 @@ export default {
           children: [
             { title: "json格式化", path: "/admin/tools/jsonviewer", id: "" },
             { title: "抽奖", path: "/admin/tools/choujiang", id: "" },
-            {
-              title: "发送邮件",
-              path: "/admin/tools/mail",
-              id: "",
-              auth: "ROLE_admin",
-            },
-            { title: "点名", path: "", id: "",path: "/admin/tools/dianming" },
+            { title: "点名", path: "", id: "", path: "/admin/tools/dianming" },
             {
               title: "图片转成base64",
               path: "/admin/tools/img2base64",
@@ -194,7 +188,6 @@ export default {
             { title: "采集", path: "/admin/caiji", id: "" },
             { title: "采集列表", path: "/admin/caijiList", id: "" },
             { title: "分类", path: "/admin/tbkType", id: "" },
-            
           ],
         },
         {
@@ -208,6 +201,11 @@ export default {
             { title: "资源管理", path: "/admin/sourceList", id: "" },
             { title: "编译部署", path: "/admin/deploy", id: "" },
             { title: "回收站", path: "/admin/recycle", id: "" },
+            {
+              title: "发送邮件",
+              path: "/admin/mail",
+              id: "",
+            },
           ],
         },
       ],

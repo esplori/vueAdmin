@@ -63,6 +63,10 @@ const router = new Router({
           component: () => import(/* webpackChunkName: "systemSetting" */'@/views/admin/setting/systemSetting')
         },
         {
+          path: 'mail',
+          component: () => import(/* webpackChunkName: "mail" */'@/views/admin/setting/sendMail')
+        },
+        {
           path: 'recycle',
           component: () => import(/* webpackChunkName: "recycle" */'@/views/admin/setting/recyclePost')
         },
@@ -145,10 +149,6 @@ const router = new Router({
             {
               path: 'music',
               component: () => import(/* webpackChunkName: "music" */'@/views/admin/tools/musicManage/music')
-            },
-            {
-              path: 'mail',
-              component: () => import(/* webpackChunkName: "mail" */'@/views/admin/tools/mail/index')
             },
             {
               path: 'cssFormat',
