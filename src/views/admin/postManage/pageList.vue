@@ -94,7 +94,7 @@
 import {
   delApi,
   getListByCateApi,
-  getCateValidApi,
+  getAdminCateValidApi,
   getTopicListApi,
   addPostToTopicApi
 } from "@/views/API/admin.js";
@@ -152,7 +152,7 @@ export default {
       this.getListByCate();
     },
     async getCate() {
-      const res = await getCateValidApi({});
+      const res = await getAdminCateValidApi({});
       if (res) {
         this.cateList = res.data.result;
       }
