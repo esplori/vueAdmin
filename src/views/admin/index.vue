@@ -129,7 +129,7 @@ export default {
               title: "分类管理",
               path: "/admin/cateList",
               id: "",
-              auth: "ROLE_admin",
+              auth: "ROLE_author",
             },
             {
               title: "专题管理",
