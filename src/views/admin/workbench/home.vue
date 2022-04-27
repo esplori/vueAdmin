@@ -193,6 +193,9 @@ export default {
     });
   },
   methods: {
+    /**
+     * 计数器动效
+     */
     initCountUp() {
       let cp = new CountUp(this.$refs.countupviews, this.views, this.options);
       if (!cp.error) {
@@ -226,9 +229,9 @@ export default {
         console.error(cp4.error);
       }
     },
-    generateNum() {
-      return parseFloat(Math.random() * 10).toFixed(2);
-    },
+    /**
+     * 设备类型
+     */
     initDeviceType() {
       let _this = this;
       let myChart = echarts.init(document.getElementById("deviceType"));
@@ -243,11 +246,11 @@ export default {
             interval: 0,
             rotate: -40, // 倾斜度 -90 至 90 默认为0
             margin: 10,
-            formatter: (val)=>{
-              let aa = val.slice(0,13) + "\n"
-              aa += val.slice(12)
-              return aa
-            }
+            formatter: (val) => {
+              let aa = val.slice(0, 13) + "\n";
+              aa += val.slice(12);
+              return aa;
+            },
           },
         },
         yAxis: {},
@@ -272,6 +275,9 @@ export default {
       });
       myChart.resize();
     },
+    /**
+     * 浏览器类型
+     */
     initBrowserType() {
       let _this = this;
       let myChart = echarts.init(document.getElementById("browserType"));
@@ -313,6 +319,9 @@ export default {
       });
       myChart.resize();
     },
+    /**
+     * 设备分辨率
+     */
     initDeiveRatio() {
       let _this = this;
       let myChart = echarts.init(document.getElementById("deiveRatio"));
@@ -350,6 +359,9 @@ export default {
       });
       myChart.resize();
     },
+    /**
+     * 最近30天访问量
+     */
     initDayViews() {
       let _this = this;
       let myChart = echarts.init(document.getElementById("dayViews"));
@@ -426,9 +438,15 @@ export default {
       });
       myChart.resize();
     },
+    /**
+     * 获取用户信息
+     */
     async getUserInfo() {
       await getUserInfoApi({});
     },
+    /**
+     * 获取统计数据
+     */
     async getWebStatistics() {
       const res = await getWebStatisticsApi({});
       if (res) {
