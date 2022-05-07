@@ -2,7 +2,7 @@
 
 
 <h1 align="center" style=" font-weight: bold;">vueAdmin</h1>
-<h5 align="center">基于nuxtjs开发的博客系统</h5>
+<h5 align="center">基于vue开发的博客系统</h5>
 
 
 
