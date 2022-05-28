@@ -18,7 +18,7 @@
         <template slot-scope="scope">
           <a
             style="color: #333"
-            :href="'https://www.dsiab.com/post/' + scope.row.id"
+            :href="'https://www.dsiab.com/post/' + (scope.row.uid||scope.row.id)"
             target="_blank"
             >{{ scope.row.title }}</a
           >
