@@ -1,6 +1,11 @@
 <template>
   <div class="user-info">
-    <el-form :model="form" label-width="130px" label-position="left" class="setting-form">
+    <el-form
+      :model="form"
+      label-width="130px"
+      label-position="left"
+      class="setting-form"
+    >
       <el-form-item label="站点名称:">
         <el-input v-model="form.siteName"></el-input>
       </el-form-item>
@@ -31,9 +36,19 @@
       <el-form-item label="清空redis缓存:">
         <el-button type="primary" @click="clearCache">清空</el-button>
       </el-form-item>
-      <el-form-item label="轮播管理" style="width:100%">
+      <el-form-item label="启用轮播分类推荐:" style="width: 100%">
+        <el-switch
+          v-model="form.carouselEnable"
+          active-value="Y"
+          inactive-value="N"
+        >
+        </el-switch>
         <el-table :data="tableData" style="width: 100%">
-          <el-table-column type="index" label="序号" width="55px"></el-table-column>
+          <el-table-column
+            type="index"
+            label="序号"
+            width="55px"
+          ></el-table-column>
           <el-table-column label="轮播图片地址" width="180">
             <template slot-scope="scope">
               <el-input v-model="scope.row.imgUrl"></el-input>
@@ -51,10 +66,15 @@
           </el-table-column>
           <el-table-column prop="address" label="操作">
             <template slot-scope="scope">
-              <el-button @click="add" v-show="scope.$index === tableData.length - 1"
+              <el-button
+                @click="add"
+                v-show="scope.$index === tableData.length - 1"
                 >新增</el-button
               >
-              <el-button type="danger" @click="del($index)" v-show="scope.$index === tableData.length - 1"
+              <el-button
+                type="danger"
+                @click="del($index)"
+                v-show="scope.$index === tableData.length - 1"
                 >删除</el-button
               >
             </template>
@@ -69,7 +89,12 @@
 </template>
 
 <script>
-import { updateSiteInfoApi, getSiteInfoApi, generateKeywordsApi, clearCacheApi } from "@/views/API/admin.js";
+import {
+  updateSiteInfoApi,
+  getSiteInfoApi,
+  generateKeywordsApi,
+  clearCacheApi,
+} from "@/views/API/admin.js";
 
 export default {
   data() {
@@ -82,7 +107,8 @@ export default {
         sourceRealUrl: "",
         beianNo: "",
         bakRealUrl: "",
-        siteEmail: ''
+        siteEmail: "",
+        carouselEnable: 'N'
       },
       tableData: [{ imgUrl: "", desc: "", url: "" }],
     };
@@ -92,15 +118,15 @@ export default {
   },
   methods: {
     async generateKeywords() {
-      let res = await generateKeywordsApi({})
+      let res = await generateKeywordsApi({});
       if (res) {
-        this.$message.success("重新生成成功")
+        this.$message.success("重新生成成功");
       }
     },
     async clearCache() {
-      let res = await clearCacheApi({})
+      let res = await clearCacheApi({});
       if (res) {
-        this.$message.success("清空成功")
+        this.$message.success("清空成功");
       }
     },
     async submit() {
@@ -134,8 +160,8 @@ export default {
 <style scoped lang="less">
 .user-info {
   padding: 20px 0;
-  .setting-form{
-    &>div {
+  .setting-form {
+    & > div {
       width: 50%;
     }
   }
