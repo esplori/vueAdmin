@@ -2,9 +2,11 @@ body,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,s
   margin:0;padding:0;
 }
 body{
-  font:14px;
-  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
-  background:#fff;
+  height: 100%;
+  width: 100%;
+  font-size:14px;
+  font-family: "Microsoft YaHei","PingFang SC","微软雅黑","Helvetica Neue",Helvetica,Arial,sans-serif;
+  background: #f6f6f6;
   -webkit-text-size-adjust:100%
 }
 a{

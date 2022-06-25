@@ -1,75 +1,63 @@
 <template>
   <div class="admin-home">
-    <div class="left-menu">
-      <el-menu
-        style="height: 100%; overflow-y: auto"
-        default-active="/admin/home"
-        class="el-menu-vertical-demo"
-        @open="handleOpen"
-        @close="handleClose"
-        :collapse="isCollapse"
-        router
-        background-color="#333"
-        text-color="#fff"
-        active-text-color="#fff"
-      >
-        <div class="logo">DSIAB</div>
-        <div v-for="(item, index) in menuList" :key="index">
-          <el-menu-item
-            v-if="
-              !item.children &&
-              userInfo.some((role) => {
-                return item.auth.includes(role);
-              })
-            "
-            :index="item.path"
-          >
-            <i :class="item.icon"></i>
-            <span slot="title">{{ item.title }}</span>
-          </el-menu-item>
-          <el-submenu
-            :index="item.path"
-            v-if="
-              item.children &&
-              userInfo.some((role) => {
-                return item.auth.includes(role);
-              })
-            "
-          >
-            <template slot="title">
+    <adminHeader></adminHeader>
+    <div class="content-container">
+      <div class="left-menu">
+        <el-menu
+          style="height: 100%; overflow-y: auto"
+          default-active="/admin/home"
+          class="el-menu-vertical"
+          @open="handleOpen"
+          @close="handleClose"
+          :collapse="isCollapse"
+          router
+        >
+          <div v-for="(item, index) in menuList" :key="index">
+            <el-menu-item
+              v-if="
+                !item.children &&
+                userInfo.some((role) => {
+                  return item.auth.includes(role);
+                })
+              "
+              :index="item.path"
+            >
               <i :class="item.icon"></i>
               <span slot="title">{{ item.title }}</span>
-            </template>
-            <el-menu-item
-              :index="it.path"
-              v-for="(it, idx) in item.children"
-              :key="idx"
+            </el-menu-item>
+            <el-submenu
+              :index="item.path"
               v-if="
+                item.children &&
                 userInfo.some((role) => {
-                  return !it.auth || (it.auth && it.auth.includes(role));
+                  return item.auth.includes(role);
                 })
               "
             >
-              <span slot="title">{{ it.title }}</span>
-            </el-menu-item>
-          </el-submenu>
-        </div>
-      </el-menu>
-    </div>
-    <div class="right-content">
-      <adminHeader></adminHeader>
-      <!-- <div class="tabs">
-        <el-tabs v-model="activeName" @tab-click="handleClick">
-          <el-tab-pane
-            :label="item.label"
-            :name="item.id"
-            v-for="(item, index) in tabList"
-            :key="index"
-          ></el-tab-pane>
-        </el-tabs>
-      </div> -->
-      <router-view></router-view>
-      <commonFooter></commonFooter>
+              <template slot="title">
+                <i :class="item.icon"></i>
+                <span slot="title">{{ item.title }}</span>
+              </template>
+              <el-menu-item
+                :index="it.path"
+                v-for="(it, idx) in item.children"
+                :key="idx"
+                v-if="
+                  userInfo.some((role) => {
+                    return !it.auth || (it.auth && it.auth.includes(role));
+                  })
+                "
+              >
+                <span slot="title">{{ it.title }}</span>
+              </el-menu-item>
+            </el-submenu>
+          </div>
+        </el-menu>
+      </div>
+      <div class="right-content">
+        <router-view></router-view>
+        <commonFooter></commonFooter>
+      </div>
     </div>
     <music class="global-music" v-if="false"></music>
   </div>
@@ -276,17 +264,23 @@ export default {
 <style scoped lang="less">
 .admin-home {
   height: 100%;
-  display: flex;
-  position: relative;
+  .content-container {
+    height: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  }
   .left-menu {
     background: #001529;
     color: #fff;
+    border-radius: 3px;
     .logo {
       font-size: 18px;
       text-align: center;
       padding: 15px 0;
       color: #fff;
-      background: rgb(58, 58, 58);
+      border-bottom: 1px solid #ddd;
     }
     .switch-icon {
       text-align: center;
@@ -296,14 +290,20 @@ export default {
   }
   .right-content {
     width: 100%;
-    padding: 0 20px 20px 20px;
-    margin-bottom: 20px;
+    padding: 10px 20px;
+    padding-bottom: 20px;
     overflow-y: auto;
+    background: #fff;
+    margin-left: 10px;
+    border-radius: 3px;
   }
-  .el-menu-vertical-demo:not(.el-menu--collapse) {
+  .el-menu-vertical:not(.el-menu--collapse) {
     width: 180px;
     min-height: 400px;
     overflow-x: hidden;
+  }
+  .el-menu {
+    border-right: none;
   }
   .global-music {
     width: 100%;

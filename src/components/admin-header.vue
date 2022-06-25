@@ -1,13 +1,13 @@
 <template>
   <div class="admin-header">
-    <div class="tips">
-     <i class="el-icon-bell"></i>  <span class="welcomeMsg">{{welcomeMsg}}</span>
-    </div>
-    <div class="user-info">
-      <div>
-        <a href="https://www.dsiab.com" target="_blank">查看站点</a>
+    <div class="header-container">
+      <div class="tips">
+        <i class="el-icon-bell"></i>
+        <span class="welcomeMsg">{{ welcomeMsg }}</span>
       </div>
-      <userInfo></userInfo>
+      <div class="user-info">
+        <userInfo></userInfo>
+      </div>
     </div>
   </div>
 </template>
@@ -17,7 +17,7 @@ export default {
   name: "admin-header",
   data() {
     return {
-      welcomeMsg: ' 欢迎来到javascript技术分享网站'
+      welcomeMsg: " 欢迎来到javascript技术分享网站",
     };
   },
   components: {
@@ -28,22 +28,27 @@ export default {
 
 <style scoped lang="less">
 .admin-header {
+  width: 100%;
   padding: 20px 0;
-  margin-bottom: 20px;
+  margin: 0 auto 10px;
   background: #fff;
   color: #71777c;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   border-bottom: 1px solid #ddd;
-  .user-info {
+  .header-container {
+    max-width: 1280px;
     display: flex;
-    justify-content: flex-end;
-  }
-  .tips{
-    .welcomeMsg{
-      margin-left: 10px;
-      font-size: 16px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    .user-info {
+      display: flex;
+      justify-content: flex-end;
+    }
+    .tips {
+      .welcomeMsg {
+        margin-left: 10px;
+        font-size: 16px;
+      }
     }
   }
 }
