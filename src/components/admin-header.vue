@@ -1,9 +1,12 @@
 <template>
   <div class="admin-header">
     <div class="header-container">
-      <div class="tips">
-        <i class="el-icon-bell"></i>
-        <span class="welcomeMsg">{{ welcomeMsg }}</span>
+      <div class="left-header">
+        <div class="logo">DSIAB</div>
+        <div class="tips">
+          <i class="el-icon-bell"></i>
+          <span class="welcomeMsg">{{ welcomeMsg }}</span>
+        </div>
       </div>
       <div class="user-info">
         <userInfo></userInfo>
@@ -43,6 +46,14 @@ export default {
     .user-info {
       display: flex;
       justify-content: flex-end;
+    }
+    .left-header{
+      display: flex;
+      align-items: center;
+    }
+    .logo{
+      font-size: 18px;
+      margin-right: 20px;
     }
     .tips {
       .welcomeMsg {
