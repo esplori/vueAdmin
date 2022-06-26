@@ -290,7 +290,7 @@ export default {
 .post {
   width: 100%;
   .optionsWidth {
-    width: 350px;
+    width: 250px;
   }
   .el-tag {
     margin-right: 5px;
