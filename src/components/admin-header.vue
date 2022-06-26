@@ -2,7 +2,7 @@
   <div class="admin-header">
     <div class="header-container">
       <div class="left-header">
-        <div class="logo">DSIAB</div>
+        <div class="logo"><a href="https://www.dsiab.com" target="_blank">DSIAB</a></div>
         <div class="tips">
           <i class="el-icon-bell"></i>
           <span class="welcomeMsg">{{ welcomeMsg }}</span>
