@@ -17,7 +17,7 @@
           <el-input
             v-model="form.email"
             type="text"
-            placeholder="请输入邮箱"
+            placeholder="请输入正确邮箱，方便找回密码"
           ></el-input>
         </el-form-item>
         <el-form-item>
@@ -93,7 +93,7 @@ export default {
   background: url("../../assets/images/bg.jpg") no-repeat;
   background-size: cover;
   .login-container {
-    width: 300px;
+    width: 400px;
     background: rgba(255, 255, 255, 1);
     padding: 40px 80px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);

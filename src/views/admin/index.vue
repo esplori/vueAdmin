@@ -55,7 +55,9 @@
         </el-menu>
       </div>
       <div class="right-content">
-        <router-view></router-view>
+        <keep-alive>
+          <router-view></router-view>
+        </keep-alive>
         <commonFooter></commonFooter>
       </div>
     </div>
