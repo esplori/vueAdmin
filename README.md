@@ -4,6 +4,10 @@
 <h1 align="center" style=" font-weight: bold;">vueAdmin</h1>
 <h5 align="center">基于vue开发的博客系统</h5>
 
+<p align="center">
+	<a href="https://gitee.com/wilkwo/vueAdmin.git"><img src="https://gitee.com/wilkwo/vueAdmin/badge/star.svg?theme=dark"></a>
+	<a href="https://gitee.com/wilkwo/vueAdmin.git"><img src="https://gitee.com/wilkwo/vueAdmin/badge/fork.svg?theme=dark"></a>
+</p>
 
 
 ### 项目介绍
