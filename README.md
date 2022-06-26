@@ -18,7 +18,7 @@
 
 - 使用到的插件： axios + less + wangeditor
 
-- 拉取代码后可直接看到效果，默认连接是官网的后台管理接口，使用测试账号就能进入。
+- 拉取代码后可直接看到效果，默认调用是官网的后台管理接口，使用测试账号登录即可。
 
 ### 主要功能
 - 首页看板：访问数据统计
@@ -29,13 +29,13 @@
 - 用户管理：新增、删除、修改用户
 - 个人设置：用户个人信息修改
 - 系统设置：站点设置、资源管理、在线编译、回收站
-- 常用工具：（json格式化，抽奖，在线点名，图片转base64，二维码在线生成等，持续更新中...）
+- 常用工具：json格式化，抽奖，在线点名，图片转base64，二维码在线生成等，持续更新中...
 
 ### 关联项目
 
-gitee: nuxt-web (https://gitee.com/wilkwo/nuxt-web.git) 
-
-github: nuxt-web (https://github.com/esplori/vueAdmin.git)
+- 门户网站: nuxt-web (https://gitee.com/wilkwo/nuxt-web.git) 
+  
+- 体验地址：https://www.dsiab.com
 
 
 ### 演示地址
@@ -47,7 +47,7 @@ github: nuxt-web (https://github.com/esplori/vueAdmin.git)
 
 ### 演示截图
 
-<img src="./src/assets/images/screenshot.jpg" alt="赞赏" width="400px" />
+<img src="./src/assets/images/screenshot.png" alt="赞赏" width="400px" />
 
 
 ### 运行项目
