@@ -9,6 +9,7 @@
               label-width="80px"
               :rules="loginRules"
               ref="form"
+              label-position="left"
             >
               <el-form-item label="用户名：" prop="username">
                 <el-input
@@ -43,6 +44,7 @@
               label-width="80px"
               :rules="rules"
               ref="regform"
+              label-position="left"
             >
               <el-form-item label="用户名:" prop="username">
                 <el-input
@@ -194,7 +196,7 @@ export default {
     border-radius: 3px;
     width: 320px;
     background: rgba(255, 255, 255, 1);
-    padding: 40px 80px;
+    padding: 40px 60px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     .reg {
       cursor: pointer;
