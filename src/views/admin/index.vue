@@ -292,7 +292,7 @@ export default {
   }
   .right-content {
     width: 100%;
-    padding: 10px 20px;
+    padding: 20px;
     padding-bottom: 20px;
     overflow-y: auto;
     background: #fff;
