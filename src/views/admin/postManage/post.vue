@@ -85,7 +85,7 @@ export default {
         id: "",
         title: "",
         content: "",
-        cate: 3,
+        cate: "",
         views: 0,
         keywords: "",
         createBy: "",
@@ -153,27 +153,11 @@ export default {
     };
     // 插入代码语言配置
     this.editor.config.languageType = [
-      // "Bash",
-      // "C",
-      // "C#",
-      // "C++",
       "JavaScript",
       "CSS",
       "Java",
       "JSON",
-      "TypeScript",
-      "Plain text",
       "Html",
-      // "XML",
-      "SQL",
-      // "Go",
-      // "Kotlin",
-      // "Lua",
-      "Markdown",
-      "PHP",
-      "Python",
-      "Shell Session",
-      // "Ruby",
     ];
     // 挂载highlight插件
     this.editor.highlight = hljs;
@@ -201,6 +185,8 @@ export default {
       const res = await getAdminCateValidApi({});
       if (res) {
         this.cateList = res.data.result || [];
+        // 默认取第一个分类
+        this.form.cate = this.cateList[0].id;
       }
     },
     submit() {
