@@ -222,6 +222,10 @@ export default {
     .el-tabs__item {
       font-size: 18px;
     }
+    .el-tabs__nav-wrap{
+      display: flex;
+      justify-content: center;
+    }
   }
 }
 </style>
