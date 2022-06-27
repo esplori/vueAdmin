@@ -297,6 +297,7 @@ export default {
     background: #fff;
     margin-left: 10px;
     border-radius: 3px;
+    height: fit-content;
   }
   .el-menu-vertical:not(.el-menu--collapse) {
     width: 180px;

@@ -22,7 +22,7 @@
       </el-table-column>
     </el-table>
 
-     <el-dialog :title="title" :visible.sync="dialogVisible" width="30%" @close="handleClose">
+     <el-dialog :title="title" :visible.sync="dialogVisible" width="30%">
       <div>
         <el-input v-model="row.name" placeholder="请输入名称"></el-input>
       </div>
