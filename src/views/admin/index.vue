@@ -294,7 +294,6 @@ export default {
     width: 100%;
     padding: 20px;
     padding-bottom: 20px;
-    overflow-y: auto;
     background: #fff;
     margin-left: 10px;
     border-radius: 3px;
