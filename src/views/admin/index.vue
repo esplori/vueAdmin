@@ -66,7 +66,6 @@
 </template>
 
 <script>
-import webStatistics from "webstatistics"
 export default {
   data() {
     return {
