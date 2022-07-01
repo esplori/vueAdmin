@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import FingerprintJS from "@fingerprintjs/fingerprintjs";
+import webStatistics from "webstatistics"
 export default {
   data() {
     return {
@@ -220,38 +220,20 @@ export default {
     music: () => import("@/views/admin/tools/musicManage/music.vue"),
   },
   mounted() {
-    this.initFingerprint();
+    this.initWebStat();
   },
   methods: {
-    initWebStat(visitorId) {
-      let webStats = new WebStats({
+    initWebStat() {
+      new webStatistics({
         baseUrl: "/bootService", // 基础接口地址url
         url: "/stats/getStats.gif", // 请求上报api的接口地址
-        routeMode: "history", // 填写单页面应用中使用的路由模式。
+        routeMode: "hash", // 填写单页面应用中使用的路由模式。
         autoUpload: true,
         prop: {
           //请求参数映射，参数名默认如下，可以自定义修改参数名。
           id: "visitorId",
         },
       });
-      webStats.setUserId(visitorId);
-    },
-    initFingerprint() {
-      // Initialize an agent at application startup.
-      const fpPromise = FingerprintJS.load();
-      (async () => {
-        // Get the visitor identifier when you need it.
-        const fp = await fpPromise;
-        const result = await fp.get();
-
-        // This is the visitor identifier:
-        const visitorId = result.visitorId;
-        // console.log(visitorId);
-        window.visitorId = visitorId;
-        setTimeout(() => {
-          this.initWebStat(visitorId);
-        }, 200);
-      })();
     },
     swith() {
       this.isCollapse = !this.isCollapse;
