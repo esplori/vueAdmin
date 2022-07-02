@@ -3,16 +3,6 @@
     <div class="card-item">
       <div class="date-picker-change">
         <h3>统计数据</h3>
-        <!-- <div>
-          <el-date-picker
-            v-model="dateRange"
-            type="daterange"
-            range-separator="至"
-            start-placeholder="开始日期"
-            end-placeholder="结束日期"
-          >
-          </el-date-picker>
-        </div> -->
       </div>
       <el-row :gutter="12" style="width: 100%">
         <el-col :span="6">
@@ -139,16 +129,6 @@
           </el-col>
         </el-row>
       </div>
-      <!-- <h3>搜索引擎</h3>
-      <el-table :data="list" style="width: 100%">
-        <el-table-column type="index" width="55" label="序号">
-        </el-table-column>
-        <el-table-column label="userAgent">
-          <template slot-scope="scope">
-            {{ scope.row.userAgent }}
-          </template>
-        </el-table-column>
-      </el-table> -->
     </div>
   </div>
 </template>
@@ -166,11 +146,8 @@ export default {
       dayViews: 0,
       dayIp: 0,
       dateRange: [],
-      deviceRatioX: [],
       deviceRatioY: [],
-      deviceTypeX: [],
       deviceTypeY: [],
-      browserTypeX: [],
       browserTypeY: [],
       options: {
         startVal: 0,
@@ -240,36 +217,11 @@ export default {
           text: "设备型号",
         },
         tooltip: {},
-        xAxis: {
-          data: _this.deviceTypeX,
-          axisLabel: {
-            interval: 0,
-            rotate: -40, // 倾斜度 -90 至 90 默认为0
-            margin: 10,
-            formatter: (val) => {
-              let aa = val.slice(0, 13) + "\n";
-              aa += val.slice(12);
-              return aa;
-            },
-          },
-        },
-        yAxis: {},
         series: [
           {
             name: "设备型号",
-            type: "bar",
-            data: _this.deviceTypeY,
-            barWidth: 12,
-            itemStyle: {
-              width: 12,
-              color: "#6496f9",
-              normal: {
-                label: {
-                  show: true,
-                  position: "top",
-                },
-              },
-            },
+            type: "pie",
+            data: _this.deviceTypeY
           },
         ],
       });
@@ -286,34 +238,11 @@ export default {
           text: "浏览器型号",
         },
         tooltip: {},
-        xAxis: {
-          data: _this.browserTypeX,
-          axisLabel: {
-            interval: 0,
-            rotate: -20, // 倾斜度 -90 至 90 默认为0
-            margin: 10,
-            formatter: function (value) {
-              var str = value.slice(0, 9);
-              return str;
-            },
-          },
-        },
-        yAxis: {},
         series: [
           {
             name: "浏览器型号",
-            type: "bar",
+            type: "pie",
             data: _this.browserTypeY,
-            barWidth: 12,
-            itemStyle: {
-              color: "#6496f9",
-              normal: {
-                label: {
-                  show: true,
-                  position: "top",
-                },
-              },
-            },
           },
         ],
       });
@@ -330,30 +259,11 @@ export default {
           text: "设备分辨率",
         },
         tooltip: {},
-        xAxis: {
-          data: _this.deviceRatioX,
-          axisLabel: {
-            interval: 0,
-            rotate: -20, // 倾斜度 -90 至 90 默认为0
-            margin: 10,
-          },
-        },
-        yAxis: {},
         series: [
           {
             name: "设备分辨率",
-            type: "bar",
+            type: "pie",
             data: _this.deviceRatioY,
-            barWidth: 12,
-            itemStyle: {
-              color: "#6496f9",
-              normal: {
-                label: {
-                  show: true,
-                  position: "top",
-                },
-              },
-            },
           },
         ],
       });
@@ -458,24 +368,14 @@ export default {
         this.allpagesMom = parseFloat(res.data.allpagesMom);
         this.dayViewsMom = parseFloat(res.data.dayViewsMom);
         this.dayIpMom = parseFloat(res.data.dayIpMom);
-        this.list = res.data.botEngine;
-        this.deviceRatioX = res.data.deviceRatio.map((item) => {
-          return item.screen;
-        });
         this.deviceRatioY = res.data.deviceRatio.map((item) => {
-          return item.num;
-        });
-        this.deviceTypeX = res.data.deviceType.map((item) => {
-          return item.os;
+          return {name: item.screen, value: item.num};
         });
         this.deviceTypeY = res.data.deviceType.map((item) => {
-          return item.num;
-        });
-        this.browserTypeX = res.data.browserType.map((item) => {
-          return item.browse;
+          return {name: item.os, value: item.num};
         });
         this.browserTypeY = res.data.browserType.map((item) => {
-          return item.num;
+          return {name: item.browse, value: item.num};
         });
         this.everyDayViews = res.data.everyDayViews;
         this.initCharts();
