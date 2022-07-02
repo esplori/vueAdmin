@@ -223,7 +223,7 @@ export default {
   },
   methods: {
     initWebStat() {
-      new webStatistics({
+      let webStats = new webStatistics({
         baseUrl: "/bootService", // 基础接口地址url
         url: "/stats/getStats.gif", // 请求上报api的接口地址
         routeMode: "hash", // 填写单页面应用中使用的路由模式。
@@ -233,6 +233,9 @@ export default {
           id: "visitorId",
         },
       });
+      setTimeout(()=>{
+        webStats.setUserId()
+      },1000)
     },
     swith() {
       this.isCollapse = !this.isCollapse;
