@@ -219,7 +219,7 @@ export default {
     music: () => import("@/views/admin/tools/musicManage/music.vue"),
   },
   mounted() {
-    this.initWebStat();
+    // this.initWebStat();
   },
   methods: {
     initWebStat() {
@@ -235,7 +235,7 @@ export default {
       });
       setTimeout(()=>{
         webStats.setUserId()
-      },1000)
+      },200)
     },
     swith() {
       this.isCollapse = !this.isCollapse;
