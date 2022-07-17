@@ -6,19 +6,33 @@
           {{ scope.row.username }}
         </template>
       </el-table-column>
-      <el-table-column label="标题">
+      <el-table-column label="文章id">
+        <template slot-scope="scope">
+          <a
+            :href="'http://www.dsiab.com/post/' + scope.row.postId"
+            target="_blank"
+            >{{ scope.row.postId }}</a
+          >
+        </template>
+      </el-table-column>
+      <el-table-column label="内容" show-overflow-tooltip>
         <template slot-scope="scope">
           {{ scope.row.content }}
         </template>
       </el-table-column>
-      <el-table-column label="时间">
+      <el-table-column label="创建时间">
         <template slot-scope="scope">
           {{ scope.row.createDate }}
         </template>
       </el-table-column>
       <el-table-column label="操作" width="180">
         <template slot-scope="scope">
-          <el-button @click="delConfirm(scope.row.id)" type="text" class="cus-button-danger">删除</el-button>
+          <el-button
+            @click="delConfirm(scope.row.id)"
+            type="text"
+            class="cus-button-danger"
+            >删除</el-button
+          >
         </template>
       </el-table-column>
     </el-table>
@@ -26,10 +40,7 @@
 </template>
 
 <script>
-import {
-  getCommentApi,
-  delCommentApi,
-} from "@/views/API/admin.js";
+import { getCommentApi, delCommentApi } from "@/views/API/admin.js";
 
 export default {
   data() {
@@ -53,7 +64,7 @@ export default {
         cancelButtonText: "取消",
         type: "warning",
       }).then(() => {
-        this.del(id)
+        this.del(id);
       });
     },
     async del(id) {
@@ -62,7 +73,7 @@ export default {
         this.$message.success("删除成功");
         this.getList();
       }
-    }
+    },
   },
 };
 </script>
