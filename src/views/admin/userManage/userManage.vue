@@ -2,14 +2,14 @@
   <div class="user-manage">
     <el-button @click="insertUser" type="text ">新增用户</el-button>
     <el-table :data="data">
-      <el-table-column  type="index" label="序号" width="55px"></el-table-column>
+      <el-table-column type="index" label="序号" width="55px"></el-table-column>
       <el-table-column prop="username" label="用户名"> </el-table-column>
       <el-table-column prop="role" label="角色Id"> </el-table-column>
       <el-table-column prop="email" label="邮箱"> </el-table-column>
       <el-table-column prop="valid" label="是否有效">
         <template slot-scope="scope">
-         <span v-show="scope.row.valid === '1'">是</span>
-         <span style="color:red" v-show="scope.row.valid === '0'">否</span>
+          <span v-show="scope.row.valid === '1'">是</span>
+          <span style="color: red" v-show="scope.row.valid === '0'">否</span>
         </template>
       </el-table-column>
       <el-table-column prop="createDate" label="创建时间"> </el-table-column>
@@ -101,7 +101,7 @@ export default {
       Roledata: [],
       params: {
         page: 1,
-        pageSize: 10
+        pageSize: 10,
       },
       total: 0,
       editObj: {
@@ -146,13 +146,13 @@ export default {
       this.editObj.currUsername = row.username;
       this.getRoleList(row);
     },
-    delConfirm(id,username) {
+    delConfirm(id, username) {
       this.$confirm("此操作将删除该条数据, 是否继续?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning",
       }).then(() => {
-        this.del(id,username)
+        this.del(id, username);
       });
     },
     del(id, username) {

@@ -12,18 +12,7 @@
               {{ views }}
             </div>
             <div class="item-compare">
-              <span
-                >较昨日<i
-                  class="el-icon-top-right"
-                  style="color: red"
-                  v-show="allViewsMom > 0"
-                ></i
-                ><i
-                  class="el-icon-bottom-right"
-                  style="color: green"
-                  v-show="allViewsMom < 0"
-                ></i
-              ></span>
+              <span>今日新增</span>
               <span class="num"> {{ Math.abs(allViewsMom) }} </span>
             </div>
           </el-card>
@@ -221,7 +210,7 @@ export default {
           {
             name: "设备型号",
             type: "pie",
-            data: _this.deviceTypeY
+            data: _this.deviceTypeY,
           },
         ],
       });
@@ -369,13 +358,13 @@ export default {
         this.dayViewsMom = parseFloat(res.data.dayViewsMom);
         this.dayIpMom = parseFloat(res.data.dayIpMom);
         this.deviceRatioY = res.data.deviceRatio.map((item) => {
-          return {name: item.screen, value: item.num};
+          return { name: item.screen, value: item.num };
         });
         this.deviceTypeY = res.data.deviceType.map((item) => {
-          return {name: item.os, value: item.num};
+          return { name: item.os, value: item.num };
         });
         this.browserTypeY = res.data.browserType.map((item) => {
-          return {name: item.browse, value: item.num};
+          return { name: item.browse, value: item.num };
         });
         this.everyDayViews = res.data.everyDayViews;
         this.initCharts();

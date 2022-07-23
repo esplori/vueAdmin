@@ -85,7 +85,6 @@ export default {
     };
   },
   created() {
-    this.getCate();
     // 恢复之前查询的参数
     let { page, cate, pageSize } = this.$route.query;
     this.params.page = parseInt(page) || 1;
@@ -94,18 +93,8 @@ export default {
     this.getList();
   },
   methods: {
-    typeChange() {
-      this.params.page = 1;
-      this.getList();
-    },
     getList() {
       this.getListByCate();
-    },
-    async getCate() {
-      const res = await getCateValidApi({});
-      if (res) {
-        this.cateList = res.data.result;
-      }
     },
     async getListByCate() {
       const res = await getPostListByCateApi(this.params);
@@ -131,20 +120,6 @@ export default {
       this.params.page = val;
       this.getList();
     },
-    // 添加到专题
-    addToTopic(row) {
-      this.getTopicList();
-      this.dialogVisible = true;
-      this.form.postId = row.uid || row.id;
-      this.form.name = row.title;
-    },
-    async submitTopic() {
-      let res = await addPostToTopicApi(this.form);
-      if (res) {
-        this.$message.success("添加成功");
-        this.dialogVisible = false;
-      }
-    },
     handleSelectionChange(val) {
       this.multipleSelection = val;
     },
@@ -154,9 +129,11 @@ export default {
         cancelButtonText: "取消",
         type: "warning",
       }).then(() => {
-        this.delMultiple(this.multipleSelection.map(item =>{
-        return item.id
-      }));
+        this.delMultiple(
+          this.multipleSelection.map((item) => {
+            return item.id;
+          })
+        );
       });
     },
     async delMultiple(ids) {
