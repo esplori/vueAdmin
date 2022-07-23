@@ -142,14 +142,6 @@ const router = new Router({
               path: 'choujiang',
               component: () => import(/* webpackChunkName: "choujiang" */'@/views/admin/tools/choujiang/choujiang')
             },
-            {
-              path: 'music',
-              component: () => import(/* webpackChunkName: "music" */'@/views/admin/tools/musicManage/music')
-            },
-            {
-              path: 'cssFormat',
-              component: () => import(/* webpackChunkName: "cssFormat" */'@/views/admin/tools/cssFormat/index')
-            },
           ]
         },
       ]

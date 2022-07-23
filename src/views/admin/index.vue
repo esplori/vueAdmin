@@ -143,8 +143,7 @@ export default {
               path: "/admin/tools/img2base64",
               id: "",
             },
-            { title: "二维码生成", path: "/admin/tools/qrcode", id: "" },
-            { title: "css压缩-格式化", path: "/admin/tools/cssFormat", id: "" },
+            { title: "二维码生成", path: "/admin/tools/qrcode", id: "" }
           ],
         },
         {
@@ -215,8 +214,7 @@ export default {
   },
   components: {
     adminHeader: () => import("@/components/admin-header"),
-    commonFooter: () => import("@/components/footer"),
-    music: () => import("@/views/admin/tools/musicManage/music.vue"),
+    commonFooter: () => import("@/components/footer")
   },
   mounted() {
     // this.initWebStat();
