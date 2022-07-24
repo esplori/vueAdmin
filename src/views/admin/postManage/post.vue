@@ -1,10 +1,15 @@
 <template>
   <div class="post">
     <el-form label-width="85px" :model="form">
-      <el-form-item label="标题：">
-        <el-input v-model="form.title" placeholder="请输入标题"></el-input>
+      <el-form-item label="" label-width="0">
+        <el-input
+          class="title"
+          size="medium"
+          v-model="form.title"
+          placeholder="请输入文章标题"
+        ></el-input>
       </el-form-item>
-      <el-form-item label="内容：">
+      <el-form-item label="" label-width="0">
         <div>
           <div style="min-height: 550px" id="wangeditor"></div>
         </div>
@@ -39,9 +44,9 @@
           ></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="浏览量：">
+      <!-- <el-form-item label="浏览量：">
         <el-input v-model="form.views" disabled class="optionsWidth"></el-input>
-      </el-form-item>
+      </el-form-item> -->
       <el-form-item label="关键字：">
         <el-tag
           :key="tag"
@@ -348,6 +353,14 @@ export default {
   }
   .el-alert {
     padding: 0;
+  }
+  .title {
+    /deep/.el-input__inner {
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      border-radius: 0;
+    }
   }
 }
 </style>
