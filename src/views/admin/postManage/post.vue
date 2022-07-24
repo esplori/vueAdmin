@@ -8,6 +8,13 @@
         <div>
           <div style="min-height: 550px" id="wangeditor"></div>
         </div>
+        <div class="autosaveTip" v-show="showAutosaveTip">
+          <el-alert
+            title="自动保存成功，每过15秒会自动保存，防止数据丢失"
+            type="success"
+          >
+          </el-alert>
+        </div>
       </el-form-item>
       <el-form-item label="创建时间：">
         <el-date-picker
@@ -61,7 +68,7 @@
       </el-form-item>
 
       <el-form-item>
-        <el-button @click="submit" type="primary">提交</el-button>
+        <el-button @click="submit(true)" type="primary">提交</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -96,10 +103,16 @@ export default {
       inputVisible: false,
       inputValue: "",
       dynamicTags: [],
+      autoSave: null, // 自动保存定时器
+      showAutosaveTip: false, // 是否显示自动保存提示
     };
   },
   components: {},
   mounted() {
+    // 页签加载完成后每15秒调用保存接口，实现自动保存
+    this.autoSave = setInterval(() => {
+      this.submit(false);
+    }, 15000);
     let userinfo = localStorage.getItem("userInfo");
     if (userinfo) {
       userinfo = JSON.parse(userinfo);
@@ -156,14 +169,19 @@ export default {
       "JSON",
       "Html",
     ];
+    // let _this = this
     // 配置 onchange 回调函数
-    this.editor.config.onchange = function (newHtml) {
-      setTimeout(() => {
-        localStorage.setItem("newHtml", newHtml);
-      }, 3000);
-    };
+    // this.editor.config.onchange = function (newHtml) {
+    //   setTimeout(() => {
+    //     let post = JSON.parse(JSON.stringify(_this.form))
+    //     post.content = newHtml
+    //     localStorage.setItem("post", JSON.stringify(post));
+    //     // 自动保存不跳转
+    //     _this.submit(false)
+    //   }, 3000);
+    // };
     // 配置触发 onchange 的时间频率，默认为 200ms
-    this.editor.config.onchangeTimeout = 2000; // 修改为 500ms
+    // this.editor.config.onchangeTimeout = 5000; // 修改为 500ms
     this.editor.create();
   },
   computed: {
@@ -194,39 +212,49 @@ export default {
         }
       }
     },
-    submit() {
+    submit(jump) {
       this.form.content = this.editor.txt.html();
-      if (!this.form.title) {
+      // 自动保存，如果无标题或内容不调接口
+      if (!jump && (!this.form.title || !this.form.content)) {
+        return false;
+      }
+      // 正常提交提示必填项
+      if (!this.form.title && jump) {
         this.$message.warning("请输入标题");
         return false;
       }
-      if (!this.form.content) {
+      if (!this.form.content && jump) {
         this.$message.warning("请输入内容");
         return false;
       }
       if (this.form.id) {
-        this.editPage();
+        this.editPage(jump);
       } else {
-        this.postPage();
+        this.postPage(jump);
       }
+      // 自动保存成功后显示提示，5秒后关闭
+      this.showAutosaveTip = true;
+      setTimeout(() => {
+        this.showAutosaveTip =false
+      }, 5000);
     },
-    async editPage() {
+    async editPage(jump) {
       const res = await editPageApi({
         ...this.form,
         createDate: getCurrDate(this.form.createDate),
         keywords: this.dynamicTags.join(","),
       });
       if (res) {
-        this.$message.success("修改成功");
         let { page, cate, pageSize } = this.$route.query;
-        // 保存列表查询参数
-        this.$router.push({
-          path: "/admin/pageList",
-          query: { page, cate, pageSize },
-        });
+        // 保存列表查询参数,自动保存不跳转
+        jump &&
+          this.$router.push({
+            path: "/admin/pageList",
+            query: { page, cate, pageSize },
+          });
       }
     },
-    async postPage() {
+    async postPage(jump) {
       const res = await postPageApi({
         ...this.form,
         createBy: this.userInfo && this.userInfo.username,
@@ -234,8 +262,9 @@ export default {
         keywords: this.dynamicTags.join(","),
       });
       if (res) {
-        this.$message.success("添加成功");
-        this.$router.push({ path: "/admin/pageList" });
+        // 回填id，方便再次保存使用
+        this.form.id = res.data;
+        jump && this.$router.push({ path: "/admin/pageList" });
       }
     },
     async getDetail(id) {
@@ -288,6 +317,10 @@ export default {
       this.inputValue = "";
     },
   },
+  beforeDestroy() {
+    // 页面销毁前清除定时器
+    clearInterval(this.autoSave);
+  },
 };
 </script>
 
@@ -308,6 +341,13 @@ export default {
   .input-new-tag {
     width: 90px;
     vertical-align: bottom;
+  }
+  .autosaveTip {
+    height: 35px;
+    margin-top: 5px;
+  }
+  .el-alert {
+    padding: 0;
   }
 }
 </style>

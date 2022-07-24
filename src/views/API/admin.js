@@ -23,7 +23,7 @@ export async function getDetailByIdApi(data) {
 }
 export async function postPageApi(data) {
   const url = `${contextPath}/admin/insertItem`
-  const options = { showLoading: true }
+  const options = { showLoading: false }
   return post(url, data, options)
 }
 export async function delApi(data) {
@@ -33,7 +33,7 @@ export async function delApi(data) {
 }
 export async function editPageApi(data) {
   const url = `${contextPath}/admin/updateItem`
-  const options = { showLoading: true }
+  const options = { showLoading: false }
   return post(url, data, options)
 }
 export async function getNavCateApi(data) {
