@@ -1,6 +1,5 @@
 <template>
   <div class="post">
-    <!-- <el-button @click="postPage">start</el-button> -->
     <el-form label-width="85px" :model="form">
       <el-form-item label="标题：">
         <el-input v-model="form.title" placeholder="请输入标题"></el-input>
@@ -161,6 +160,14 @@ export default {
     ];
     // 挂载highlight插件
     this.editor.highlight = hljs;
+    // 配置 onchange 回调函数
+    this.editor.config.onchange = function (newHtml) {
+      setTimeout(()=>{
+        localStorage.setItem("newHtml",newHtml)
+      },5000)
+    };
+    // 配置触发 onchange 的时间频率，默认为 200ms
+    this.editor.config.onchangeTimeout = 500; // 修改为 500ms
     this.editor.create();
   },
   computed: {
