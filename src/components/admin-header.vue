@@ -2,10 +2,9 @@
   <div class="admin-header">
     <div class="header-container">
       <div class="left-header">
-        <div class="logo"><a href="https://www.dsiab.com" target="_blank">DSIAB</a></div>
+        <div class="logo"><a href="https://www.dsiab.com" target="_blank">javascript技术分享</a></div>
         <div class="tips">
-          <i class="el-icon-bell"></i>
-          <span class="welcomeMsg">{{ welcomeMsg }}</span>
+          <span class="welcomeMsg">每日一句：{{ dailySentence }}</span>
         </div>
       </div>
       <div class="user-info">
@@ -16,12 +15,25 @@
 </template>
 
 <script>
+import { delHtmlTag } from "@/utils/common.js"
 export default {
   name: "admin-header",
   data() {
     return {
-      welcomeMsg: " 欢迎来到javascript技术分享网站",
     };
+  },
+  computed: {
+    dailySentence() {
+      return this.userInfoObj.dailySentence && delHtmlTag(this.userInfoObj.dailySentence)
+    }
+  },
+  props:{
+    userInfoObj: {
+      type: Object,
+      default: () =>{
+        return {}
+      }
+    }
   },
   components: {
     userInfo: () => import("@/components/userInfo.vue"),
@@ -58,7 +70,7 @@ export default {
     .tips {
       .welcomeMsg {
         margin-left: 10px;
-        font-size: 16px;
+        font-size: 12px;
       }
     }
   }

@@ -1,6 +1,6 @@
 <template>
   <div class="admin-home">
-    <adminHeader></adminHeader>
+    <adminHeader :userInfoObj="userInfoObj"></adminHeader>
     <div class="content-container">
       <div class="left-menu">
         <el-menu
@@ -66,6 +66,7 @@
 </template>
 
 <script>
+import { getUserInfoApi } from "@/views/API/admin.js";
 export default {
   data() {
     return {
@@ -199,6 +200,7 @@ export default {
       ],
       isCollapse: false,
       tabList: [],
+      userInfoObj: {}
     };
   },
   computed: {
@@ -218,8 +220,16 @@ export default {
   },
   mounted() {
     // this.initWebStat();
+    this.getUserInfo();
   },
   methods: {
+    /**
+     * 获取用户信息
+     */
+    async getUserInfo() {
+      let res = await getUserInfoApi({});
+      this.userInfoObj = res.data
+    },
     initWebStat() {
       let webStats = new webStatistics({
         baseUrl: "/bootService", // 基础接口地址url

@@ -123,7 +123,6 @@
 </template>
 
 <script>
-import { getUserInfoApi } from "@/views/API/admin.js";
 import { getWebStatisticsApi } from "@/views/API/stats.js";
 import { CountUp } from "countup.js";
 import * as echarts from "echarts";
@@ -150,7 +149,6 @@ export default {
     };
   },
   created() {
-    this.getUserInfo();
     this.getWebStatistics();
   },
   mounted() {
@@ -336,12 +334,6 @@ export default {
         ],
       });
       myChart.resize();
-    },
-    /**
-     * 获取用户信息
-     */
-    async getUserInfo() {
-      await getUserInfoApi({});
     },
     /**
      * 获取统计数据
