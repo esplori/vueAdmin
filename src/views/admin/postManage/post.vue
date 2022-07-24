@@ -68,8 +68,6 @@
 </template>
 <script>
 import Wangeditor from "wangeditor";
-import hljs from "highlight.js";
-import "highlight.js/styles/monokai-sublime.css";
 import {
   postPageApi,
   editPageApi,
@@ -158,16 +156,14 @@ export default {
       "JSON",
       "Html",
     ];
-    // 挂载highlight插件
-    this.editor.highlight = hljs;
     // 配置 onchange 回调函数
     this.editor.config.onchange = function (newHtml) {
-      setTimeout(()=>{
-        localStorage.setItem("newHtml",newHtml)
-      },5000)
+      setTimeout(() => {
+        localStorage.setItem("newHtml", newHtml);
+      }, 3000);
     };
     // 配置触发 onchange 的时间频率，默认为 200ms
-    this.editor.config.onchangeTimeout = 500; // 修改为 500ms
+    this.editor.config.onchangeTimeout = 2000; // 修改为 500ms
     this.editor.create();
   },
   computed: {
@@ -185,15 +181,17 @@ export default {
     if (id) {
       this.getDetail(id);
     }
-    this.getCate();
+    this.getCate(id);
   },
   methods: {
-    async getCate() {
+    async getCate(id) {
       const res = await getAdminCateValidApi({});
       if (res) {
         this.cateList = res.data.result || [];
-        // 默认取第一个分类
-        this.form.cate = this.cateList[0].id;
+        if (!id) {
+          //  如果不是编辑，默认取第一个分类
+          this.form.cate = this.cateList[0].id;
+        }
       }
     },
     submit() {
