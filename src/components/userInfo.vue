@@ -52,8 +52,6 @@ export default {
     async logout() {
       const res = await logoutApi({});
       if (res) {
-        localStorage.clear();
-        sessionStorage.clear();
         this.$router.push({ path: "/login" });
       }
     },
