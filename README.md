@@ -43,6 +43,8 @@
 - 地址：http://admin.dsiab.com
 
 - 测试账号、密码： test/test
+  
+- 加qq群一起交流：744203401
 
 
 ### 演示截图
