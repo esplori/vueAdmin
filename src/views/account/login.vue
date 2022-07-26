@@ -161,11 +161,11 @@ export default {
       this.showShadow = false;
     },
     async register() {
-      if (!this.form.username || !this.form.password) {
+      if (!this.regform.username || !this.regform.password) {
         this.$message.error("请输入账号和密码");
         return;
       }
-      const res = await registerApi(this.form);
+      const res = await registerApi(this.regform);
       if (res) {
         this.$message.success("注册成功，请登录");
         this.$router.push({ path: "/login" });
