@@ -54,7 +54,7 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 auto;
+    margin: 0 20px;
     .user-info {
       display: flex;
       justify-content: flex-end;
@@ -62,12 +62,14 @@ export default {
     .left-header{
       display: flex;
       align-items: center;
+      width: 100%;
     }
     .logo{
-      font-size: 18px;
+      font-size: 14px;
       margin-right: 20px;
     }
     .tips {
+      width: 85%;
       .welcomeMsg {
         margin-left: 10px;
         font-size: 12px;
