@@ -119,6 +119,28 @@
         </el-row>
       </div>
     </div>
+
+    <div v-if="userInfo.role.includes('ROLE_admin')">
+      <div class="date-picker-change">
+        <h3>当天访问来源</h3>
+      </div>
+      <el-table :data="referrerTableData" style="width: 100%">
+        <el-table-column type="index" label="序号" width="50">
+        </el-table-column>
+        <el-table-column prop="referrer" label="地址"> </el-table-column>
+        <el-table-column prop="createDate" label="时间"> </el-table-column>
+      </el-table>
+      <div class="date-picker-change">
+        <h3>当天访问地址</h3>
+      </div>
+      <el-table :data="postViewTableData" style="width: 100%">
+        <el-table-column type="index" label="序号" width="50">
+        </el-table-column>
+        <el-table-column prop="title" label="标题"> </el-table-column>
+        <el-table-column prop="href" label="地址"> </el-table-column>
+        <el-table-column prop="createDate" label="时间"> </el-table-column>
+      </el-table>
+    </div>
   </div>
 </template>
 
@@ -146,7 +168,19 @@ export default {
       dayViewsMom: "",
       dayIpMom: "",
       list: [],
+      referrerTableData: [],
+      postViewTableData: [],
     };
+  },
+  computed: {
+    userInfo() {
+      const userinfo = localStorage.getItem("userInfo");
+      if (userinfo) {
+        return JSON.parse(userinfo);
+      } else {
+        return false;
+      }
+    },
   },
   created() {
     this.getWebStatistics();
@@ -361,6 +395,8 @@ export default {
         this.everyDayViews = res.data.everyDayViews;
         this.initCharts();
         this.initCountUp();
+        this.referrerTableData = res.data.referrer;
+        this.postViewTableData = res.data.postView;
       }
     },
     initCharts() {
