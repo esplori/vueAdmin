@@ -240,7 +240,7 @@ export default {
       // 自动保存成功后显示提示，5秒后关闭
       this.showAutosaveTip = true;
       setTimeout(() => {
-        this.showAutosaveTip =false
+        this.showAutosaveTip = false;
       }, 5000);
     },
     async editPage(jump) {
@@ -286,23 +286,6 @@ export default {
           : [];
         this.editor.txt.html(this.form.content);
       }
-    },
-    download() {
-      this.ajaxPostLoadFile("/pages/download", "11");
-    },
-    ajaxPostLoadFile(url, val) {
-      var form = document.createElement("form");
-      form.setAttribute("style", "display:none");
-      form.setAttribute("target", "");
-      form.setAttribute("method", "post");
-      form.setAttribute("action", url);
-      var tempInput = document.createElement("input");
-      tempInput.setAttribute("type", "hidden");
-      tempInput.setAttribute("name", "testName");
-      tempInput.setAttribute("value", val);
-      form.append(tempInput);
-      document.body.appendChild(form);
-      form.submit();
     },
     handleClose(tag) {
       this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1);
