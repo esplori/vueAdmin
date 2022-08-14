@@ -166,6 +166,28 @@ export default {
         insertImgFn(result.data[0].url);
       },
     };
+    // 配置菜单栏，删减菜单，调整顺序
+    this.editor.config.menus = [
+      "head",
+      "bold",
+      "fontSize",
+      "italic",
+      "underline",
+      "indent",
+      "lineHeight",
+      "foreColor",
+      "backColor",
+      "link",
+      "list",
+      "todo",
+      "justify",
+      "quote",
+      "image",
+      "video",
+      "code",
+      "undo",
+      "redo",
+    ];
     // 插入代码语言配置
     this.editor.config.languageType = [
       "JavaScript",
