@@ -18,31 +18,38 @@
         <template slot-scope="scope">
           <a
             style="color: #333"
-            :href="'https://www.dsiab.com/post/' + (scope.row.uid||scope.row.id)"
+            :href="
+              'https://www.dsiab.com/post/' + (scope.row.uid || scope.row.id)
+            "
             target="_blank"
             >{{ scope.row.title }}</a
           >
         </template>
       </el-table-column>
-      <el-table-column label="分类" width="120px">
-        <template slot-scope="scope">
-          {{ scope.row.cateName }}
-        </template>
+      <el-table-column label="分类" width="120px" prop="cateName">
       </el-table-column>
-      <el-table-column label="作者" width="120px">
-        <template slot-scope="scope">
-          {{ scope.row.createBy }}
-        </template>
+      <el-table-column label="作者" width="120px" prop="createBy">
       </el-table-column>
-      <el-table-column label="阅读" width="120px" sortable="custom" prop="views">
-        <template slot-scope="scope">
-          {{ scope.row.views }}
-        </template>
+      <el-table-column
+        label="阅读"
+        width="120px"
+        sortable="custom"
+        prop="views"
+      >
       </el-table-column>
-      <el-table-column label="创建时间" width="180px" sortable="custom" prop="createDate">
-        <template slot-scope="scope">
-          {{ scope.row.createDate }}
-        </template>
+      <el-table-column
+        label="字数"
+        width="120px"
+        sortable="custom"
+        prop="wordsNum"
+      >
+      </el-table-column>
+      <el-table-column
+        label="创建时间"
+        width="180px"
+        sortable="custom"
+        prop="createDate"
+      >
       </el-table-column>
       <el-table-column fixed="right" width="180" label="操作">
         <template slot-scope="scope">
@@ -53,7 +60,9 @@
             class="cus-button-danger"
             >删除</el-button
           >
-          <el-button @click="addToTopic(scope.row)" type="text">添加到专题</el-button>
+          <el-button @click="addToTopic(scope.row)" type="text"
+            >添加到专题</el-button
+          >
         </template>
       </el-table-column>
     </el-table>
@@ -71,7 +80,7 @@
       </el-pagination>
     </div>
 
-     <el-dialog title="添加到专题" :visible.sync="dialogVisible" width="30%">
+    <el-dialog title="添加到专题" :visible.sync="dialogVisible" width="30%">
       <div>
         <el-select v-model="form.topicId">
           <el-option
@@ -96,7 +105,7 @@ import {
   getListByCateApi,
   getAdminCateValidApi,
   getTopicListApi,
-  addPostToTopicApi
+  addPostToTopicApi,
 } from "@/views/API/admin.js";
 
 export default {
@@ -107,35 +116,35 @@ export default {
         page: 1,
         cate: "",
         pageSize: 10,
-        order: 'desc',
-        orderBy: 'createDate'
+        order: "desc",
+        orderBy: "createDate",
       },
       form: {
-        postId: '',
-        name: '',
-        topicId: ''
+        postId: "",
+        name: "",
+        topicId: "",
       },
       total: 0,
       cateList: [],
       dialogVisible: false,
-      topicList: []
+      topicList: [],
     };
   },
   created() {
     this.getCate();
     // 恢复之前查询的参数
-    let { page, cate, pageSize } = this.$route.query
-    this.params.page = parseInt(page) || 1
-    this.params.pageSize = parseInt(pageSize) || 10
-    this.params.cate = parseInt(cate) || ''
+    let { page, cate, pageSize } = this.$route.query;
+    this.params.page = parseInt(page) || 1;
+    this.params.pageSize = parseInt(pageSize) || 10;
+    this.params.cate = parseInt(cate) || "";
     this.getList();
   },
   methods: {
     sortCchange({ column, prop, order }) {
       this.params.page = 1;
       // 需要转换成sql对应的排序字段
-      this.params.order = order ==='ascending'?"asc":"desc"
-      this.params.orderBy = prop
+      this.params.order = order === "ascending" ? "asc" : "desc";
+      this.params.orderBy = prop;
       this.getList();
     },
     async getTopicList() {
@@ -196,18 +205,18 @@ export default {
     },
     // 添加到专题
     addToTopic(row) {
-      this.getTopicList()
-      this.dialogVisible = true
-      this.form.postId = row.uid || row.id
-      this.form.name = row.title
+      this.getTopicList();
+      this.dialogVisible = true;
+      this.form.postId = row.uid || row.id;
+      this.form.name = row.title;
     },
     async submitTopic() {
-      let res = await addPostToTopicApi(this.form)
+      let res = await addPostToTopicApi(this.form);
       if (res) {
-        this.$message.success("添加成功")
-        this.dialogVisible = false
+        this.$message.success("添加成功");
+        this.dialogVisible = false;
       }
-    }
+    },
   },
 };
 </script>
