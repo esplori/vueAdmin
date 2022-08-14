@@ -47,6 +47,9 @@
       <!-- <el-form-item label="浏览量：">
         <el-input v-model="form.views" disabled class="optionsWidth"></el-input>
       </el-form-item> -->
+      <el-form-item label="字数：">
+        <div class="optionsWidth">{{form.wordsNum}}</div>
+      </el-form-item>
       <el-form-item label="关键字：">
         <el-tag
           :key="tag"
@@ -98,6 +101,7 @@ export default {
         views: 0,
         keywords: "",
         createBy: "",
+        wordsNum: 0,
         createDate: getCurrDate(),
       },
       cateList: [],
@@ -196,17 +200,11 @@ export default {
       "JSON",
       "Html",
     ];
-    // let _this = this
+    let _this = this
     // 配置 onchange 回调函数
-    // this.editor.config.onchange = function (newHtml) {
-    //   setTimeout(() => {
-    //     let post = JSON.parse(JSON.stringify(_this.form))
-    //     post.content = newHtml
-    //     localStorage.setItem("post", JSON.stringify(post));
-    //     // 自动保存不跳转
-    //     _this.submit(false)
-    //   }, 3000);
-    // };
+    this.editor.config.onchange = function (newHtml) {
+      _this.form.wordsNum = document.querySelector(".w-e-text").textContent.length
+    };
     // 配置触发 onchange 的时间频率，默认为 200ms
     // this.editor.config.onchangeTimeout = 5000; // 修改为 500ms
     this.editor.create();
