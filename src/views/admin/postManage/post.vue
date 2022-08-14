@@ -48,7 +48,7 @@
         <el-input v-model="form.views" disabled class="optionsWidth"></el-input>
       </el-form-item> -->
       <el-form-item label="字数：">
-        <div class="optionsWidth">{{form.wordsNum}}</div>
+        <div class="optionsWidth">{{ form.wordsNum }}</div>
       </el-form-item>
       <el-form-item label="关键字：">
         <el-tag
@@ -200,10 +200,11 @@ export default {
       "JSON",
       "Html",
     ];
-    let _this = this
+    let _this = this;
     // 配置 onchange 回调函数
     this.editor.config.onchange = function (newHtml) {
-      _this.form.wordsNum = document.querySelector(".w-e-text").textContent.length
+      _this.form.wordsNum =
+        document.querySelector(".w-e-text").textContent.length;
     };
     // 配置触发 onchange 的时间频率，默认为 200ms
     // this.editor.config.onchangeTimeout = 5000; // 修改为 500ms
@@ -257,11 +258,13 @@ export default {
       } else {
         this.postPage(jump);
       }
-      // 自动保存成功后显示提示，5秒后关闭
-      this.showAutosaveTip = true;
-      setTimeout(() => {
-        this.showAutosaveTip = false;
-      }, 5000);
+      if (!jump) {
+        // 自动保存成功后显示提示，5秒后关闭
+        this.showAutosaveTip = true;
+        setTimeout(() => {
+          this.showAutosaveTip = false;
+        }, 5000);
+      }
     },
     async editPage(jump) {
       const res = await editPageApi({
