@@ -121,8 +121,9 @@
     </div>
 
     <div v-if="userInfo.role.includes('ROLE_admin')">
-      <div class="date-picker-change">
-        <h3>当天访问来源</h3>
+        <h2>总字数：{{totalWordsNum}}</h2>
+      <div>
+        <h2>当天访问来源</h2>
       </div>
       <el-table :data="referrerTableData" style="width: 100%">
         <el-table-column type="index" label="序号" width="50">
@@ -170,6 +171,7 @@ export default {
       list: [],
       referrerTableData: [],
       postViewTableData: [],
+      totalWordsNum: 0
     };
   },
   computed: {
@@ -397,6 +399,7 @@ export default {
         this.initCountUp();
         this.referrerTableData = res.data.referrer;
         this.postViewTableData = res.data.postView;
+        this.totalWordsNum = res.data.totalWordsNum || 0
       }
     },
     initCharts() {
