@@ -10,6 +10,7 @@
           @open="handleOpen"
           @close="handleClose"
           :collapse="isCollapse"
+          @select="handleSelect"
           router
         >
           <div v-for="(item, index) in menuList" :key="index">
@@ -56,7 +57,15 @@
       </div>
       <div class="right-content">
         <!-- <keep-alive> -->
-          <router-view></router-view>
+        <el-tabs v-model="activeName" type="card" @tab-click="handleClick" closable @tab-remove="removeTab">
+          <el-tab-pane
+            :label="item.title"
+            :name="item.path"
+            v-for="(item, index) in tabList"
+            :key="index"
+          ></el-tab-pane>
+        </el-tabs>
+        <router-view></router-view>
         <!-- </keep-alive> -->
         <commonFooter></commonFooter>
       </div>
@@ -144,7 +153,7 @@ export default {
               path: "/admin/tools/img2base64",
               id: "",
             },
-            { title: "二维码生成", path: "/admin/tools/qrcode", id: "" }
+            { title: "二维码生成", path: "/admin/tools/qrcode", id: "" },
           ],
         },
         {
@@ -199,8 +208,8 @@ export default {
         },
       ],
       isCollapse: false,
-      tabList: [],
-      userInfoObj: {}
+      userInfoObj: {},
+      activeName: "/admin/home"
     };
   },
   computed: {
@@ -213,22 +222,74 @@ export default {
       }
       return userInfo;
     },
+    tabList() {
+      return this.$store.state.tabList;
+    },
+    flatTabsList(){
+      let tabArrObj = {}
+      let list = []
+      this.tabList.forEach(item =>{
+        list.push(item.path)
+        tabArrObj[item.path] = item.title
+      })
+      return {tabArrObj,list}
+    },
+    flatMenuList() {
+      let list = this.menuList;
+      let resultList = [];
+      let flat = function (arr) {
+        arr.forEach((item) => {
+          if (item.children && item.children.length) {
+            flat(item.children);
+          } else {
+            resultList.push(item);
+          }
+        });
+      };
+      flat(list)
+      let arrObj = {}
+      resultList.forEach(item =>{
+        arrObj[item.path] = item.title
+      })
+      return {resultList,arrObj}
+    },
   },
   components: {
     adminHeader: () => import("@/components/admin-header"),
-    commonFooter: () => import("@/components/footer")
+    commonFooter: () => import("@/components/footer"),
   },
   mounted() {
     // this.initWebStat();
     this.getUserInfo();
   },
   methods: {
+    removeTab(item) {
+      let  {list}  = this.flatTabsList
+      let index  = list.indexOf(item)
+      this.tabList.splice(index,1)
+      // 删除后默认跳转到最后一个彩蛋
+      this.$router.push(this.tabList[this.tabList.length -1].path)
+      this.activeName = this.tabList[this.tabList.length -1].path
+    },
+    handleClick(item){
+      this.$router.push({path: item.name})
+    },
+    handleSelect(key) {
+      let  {arrObj}  = this.flatMenuList
+      let  {tabArrObj}  = this.flatTabsList
+      // 之前打开过的菜单不新增
+      if (!tabArrObj[key]) {
+        this.tabList.push({path: key,title: arrObj[key]})
+      }
+      // 选中当前的tab
+      this.activeName = key
+    },
     /**
      * 获取用户信息
      */
     async getUserInfo() {
       let res = await getUserInfoApi({});
-      this.userInfoObj = res.data
+      this.userInfoObj = res.data;
     },
     initWebStat() {
       let webStats = new webStatistics({
@@ -241,9 +302,9 @@ export default {
           id: "visitorId",
         },
       });
-      setTimeout(()=>{
-        webStats.setUserId()
-      },200)
+      setTimeout(() => {
+        webStats.setUserId();
+      }, 200);
     },
     swith() {
       this.isCollapse = !this.isCollapse;
