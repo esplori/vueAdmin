@@ -1,16 +1,25 @@
 <template>
   <div class="page-list">
     <div class="select-by-cate">
-      <span>按分类筛选：</span>
-      <el-select v-model="params.cate" @change="typeChange">
-        <el-option label="全部" :value="null"></el-option>
-        <el-option
-          v-for="(item, index) in cateList"
-          :key="index"
-          :label="item.name"
-          :value="item.id"
-        ></el-option>
-      </el-select>
+      <div>
+        <span>按分类筛选：</span>
+        <el-select v-model="params.cate" @change="typeChange">
+          <el-option label="全部" :value="null"></el-option>
+          <el-option
+            v-for="(item, index) in cateList"
+            :key="index"
+            :label="item.name"
+            :value="item.id"
+          ></el-option>
+        </el-select>
+      </div>
+      <div>
+        <el-input
+          v-model="params.tag"
+          placeholder="输入关键字搜索"
+          @change="tagChange"
+        ></el-input>
+      </div>
     </div>
     <el-table :data="list" @sort-change="sortCchange">
       <el-table-column type="index" label="序号" width="55px"></el-table-column>
@@ -106,6 +115,7 @@ import {
   getAdminCateValidApi,
   getTopicListApi,
   addPostToTopicApi,
+  getListByTagsApi,
 } from "@/views/API/admin.js";
 
 export default {
@@ -140,6 +150,22 @@ export default {
     this.getList();
   },
   methods: {
+    /**
+     *  tab切换后查询文章
+     */
+    tagChange(val) {
+      this.getListByTags(val);
+    },
+    /**
+     * 通过关键字查询文章
+     */
+    async getListByTags(val) {
+      let res = await getListByTagsApi({ tag: val });
+      if (res) {
+        this.list = res.data.result;
+        this.total = res.data.total;
+      }
+    },
     sortCchange({ column, prop, order }) {
       this.params.page = 1;
       // 需要转换成sql对应的排序字段
@@ -225,7 +251,9 @@ export default {
 .page-list {
   width: 100%;
   .select-by-cate {
-    margin-bottom: 20px;
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
   }
   .content-item {
     font-size: 18px;

@@ -237,3 +237,8 @@ export async function deletePostApi(data) {
   const options = { showLoading: true }
   return post(Url, data, options)
 }
+export async function getListByTagsApi(data) {
+  const Url = `${contextPath}/pages/getList/tags/${encodeURI(data.tag)}/page/1`
+  const options = { showLoading: true }
+  return get(Url, data, options)
+}
