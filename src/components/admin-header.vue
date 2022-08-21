@@ -2,7 +2,6 @@
   <div class="admin-header">
     <div class="header-container">
       <div class="left-header">
-        <div class="logo"><a href="https://www.dsiab.com" target="_blank">javascript技术分享</a></div>
         <div class="tips">
           <span class="welcomeMsg">每日一句：{{ dailySentence }}</span>
         </div>
@@ -63,10 +62,6 @@ export default {
       display: flex;
       align-items: center;
       width: 100%;
-    }
-    .logo{
-      font-size: 14px;
-      margin-right: 20px;
     }
     .tips {
       width: 85%;

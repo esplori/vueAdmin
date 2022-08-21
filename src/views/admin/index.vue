@@ -1,8 +1,10 @@
 <template>
   <div class="admin-home">
-    <adminHeader :userInfoObj="userInfoObj"></adminHeader>
     <div class="content-container">
       <div class="left-menu">
+        <div class="logo">
+          <a href="https://www.dsiab.com" target="_blank">javascript技术分享</a>
+        </div>
         <el-menu
           style="height: 100%; overflow-y: auto"
           default-active="/admin/home"
@@ -57,7 +59,14 @@
       </div>
       <div class="right-content">
         <!-- <keep-alive> -->
-        <el-tabs v-model="activeName" type="card" @tab-click="handleClick" closable @tab-remove="removeTab">
+        <adminHeader :userInfoObj="userInfoObj"></adminHeader>
+        <el-tabs
+          v-model="activeName"
+          type="card"
+          @tab-click="handleClick"
+          closable
+          @tab-remove="removeTab"
+        >
           <el-tab-pane
             :label="item.title"
             :name="item.path"
@@ -65,6 +74,7 @@
             :key="index"
           ></el-tab-pane>
         </el-tabs>
+
         <router-view></router-view>
         <!-- </keep-alive> -->
         <commonFooter></commonFooter>
@@ -209,7 +219,7 @@ export default {
       ],
       isCollapse: false,
       userInfoObj: {},
-      activeName: "/admin/home"
+      activeName: "/admin/home",
     };
   },
   computed: {
@@ -225,14 +235,14 @@ export default {
     tabList() {
       return this.$store.state.tabList;
     },
-    flatTabsList(){
-      let tabArrObj = {}
-      let list = []
-      this.tabList.forEach(item =>{
-        list.push(item.path)
-        tabArrObj[item.path] = item.title
-      })
-      return {tabArrObj,list}
+    flatTabsList() {
+      let tabArrObj = {};
+      let list = [];
+      this.tabList.forEach((item) => {
+        list.push(item.path);
+        tabArrObj[item.path] = item.title;
+      });
+      return { tabArrObj, list };
     },
     flatMenuList() {
       let list = this.menuList;
@@ -246,12 +256,12 @@ export default {
           }
         });
       };
-      flat(list)
-      let arrObj = {}
-      resultList.forEach(item =>{
-        arrObj[item.path] = item.title
-      })
-      return {resultList,arrObj}
+      flat(list);
+      let arrObj = {};
+      resultList.forEach((item) => {
+        arrObj[item.path] = item.title;
+      });
+      return { resultList, arrObj };
     },
   },
   components: {
@@ -264,25 +274,25 @@ export default {
   },
   methods: {
     removeTab(item) {
-      let  {list}  = this.flatTabsList
-      let index  = list.indexOf(item)
-      this.tabList.splice(index,1)
+      let { list } = this.flatTabsList;
+      let index = list.indexOf(item);
+      this.tabList.splice(index, 1);
       // 删除后默认跳转到最后一个彩蛋
-      this.$router.push(this.tabList[this.tabList.length -1].path)
-      this.activeName = this.tabList[this.tabList.length -1].path
+      this.$router.push(this.tabList[this.tabList.length - 1].path);
+      this.activeName = this.tabList[this.tabList.length - 1].path;
     },
-    handleClick(item){
-      this.$router.push({path: item.name})
+    handleClick(item) {
+      this.$router.push({ path: item.name });
     },
     handleSelect(key) {
-      let  {arrObj}  = this.flatMenuList
-      let  {tabArrObj}  = this.flatTabsList
+      let { arrObj } = this.flatMenuList;
+      let { tabArrObj } = this.flatTabsList;
       // 之前打开过的菜单不新增
       if (!tabArrObj[key]) {
-        this.tabList.push({path: key,title: arrObj[key]})
+        this.tabList.push({ path: key, title: arrObj[key] });
       }
       // 选中当前的tab
-      this.activeName = key
+      this.activeName = key;
     },
     /**
      * 获取用户信息
@@ -319,6 +329,9 @@ export default {
 <style scoped lang="less">
 .admin-home {
   height: 100%;
+  .logo {
+    font-size: 14px;
+  }
   .content-container {
     height: 100%;
     max-width: 1280px;
@@ -327,11 +340,10 @@ export default {
     justify-content: space-between;
   }
   .left-menu {
-    background: #001529;
-    color: #fff;
     border-radius: 3px;
+    background: #fff;
     .logo {
-      font-size: 18px;
+      font-size: 14px;
       text-align: center;
       padding: 15px 0;
       color: #fff;
@@ -345,7 +357,7 @@ export default {
   }
   .right-content {
     width: 100%;
-    padding: 20px;
+    padding: 0 20px 20px 20px;
     padding-bottom: 20px;
     background: #fff;
     margin-left: 10px;
