@@ -121,7 +121,7 @@
     </div>
 
     <div v-if="userInfo.role.includes('ROLE_admin')">
-        <h2>总字数：{{totalWordsNum}}</h2>
+      <h2 style="padding: 20px 0">总字数：{{totalWordsNum}}</h2>
       <div>
         <h2>当天访问来源</h2>
       </div>
