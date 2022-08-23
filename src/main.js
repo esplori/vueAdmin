@@ -7,6 +7,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/css/common.css'
 import '@/assets/css/reset.css'
+import '@/assets/css/index.less'
 import JsonViewer from 'vue-json-viewer'
 
 Vue.use(JsonViewer)
