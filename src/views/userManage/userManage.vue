@@ -93,7 +93,7 @@ import {
   updateRoleApi,
   insertUserApi,
   deleUserApi,
-} from "../../API/admin";
+} from "../API/admin";
 export default {
   data() {
     return {

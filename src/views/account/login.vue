@@ -79,7 +79,7 @@ export default {
       let res = await loginApi(this.form);
       if (res) {
         localStorage.setItem("userInfo", JSON.stringify(res.data));
-        this.$router.push({ path: "/admin" });
+        this.$router.push({ path: "/" });
       }
     },
     shadow() {

@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { getRoleListApi } from "../../API/admin";
+import { getRoleListApi } from "../API/admin";
 export default {
   data() {
     return {

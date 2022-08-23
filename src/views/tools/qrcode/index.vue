@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { genereateQrcodeApi } from "../../../API/tools";
+import { genereateQrcodeApi } from "../../API/tools";
 export default {
   data() {
     return {

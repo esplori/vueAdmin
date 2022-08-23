@@ -7,10 +7,6 @@ const router = new Router({
   mode: 'hash',
   routes: [
     {
-      path: '/',
-      redirect: 'admin'
-    },
-    {
       path: '/login',
       component: () => import(/* webpackChunkName: "login" */'@/views/account/login')
     },
@@ -23,8 +19,8 @@ const router = new Router({
       component: () => import(/* webpackChunkName: "regActive" */'@/views/account/regActive')
     },
     {
-      path: '/admin',
-      component: () => import(/* webpackChunkName: "admin" */'@/views/admin/index'),
+      path: '/',
+      component: () => import(/* webpackChunkName: "admin" */'@/views/index'),
       children: [
         {
           path: '',
@@ -32,119 +28,119 @@ const router = new Router({
         },
         {
           path: 'home',
-          component: () => import(/* webpackChunkName: "home" */'@/views/admin/workbench/home')
+          component: () => import(/* webpackChunkName: "home" */'@/views/workbench/home')
         },
         {
           path: 'pageList',
-          component: () => import(/* webpackChunkName: "pageList" */'@/views/admin/postManage/pageList')
+          component: () => import(/* webpackChunkName: "pageList" */'@/views/postManage/pageList')
         },
         {
           path: 'post',
-          component: () => import(/* webpackChunkName: "post" */'@/views/admin/postManage/post')
+          component: () => import(/* webpackChunkName: "post" */'@/views/postManage/post')
         },
         {
           path: 'edit',
-          component: () => import(/* webpackChunkName: "post" */'@/views/admin/postManage/post')
+          component: () => import(/* webpackChunkName: "post" */'@/views/postManage/post')
         },
         {
           path: 'cateList',
-          component: () => import(/* webpackChunkName: "cateList" */'@/views/admin/postManage/cateList')
+          component: () => import(/* webpackChunkName: "cateList" */'@/views/postManage/cateList')
         },
         {
           path: 'topic',
-          component: () => import(/* webpackChunkName: "topic" */'@/views/admin/postManage/topic')
+          component: () => import(/* webpackChunkName: "topic" */'@/views/postManage/topic')
         },
         {
           path: 'topicManage',
-          component: () => import(/* webpackChunkName: "cateList" */'@/views/admin/postManage/topicManage')
+          component: () => import(/* webpackChunkName: "cateList" */'@/views/postManage/topicManage')
         },
         {
           path: 'systemSetting',
-          component: () => import(/* webpackChunkName: "systemSetting" */'@/views/admin/setting/systemSetting')
+          component: () => import(/* webpackChunkName: "systemSetting" */'@/views/setting/systemSetting')
         },
         {
           path: 'mail',
-          component: () => import(/* webpackChunkName: "mail" */'@/views/admin/setting/sendMail')
+          component: () => import(/* webpackChunkName: "mail" */'@/views/setting/sendMail')
         },
         {
           path: 'recycle',
-          component: () => import(/* webpackChunkName: "recycle" */'@/views/admin/setting/recyclePost')
+          component: () => import(/* webpackChunkName: "recycle" */'@/views/setting/recyclePost')
         },
         {
           path: 'userSetting',
-          component: () => import(/* webpackChunkName: "userSetting" */'@/views/admin/setting/userSetting')
+          component: () => import(/* webpackChunkName: "userSetting" */'@/views/setting/userSetting')
         },
         {
           path: 'deploy',
-          component: () => import(/* webpackChunkName: "deploy" */'@/views/admin/setting/deploy')
+          component: () => import(/* webpackChunkName: "deploy" */'@/views/setting/deploy')
         },
         {
           path: 'navigationList',
-          component: () => import(/* webpackChunkName: "navigationList" */'@/views/admin/navigationManage/navigationList')
+          component: () => import(/* webpackChunkName: "navigationList" */'@/views/navigationManage/navigationList')
         },
         {
           path: 'navigationCate',
-          component: () => import(/* webpackChunkName: "navigationCate" */'@/views/admin/navigationManage/navigationCate')
+          component: () => import(/* webpackChunkName: "navigationCate" */'@/views/navigationManage/navigationCate')
         },
         {
           path: 'navigationEdit',
-          component: () => import(/* webpackChunkName: "navigationEdit" */'@/views/admin/navigationManage/navigationEdit')
+          component: () => import(/* webpackChunkName: "navigationEdit" */'@/views/navigationManage/navigationEdit')
         },
         {
           path: 'sourceList',
-          component: () => import(/* webpackChunkName: "sourceList" */'@/views/admin/setting/sourceList')
+          component: () => import(/* webpackChunkName: "sourceList" */'@/views/setting/sourceList')
         },
         {
           path: 'caiji',
-          component: () => import(/* webpackChunkName: "caiji" */'@/views/admin/caiji/caiji')
+          component: () => import(/* webpackChunkName: "caiji" */'@/views/caiji/caiji')
         },
         {
           path: 'caijiList',
-          component: () => import(/* webpackChunkName: "caijiList" */'@/views/admin/caiji/caijiList')
+          component: () => import(/* webpackChunkName: "caijiList" */'@/views/caiji/caijiList')
         },
         {
           path: 'tbkType',
-          component: () => import(/* webpackChunkName: "caijiList" */'@/views/admin/caiji/tbkCate')
+          component: () => import(/* webpackChunkName: "caijiList" */'@/views/caiji/tbkCate')
         },
         {
           path: 'userManage',
-          component: () => import(/* webpackChunkName: "userManage" */'@/views/admin/userManage/userManage')
+          component: () => import(/* webpackChunkName: "userManage" */'@/views/userManage/userManage')
         },
         {
           path: 'roleManage',
-          component: () => import(/* webpackChunkName: "roleManage" */'@/views/admin/userManage/roleManage')
+          component: () => import(/* webpackChunkName: "roleManage" */'@/views/userManage/roleManage')
         },
         {
           path: 'menuManage',
-          component: () => import(/* webpackChunkName: "roleManage" */'@/views/admin/userManage/menuManage')
+          component: () => import(/* webpackChunkName: "roleManage" */'@/views/userManage/menuManage')
         },
         {
           path: 'commentList',
-          component: () => import(/* webpackChunkName: "comments" */'@/views/admin/postManage/commentList')
+          component: () => import(/* webpackChunkName: "comments" */'@/views/postManage/commentList')
         },
         {
           path: 'tools',
-          component: () => import(/* webpackChunkName: "tools" */'@/views/admin/tools/index'),
+          component: () => import(/* webpackChunkName: "tools" */'@/views/tools/index'),
           children: [
             {
               path: 'qrcode',
-              component: () => import(/* webpackChunkName: "qrcode" */'@/views/admin/tools/qrcode/index')
+              component: () => import(/* webpackChunkName: "qrcode" */'@/views/tools/qrcode/index')
             },
             {
               path: 'dianming',
-              component: () => import(/* webpackChunkName: "dianming" */'@/views/admin/tools/dianming/dianming')
+              component: () => import(/* webpackChunkName: "dianming" */'@/views/tools/dianming/dianming')
             },
             {
               path: 'img2base64',
-              component: () => import(/* webpackChunkName: "img2base64" */'@/views/admin/tools/img2base64/img2base64')
+              component: () => import(/* webpackChunkName: "img2base64" */'@/views/tools/img2base64/img2base64')
             },
             {
               path: 'jsonviewer',
-              component: () => import(/* webpackChunkName: "jsonviewer" */'@/views/admin/tools/jsonviewer/jsonviewer')
+              component: () => import(/* webpackChunkName: "jsonviewer" */'@/views/tools/jsonviewer/jsonviewer')
             },
             {
               path: 'choujiang',
-              component: () => import(/* webpackChunkName: "choujiang" */'@/views/admin/tools/choujiang/choujiang')
+              component: () => import(/* webpackChunkName: "choujiang" */'@/views/tools/choujiang/choujiang')
             },
           ]
         },
