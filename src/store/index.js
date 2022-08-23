@@ -6,7 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     tabList: [
-      {path: '/admin/home',title: "首页"}
+      {path: '/home',title: "首页"}
     ]
   },
   mutations: {
