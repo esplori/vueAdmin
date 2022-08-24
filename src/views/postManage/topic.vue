@@ -94,7 +94,7 @@ export default {
       this.row = row;
     },
     manage(row) {
-      this.$router.push({path: '/admin/topicManage', query: {id: row.id}})
+      this.$router.push({path: '/topicManage', query: {id: row.id}})
     },
     async submit(row) {
       if (row.id) {

@@ -82,14 +82,14 @@ export default {
       const res = await editPageApi({ ...this.form });
       if (res) {
         this.$message.success("修改成功");
-        this.$router.push({ path: "/admin/navigationList" });
+        this.$router.push({ path: "/navigationList" });
       }
     },
     async postPage() {
       const res = await postPageApi({ ...this.form });
       if (res) {
         this.$message.success("添加成功");
-        this.$router.push({ path: "/admin/navigationList" });
+        this.$router.push({ path: "/navigationList" });
       }
     },
     async getDetail(id) {

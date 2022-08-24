@@ -277,7 +277,7 @@ export default {
         // 保存列表查询参数,自动保存不跳转
         jump &&
           this.$router.push({
-            path: "/admin/pageList",
+            path: "/pageList",
             query: { page, cate, pageSize },
           });
       }
@@ -292,7 +292,7 @@ export default {
       if (res) {
         // 回填id，方便再次保存使用
         this.form.id = res.data;
-        jump && this.$router.push({ path: "/admin/pageList" });
+        jump && this.$router.push({ path: "/pageList" });
       }
     },
     async getDetail(id) {

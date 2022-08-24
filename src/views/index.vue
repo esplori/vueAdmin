@@ -7,7 +7,7 @@
         </div>
         <el-menu
           style="height: 100%; overflow-y: auto"
-          default-active="/admin/home"
+          default-active="/home"
           class="el-menu-vertical"
           @open="handleOpen"
           @close="handleClose"
