@@ -253,6 +253,10 @@ export default {
         this.$message.warning("请输入内容");
         return false;
       }
+      if (!this.form.cate && jump) {
+        this.$message.warning("请选择分类");
+        return false;
+      }
       if (this.form.id) {
         this.editPage(jump);
       } else {
