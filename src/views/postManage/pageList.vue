@@ -23,10 +23,10 @@
     </div>
     <el-table :data="list" @sort-change="sortCchange">
       <el-table-column type="index" label="序号" width="55px"></el-table-column>
-      <el-table-column label="标题">
+      <el-table-column label="标题" width="250px">
         <template slot-scope="scope">
           <a
-            style="color: #333"
+            style="color: #333;text-decoration:underline"
             :href="
               'https://www.dsiab.com/post/' + (scope.row.uid || scope.row.id)
             "
