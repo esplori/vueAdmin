@@ -23,7 +23,7 @@
     </div>
     <el-table :data="list" @sort-change="sortCchange">
       <el-table-column type="index" label="序号" width="55px"></el-table-column>
-      <el-table-column label="标题" width="250px">
+      <el-table-column label="标题" width="200px">
         <template slot-scope="scope">
           <a
             style="color: #333;text-decoration:underline"
@@ -35,27 +35,24 @@
           >
         </template>
       </el-table-column>
-      <el-table-column label="分类" width="120px" prop="cateName">
+      <el-table-column label="分类"  prop="cateName">
       </el-table-column>
-      <el-table-column label="作者" width="120px" prop="createBy">
+      <el-table-column label="作者" prop="createBy">
       </el-table-column>
       <el-table-column
         label="阅读"
-        width="120px"
         sortable="custom"
         prop="views"
       >
       </el-table-column>
       <el-table-column
         label="字数"
-        width="120px"
         sortable="custom"
         prop="wordsNum"
       >
       </el-table-column>
       <el-table-column
         label="创建时间"
-        width="180px"
         sortable="custom"
         prop="createDate"
       >
