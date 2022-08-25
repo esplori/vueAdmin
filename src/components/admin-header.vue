@@ -49,11 +49,11 @@ export default {
   color: #71777c;
   border-bottom: 1px solid #ddd;
   .header-container {
-    max-width: 1280px;
+    // max-width: 1280px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 20px;
+    // margin: 0 20px;
     .user-info {
       display: flex;
       justify-content: flex-end;
@@ -64,9 +64,9 @@ export default {
       width: 100%;
     }
     .tips {
-      width: 85%;
+      width: 100%;
       .welcomeMsg {
-        margin-left: 10px;
+        // margin-left: 10px;
         font-size: 12px;
       }
     }
