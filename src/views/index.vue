@@ -61,6 +61,7 @@
         <!-- <keep-alive> -->
         <adminHeader :userInfoObj="userInfoObj"></adminHeader>
         <el-tabs
+         class="eltabs"
           v-model="activeName"
           type="card"
           @tab-click="handleClick"
@@ -379,6 +380,9 @@ export default {
     // background:rgba(#000,0.8);
     // height: 80px;
     color: #fff;
+  }
+  .eltabs{
+    width: 80%;
   }
 }
 </style>

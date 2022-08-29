@@ -26,7 +26,7 @@
       <el-table-column label="标题" width="200px">
         <template slot-scope="scope">
           <a
-            style="color: #333;text-decoration:underline"
+            style="color: #333; text-decoration: underline"
             :href="
               'https://www.dsiab.com/post/' + (scope.row.uid || scope.row.id)
             "
@@ -35,27 +35,13 @@
           >
         </template>
       </el-table-column>
-      <el-table-column label="分类"  prop="cateName">
+      <el-table-column label="分类" prop="cateName"> </el-table-column>
+      <el-table-column label="作者" prop="createBy"> </el-table-column>
+      <el-table-column label="阅读" sortable="custom" prop="views">
       </el-table-column>
-      <el-table-column label="作者" prop="createBy">
+      <el-table-column label="字数" sortable="custom" prop="wordsNum">
       </el-table-column>
-      <el-table-column
-        label="阅读"
-        sortable="custom"
-        prop="views"
-      >
-      </el-table-column>
-      <el-table-column
-        label="字数"
-        sortable="custom"
-        prop="wordsNum"
-      >
-      </el-table-column>
-      <el-table-column
-        label="创建时间"
-        sortable="custom"
-        prop="createDate"
-      >
+      <el-table-column label="创建时间" sortable="custom" prop="createDate">
       </el-table-column>
       <el-table-column fixed="right" width="180" label="操作">
         <template slot-scope="scope">
@@ -66,7 +52,7 @@
             class="cus-button-danger"
             >删除</el-button
           >
-          <el-button @click="addToTopic(scope.row)" type="text"
+          <el-button v-if="userInfo.includes('ROLE_admin')"  @click="addToTopic(scope.row)" type="text"
             >添加到专题</el-button
           >
         </template>
@@ -145,6 +131,17 @@ export default {
     this.params.pageSize = parseInt(pageSize) || 10;
     this.params.cate = parseInt(cate) || "";
     this.getList();
+  },
+  computed: {
+    userInfo() {
+      let userInfo = localStorage.getItem("userInfo");
+      if (userInfo) {
+        userInfo = JSON.parse(userInfo).role.split(",");
+      } else {
+        userInfo = [];
+      }
+      return userInfo;
+    },
   },
   methods: {
     /**
