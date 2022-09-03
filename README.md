@@ -2,9 +2,9 @@
 
 
 <h1 align="center" style=" font-weight: bold;">vueAdmin</h1>
-<h5 align="center">基于vue开发的博客系统</h5>
+<h5 align="center">基于vue2.0 + element-ui 开发的博客后台管理系统</h5>
 
-<p align="center">
+<p align="center" style="padding:10px">
 	<a href="https://gitee.com/wilkwo/vueAdmin.git"><img src="https://gitee.com/wilkwo/vueAdmin/badge/star.svg?theme=dark"></a>
 	<a href="https://gitee.com/wilkwo/vueAdmin.git"><img src="https://gitee.com/wilkwo/vueAdmin/badge/fork.svg?theme=dark"></a>
 </p>
@@ -12,13 +12,16 @@
 
 ### 项目介绍
 
-- 基于vue、element-ui实现的的博客后台管理系统
+- 主要技术栈: vuejs2.0 + vue-router + vuex + element-ui + less
 
-- 主要技术: vuejs2.0 + element-ui
+- 使用到的插件： axios + wangeditor + echarts5 + countup.js
 
-- 使用到的插件： axios + less + wangeditor
+- 启动项目可直接看到效果，默认调用是官网的后台管理接口，使用体验账号登录即可。
 
-- 拉取代码后可直接看到效果，默认调用是官网的后台管理接口，使用测试账号登录即可。
+### vueAdminPlus 升级版
+
+- 全新升级版技术栈：vue3.0 + element-plus + typescript + pinia
+- 项目地址：https://gitee.com/wilkwo/vue-admin-plus.git
 
 ### 主要功能
 - 首页看板：访问数据统计
