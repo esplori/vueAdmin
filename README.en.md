@@ -1,4 +1,4 @@
-<div><a href="https://gitee.com/wilkwo/vueAdmin/blob/master/README.md">中文</a>  |  <a href="https://gitee.com/wilkwo/vueAdmin/blob/master/README.en.md">english</a></div>
+<div><a href="https://gitee.com/wilkwo/vueAdmin/blob/master/README.md">中文</a>  |  <a href="https://gitee.com/wilkwo/vueAdmin/blob/master/README.en.md">ENGLISH</a></div>
 
 <h1 align="center" style=" font-weight: bold;">vueAdmin</h1>
 <h5 align="center">Vue-based blog background management system</h5>

@@ -1,4 +1,4 @@
-<div><a href="https://gitee.com/wilkwo/vueAdmin/blob/master/README.md">中文</a>  |  <a href="https://gitee.com/wilkwo/vueAdmin/blob/master/README.en.md">english</a></div>
+<div><a href="https://gitee.com/wilkwo/vueAdmin/blob/master/README.md">中文</a>  |  <a href="https://gitee.com/wilkwo/vueAdmin/blob/master/README.en.md">ENGLISH</a></div>
 
 
 <h1 align="center" style=" font-weight: bold;">vueAdmin</h1>
@@ -18,10 +18,6 @@
 
 - 启动项目可直接看到效果，默认调用是官网的后台管理接口，使用体验账号登录即可。
 
-### vueAdminPlus 升级版
-
-- 全新升级版技术栈：vue3.0 + element-plus + typescript + pinia
-- 项目地址：https://gitee.com/wilkwo/vue-admin-plus.git
 
 ### 主要功能
 - 首页看板：访问数据统计
@@ -60,11 +56,8 @@
 ``` bash
 
 #下载代码
-gitee: git clone https://gitee.com/wilkwo/vueAdmin.git
-
-或者
-
-github: git clone https://github.com/esplori/vueAdmin.git
+git clone https://gitee.com/wilkwo/vueAdmin.git
+git clone https://github.com/esplori/vueAdmin.git
 
 # 安装依赖
 npm install
