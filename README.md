@@ -14,7 +14,7 @@
 
 - 主要技术栈: vuejs2.0 + vue-router + vuex + element-ui + less
 
-- 使用到的插件： axios + wangeditor + echarts5 + countup.js
+- 主要使用到的插件： axios + wangeditor + echarts5 
 
 - 启动项目可直接看到效果，默认调用是官网的后台管理接口，使用体验账号登录即可。
 
