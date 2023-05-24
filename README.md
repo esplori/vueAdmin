@@ -1,4 +1,4 @@
-<div><a href="https://gitee.com/wilkwo/vueAdmin/blob/master/README.md">中文</a>  |  <a href="https://gitee.com/wilkwo/vueAdmin/blob/master/README.en.md">ENGLISH</a></div>
+<div><a href="https://github.com/esplori/vueAdmin/blob/master/README.md">中文</a>  |  <a href="https://github.com/esplori/vueAdmin/blob/master/README.en.md">ENGLISH</a></div>
 
 
 <h1 align="center" style=" font-weight: bold;">vueAdmin</h1>
