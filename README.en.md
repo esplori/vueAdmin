@@ -42,9 +42,6 @@ or
 ### run the project
 ```
 # download code
-gitee: git clone https://gitee.com/wilkwo/vueAdmin.git
-
-or
 
 github: git clone https://github.com/esplori/vueAdmin.git
 
